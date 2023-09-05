@@ -8,7 +8,7 @@ Live Link: TBD
 - Features List: https://github.com/SonQHoang/Soundify/wiki/Features-List
 - Database Schema: https://github.com/SonQHoang/Soundify/wiki/Schema
 - Frontend and Backend Routes:
-- What's Coming Up Next:
+- What's Coming Up Next: https://github.com/SonQHoang/Soundify/wiki/What's-Coming-Up-Next
 
 Site Links
 
