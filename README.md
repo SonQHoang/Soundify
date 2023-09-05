@@ -6,7 +6,7 @@ Live Link: TBD
 ## Index
 
 - Features List:
-- Database Schema:
+- Database Schema: https://github.com/SonQHoang/Soundify/wiki/Schema
 - Frontend and Backend Routes:
 - What's Coming Up Next:
 
