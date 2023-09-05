@@ -5,7 +5,7 @@ Welcome to Soundify, a pixel perfect clone of the music platform Spotify!
 Live Link: TBD
 ## Index
 
-- Features List:
+- Features List: https://github.com/SonQHoang/Soundify/wiki/Features-List
 - Database Schema: https://github.com/SonQHoang/Soundify/wiki/Schema
 - Frontend and Backend Routes:
 - What's Coming Up Next:
