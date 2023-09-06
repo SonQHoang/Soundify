@@ -45,6 +45,13 @@ def seed_users():
         title = "This is John Mayer",
         date_created = datetime(2023, 9, 6)
     )
+
+    playlist_2 = Playlists (
+        user_id = 2,
+        song_id = 1,
+        title = "This is John Mayer",
+        date_created = datetime(2023, 9, 6)
+    )
     
     song_1 = Songs (
         user_id = 1,
@@ -134,10 +141,11 @@ def seed_users():
         date_created = datetime(2023, 9, 6)
     )
 
-    db.session.add_all([demo, marnie, bobbie])
-    db.session.add_all([album_1])
-    db.session.add_all([playlist_1])
-    db.session.add_all([song_1])
+    # db.session.add_all([demo, marnie, bobbie])
+    # db.session.add_all([album_1])
+    # db.session.add_all([playlist_1])
+    db.session.add_all([playlist_2])
+    # db.session.add_all([song_1])
 
     db.session.commit()
 
