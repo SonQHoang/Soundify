@@ -9,7 +9,7 @@ class Playlists(db.Model):
         
 
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     title = db.Column(db.String, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
@@ -18,7 +18,7 @@ class Playlists(db.Model):
     playlist_user = db.relationship('User', back_populates='playlist')
 
     # Playlist has a one to MANY relationship with Songs
-    playlist_songs = db.relationship('Song', back_populates='song_playlists', cascade='all, delete-orphan')
+    playlist_songs = db.relationship('Songs', back_populates='song_playlists', cascade='all, delete-orphan')
     
     def to_dict(self):
         return {

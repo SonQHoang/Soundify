@@ -10,16 +10,16 @@ class Albums(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     album_photo = db.Column(db.String)
-    title = db.Column(db.String, nullable=False)
+    title = db.Column(db.String, nullable=False, unique=True)
     year = db.Column(db.Integer, nullable=False)
-    date_created = db.Column(db.DateTime, nullabe=False)
+    date_created = db.Column(db.DateTime, nullable=False)
 
     #Albums has a one to MANY relationship with album_likes, songs
     album_album_likes = db.relationship('AlbumLikes', back_populates='album_likes_albums', cascade='all, delete-orphan')
     album_songs = db.relationship('Songs', back_populates='song_albums', cascade='all, delete-orphan')
     
     #Albums has a MANY to one relationship with Users
-    album_users = db.relationship('Users', back_populates='albums')
+    album_users = db.relationship('User', back_populates='albums')
 
     def to_dict(self):
         return {

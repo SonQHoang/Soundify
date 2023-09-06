@@ -8,12 +8,13 @@ class AlbumLikes(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
 
     # AlbumLikes has a MANY to one relationship with albums and users
     album_likes_albums = db.relationship("Albums", back_populates='album_album_likes')
-    album_likes_user = db.relationship("Users", back_populates='album_likes')
+    album_likes_user = db.relationship("User", back_populates='album_likes')
     
     def to_dict(self):
         return {

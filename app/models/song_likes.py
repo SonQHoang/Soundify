@@ -7,7 +7,7 @@ class SongLikes(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True) 
+    id = db.Column(db.Integer, primary_key=True) 
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=False) 
     date_created = db.Column(db.DateTime, nullable=False)
@@ -15,7 +15,7 @@ class SongLikes(db.Model):
     #SongLikes has a MANY to one relationship with users, and songs
 
     song_likes_songs = db.relationship('Songs', back_populates="song_song_likes")
-    song_likes_users = db.relationship('Users', back_populates="song_likes")
+    song_likes_users = db.relationship('User', back_populates="song_likes")
     
     def to_dict(self):
         return {

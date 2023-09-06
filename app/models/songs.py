@@ -11,13 +11,13 @@ class Songs(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')), nullable=False)
     playlist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id')), nullable=False)
-    title = db.Column(db.String(40), nullable=False)
+    title = db.Column(db.String(40), nullable=False, unique=True)
     lyrics = db.Column(db.String(5000), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
 
     #Songs has a MANY to one relationship with albums, users, playlist
 
-    song_users = db.relationship('Users', back_populates="songs")
+    song_users = db.relationship('User', back_populates="songs")
     song_albums = db.relationship('Albums', back_populates='album_songs')
     song_playlists = db.relationship('Playlists', back_populates='playlist_songs')
 
