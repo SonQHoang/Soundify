@@ -141,11 +141,11 @@ def seed_users():
         date_created = datetime(2023, 9, 6)
     )
 
-    # db.session.add_all([demo, marnie, bobbie])
-    # db.session.add_all([album_1])
-    # db.session.add_all([playlist_1])
-    db.session.add_all([playlist_2])
+    db.session.add_all([demo, marnie, bobbie])
+    db.session.add_all([album_1])
     db.session.add_all([song_1])
+    db.session.add_all([playlist_1])
+    db.session.add_all([playlist_2])
 
     db.session.commit()
 
@@ -166,8 +166,18 @@ def seed_users():
 # it will reset the primary keys for you as well.
 def undo_users():
     if environment == "production":
+        # db.session.execute(f"TRUNCATE table {SCHEMA}.album_likes RESTART IDENTITY CASCADE;")
+        # db.session.execute(f"TRUNCATE table {SCHEMA}.song_likes RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.playlists RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.songs RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.albums RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+
     else:
+
+        db.session.execute(text("DELETE FROM playlists"))
+        db.session.execute(text("DELETE FROM songs"))
+        db.session.execute(text("DELETE FROM albums"))
         db.session.execute(text("DELETE FROM users"))
         
     db.session.commit()
