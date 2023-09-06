@@ -1,9 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-playlist_songs_association = db.Table('playlist_songs',
+songs_playlist_association = db.Table('playlist_songs',
+    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id'))),
     db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id'))),
-    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')))
 )
 
 class Playlists(db.Model):
@@ -19,7 +19,7 @@ class Playlists(db.Model):
     date_created = db.Column(db.DateTime, nullable=False)
 
     # Playlist has a MANY to MANY relationship with Songs
-    playlist_songs = db.relationship('Songs', secondary=playlist_songs_association, back_populates='song_playlists')
+    playlist_songs = db.relationship('Songs', secondary=songs_playlist_association, back_populates='song_playlists')
     
     # Playlist has a MANY to one relationship with user
     playlist_user = db.relationship('User', back_populates='playlist')
