@@ -1,4 +1,4 @@
-from app.models import db, User, environment, SCHEMA, Songs
+from app.models import db, User, environment, SCHEMA, Songs, Albums, Playlists
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -31,6 +31,19 @@ def seed_users():
         email='bobbie@aa.io',
         password='password'
         )
+    
+    album_1 = Albums (
+        user_id = 1,
+        title = "Gravity",
+        year = 2013,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    playlist_1 = Playlists (
+        user_id = 1,
+        title = "This is John Mayer",
+        date_created = datetime(2023, 9, 6)
+    )
     
     song_1 = Songs (
         user_id = 1,
@@ -120,9 +133,12 @@ def seed_users():
         date_created = datetime(2023, 9, 6)
     )
 
+
     
 
     db.session.add_all([demo, marnie, bobbie])
+    db.session.add_all([album_1])
+    db.session.add_all([playlist_1])
     db.session.add_all([song_1])
     db.session.commit()
 
