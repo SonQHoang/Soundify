@@ -1,7 +1,21 @@
-.profile-dropdown {
-  position: absolute;
+.nav-bar-container {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.hidden {
-  display: none;
+.nav-bar-left {
+  border: 2px solid green;
 }
+
+.nav-bar-right {
+  border: 2px solid blue
+}
+/* .profile-dropdown {
+  position: absolute;
+} */
+
+/* .hidden {
+  display: none;
+} */
