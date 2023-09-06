@@ -41,6 +41,7 @@ def seed_users():
 
     playlist_1 = Playlists (
         user_id = 1,
+        song_id = 1,
         title = "This is John Mayer",
         date_created = datetime(2023, 9, 6)
     )
