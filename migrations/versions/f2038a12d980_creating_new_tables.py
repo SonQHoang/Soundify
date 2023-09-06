@@ -1,8 +1,8 @@
-"""Creating new tables
+"""Creating New Tables
 
-Revision ID: e54fd81e2b4f
+Revision ID: f2038a12d980
 Revises: 
-Create Date: 2023-09-06 11:54:59.561859
+Create Date: 2023-09-06 12:04:38.959656
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'e54fd81e2b4f'
+revision = 'f2038a12d980'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,6 +35,18 @@ def upgrade():
     sa.UniqueConstraint('first_name'),
     sa.UniqueConstraint('last_name'),
     sa.UniqueConstraint('username')
+    )
+
+    op.create_table('albums',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('album_photo', sa.String(), nullable=True),
+    sa.Column('title', sa.String(), nullable=False),
+    sa.Column('year', sa.Integer(), nullable=False),
+    sa.Column('date_created', sa.DateTime(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('title')
     )
 
     op.create_table('songs',
@@ -63,23 +75,22 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    op.create_table('albums',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('album_photo', sa.String(), nullable=True),
-    sa.Column('title', sa.String(), nullable=False),
-    sa.Column('year', sa.Integer(), nullable=False),
-    sa.Column('date_created', sa.DateTime(), nullable=False),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('title')
-    )
 
     op.create_table('playlist_songs',
     sa.Column('song_id', sa.Integer(), nullable=True),
     sa.Column('playlist_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['playlist_id'], ['playlists.id'], ),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], )
+    )
+
+    op.create_table('album_likes',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.Column('date_created', sa.DateTime(), nullable=False),
+    sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
 
     op.create_table('song_likes',
@@ -91,16 +102,17 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('album_likes',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('album_id', sa.Integer(), nullable=False),
-    sa.Column('date_created', sa.DateTime(), nullable=False),
-    sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
     # ### end Alembic commands ###
+
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE  users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE  albums SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE  songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE  playlists SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE  playlist_songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE  album_likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE  song_likes SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
