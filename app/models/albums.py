@@ -8,16 +8,18 @@ class Albums(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    # Do users create the albums? Check your features list and see how I set it
-    album_id = db.Column(db.Integer, db.ForeignKey(add_prefox_for_prod('users.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     album_photo = db.Column(db.String)
     title = db.Column(db.String, nullable=False)
     year = db.Column(db.Integer, nullable=False)
     date_created = db.Column(db.DateTime, nullabe=False)
 
-    #Albums has a one to MANY relationship with album_likes
-    likes = db.Relationship('AlbumLikes', back_populates='album')
-
+    #Albums has a one to MANY relationship with album_likes, songs
+    album_album_likes = db.relationship('AlbumLikes', back_populates='album_likes_albums', cascade='all, delete-orphan')
+    album_songs = db.relationship('Songs', back_populates='song_albums', cascade='all, delete-orphan')
+    
+    #Albums has a MANY to one relationship with Users
+    album_users = db.relationship('Users', back_populates='albums')
 
     def to_dict(self):
         return {
@@ -25,5 +27,6 @@ class Albums(db.Model):
             "album_photo": self.album_photo,
             "title": self.title,
             "year": self.year,
-            "date_created": self.date_created
+            "date_created": self.date_created,
+            "album_users": self.album_users.to_dict()
         }

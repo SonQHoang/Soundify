@@ -17,8 +17,14 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    playlist = db.relationship('Playlists', back_populates='user', cascade='all, delete-orphan')
-    song_likes = db.relationship('SongLikes', back_populates='user', cascade='all, delete-orphan')
+    ## User has a one to MANY relationship with playlists, albums, album_likes, songs, song_likes
+
+    playlist = db.relationship('Playlists', back_populates='playlist_user', cascade='all, delete-orphan')
+    songs = db.relationship('Songs', back_populates='song_users', cascade='all, delete-orphan')
+    song_likes = db.relationship('SongLikes', back_populates='song_likes_users', cascade='all, delete-orphan')
+    albums = db.relationship('Albums', back_populates='album_users', cascade='all, delete-orphan')
+    album_likes = db.relationship('AlbumLikes', back_populates='album_likes_user', cascade='all, delete-orphan')
+
 
     @property
     def password(self):

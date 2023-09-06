@@ -10,10 +10,19 @@ class SongLikes(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True) 
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=False) 
+    date_created = db.Column(db.DateTime, nullable=False)
 
+    #SongLikes has a MANY to one relationship with users, and songs
+
+    song_likes_songs = db.relationship('Songs', back_populates="song_song_likes")
+    song_likes_users = db.relationship('Users', back_populates="song_likes")
+    
     def to_dict(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "song_id": self.song_id
+            "song_id": self.song_id,
+            "date_created": self.date_created,
+            "song_likes_songs": self.song_likes_songs.to_dict(),
+            "song_likes_users": self.song_likes_users.to_dict()
         }

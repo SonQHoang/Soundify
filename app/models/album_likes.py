@@ -11,13 +11,17 @@ class AlbumLikes(db.Model):
     album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
 
-    # AlbumLikes has a MANY to one relationship with albums
-    album = db.Relationship("Albums", back_populates='likes')
-
+    # AlbumLikes has a MANY to one relationship with albums and users
+    album_likes_albums = db.relationship("Albums", back_populates='album_album_likes')
+    album_likes_user = db.relationship("Users", back_populates='album_likes')
+    
     def to_dict(self):
         return {
             "id": self.id,
             "album_id": self.album_id,
             "date_created": self.date_created,
-            "album": self.album.to_dict()
+            "album": self.album.to_dict(),
+            "date_created": self.date_created,
+            "album_likes_albums": self.album_likes_albums.to_dict(),
+            "album_likes_user": self.album_likes_user.to_dict()
         }

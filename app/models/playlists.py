@@ -10,20 +10,21 @@ class Playlists(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('')), nullable=False)
-    song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     title = db.Column(db.String, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
 
-    user = db.Relationship('User', back_populates='playlist')
-    song = db.Relationship('Song', back_populates='')
-    likes = db.Relationship('SongLikes', back_populates="")
+    # Playlist has a MANY to one relationship with user
+    playlist_user = db.relationship('User', back_populates='playlist')
 
+    # Playlist has a one to MANY relationship with Songs
+    playlist_songs = db.relationship('Song', back_populates='song_playlists', cascade='all, delete-orphan')
+    
     def to_dict(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "song_id": self.song_id,
             "title": self.title,
-            "date_created": self.date_created
+            "date_created": self.date_created,
+            "playlist_songs": self.playlist_songs.to_dict()
         }
