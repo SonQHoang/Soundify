@@ -145,7 +145,7 @@ def seed_users():
     # db.session.add_all([album_1])
     # db.session.add_all([playlist_1])
     db.session.add_all([playlist_2])
-    # db.session.add_all([song_1])
+    db.session.add_all([song_1])
 
     db.session.commit()
 
