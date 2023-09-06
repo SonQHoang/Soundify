@@ -38,11 +38,18 @@ def seed_users():
         year = 2013,
         date_created = datetime(2023, 9, 6)
     )
+
+    playlist_1 = Playlists (
+        user_id = 1,
+        song_id = 1,
+        title = "This is John Mayer",
+        date_created = datetime(2023, 9, 6)
+    )
     
     song_1 = Songs (
         user_id = 1,
         album_id = 1,
-        playlist_id = 1,
+        # playlist_id = 1,
         title = "Perfectly Lonely",
         lyrics = """    
                     Had a little love
@@ -127,21 +134,20 @@ def seed_users():
         date_created = datetime(2023, 9, 6)
     )
 
-    playlist_1 = Playlists (
-        user_id = 1,
-        song_id = 1,
-        title = "This is John Mayer",
-        date_created = datetime(2023, 9, 6)
-    )
-
-
-    
-
     db.session.add_all([demo, marnie, bobbie])
     db.session.add_all([album_1])
-    db.session.add_all([song_1])
     db.session.add_all([playlist_1])
+    db.session.add_all([song_1])
+
     db.session.commit()
+
+    # playlist_song_association = playlist_songs.insert().values(
+    #     playlist_id=playlist_1.id,
+    #     song_id=song_1.id
+    # )
+
+    # db.session.execute(playlist_song_association)
+    # db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
