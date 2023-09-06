@@ -2,8 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 songs_playlist_association = db.Table('playlist_songs',
-    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id'))),
     db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id'))),
+    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id'))),
 )
 
 class Playlists(db.Model):
