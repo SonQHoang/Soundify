@@ -4,7 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
+import Player from "./components/AudioBar/audiobar";
+import LandingPage from "./components/LandingPage/landingpage";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +19,8 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
+        <div className="app-container">
+          <main className="content">
         <Switch>
           <Route path="/login" >
             <LoginFormPage />
@@ -24,8 +28,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/">
+            <LandingPage/>
+          </Route>
         </Switch>
+        </main>
+        </div>
       )}
+      <Player/>
     </>
   );
 }
