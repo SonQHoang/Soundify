@@ -56,7 +56,7 @@ def seed_users():
     song_1 = Songs (
         user_id = 1,
         album_id = 1,
-        # playlist_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+Perfectly+Lonely.m4a",
         title = "Perfectly Lonely",
         lyrics = """    
                     Had a little love

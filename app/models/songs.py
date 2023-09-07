@@ -11,7 +11,7 @@ class Songs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')), nullable=False)
-    # playlist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id')), nullable=False)
+    audio_url = db.Column(db.String, nullable=False)
     title = db.Column(db.String(40), nullable=False)
     lyrics = db.Column(db.String(5000), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
@@ -32,7 +32,7 @@ class Songs(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "album_id": self.album_id,
-            # "playlist_id": self.playlist_id,
+            "audio_url": self.audio_url,
             "title": self.title,
             "lyrics": self.lyrics,
             "date_created": self.date_created,

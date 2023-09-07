@@ -1,8 +1,8 @@
-"""New Tables
+"""Updating tables
 
-Revision ID: 70477b11fcc0
+Revision ID: 1566a7677b3e
 Revises: 
-Create Date: 2023-09-06 13:50:50.454063
+Create Date: 2023-09-07 11:13:47.164251
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '70477b11fcc0'
+revision = '1566a7677b3e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -60,6 +60,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.Column('audio_url', sa.String(), nullable=False),
     sa.Column('title', sa.String(length=40), nullable=False),
     sa.Column('lyrics', sa.String(length=5000), nullable=False),
     sa.Column('date_created', sa.DateTime(), nullable=False),
