@@ -1,17 +1,17 @@
-.nav-bar-container {
-  border: 2px solid red;
+.navigation-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  align-items: center;
+  border: 2px solid blue;
+  background-color: white
 }
 
-.nav-bar-left {
-  border: 2px solid green;
+.upcoming-features {
+  /* border: 2px solid red; */
+  font-size: 12px;
 }
 
-.nav-bar-right {
-  border: 2px solid blue
-}
+
 /* .profile-dropdown {
   position: absolute;
 } */

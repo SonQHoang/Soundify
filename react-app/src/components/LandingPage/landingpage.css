@@ -1,0 +1,63 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.landing-h1 {
+    color: white;
+}
+
+.landing-page-container {
+    border: 2px solid red;
+    background-color: black;
+    display: flex;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-content-container {
+    border: 2px solid blue;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    box-sizing: border-box;
+}
+
+.side-bar-container {
+    border: 2px solid blue;
+    background-color: black;
+    width: 25%;
+    height: 100%;
+}
+
+.soundify-playlists-container,
+.focus-container,
+.playlists-container,
+.library-container {
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.soundify-playlists-container {
+    height: 50%;
+}
+
+.focus-container {
+    height: 50%;
+}
+
+.soundify-playlists-container,
+.focus-container,
+.playlists-container,
+.library-container {
+    background-color: #1a1a1a;
+}
+
+.home-button-container {
+    margin: 5px;
+}
