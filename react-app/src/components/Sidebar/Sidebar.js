@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Songs from '../Songs/songs';
 
 const Sidebar = () => {
     return (
@@ -11,10 +12,13 @@ const Sidebar = () => {
             </div>
             <div className="playlists-container">
                 <h1 className="landing-h1">Playlists</h1>
-                <button>Add a New Playlist</button>
+                <NavLink exact to="/playlist/new">
+                    <button>Add a New Playlist</button>
+                </NavLink>
             </div>
             <div className="library-container">
                 <h1 className="landing-h1">Your Library</h1>
+                <Songs/>
             </div>
         </div>
     );

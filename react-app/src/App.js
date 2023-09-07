@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation/Navigation";
 import Player from "./components/AudioBar/audiobar";
 import LandingPage from "./components/LandingPage/landingpage";
+import Songs from "./components/Songs/songs";
+import CreatePlaylist from "./components/CreatePlayList.js/CreatePlaylist";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,11 +27,17 @@ function App() {
           <Route path="/login" >
             <LoginFormPage />
           </Route>
+          <Route path="/playlist/new">
+            <CreatePlaylist/>
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
           <Route path="/">
             <LandingPage/>
+          </Route>
+          <Route>
+            <Songs/>
           </Route>
         </Switch>
         </main>
