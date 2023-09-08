@@ -2,11 +2,13 @@ import React from 'react'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
-const Player = () => {
+const Player = ({src}) => {
+    // console.log('Player component =======>', src)
+
     return (
         <AudioPlayer
             autoPlay
-            src="http://"
+            src={src}
             onPlay={e => console.log("onPlay")}
         />
     )

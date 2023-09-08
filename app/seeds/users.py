@@ -58,7 +58,7 @@ def seed_users():
     song_1 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+Perfectly+Lonely.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+Perfectly+Lonely.mp3",
         title = "Perfectly Lonely",
         lyrics = """    
                     Had a little love
@@ -146,7 +146,7 @@ def seed_users():
     song_2 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Heartbreak+Warfare.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Heartbreak+Warfare.mp3",
         title = "Heartbreak Warfare",
         lyrics = """
                     Lightning strikes
@@ -205,7 +205,7 @@ def seed_users():
     song_3 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+I'm+Gonna+Find+Another+You.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Wynton+Marsalis+Septet%2C+John+Mayer%2C+Wynton+Marsalis+-+I'm+Gonna+Find+Another+You.mp3",
         title = "I'm Gonna Find Another You",
         lyrics = """
                     It's really over
@@ -240,7 +240,7 @@ def seed_users():
     song_4 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Inside+Friend+(feat.+John+Mayer).m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Leon+Bridges%2C+John+Mayer+-+Inside+Friend+(feat.+John+Mayer).mp3",
         title = "Inside Friend (feat. John Mayer)",
         lyrics = """
                     You can be my inside friend
@@ -281,7 +281,7 @@ def seed_users():
     song_5 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Last+Train+Home.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Last+Train+Home.mp3",
         title = "Last Train Home",
         lyrics = """
                 If you wanna roll me
@@ -327,7 +327,7 @@ def seed_users():
     song_6 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Never+Gonna+Be+Alone+(feat.+Lizzy+McAlpine+%26+John+Mayer).m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Jacob+Collier%2C+Lizzy+McAlpine%2C+John+Mayer+-+Never+Gonna+Be+Alone+(feat.+Lizzy+McAlpine+%26+John+Mayer).mp3",
         title = "Never Gonna Be Alone (feat. Lizzy McAlpine & John Mayer)",
         lyrics = """
                 There's a patch of sunlight in my room
@@ -366,7 +366,7 @@ def seed_users():
     song_7 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+No+Such+Thing.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+No+Such+Thing.mp3",
         title = "No Such Thing",
         lyrics = """
                 Welcome to the real world
@@ -420,7 +420,7 @@ def seed_users():
     song_8 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Queen+of+California.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Queen+of+California.mp3",
         title = "Queen of California",
         lyrics = """
                 Goodbye cold, goodbye rain
@@ -450,7 +450,7 @@ def seed_users():
     song_9 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Say.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Say.mp3",
         title = "Say",
         lyrics = """
                 Take all of your wasted honor
@@ -524,7 +524,7 @@ def seed_users():
     song_10 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Still+Feel+Like+Your+Man.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Still+Feel+Like+Your+Man.mp3",
         title = "Still Feel Like Your Man",
         lyrics = """
                 I still feel like your man, oh
@@ -583,7 +583,7 @@ def seed_users():
     song_11 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Waiting+On+the+World+to+Change.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Waiting+On+the+World+to+Change.mp3",
         title = "Waiting On the World to Change",
         lyrics = """
                 One, two
@@ -642,7 +642,7 @@ def seed_users():
     song_12 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+Wildfire.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Wildfire.mp3",
         title = "Wildfire",
         lyrics = """
                 River's strong you can swim inside it
@@ -686,7 +686,7 @@ def seed_users():
     song_13 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+XO.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+XO.mp3",
         title = "XO",
         lyrics = """
                 Your love is bright as ever
@@ -745,7 +745,7 @@ def seed_users():
     song_14 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+Dear+Marie.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Dear+Marie.mp3",
         title = "Dear Marie",
         lyrics = """
                 Dear Marie, tell me what it was I used to be
@@ -769,7 +769,7 @@ def seed_users():
     song_15 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+Emoji+of+a+Wave.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Emoji+of+a+Wave.mp3",
         title = "Emoji of a Wave",
         lyrics = """
                 Oh honey
@@ -827,7 +827,7 @@ def seed_users():
     song_16 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+One+for+My+Baby+(And+One+More+for+the+Road).m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+Tony+Bennett%2C+John+Mayer+-+One+for+My+Baby+(And+One+More+for+the+Road).mp3",
         title = "One for My Baby (And One More for the Road)",
         lyrics = """
                 It's quarter to three
@@ -868,7 +868,7 @@ def seed_users():
     song_17 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+Shouldn't+Matter+but+It+Does.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Shouldn't+Matter+but+It+Does.mp3",
         title = "Shouldn't Matter but It Does",
         lyrics = """
                 Shoulda been open
@@ -915,7 +915,7 @@ def seed_users():
     song_18 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+The+Age+of+Worry.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+The+Age+of+Worry.mp3",
         title = "The Age of Worry",
         lyrics = """
                 Close your eyes and clone yourself
@@ -958,7 +958,7 @@ def seed_users():
     song_19 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+Why+Georgia.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Why+Georgia.mp3",
         title = "Why Georgia",
         lyrics = """
                 I am driving up 85 in the
@@ -1008,7 +1008,7 @@ def seed_users():
     song_20 = Songs (
         user_id = 1,
         album_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+Half+of+My+Heart.m4a",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+-+John+Mayer+-+Half+of+My+Heart.mp3",
         title = "Half of My Heart",
         lyrics = """
                 I was born in the arms of imaginary friends
@@ -1057,12 +1057,23 @@ def seed_users():
                         """,
         date_created = datetime(2023, 9, 6)
     )
+    
+    song_21 = Songs (
+        user_id = 1,
+        album_id = 1,
+        audio_url = "https://file-examples.com/storage/fe235481fb64f1ca49a92b5/2017/11/file_example_MP3_5MG.mp3",
+        title = "Test",
+        lyrics = """
+                I was born in the arms of imaginary friends
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
 
 
     db.session.add_all([demo, marnie, bobbie])
     db.session.add_all([album_1])
     # 30 more if I want to access all of them, should probably split them up based on different playlists
-    db.session.add_all([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20])
+    db.session.add_all([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21])
     db.session.add_all([playlist_1])
     db.session.add_all([playlist_2])
 
