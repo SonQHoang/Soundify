@@ -1057,8 +1057,19 @@ def seed_users():
                         """,
         date_created = datetime(2023, 9, 6)
     )
-    
+
     song_21 = Songs (
+        user_id = 1,
+        album_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/07+-+John+Mayer+-+Stop+This+Train.mp3",
+        title = "Stop This Train",
+        lyrics = """
+                Adjust lyrics later
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+    
+    song_22 = Songs (
         user_id = 1,
         album_id = 1,
         audio_url = "https://file-examples.com/storage/fe235481fb64f1ca49a92b5/2017/11/file_example_MP3_5MG.mp3",
@@ -1073,7 +1084,7 @@ def seed_users():
     db.session.add_all([demo, marnie, bobbie])
     db.session.add_all([album_1])
     # 30 more if I want to access all of them, should probably split them up based on different playlists
-    db.session.add_all([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21])
+    db.session.add_all([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21, song_22])
     db.session.add_all([playlist_1])
     db.session.add_all([playlist_2])
 
