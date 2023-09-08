@@ -13,3 +13,8 @@
     align-items: center;
     padding: 5px;
 }
+
+.link-no-underline {
+    text-decoration: none;
+    color: white
+}

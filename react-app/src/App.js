@@ -10,6 +10,7 @@ import LandingPage from "./components/LandingPage/landingpage";
 import Songs from "./components/Songs/songs";
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
 import Playlist from "./components/Playlists/Playlists";
+import PlaylistDetails from "./components/PlaylistDetails/PlaylistDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/playlist/all">
             <Playlist/>
+          </Route>
+          <Route path="/playlist/:playlistId">
+            <PlaylistDetails/>
           </Route>
           <Route path="/signup">
             <SignupFormPage />
