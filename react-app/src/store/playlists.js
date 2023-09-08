@@ -2,9 +2,10 @@ const GET_PLAYLISTS = '/playlists/getPlaylist'
 const GET_SINGLE_PLAYLIST = '/playlists/getSinglePlaylist'
 const UPDATE_USER_PLAYLIST = '/playlists/updatePlaylist'
 const DELETE_USER_PLAYLIST = '/playlists/deletePlaylist'
-const CREATE_NEW_PLAYLIST = '/playlists/createPlaylist'
+const CREATE_NEW_PLAYLIST = '/playlists/createPlaylist' 
 
 const acCreatePlaylist = (data) => {
+    // console.log('data========>', data.id)
     return {
         type: CREATE_NEW_PLAYLIST,
         payload: data
@@ -20,7 +21,7 @@ export const createPlaylist = (data) => async (dispatch) => {
         console.log('What is my response looking like=======>', response)
         if (response.ok) {
             const { resPost } = await response.json()
-            console.log("NEW PLAYLIST DATA", resPost)
+            console.log("NEW PLAYLIST DATA =======>", resPost)
             dispatch(acCreatePlaylist(resPost)) 
         } else {
             console.log("There was an error creating your playlist!")
@@ -31,13 +32,20 @@ export const createPlaylist = (data) => async (dispatch) => {
 
 const initialState = { allPlaylists: {}, singlePlaylist: {} }
 
+let newState
 const playlistReducer = (state = initialState, action) => {
-    let newState
     switch (action.type) {
         case GET_PLAYLISTS:
 
         case CREATE_NEW_PLAYLIST:
-
+            // console.log('action=======>', action.payload.id)
+            return {
+                ...state,
+                allPlaylists: {
+                    ...state.allPlaylists,
+                    [action.payload.id]: action.payload, 
+                },
+            };
         case GET_SINGLE_PLAYLIST:
 
         case UPDATE_USER_PLAYLIST:
