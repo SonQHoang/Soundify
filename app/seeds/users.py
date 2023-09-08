@@ -42,6 +42,7 @@ def seed_users():
     playlist_1 = Playlists (
         user_id = 1,
         song_id = 1,
+        owner = "Demo",
         title = "This is John Mayer",
         date_created = datetime(2023, 9, 6)
     )
@@ -49,6 +50,7 @@ def seed_users():
     playlist_2 = Playlists (
         user_id = 2,
         song_id = 1,
+        owner = "Marnie",
         title = "This is John Mayer",
         date_created = datetime(2023, 9, 6)
     )

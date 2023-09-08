@@ -1,0 +1,15 @@
+.playlist-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
+}
+
+.individual-playlist {
+    border: 2px solid black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}

@@ -12,6 +12,14 @@ const acCreatePlaylist = (data) => {
     }
 }
 
+const acGetPlaylist = (data) => {
+    console.log('acGetPlaylist data===========>', data)
+    return {
+        type: GET_PLAYLISTS,
+        payload: data
+    }
+}
+
 export const createPlaylist = (data) => async (dispatch) => {
     console.log('What data is coming through?=======> FormData', data)
         const response = await fetch('/api/playlist/new', {
@@ -28,6 +36,18 @@ export const createPlaylist = (data) => async (dispatch) => {
         }
 }
 
+export const getAllPlaylists = () => async (dispatch) => {
+    const response = await fetch ('/api/playlist/all')
+    console.log('response========>', response)
+    if(response.ok) {
+        const data = await response.json()
+        dispatch(acGetPlaylist(data))
+        return data
+    } else {
+        console.log('There was an error loading all of your playlists')
+    }
+}
+
 // Playlist Store
 
 const initialState = { allPlaylists: {}, singlePlaylist: {} }
@@ -35,8 +55,12 @@ const initialState = { allPlaylists: {}, singlePlaylist: {} }
 let newState
 const playlistReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_PLAYLISTS:
-
+        case GET_PLAYLISTS: {
+            return {
+                ...state,
+                allPlaylists: action.payload
+            }
+        }
         case CREATE_NEW_PLAYLIST:
             // console.log('action=======>', action.payload.id)
             return {
