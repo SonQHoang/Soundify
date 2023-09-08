@@ -5,35 +5,36 @@ const DELETE_USER_SONG = '/songs/deleteSong'
 const CREATE_NEW_SONG = '/songs/createSong'
 
 // Song Action Creator
-const createSong = (data) => {
+const acCreateSong = (data) => {
     return {
         type: CREATE_NEW_SONG,
         payload: data
     }
 }
 
-const getSongs = (data) => {
+const acGetSongs = (data) => {
+    console.log('song data from the ac=======>', data)
     return {
         type: GET_SONG,
         payload: data
     }
 }
 
-const getSingleSong = (data) => {
+const acGetSingleSong = (data) => {
     return {
         type: GET_SINGLE_SONG,
         payload: data
     }
 }
 
-const updateSong = (data) => {
+const acUpdateSong = (data) => {
     return {
         type: UPDATE_USER_SONG,
         payload: data
     }
 }
 
-const deleteSong = (data) => {
+const acDeleteSong = (data) => {
     return {
         type: DELETE_USER_SONG,
         payload: data
@@ -44,20 +45,21 @@ const deleteSong = (data) => {
 
 export const getAllSongs = () => async (dispatch) => {
     try {
-        const response = await fetch('/api/songs/all')
+        const response = await fetch('/api/song/all');
+        console.log('My song response=======>', response);
         if (response.ok) {
             const data = await response.json();
-            dispatch(getSongs(data))
-            return data
+            dispatch(acGetSongs(data));
+            return data;
         } else {
             const errors = await response.json();
-            return errors
+            return errors;
         }
     } catch (error) {
-        const errors = (error && error.json) ? await error.json() : { message: error.toString() }
-        return errors;
+        console.error('An error occurred:', error);
+        throw error; // Optionally, rethrow the error to propagate it further
     }
-}
+};
 
 // Song Store
 
@@ -66,7 +68,12 @@ const initialState = { allSongs: {}, singleSong: {} }
 const songReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
-        case GET_SONG:
+        case GET_SONG: {
+            return {
+                ...state,
+                allSongs: action.payload
+            }
+        }
 
         case CREATE_NEW_SONG:
 

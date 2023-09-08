@@ -7,10 +7,10 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation/Navigation";
 import Player from "./components/AudioBar/audiobar";
 import LandingPage from "./components/LandingPage/landingpage";
-import Songs from "./components/Songs/songs";
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
 import Playlist from "./components/Playlists/Playlists";
 import PlaylistDetails from "./components/PlaylistDetails/PlaylistDetails";
+import Song from "./components/Songs/Song"
 
 function App() {
   const dispatch = useDispatch();
@@ -26,26 +26,26 @@ function App() {
         <div className="app-container">
           <main className="content">
         <Switch>
-          <Route path="/login" >
+          <Route exact path="/login" >
             <LoginFormPage />
           </Route>
-          <Route path="/playlist/new">
+          <Route exact path="/playlist/new">
             <CreatePlaylist/>
           </Route>
-          <Route path="/playlist/all">
+          <Route exact path="/playlist/all">
             <Playlist/>
           </Route>
-          <Route path="/playlist/:playlistId">
+          <Route exact path="/playlist/:playlistId">
             <PlaylistDetails/>
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/">
-            <LandingPage/>
+          <Route exact path="/song/all">
+            <Song />
           </Route>
-          <Route path="/songs">
-            <Songs/>
+          <Route exact path="/">
+            <LandingPage/>
           </Route>
         </Switch>
         </main>
