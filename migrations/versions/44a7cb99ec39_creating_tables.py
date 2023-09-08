@@ -1,8 +1,8 @@
-"""Updating tables
+"""Creating tables
 
-Revision ID: 1566a7677b3e
+Revision ID: 44a7cb99ec39
 Revises: 
-Create Date: 2023-09-07 11:13:47.164251
+Create Date: 2023-09-08 02:17:21.413279
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '1566a7677b3e'
+revision = '44a7cb99ec39'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -61,7 +61,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('album_id', sa.Integer(), nullable=False),
     sa.Column('audio_url', sa.String(), nullable=False),
-    sa.Column('title', sa.String(length=40), nullable=False),
+    sa.Column('title', sa.String(length=100), nullable=False),
     sa.Column('lyrics', sa.String(length=5000), nullable=False),
     sa.Column('date_created', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
@@ -71,7 +71,8 @@ def upgrade():
     op.create_table('playlists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('song_id', sa.Integer(), nullable=False),
+    sa.Column('song_id', sa.Integer(), nullable=True),
+    sa.Column('owner', sa.String(), nullable=False),
     sa.Column('title', sa.String(), nullable=False),
     sa.Column('date_created', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
