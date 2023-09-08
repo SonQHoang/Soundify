@@ -1,8 +1,16 @@
+from flask import send_file, jsonify
 import boto3
 import botocore
 import os
 # Generates unique ids and hashes from python
 import uuid
+
+
+ALLOWED_EXTENSIONS = {"mp3", "mp4", "m4a", "wav"}
+
+# Taking buckname and s3 location from .env
+BUCKET_NAME = os.environ.get("S3_BUCKET")
+S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
 
 # Our s3 bucket
 # Accessing all of our credentials to access AWS
@@ -11,12 +19,6 @@ s3 = boto3.client(
     aws_access_key_id=os.environ.get("S3_KEY"),
     aws_secret_access_key=os.environ.get("S3_SECRET")
 )
-
-ALLOWED_EXTENSIONS = {"mp3", "mp4", "m4a", "wav"}
-
-# Taking buckname and s3 location from .env
-BUCKET_NAME = os.environ.get("S3_BUCKET")
-S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
 
 def get_unique_filename(filename):
     # Split by the extension
@@ -66,3 +68,28 @@ def remove_file_from_s3(audio_url):
     except Exception as e:
         return {"error": str(e)}
 
+# AWS downloader 
+bucket_name = os.environ.get("S3_BUCKET")
+
+# Function to list all objects in the bucket
+def list_objects_in_bucket(bucket_name):
+    objects = []
+    continuation_token = None
+
+    while True:
+        list_kwargs = {'Bucket': bucket_name}
+        if continuation_token:
+            list_kwargs['ContinuationToken'] = continuation_token
+
+        response = s3.list_objects_v2(**list_kwargs)
+
+        # Add the objects from the current page to the list
+        objects.extend(response.get('Contents', []))
+
+        # Check if there are more pages
+        if 'NextContinuationToken' in response:
+            continuation_token = response['NextContinuationToken']
+        else:
+            break
+
+    return objects
