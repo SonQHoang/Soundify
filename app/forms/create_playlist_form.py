@@ -9,4 +9,4 @@ class CreatePlaylistForm(FlaskForm):
     # Add image url receiver later for playlist image
     date_created = DateField("Date Created", validators=[DataRequired()])
     # audio = FileField("Audio", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-    submit = SubmitField("Create Post")
+    submit = SubmitField("Create Post") 
