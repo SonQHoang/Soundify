@@ -9,7 +9,7 @@ const Playlist = () => {
 
 
     const allPlaylists = Object.values(useSelector(state => state.playlist.allPlaylists))
-    // console.log('allPlaylists=======>', allPlaylists)
+    console.log('allplaylists=========>', allPlaylists)
 
     useEffect(() => {
         dispatch(getAllPlaylists())
@@ -27,7 +27,6 @@ const Playlist = () => {
                         </Link>
                     </div>
                 ))}
-
             </div>
         </>
     );

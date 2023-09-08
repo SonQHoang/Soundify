@@ -12,7 +12,7 @@ session = db.session
 @playlist_routes.route("/all", methods=["GET"])
 def get_all_playlists():
     all_playlists = Playlists.query.all()
-    print('all_playlists=======>', all_playlists)
+    # print('all_playlists=======>', all_playlists)
     return [playlist.to_dict() for playlist in all_playlists]
 
 @playlist_routes.route("/new", methods=["POST"])
