@@ -12,6 +12,19 @@ const acCreatePlaylist = (data) => {
 }
 
 export const createPlaylist = (data) => async (dispatch) => {
+    console.log('What data is coming through?=======> FormData', data)
+        const response = await fetch('/api/playlist/new', {
+            method: "POST",
+            body: data
+        })
+        console.log('What is my response looking like=======>', response)
+        if (response.ok) {
+            const { resPost } = await response.json()
+            console.log("NEW PLAYLIST DATA", resPost)
+            dispatch(acCreatePlaylist(resPost)) 
+        } else {
+            console.log("There was an error creating your playlist!")
+        }
 }
 
 // Playlist Store
