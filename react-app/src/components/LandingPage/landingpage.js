@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from '../Sidebar/Sidebar'
+import Playlist from '../Playlists/Playlists'
 import "./landingpage.css"
 
 const LandingPage = () => {

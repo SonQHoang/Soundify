@@ -7,11 +7,17 @@ from ..forms.create_playlist_form import CreatePlaylistForm
 from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 playlist_routes = Blueprint('playlist', __name__)
+session = db.session
+
+@playlist_routes.route("/all", methods=["GET"])
+def get_all_playlists():
+    all_playlists = Playlists.query.all()
+    print('all_playlists=======>', all_playlists)
+    return [playlist.to_dict() for playlist in all_playlists]
 
 @playlist_routes.route("/new", methods=["POST"])
 def create_playlists():
     user = User.query.get(current_user.id)
-    print('user======>', user)
     form = CreatePlaylistForm() 
     # print('form=======>', form)
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -28,7 +34,7 @@ def create_playlists():
         new_playlist = Playlists(
             user_id=user.id,
             title=form.title.data,
-            # audio_url=upload["url"],
+            owner = current_user.first_name,
             date_created=datetime.utcnow(),
         )
         print('new_playlist========>', new_playlist)

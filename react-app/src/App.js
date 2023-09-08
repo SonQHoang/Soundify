@@ -9,6 +9,7 @@ import Player from "./components/AudioBar/audiobar";
 import LandingPage from "./components/LandingPage/landingpage";
 import Songs from "./components/Songs/songs";
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
+import Playlist from "./components/Playlists/Playlists";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/playlist/new">
             <CreatePlaylist/>
+          </Route>
+          <Route path="/playlist/all">
+            <Playlist/>
           </Route>
           <Route path="/signup">
             <SignupFormPage />

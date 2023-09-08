@@ -1,0 +1,6 @@
+.playlists-container {
+    /* border: 2px solid red; */
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
