@@ -21,7 +21,7 @@ const Sidebar = () => {
             </div>
             <div className="library-container">
                 <h1 className="landing-h1">Your Library</h1>
-                    <NavLink to="/songs/all">
+                    <NavLink to="/song/all">
                         <button>See your Songs</button>
                     </NavLink>
             </div>
