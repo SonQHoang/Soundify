@@ -12,16 +12,16 @@ import Player from "../AudioBar/audiobar";
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
-    console.log('playlistId========>', playlistId)
+    // console.log('playlistId in playlistDetails========>', playlistId)
     const dispatch = useDispatch();
-    
+
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
     // const user_tips = useSelector()
-    
+
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
-    const [playlist, setPlaylist] = useState([]); // Initialize playlist as an array of song 
+    // const [playlist, setPlaylist] = useState([]); // Initialize playlist as an array of song 
     const [selectedSong, setSelectedSong] = useState(null)
 
     const singlePlaylist = useSelector((state) => state.playlist);
@@ -62,43 +62,49 @@ function PlaylistDetails() {
 
     const [showModal, setShowModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
-    console.log("Are we targeting the playlistToDelete=======>", playlistToDelete)
+    // console.log("Are we targeting the playlistToDelete=======>", playlistToDelete)
     const [modalType, setModalType] = useState(null);
-    
-    const handleDeleteClick = async (playlist) => {
-        console.log('Is the handleDeleteClick getting the correct playlist=====>', playlist)
-        setPlaylistToDelete(playlist)
+
+    useEffect(() => {
+        dispatch(GetSinglePlaylist(playlistId))
+    }, [dispatch, userId])
+
+    const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
+    // console.log('currentPlaylist======>', currentPlaylist)
+
+    const handleDeleteClick = async () => {
+        setPlaylistToDelete(currentPlaylist)
+        // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
         setModalType("delete");
         setShowModal(true)
         await dispatch(getUserPlaylist())
     }
 
-    useEffect(() => {
-        dispatch(getUserPlaylist())
-    }, [dispatch, userId])
 
-
-
-
-    useEffect(() => {
-        dispatch(GetSinglePlaylist(playlistId));
-    }, [playlistId]);
+    // useEffect(() => {
+    //     dispatch(GetSinglePlaylist(playlistId));
+    // }, [playlistId]);
 
     //======================================================DeletePlaylist End========================================
 
     return (
-        <>
+        <> 
             <div>
-                <button>Edit Details</button>
-                <button className="playlist-delete-button" onClick={() => {
-                    return handleDeleteClick(playlist)
-                }}>Delete Playlist</button>
-                <DeletePlaylist playlistId={playlist.id} />
-                <input
-                    type="text"
-                    placeholder="Search for a song"
-                    onChange={(e) => setQuery(e.target.value)}
-                />
+                <div>
+                    <button>Edit Details</button>
+                </div>
+                <div>
+                    <button className="playlist-delete-button" onClick={() => {
+                        // console.log('Playlist ID=======>:', playlistId);
+                        return handleDeleteClick(playlistId)
+                    }}>Delete Playlist</button>
+                    <DeletePlaylist playlistId={playlistId} />
+                    <input
+                        type="text"
+                        placeholder="Search for a song"
+                        onChange={(e) => setQuery(e.target.value)}
+                    />
+                </div>
             </div>
             <div className="playlist-details-container">
                 {/* <div>#</div>

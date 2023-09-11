@@ -14,6 +14,7 @@ const acGetUserPlaylist = (data) => {
     }
 }
 const acDeletePlaylist = (data) => {
+    console.log('What is this data from acDeletePlaylist=====>', data)
     return {
         type: DELETE_USER_PLAYLIST,
         payload: data
@@ -63,7 +64,7 @@ export const getUserPlaylist = () => async (dispatch) => {
 export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
     console.log('Is the playlistId going through======>', playlistId)
     try {
-        const response = await fetch(`/playlist/${playlistId}`, {
+        const response = await fetch(`/api/playlist/delete/${playlistId}`, {
             method: "DELETE",
             headers: {"Content-Type": 'application/json'}
         });
@@ -186,8 +187,11 @@ const playlistReducer = (state = initialState, action) => {
             
         case UPDATE_USER_PLAYLIST:
 
-        case DELETE_USER_PLAYLIST:
-
+        case DELETE_USER_PLAYLIST: {
+            const newState = { ...state, allPlaylists: { ...state.allPlaylists } }
+            delete newState.allPlaylists[action.tipId]
+            return newState
+        }
         default:
             return state
     }
