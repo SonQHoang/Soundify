@@ -5,46 +5,32 @@ import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
 import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
 import DeletePlaylist from "../DeletePlaylist/DeletePlaylist";
-import { getAllPlaylists } from "../../store/playlists";
 import { GetSinglePlaylist } from "../../store/playlists";
+import { getAllPlaylists } from "../../store/playlists";
+import { getUserPlaylist } from "../../store/playlists";
 import Player from "../AudioBar/audiobar";
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
     console.log('playlistId========>', playlistId)
     const dispatch = useDispatch();
+    
+    const sessionUser = useSelector(state => state.session.user)
+    const userId = sessionUser.id
+    // const user_tips = useSelector()
+    
+    //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
     const [playlist, setPlaylist] = useState([]); // Initialize playlist as an array of song 
     const [selectedSong, setSelectedSong] = useState(null)
-
-    const [showModal, setShowModal] = useState(false);
-    const [playlistToDelete, setPlaylistToDelete] = useState(null);
-    const [modalType, setModalType] = useState(null);
-
-    const user = useSelector(state => state.session.user)
-    const sessionUser = useSelector(state => state.session.user)
-    const userId = sessionUser.id
-
-    const handleDeleteClick = async (playlistId) => {
-        console.log('Is the handleDeleteClick getting the correct playlist=====>', playlistId)
-        setPlaylistToDelete(playlist)
-        setModalType("delete");
-        setShowModal(true)
-        await dispatch(GetSinglePlaylist(playlistId))
-    }
-
-    useEffect(() => {
-        dispatch(getAllSongs())
-    }, [dispatch]);
-
 
     const singlePlaylist = useSelector((state) => state.playlist);
     const playlist_song = Object.values(singlePlaylist)
     const playlist_music = playlist_song[1]
 
     useEffect(() => {
-        dispatch(GetSinglePlaylist(playlistId));
-    }, [playlistId]);
+        dispatch(getAllSongs())
+    }, [dispatch]);
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const titleKVPairs = songLibrary.map(song => ({ title: song.title, audio_url: song.audio_url }));
@@ -70,9 +56,35 @@ function PlaylistDetails() {
         setSelectedSong(song);
     }
 
-    // useEffect(() => {
-    //     dispatch(getAllPlaylists())
-    // }, [dispatch])
+    //======================================================SearchBar End========================================
+
+    //======================================================DeletePlaylist Start========================================
+
+    const [showModal, setShowModal] = useState(false);
+    const [playlistToDelete, setPlaylistToDelete] = useState(null);
+    console.log("Are we targeting the playlistToDelete=======>", playlistToDelete)
+    const [modalType, setModalType] = useState(null);
+    
+    const handleDeleteClick = async (playlist) => {
+        console.log('Is the handleDeleteClick getting the correct playlist=====>', playlist)
+        setPlaylistToDelete(playlist)
+        setModalType("delete");
+        setShowModal(true)
+        await dispatch(getUserPlaylist())
+    }
+
+    useEffect(() => {
+        dispatch(getUserPlaylist())
+    }, [dispatch, userId])
+
+
+
+
+    useEffect(() => {
+        dispatch(GetSinglePlaylist(playlistId));
+    }, [playlistId]);
+
+    //======================================================DeletePlaylist End========================================
 
     return (
         <>
@@ -118,6 +130,7 @@ function PlaylistDetails() {
                 </ul>
             </div>
             {selectedSong && <Player src={selectedSong.audio_url} />}
+
             {showModal && modalType === "delete" && (
                 <DeletePlaylistModal
                     playlistId={playlistToDelete.id}

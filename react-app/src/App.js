@@ -8,7 +8,8 @@ import Navigation from "./components/Navigation/Navigation";
 // import Player from "./components/AudioBar/audiobar";
 import LandingPage from "./components/LandingPage/landingpage";
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
-import Playlist from "./components/Playlists/Playlists";
+// import Playlist from "./components/Playlists/Playlists";
+import UserPlaylist from "./components/UserPlaylist/UserPlaylist";
 import PlaylistDetails from "./components/PlaylistDetails/PlaylistDetails";
 import Song from "./components/Songs/Song"
 
@@ -33,7 +34,7 @@ function App() {
             <CreatePlaylist/>
           </Route>
           <Route exact path="/playlist/all">
-            <Playlist/>
+            <UserPlaylist/>
           </Route>
           <Route exact path="/playlist/:playlistId">
             <PlaylistDetails/>

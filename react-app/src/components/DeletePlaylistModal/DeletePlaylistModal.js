@@ -1,13 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 // import { GetSinglePlaylist } from '../../store/playlists';
-import { DeletePlaylistThunk } from '../../store/playlists';
+import { DeletePlaylistThunk, getUserPlaylist } from '../../store/playlists';
 import "./DeletePlaylistModal.css"
 
 const DeletePlaylistModal = ({ onSubmit, onClose, playlistId }) => {
-    console.log('Is onSubmit being properly passed====>', onSubmit)
-    console.log('Is onClose being properly passed======>', onClose)
-    console.log('playlistId======>', playlistId)
+    console.log('Delete Modal playlistId======>', playlistId)
 
     const modalOverlayRef = useRef();
     const dispatch = useDispatch()
@@ -28,12 +26,14 @@ const DeletePlaylistModal = ({ onSubmit, onClose, playlistId }) => {
     const handleConfirmDelete = async () => {
         console.log('Delete button pressed');
         dispatch(DeletePlaylistThunk(playlistId))
+        .then(() => dispatch(getUserPlaylist()))
             // .then(() => dispatch(GetSinglePlaylist()))
             // .then(() => {
                 // console.log('DeletePlaylistThunk and GetSinglePlaylist dispatched');
                 // onSubmit();
             // }
             // );
+            onSubmit()
     };
 
     return (
