@@ -4,7 +4,7 @@ import Playlist from '../Playlists/Playlists';
 // import Song from '../Songs/Song';
 import "./Sidebar.css"
 
-const Sidebar = () => {
+const Sidebar = () => { 
     return (
         <div className="side-bar-container">
             <div className='home-button-container'>

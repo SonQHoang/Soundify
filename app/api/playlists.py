@@ -46,7 +46,30 @@ def create_playlists():
     else:
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
+
+@playlist_routes.route("/add", methods=["PUT"])
+def add_song_to_playlist():
+    data = request.get_json()
+    return jsonify(data)
+
+@playlist_routes.route("/<int:playlistId>")
+def get_single_playlist_by_id(playlistId):
+    playlist = Playlists.query.get(playlistId)
+
+    if playlist is None:
+        return jsonify({"error": "Playlist not found"}), 404
     
+    playlist_data = {
+        "id": playlist.id,
+        "song_id": playlist.song_id,
+        "title": playlist.title,
+        "owner": playlist.owner,
+        "date_created": datetime.utcnow(),
+    }
+
+    if hasattr(playlist, "songs"):
+        playlist_data["songs"] = [song.to_dict() for song in playlist.songs]
+    return jsonify(playlist_data)
 
 @playlist_routes.route("/update", methods=["PUT"])
 def update_playlists():
