@@ -10,11 +10,11 @@ const Song = () => {
     const dispatch = useDispatch()
 
     const allSongs = Object.values(useSelector(state => state.songs.allSongs))
-    console.log('allSongs=========>', allSongs)
+    // console.log('allSongs=========>', allSongs)
 
     const [selectedSongUrl, setSelectedSongUrl] = useState(null)
-    console.log('selectedSongUrl=========>', selectedSongUrl)
-    
+    // console.log('selectedSongUrl=========>', selectedSongUrl)
+
     useEffect(() => {
         console.log('Dispatching getAllSongs');
         dispatch(getAllSongs())

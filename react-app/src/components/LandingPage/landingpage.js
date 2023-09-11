@@ -10,6 +10,9 @@ const LandingPage = () => {
             <div className="main-content-container">
                 <div className="soundify-playlists-container">
                     <h1 className="landing-h1">Soundify Playlists</h1>
+                    <div className="landing-page-playlists-container">
+                        <Playlist/>
+                    </div>
                 </div>
                 <div className="focus-container">
                     <h1 className="landing-h1">Focus</h1>

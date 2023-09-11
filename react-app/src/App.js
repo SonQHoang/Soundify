@@ -5,7 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation/Navigation";
-import Player from "./components/AudioBar/audiobar";
+// import Player from "./components/AudioBar/audiobar";
 import LandingPage from "./components/LandingPage/landingpage";
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
 import Playlist from "./components/Playlists/Playlists";
@@ -51,7 +51,7 @@ function App() {
         </main>
         </div>
       )}
-      <Player/>
+      {/* <Player/> */}
     </>
   );
 }
