@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../Sidebar/Sidebar'
-import Playlist from '../Playlists/Playlists'
+// import Playlist from '../Playlists/Playlists'
+import UserPlaylist from '../UserPlaylist/UserPlaylist'
 import "./landingpage.css"
 
 const LandingPage = () => {
@@ -11,7 +12,7 @@ const LandingPage = () => {
                 <div className="soundify-playlists-container">
                     <h1 className="landing-h1">Soundify Playlists</h1>
                     <div className="landing-page-playlists-container">
-                        <Playlist/>
+                        <UserPlaylist/>
                     </div>
                 </div>
                 <div className="focus-container">

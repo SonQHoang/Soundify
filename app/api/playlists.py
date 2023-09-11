@@ -9,6 +9,12 @@ from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_
 playlist_routes = Blueprint('playlist', __name__)
 session = db.session
 
+@playlist_routes.route('/user_playlist', methods=["GET"])
+def get_user_playlist():
+    playlists = Playlists.query.filter_by(user_id = current_user.id).all()
+    print('playlists=====>', playlists)
+    return [playlist.to_dict() for playlist in playlists]
+
 @playlist_routes.route("/all", methods=["GET"])
 def get_all_playlists():
     all_playlists = Playlists.query.all()

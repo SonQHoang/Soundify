@@ -1,10 +1,18 @@
 const GET_PLAYLISTS = '/playlists/getPlaylist'
+const GET_USER_PLAYLIST = '/playlists/getUserPlaylist'
 const GET_SINGLE_PLAYLIST = '/playlists/getSinglePlaylist'
 const UPDATE_USER_PLAYLIST = '/playlists/updatePlaylist'
 const DELETE_USER_PLAYLIST = '/playlists/deletePlaylist'
 const CREATE_NEW_PLAYLIST = '/playlists/createPlaylist'
 const ADD_SONG_TO_PLAYLIST = '/playlists/addSongToPlaylist'
 
+const acGetUserPlaylist = (data) => {
+    // console.log('data from acUserPlaylist=======>', data)
+    return {
+        type: GET_USER_PLAYLIST,
+        payload: data
+    }
+}
 const acDeletePlaylist = (data) => {
     return {
         type: DELETE_USER_PLAYLIST,
@@ -42,14 +50,24 @@ const acGetSinglePlaylist = (data) => {
     }
 }
 
+export const getUserPlaylist = () => async (dispatch) => {
+    const response = await fetch(`/api/playlist/user_playlist`)
+    // console.log('Do I get a 200 response=======+> Yes', response)
+    if(response.ok) {
+        const playlist = await response.json()
+        console.log('playlist=======>', playlist)
+        dispatch(acGetUserPlaylist(playlist))
+    }
+}
 
 export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
     console.log('Is the playlistId going through======>', playlistId)
     try {
-        const response = await fetch(`/tips/${playlistId}`, {
+        const response = await fetch(`/playlist/${playlistId}`, {
             method: "DELETE",
             headers: {"Content-Type": 'application/json'}
         });
+        console.log('What does my response look like======>', response)
         if (response.ok) {
             dispatch(acDeletePlaylist(playlistId))
         }
@@ -75,12 +93,12 @@ export const AddSongToPlaylist = (data) => async (dispatch) => {
         dispatch(acAddSongToPlaylist(data))
         return data
     } else {
-        console.log("Could not add sone to your playlist")
+        console.log("Could not add song to your playlist")
     }
 }
 
 export const GetSinglePlaylist = (playlistId) => async (dispatch) => {
-    console.log('playlistId=======>', playlistId)
+    // console.log('playlistId=======>', playlistId)
     const response = await fetch(`/api/playlist/${playlistId}`)
     // console.log('What does the respone for a singlePlaylist look like======>', response)
     if (response.ok) {
@@ -134,6 +152,13 @@ const playlistReducer = (state = initialState, action) => {
                 allPlaylists: action.payload
             }
         }
+        case GET_USER_PLAYLIST: {
+            // console.log('my get user playlist action=====>', action)
+            return {
+                ...state,
+                allPlaylists: action.payload
+            }
+        }
         case CREATE_NEW_PLAYLIST:
             // console.log('action=======>', action.payload.id)
             return {
@@ -154,7 +179,6 @@ const playlistReducer = (state = initialState, action) => {
                 }
             }
         case GET_SINGLE_PLAYLIST:
-   
             return {
                 ...state,
                 singlePlaylist: action.payload
