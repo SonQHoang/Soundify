@@ -41,6 +41,7 @@ def create_playlists():
             user_id=user.id,
             title=form.title.data,
             owner = current_user.first_name,
+            playlist_description=form.playlist_description.data,
             date_created=datetime.utcnow(),
         )
         print('new_playlist========>', new_playlist)

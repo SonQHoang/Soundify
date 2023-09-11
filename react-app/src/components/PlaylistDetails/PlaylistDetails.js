@@ -9,6 +9,7 @@ import { GetSinglePlaylist } from "../../store/playlists";
 import { getAllPlaylists } from "../../store/playlists";
 import { getUserPlaylist } from "../../store/playlists";
 import Player from "../AudioBar/audiobar";
+import "./PlaylistDetails.css"
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
@@ -88,70 +89,90 @@ function PlaylistDetails() {
     //======================================================DeletePlaylist End========================================
 
     return (
-        <> 
-            <div>
-                <div>
-                    <button>Edit Details</button>
-                </div>
-                <div>
-                    <button className="playlist-delete-button" onClick={() => {
-                        // console.log('Playlist ID=======>:', playlistId);
-                        return handleDeleteClick(playlistId)
-                    }}>Delete Playlist</button>
-                    <DeletePlaylist playlistId={playlistId} />
-                    <input
-                        type="text"
-                        placeholder="Search for a song"
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                </div>
-            </div>
+        <>
             <div className="playlist-details-container">
-                {/* <div>#</div>
-                <div>Title</div>
-                <div>Album</div>
-                <div>Date Added</div>
-                <div>Time Symbol</div> */}
-            </div>
-            <div className='search-bar'>
-                {filteredSongs.map((value, index) => (
-                    <div key={index} onClick={() => addToPlaylist(value.title)}>
-                        <p>{value.title}</p>
-                    </div>
-                ))}
-            </div>
-            <div className="playlist">
-                <h2>Playlist #</h2>
-                <ul>
-                    {Object.values(playlist_music).map((song, index) => (
-                        <div key={index}>
-                            {song?.title ? (
-                                <p onClick={() => { song?.title && selectSong(song); setQuery("") }}>{song?.title}</p>
-                            ) : null}
-                            <p>{song?.album}</p>
-                            <p>{song?.dateAdded}</p>
-                            <p>{song?.timeSymbol}</p>
+                <div className="playlist-info-container">
+                    <div className="playlist-image-and-title-container">
+                        <div className="playlist-image">
+                            <h2>Playlist Graphic Here</h2>
                         </div>
-                    ))}
-                </ul>
-            </div>
-            {selectedSong && <Player src={selectedSong.audio_url} />}
+                        <div className="playlist-information-container">
+                            <p>Playlist</p>
+                            <h2>User Inputted Title Should Go Here #(PlaylistNumber)</h2>
+                            <div className="playlist-description">
+                                PlaylistDescription goes here
+                            </div>
+                            <div className="playlist-user-details">
+                                <p>User Profile Pic Here</p>
+                                <p>User's Name goes here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button>Edit Details</button>
+                        <button className="playlist-delete-button" onClick={() => {
+                            // console.log('Playlist ID=======>:', playlistId);
+                            return handleDeleteClick(playlistId);
+                        }}>Delete Playlist</button>
+                        <DeletePlaylist playlistId={playlistId} />
+                    </div>
+                </div>
+                <div className='search-bar-container'>
+                    <div className='search-bar'>
+                        {filteredSongs.map((value, index) => (
+                            <div key={index} onClick={() => addToPlaylist(value.title)}>
+                                <p>{value.title}</p>
+                            </div>
+                        ))}
+                        <input
+                            type="text"
+                            placeholder="Search for a song"
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className="playlist-headers">
+                    <p>#</p>
+                    <p>Title</p>
+                    <p>Album</p>
+                    <p>Date Added</p>
+                    <p></p>
+                    <p>Clock Icon</p>
+                </div>
+                <div className="playlist-songs-container">
+                    <div className="playlist">
+                        <ul>
+                            {Object.values(playlist_music).map((song, index) => (
+                                <div key={index}>
+                                    {song?.title ? (
+                                        <p onClick={() => { song?.title && selectSong(song); setQuery("") }}>{song?.title}</p>
+                                    ) : null}
+                                    <p>{song?.album}</p>
+                                    <p>{song?.dateAdded}</p>
+                                    <p>{song?.timeSymbol}</p>
+                                </div>
+                            ))}
+                        </ul>
+                    </div>
+                    {selectedSong && <Player src={selectedSong.audio_url} />}
 
-            {showModal && modalType === "delete" && (
-                <DeletePlaylistModal
-                    playlistId={playlistToDelete.id}
-                    onSubmit={() => {
-                        setShowModal(false);
-                        setPlaylistToDelete(null);
-                        setModalType(null);
-                    }}
-                    onClose={() => {
-                        setShowModal(false);
-                        setPlaylistToDelete(null);
-                        setModalType(null);
-                    }}
-                />
-            )}
+                    {showModal && modalType === "delete" && (
+                        <DeletePlaylistModal
+                            playlistId={playlistToDelete.id}
+                            onSubmit={() => {
+                                setShowModal(false);
+                                setPlaylistToDelete(null);
+                                setModalType(null);
+                            }}
+                            onClose={() => {
+                                setShowModal(false);
+                                setPlaylistToDelete(null);
+                                setModalType(null);
+                            }}
+                        />
+                    )}
+                </div>
+            </div >
         </>
     )
 }

@@ -7,6 +7,7 @@ from ..routes.AWS_helpers import ALLOWED_EXTENSIONS
 class CreatePlaylistForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     # Add image url receiver later for playlist image
+    image = FileField("Playlist Image", validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     date_created = DateField("Date Created", validators=[DataRequired()])
-    # audio = FileField("Audio", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    playlist_description = StringField("Description")
     submit = SubmitField("Create Post") 

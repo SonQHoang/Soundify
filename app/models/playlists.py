@@ -17,6 +17,7 @@ class Playlists(db.Model):
     song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=True)
     owner = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
+    playlist_description = db.Column(db.String(255))
     date_created = db.Column(db.DateTime, nullable=False)
 
     # Playlist has a MANY to MANY relationship with Songs

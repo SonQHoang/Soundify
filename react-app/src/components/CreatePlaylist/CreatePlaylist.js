@@ -11,6 +11,7 @@ const CreatePlaylist = () => {
     // const [audioFileUrl, setAudioFileUrl] = useState('') 
     // const [audio, setAudio] = useState(null);
     const [title, setTitle] = useState(''); 
+    const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -33,6 +34,7 @@ const CreatePlaylist = () => {
         formData.append('author', currentUser.first_name)
         // console.log('What does author gives us back======>', currentUser)
         formData.append('title', title)
+        formData.append('description', description)
         formData.append('date_created', date_created)
 
         // Confirming my data is in the form
@@ -89,14 +91,16 @@ const CreatePlaylist = () => {
                     <div>
                         <input id="title" type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
                     </div>
-                    {/* <div>
-                        <input
-                            id="audio"
-                            type="file"
-                            accept="audio/*"
-                            onChange={(e) => handleAudioChange(e)}
-                        />
-                    </div> */}
+                </div>
+                <div className="form-input-box">
+                    <div>
+                        <label className="form-label" htmlFor='title'>
+                            Description (Optional):
+                        </label>
+                    </div>
+                    <div>
+                        <textarea id="title" type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
+                    </div>
                 </div>
                 <div className="form-input-box">
                     <div>
