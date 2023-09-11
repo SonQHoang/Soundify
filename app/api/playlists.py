@@ -81,6 +81,9 @@ def get_single_playlist_by_id(playlistId):
 def update_playlists():
     return jsonify({"message": "Update successful"})
 
-@playlist_routes.route("/delete", methods=["DELETE"])
-def delete_playlists():
+@playlist_routes.route("/delete/<int:playlistId>", methods=["DELETE"])
+def delete_playlists(playlistId):
+    playlist_to_delete = Playlists.query.get(playlistId)
+    db.session.delete(playlist_to_delete)
+    db.session.commit()
     return jsonify({"message": "Deletion successful"})
