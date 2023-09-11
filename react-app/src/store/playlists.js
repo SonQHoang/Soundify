@@ -5,6 +5,12 @@ const DELETE_USER_PLAYLIST = '/playlists/deletePlaylist'
 const CREATE_NEW_PLAYLIST = '/playlists/createPlaylist'
 const ADD_SONG_TO_PLAYLIST = '/playlists/addSongToPlaylist'
 
+const acDeletePlaylist = (data) => {
+    return {
+        type: DELETE_USER_PLAYLIST,
+        payload: data
+    }
+}
 const acAddSongToPlaylist = (data) => {
     // console.log('Testing the data coming from acAddToPlaylist=====>', data)
     return {
@@ -36,6 +42,23 @@ const acGetSinglePlaylist = (data) => {
     }
 }
 
+
+export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
+    console.log('Is the playlistId going through======>', playlistId)
+    try {
+        const response = await fetch(`/tips/${playlistId}`, {
+            method: "DELETE",
+            headers: {"Content-Type": 'application/json'}
+        });
+        if (response.ok) {
+            dispatch(acDeletePlaylist(playlistId))
+        }
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
 export const AddSongToPlaylist = (data) => async (dispatch) => {
     console.log("What is the data that is coming from AddSongToPlaylist Thunk=======+>", data)
     const response = await fetch('/api/playlist/add', {
@@ -48,7 +71,7 @@ export const AddSongToPlaylist = (data) => async (dispatch) => {
     console.log('What is my response when adding a song to the playlist====>', response)
     if (response.ok) {
         const data = await response.json()
-        console.log('What does the data from the backend of adding a playlist look like====>', data)
+        // console.log('What does the data from the backend of adding a playlist look like====>', data)
         dispatch(acAddSongToPlaylist(data))
         return data
     } else {
@@ -57,12 +80,12 @@ export const AddSongToPlaylist = (data) => async (dispatch) => {
 }
 
 export const GetSinglePlaylist = (playlistId) => async (dispatch) => {
-    // console.log('playlistId=======>', playlistId)
+    console.log('playlistId=======>', playlistId)
     const response = await fetch(`/api/playlist/${playlistId}`)
-    console.log('What does the respone for a singlePlaylist look like======>', response)
+    // console.log('What does the respone for a singlePlaylist look like======>', response)
     if (response.ok) {
         const playlist = await response.json()
-        console.log('what does the playlist data look like======>', playlist)
+        // console.log('what does the playlist data look like======>', playlist)
         dispatch(acGetSinglePlaylist(playlist))
     } else {
         console.log("Could not retrieve the specified playlist")
