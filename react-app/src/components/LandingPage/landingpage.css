@@ -1,7 +1,7 @@
 body, html {
     /* margin: 0px auto;
     max-width: 1024px; */
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .landing-h1 {
@@ -9,7 +9,7 @@ body, html {
 }
 
 .landing-page-container {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     background-color: black;
     display: flex;
     height: 500px;
