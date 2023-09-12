@@ -42,8 +42,10 @@ def create_playlists():
             title=form.title.data,
             owner = current_user.first_name,
             playlist_description=form.playlist_description.data,
+            image = form.image.data,
             date_created=datetime.utcnow(),
         )
+
         print('new_playlist========>', new_playlist)
         db.session.add(new_playlist)
         db.session.commit()

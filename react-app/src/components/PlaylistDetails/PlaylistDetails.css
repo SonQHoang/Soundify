@@ -29,7 +29,13 @@
     border: 2px solid purple;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlist-user-picture {
+    border: 2px solid green;
+    margin-right: 10px;
 }
 
 .playlist-songs-container {

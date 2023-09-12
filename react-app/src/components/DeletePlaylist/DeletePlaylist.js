@@ -4,11 +4,10 @@ import DeletePlaylistModal from '../DeletePlaylistModal/DeletePlaylistModal'
 
 
 function DeletePlaylist({playlistId}) {
+    const dispatch = useDispatch()   
 
-    
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null)
-    const dispatch = useDispatch()
 
     const handleOpenDeleteModal = (playlist) => {
         console.log('Opening Delete Modal');
