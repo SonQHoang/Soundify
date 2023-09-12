@@ -10,7 +10,9 @@ class Albums(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     album_photo = db.Column(db.String)
+    owner = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False, unique=True)
+    album_description = db.Column(db.String)
     year = db.Column(db.Integer, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
 
@@ -27,6 +29,7 @@ class Albums(db.Model):
             "album_photo": self.album_photo,
             "title": self.title,
             "year": self.year,
+            "album_description": self.album_description,
             "date_created": self.date_created,
             "album_users": self.album_users.to_dict()
         }

@@ -35,6 +35,7 @@ def seed_users():
     album_1 = Albums (
         user_id = 1,
         title = "Gravity",
+        owner = "John Mayer",
         year = 2013,
         date_created = datetime(2023, 9, 6)
     )

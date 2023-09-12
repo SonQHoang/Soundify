@@ -2,27 +2,20 @@ import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createAlbum } from '../../store/albums';
-import "./CreatePlaylist.css" 
+import "./CreateAlbum.css" 
 
 const CreateAlbum = () => {
     const dispatch = useDispatch()
     const history = useHistory();
     const currentUser = useSelector((state) => state.session.user)
-    // const [audioFileUrl, setAudioFileUrl] = useState('') 
-    // const [audio, setAudio] = useState(null);
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('')
     const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
+    const [year, setYear] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
-
-    // useEffect(() => {
-    //     const errors = [];
-    //     if (!audio) errors.push("Please provide an audio file!")
-    //     setValidationErrors(errors);
-    // }, [audio])
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -52,6 +45,7 @@ const CreateAlbum = () => {
         formData.append('title', title)
         formData.append('photo', image)
         formData.append('description', description)
+        formData.append('year', year)
         formData.append('date_created', date_created)
 
         // Confirming my data is in the form
@@ -63,7 +57,7 @@ const CreateAlbum = () => {
         console.log('formDataObject:', formDataObject);
 
         try {
-            await dispatch(createPlaylist(formData));
+            await dispatch(createAlbum(formData));
             setValidationErrors([]);
             setHasSubmitted(false);
             history.push(`/`);
@@ -71,16 +65,6 @@ const CreateAlbum = () => {
             console.error("Error creating playlist:", error);
         }
     };
-
-    // const handleAudioChange = (e) => {
-    //     const audio = e.target.files[0];
-    //     console.log('Selected Audio Binary Data: ======>', audio);
-    //     setAudio(audio)
-    //     const url = URL.createObjectURL(audio);
-    //     console.log('What is this url========>', url)
-    //     setAudioFileUrl(url)
-    // }
-
 
     return (
         <div className="create-playlist-container">
@@ -102,7 +86,7 @@ const CreateAlbum = () => {
                 <div className="form-input-box">
                     <div>
                         <label className="form-label" htmlFor='title'>
-                            Playlist Title:
+                            Album Title:
                         </label>
                     </div>
                     <div>
@@ -112,16 +96,26 @@ const CreateAlbum = () => {
                 <div className="form-input-box">
                     <div>
                         <label className="form-label" htmlFor='title'>
-                            Description (Optional):
+                            Description:
                         </label>
                     </div>
                     <div>
                         <textarea id="title" type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
                     </div>
                 </div>
+                <div className="form-input-box">
+                    <div>
+                        <label className="form-label" htmlFor='title'>
+                            Year:
+                        </label>
+                    </div>
+                    <div>
+                        <textarea id="title" type="text" onChange={(e) => setYear(e.target.value)} value={year} />
+                    </div>
+                </div>
                 <div>
                     <label className="form-label" htmlFor="image">
-                        Upload a Picture:
+                        Upload an Album Cover:
                     </label>
                     <input
                         id="image"
@@ -150,14 +144,6 @@ const CreateAlbum = () => {
                     <button className="button">Submit</button>
                 </div>
             </form>
-            {/* Confirmation on the correct file being submitted submitted */}
-            {/* {audioFileUrl && (
-                <div className="audio-player">
-                    <audio controls>
-                        <source src={audioFileUrl} type="audio/mpeg" />
-                    </audio>
-                </div>
-            )} */}
         </div>
     );
 }

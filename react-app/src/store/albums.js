@@ -28,13 +28,13 @@ const acDeleteAlbum = (data) => {
     }
 }
 const acAddSongToAlbum = (data) => {
-    console.log('Does this data contain the song I want to add======>', data)
     return {
         type: ADD_SONG_TO_ALBUM,
         payload: data
     }
 }
 const acCreateAlbum = (data) => {
+    console.log('Is my new album data coming through=====>', data)
     return {
         type: CREATE_NEW_ALBUM,
         payload: data
@@ -57,6 +57,7 @@ const acGetSingleAlbum = (data) => {
 
 export const getUserAlbum = () => async (dispatch) => {
     const response = await fetch(`/api/album/user_album`)
+    console.log('What does my response look like for getting the userAlbum====>', response)
     if (response.ok) {
         const album = await response.json()
         console.log('album=======>', album)
@@ -128,7 +129,7 @@ export const GetSingleAlbum = (albumId) => async (dispatch) => {
 }
 
 export const createAlbum = (data) => async (dispatch) => {
-    // console.log('What data is coming through?=======> FormData', data)
+    console.log('What data is coming through?=======> FormData', data)
     for (const [key, value] of data.entries()) {
         console.log(`Key: ${key}, Value: ${value}`);
     }
@@ -137,7 +138,7 @@ export const createAlbum = (data) => async (dispatch) => {
         method: "POST",
         body: data
     })
-    // console.log('What is my response looking like=======>', response)
+    console.log('What is my response looking like=======>', response)
     if (response.ok) {
         const { resPost } = await response.json()
         console.log("NEW ALBUM DATA =======>", resPost)
