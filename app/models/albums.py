@@ -28,6 +28,7 @@ class Albums(db.Model):
             "id": self.id,
             "album_photo": self.album_photo,
             "title": self.title,
+            "owner": self.owner,
             "year": self.year,
             "album_description": self.album_description,
             "date_created": self.date_created,
