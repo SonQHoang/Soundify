@@ -27,11 +27,16 @@ function PlaylistDetails() {
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
     // const [playlist, setPlaylist] = useState([]); // Initialize playlist as an array of song 
-    const [selectedSong, setSelectedSong] = useState(null)
+    // const [selectedSong, setSelectedSong] = useState(null)
+    const [selectedSongs, setSelectedSongs] = useState([]);
 
-    const singlePlaylist = useSelector((state) => state.playlist);
-    const playlist_song = Object.values(singlePlaylist)
-    const playlist_music = playlist_song[1]
+
+    // const singlePlaylist = useSelector((state) => state.playlist);
+    // const playlist_song = Object.values(singlePlaylist)
+    // const playlist_music = playlist_song[1]
+
+    const new_songs = useSelector((state) => state.playlist.singlePlaylist);
+    console.log('Updated Song List=========>', new_songs)
 
     useEffect(() => {
         dispatch(getAllSongs())
@@ -52,13 +57,21 @@ function PlaylistDetails() {
     const addToPlaylist = async (title) => {
         const selectedSong = songLibrary.find(song => song.title === title);
         if (selectedSong) {
-            dispatch(AddSongToPlaylist(selectedSong))
+            setSelectedSongs([...selectedSongs, selectedSong]);
+            dispatch(AddSongToPlaylist(selectedSong));
+            setQuery("");
         }
     }
 
     const selectSong = (song) => {
         console.log('Selected Song:======>', song)
-        setSelectedSong(song);
+        if (selectedSongs.includes(song)) {
+            setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
+        } else {
+            setSelectedSongs([...selectedSongs, song])
+        }
+        dispatch(AddSongToPlaylist(song))
+        setQuery("")
     }
 
     //======================================================SearchBar End========================================
@@ -75,7 +88,6 @@ function PlaylistDetails() {
     }, [dispatch, userId])
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
-
     const handleDeleteClick = async () => {
         setPlaylistToDelete(currentPlaylist)
         // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
@@ -99,7 +111,7 @@ function PlaylistDetails() {
         // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
         setModalType("update");
         setShowModal(true)
-        await dispatch(getUserPlaylist())
+        dispatch(getUserPlaylist())
     }
 
 
@@ -116,21 +128,21 @@ function PlaylistDetails() {
                         </div>
                         <div className="playlist-information-container">
                             <p>Playlist</p>
-                            <h2>{currentPlaylist.title} #{currentPlaylist.id}</h2>
+                            <h2>{currentPlaylist?.title} {currentPlaylist?.id}</h2>
                             <div className="playlist-description">
-                                {currentPlaylist.description}
+                                {currentPlaylist?.playlist_description}
                             </div>
                             <div className="playlist-user-details">
                                 <p className="playlist-user-picture">Profile Pic</p>
-                                <p>{currentPlaylist.owner}</p>
+                                <p>{currentPlaylist?.owner}</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                    <button className="playlist-update-button" onClick={() => {
+                        <button className="playlist-update-button" onClick={() => {
                             return handleUpdateClick(playlistId);
                         }}>Edit Details</button>
-                        <UpdatePlaylist playlistId={playlistId} />   
+                        <UpdatePlaylist playlistId={playlistId} />
 
                         <button className="playlist-delete-button" onClick={() => {
                             return handleDeleteClick(playlistId);
@@ -163,10 +175,10 @@ function PlaylistDetails() {
                 <div className="playlist-songs-container">
                     <div className="playlist">
                         <ul>
-                            {Object.values(playlist_music).map((song, index) => (
+                            {Object.values(new_songs)?.map((song, index) => (
                                 <div key={index}>
                                     {song?.title ? (
-                                        <p onClick={() => { song?.title && selectSong(song); setQuery("") }}>{song?.title}</p>
+                                        <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
                                     ) : null}
                                     <p>{song?.album}</p>
                                     <p>{song?.dateAdded}</p>
@@ -175,8 +187,9 @@ function PlaylistDetails() {
                             ))}
                         </ul>
                     </div>
-                    {selectedSong && <Player src={selectedSong.audio_url} />}
-
+                    {selectedSongs.map((song, index) => (
+                        <Player key={index} src={song.audio_url} />
+                    ))}
                     {showModal && modalType === "update" && (
                         <UpdatePlaylistModal
                             playlistId={playlistToUpdate.id}

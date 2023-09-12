@@ -86,7 +86,7 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
         dispatch(UpdatePlaylistThunk(playlistId, updatedPlaylist))
             .then(() => dispatch(getUserPlaylist())) // Triggering the rerender
         onSubmit();
-        history.push(`/playlist/${playlistId}`)
+        history.push(`/`)
     };
     //==========================UpdateFormEnd===============================
 

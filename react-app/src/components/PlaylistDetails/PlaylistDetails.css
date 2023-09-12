@@ -53,3 +53,7 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.playlist-description{
+    border: 2px solid blue;
+}
