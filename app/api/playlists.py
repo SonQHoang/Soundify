@@ -4,6 +4,7 @@ from app.models.db import db
 from app.models import Playlists, User
 from datetime import datetime
 from ..forms.create_playlist_form import CreatePlaylistForm
+from ..forms.upldate_playlist_form import UpdatePlaylistForm
 from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 playlist_routes = Blueprint('playlist', __name__)
@@ -42,8 +43,10 @@ def create_playlists():
             title=form.title.data,
             owner = current_user.first_name,
             playlist_description=form.playlist_description.data,
+            image = form.image.data,
             date_created=datetime.utcnow(),
         )
+
         print('new_playlist========>', new_playlist)
         db.session.add(new_playlist)
         db.session.commit()
@@ -78,9 +81,27 @@ def get_single_playlist_by_id(playlistId):
         playlist_data["songs"] = [song.to_dict() for song in playlist.songs]
     return jsonify(playlist_data)
 
-@playlist_routes.route("/update", methods=["PUT"])
-def update_playlists():
-    return jsonify({"message": "Update successful"})
+@playlist_routes.route("/update/<int:playlistId>", methods=["PUT"])
+def update_playlists(playlistId):
+    current_playlist = Playlists.query.get(playlistId)
+
+    form = UpdatePlaylistForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        if current_user.id != current_playlist.user_id:
+            error = {}
+            error.message = "You shouldn't be trying to adjust someone else's playlist..."
+            return jsonify(error), 403
+        
+        current_playlist.title = request.json['title']
+        current_playlist.image = request.json['image']
+        current_playlist.playlist_description = request.json['playlist_description']
+        updated_playlist = current_playlist
+        updated_playlist_dict = updated_playlist.to_dict()
+        db.session.commit()
+        return updated_playlist_dict
+    return jsonify(current_playlist.to_dict())
 
 @playlist_routes.route("/delete/<int:playlistId>", methods=["DELETE"])
 def delete_playlists(playlistId):

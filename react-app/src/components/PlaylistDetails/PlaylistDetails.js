@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
@@ -10,11 +11,14 @@ import { getAllPlaylists } from "../../store/playlists";
 import { getUserPlaylist } from "../../store/playlists";
 import Player from "../AudioBar/audiobar";
 import "./PlaylistDetails.css"
+import UpdatePlaylist from "../UpdatePlaylist/UpdatePlaylist";
+import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
     // console.log('playlistId in playlistDetails========>', playlistId)
     const dispatch = useDispatch();
+    const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
@@ -71,7 +75,6 @@ function PlaylistDetails() {
     }, [dispatch, userId])
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
-    // console.log('currentPlaylist======>', currentPlaylist)
 
     const handleDeleteClick = async () => {
         setPlaylistToDelete(currentPlaylist)
@@ -81,12 +84,27 @@ function PlaylistDetails() {
         await dispatch(getUserPlaylist())
     }
 
-
-    // useEffect(() => {
-    //     dispatch(GetSinglePlaylist(playlistId));
-    // }, [playlistId]);
-
     //======================================================DeletePlaylist End========================================
+
+    //======================================================UpdatePlaylist Start========================================
+
+    const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
+
+    useEffect(() => {
+        dispatch(GetSinglePlaylist(playlistId))
+    }, [dispatch, userId])
+
+    const handleUpdateClick = async () => {
+        setPlaylistToUpdate(currentPlaylist)
+        // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
+        setModalType("update");
+        setShowModal(true)
+        await dispatch(getUserPlaylist())
+    }
+
+
+    //======================================================UpdatePlaylist End========================================
+
 
     return (
         <>
@@ -98,20 +116,23 @@ function PlaylistDetails() {
                         </div>
                         <div className="playlist-information-container">
                             <p>Playlist</p>
-                            <h2>User Inputted Title Should Go Here #(PlaylistNumber)</h2>
+                            <h2>{currentPlaylist.title} #{currentPlaylist.id}</h2>
                             <div className="playlist-description">
-                                PlaylistDescription goes here
+                                {currentPlaylist.description}
                             </div>
                             <div className="playlist-user-details">
-                                <p>User Profile Pic Here</p>
-                                <p>User's Name goes here</p>
+                                <p className="playlist-user-picture">Profile Pic</p>
+                                <p>{currentPlaylist.owner}</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button>Edit Details</button>
+                    <button className="playlist-update-button" onClick={() => {
+                            return handleUpdateClick(playlistId);
+                        }}>Edit Details</button>
+                        <UpdatePlaylist playlistId={playlistId} />   
+
                         <button className="playlist-delete-button" onClick={() => {
-                            // console.log('Playlist ID=======>:', playlistId);
                             return handleDeleteClick(playlistId);
                         }}>Delete Playlist</button>
                         <DeletePlaylist playlistId={playlistId} />
@@ -156,6 +177,21 @@ function PlaylistDetails() {
                     </div>
                     {selectedSong && <Player src={selectedSong.audio_url} />}
 
+                    {showModal && modalType === "update" && (
+                        <UpdatePlaylistModal
+                            playlistId={playlistToUpdate.id}
+                            onSubmit={() => {
+                                setShowModal(false);
+                                setPlaylistToUpdate(null);
+                                setModalType(null);
+                            }}
+                            onClose={() => {
+                                setShowModal(false);
+                                setPlaylistToUpdate(null);
+                                setModalType(null);
+                            }}
+                        />
+                    )}
                     {showModal && modalType === "delete" && (
                         <DeletePlaylistModal
                             playlistId={playlistToDelete.id}

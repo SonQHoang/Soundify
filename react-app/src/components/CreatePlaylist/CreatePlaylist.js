@@ -10,10 +10,12 @@ const CreatePlaylist = () => {
     const currentUser = useSelector((state) => state.session.user)
     // const [audioFileUrl, setAudioFileUrl] = useState('') 
     // const [audio, setAudio] = useState(null);
-    const [title, setTitle] = useState(''); 
+    const [title, setTitle] = useState('');
+    const [image, setImage] = useState('')
     const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
+    const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
     // useEffect(() => {
@@ -21,6 +23,20 @@ const CreatePlaylist = () => {
     //     if (!audio) errors.push("Please provide an audio file!")
     //     setValidationErrors(errors);
     // }, [audio])
+
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setImagePreview(e.target.result)
+                console.log('Uploaded Image Data:======>', e.target.result);
+            }
+            reader.readAsDataURL(file)
+        } else {
+            console.log("No image was uploaded")
+        }
+    }
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -34,6 +50,7 @@ const CreatePlaylist = () => {
         formData.append('author', currentUser.first_name)
         // console.log('What does author gives us back======>', currentUser)
         formData.append('title', title)
+        formData.append('photo', image)
         formData.append('description', description)
         formData.append('date_created', date_created)
 
@@ -101,6 +118,23 @@ const CreatePlaylist = () => {
                     <div>
                         <textarea id="title" type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
                     </div>
+                </div>
+                <div>
+                    <label className="form-label" htmlFor="image">
+                        Upload a Picture:
+                    </label>
+                    <input
+                        id="image"
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                    />
+                    {imagePreview && (
+                        <div>
+                                <img src={imagePreview} alt="Playlist Image" width="100"/>
+                        </div>
+                    )}
                 </div>
                 <div className="form-input-box">
                     <div>
