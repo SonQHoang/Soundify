@@ -14,7 +14,7 @@ const acGetUserPlaylist = (data) => {
 }
 
 const acUpdatePlaylist = (data) => {
-    console.log('Is the acUpdate still going through======>', data)
+    // console.log('Is the acUpdate still going through======>', data)
     return {
         type: UPDATE_USER_PLAYLIST,
         payload: data
@@ -28,6 +28,7 @@ const acDeletePlaylist = (data) => {
     }
 }
 const acAddSongToPlaylist = (data) => {
+    console.log('Does this data contain the song I want to add======>', data)
     return {
         type: ADD_SONG_TO_PLAYLIST,
         payload: data
@@ -69,7 +70,7 @@ export const UpdatePlaylistThunk = (playlistId, updatedData) => async (dispatch)
     try {
         const response = await fetch(`/api/playlist/update/${playlistId}`, {
             method: "PUT",
-            headers: {"Content-Type": 'application/json'},
+            headers: { "Content-Type": 'application/json' },
             body: JSON.stringify(updatedData)
         });
         console.log('What does the response look like for the thunk after the backend=========>', response)
@@ -97,13 +98,15 @@ export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
 
 
 export const AddSongToPlaylist = (data) => async (dispatch) => {
+    console.log('What is the data here when I add a song to a playlist THUNK====>', data)
     const response = await fetch('/api/playlist/add', {
-        method: "PUT",
+        method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
+    console.log('What does the response from the backend look like=====>', response)
     if (response.ok) {
         const data = await response.json()
         dispatch(acAddSongToPlaylist(data))
@@ -125,7 +128,7 @@ export const GetSinglePlaylist = (playlistId) => async (dispatch) => {
 }
 
 export const createPlaylist = (data) => async (dispatch) => {
-    console.log('What data is coming through?=======> FormData', data)
+    // console.log('What data is coming through?=======> FormData', data)
     for (const [key, value] of data.entries()) {
         console.log(`Key: ${key}, Value: ${value}`);
     }
@@ -134,7 +137,7 @@ export const createPlaylist = (data) => async (dispatch) => {
         method: "POST",
         body: data
     })
-    console.log('What is my response looking like=======>', response)
+    // console.log('What is my response looking like=======>', response)
     if (response.ok) {
         const { resPost } = await response.json()
         console.log("NEW PLAYLIST DATA =======>", resPost)
@@ -186,15 +189,21 @@ const playlistReducer = (state = initialState, action) => {
                 },
             };
         case ADD_SONG_TO_PLAYLIST:
-            // console.log('My intial state=====>', state)
-            // console.log('My song action payload=====>', action.payload)
-            return {
+            console.log('My initial state =====>', state);
+            console.log('My song action payload =====>', action.payload);
+
+            const updatedState = {
                 ...state,
                 singlePlaylist: {
                     ...state.singlePlaylist,
                     [action.payload.id]: action.payload
                 }
-            }
+            };
+
+            console.log('Updated state =====>', updatedState);
+
+            return updatedState;
+
         case GET_SINGLE_PLAYLIST:
             return {
                 ...state,
@@ -203,7 +212,7 @@ const playlistReducer = (state = initialState, action) => {
 
         case UPDATE_USER_PLAYLIST:
             return {
-                
+
             }
 
         case DELETE_USER_PLAYLIST: {

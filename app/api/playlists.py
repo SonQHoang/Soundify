@@ -4,7 +4,7 @@ from app.models.db import db
 from app.models import Playlists, User
 from datetime import datetime
 from ..forms.create_playlist_form import CreatePlaylistForm
-from ..forms.upldate_playlist_form import UpdatePlaylistForm
+from ..forms.update_playlist_form import UpdatePlaylistForm
 from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 playlist_routes = Blueprint('playlist', __name__)
@@ -57,7 +57,7 @@ def create_playlists():
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
 
-@playlist_routes.route("/add", methods=["PUT"])
+@playlist_routes.route("/add", methods=["POST"])
 def add_song_to_playlist():
     data = request.get_json()
     return jsonify(data)
@@ -74,6 +74,7 @@ def get_single_playlist_by_id(playlistId):
         "song_id": playlist.song_id,
         "title": playlist.title,
         "owner": playlist.owner,
+        "playlist_description": playlist.playlist_description,
         "date_created": datetime.utcnow(),
     }
 

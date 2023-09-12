@@ -10,8 +10,10 @@ const UserPlaylist = () => {
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
 
-    const userPlaylist = Object.values(useSelector(state => state.playlist.allPlaylists))
-    console.log('userPlaylists=========>', userPlaylist)
+    const playlist = (useSelector(state => state.playlist.allPlaylists))
+    const userPlaylist = Object.values(playlist)
+
+    // console.log('userPlaylists=========>', userPlaylist)
 
     useEffect(() => {
         console.log("I'm dispatching getUserPlaylist")
@@ -22,7 +24,7 @@ const UserPlaylist = () => {
     return (
         <>
             <div className="playlist-container">
-                {userPlaylist.map(playlist => (
+                {userPlaylist && userPlaylist.map(playlist => (
                     <div key={playlist.id} className="individual-playlist">
                         <Link to={`/playlist/${playlist.id}`} className="link-no-underline">
                             <p>{playlist.title}</p>

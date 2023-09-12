@@ -10,12 +10,12 @@ import { GetSinglePlaylist } from "../../store/playlists";
 import { getAllPlaylists } from "../../store/playlists";
 import { getUserPlaylist } from "../../store/playlists";
 import Player from "../AudioBar/audiobar";
-import "./PlaylistDetails.css"
+import "./AlbumDetails.css"
 import UpdatePlaylist from "../UpdatePlaylist/UpdatePlaylist";
 import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
 
-function PlaylistDetails() {
-    const { playlistId } = useParams()
+function AlbumDetails() {
+    const { albumId } = useParams()
     // console.log('playlistId in playlistDetails========>', playlistId)
     const dispatch = useDispatch();
     const history = useHistory()
@@ -29,11 +29,6 @@ function PlaylistDetails() {
     // const [playlist, setPlaylist] = useState([]); // Initialize playlist as an array of song 
     // const [selectedSong, setSelectedSong] = useState(null)
     const [selectedSongs, setSelectedSongs] = useState([]);
-
-
-    // const singlePlaylist = useSelector((state) => state.playlist);
-    // const playlist_song = Object.values(singlePlaylist)
-    // const playlist_music = playlist_song[1]
 
     const new_songs = useSelector((state) => state.playlist.singlePlaylist);
     console.log('Updated Song List=========>', new_songs)
@@ -84,7 +79,7 @@ function PlaylistDetails() {
     const [modalType, setModalType] = useState(null);
 
     useEffect(() => {
-        dispatch(GetSinglePlaylist(playlistId))
+        dispatch(GetSinglePlaylist(albumId))
     }, [dispatch, userId])
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
@@ -103,7 +98,7 @@ function PlaylistDetails() {
     const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
 
     useEffect(() => {
-        dispatch(GetSinglePlaylist(playlistId))
+        dispatch(GetSinglePlaylist(albumId))
     }, [dispatch, userId])
 
     const handleUpdateClick = async () => {
@@ -120,34 +115,34 @@ function PlaylistDetails() {
 
     return (
         <>
-            <div className="playlist-details-container">
-                <div className="playlist-info-container">
-                    <div className="playlist-image-and-title-container">
-                        <div className="playlist-image">
-                            <h2>Playlist Graphic Here</h2>
+            <div className="album-details-container">
+                <div className="album-info-container">
+                    <div className="album-image-and-title-container">
+                        <div className="album-image">
+                            <h2>Album Graphic Here</h2>
                         </div>
-                        <div className="playlist-information-container">
-                            <p>Playlist</p>
+                        <div className="album-information-container">
+                            <p>Album</p>
                             <h2>{currentPlaylist?.title} {currentPlaylist?.id}</h2>
-                            <div className="playlist-description">
+                            <div className="album-description">
                                 {currentPlaylist?.playlist_description}
                             </div>
-                            <div className="playlist-user-details">
-                                <p className="playlist-user-picture">Profile Pic</p>
+                            <div className="album-user-details">
+                                <p className="album-user-picture">Profile Pic</p>
                                 <p>{currentPlaylist?.owner}</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button className="playlist-update-button" onClick={() => {
-                            return handleUpdateClick(playlistId);
+                        <button className="album-update-button" onClick={() => {
+                            return handleUpdateClick(albumId);
                         }}>Edit Details</button>
-                        <UpdatePlaylist playlistId={playlistId} />
+                        <UpdatePlaylist albumId={albumId} />
 
                         <button className="playlist-delete-button" onClick={() => {
-                            return handleDeleteClick(playlistId);
-                        }}>Delete Playlist</button>
-                        <DeletePlaylist playlistId={playlistId} />
+                            return handleDeleteClick(albumId);
+                        }}>Delete Album</button>
+                        <DeletePlaylist albumId={albumId} />
                     </div>
                 </div>
                 <div className='search-bar-container'>
@@ -164,16 +159,14 @@ function PlaylistDetails() {
                         />
                     </div>
                 </div>
-                <div className="playlist-headers">
+                <div className="album-headers">
                     <p>#</p>
                     <p>Title</p>
-                    <p>Album</p>
-                    <p>Date Added</p>
-                    <p></p>
+                    <p>Reaction</p>
                     <p>Clock Icon</p>
                 </div>
-                <div className="playlist-songs-container">
-                    <div className="playlist">
+                <div className="album-songs-container">
+                    <div className="album">
                         <ul>
                             {Object.values(new_songs)?.map((song, index) => (
                                 <div key={index}>
@@ -192,7 +185,7 @@ function PlaylistDetails() {
                     ))}
                     {showModal && modalType === "update" && (
                         <UpdatePlaylistModal
-                            playlistId={playlistToUpdate.id}
+                            albumId={playlistToUpdate.id}
                             onSubmit={() => {
                                 setShowModal(false);
                                 setPlaylistToUpdate(null);
@@ -207,7 +200,7 @@ function PlaylistDetails() {
                     )}
                     {showModal && modalType === "delete" && (
                         <DeletePlaylistModal
-                            playlistId={playlistToDelete.id}
+                            albumId={playlistToDelete.id}
                             onSubmit={() => {
                                 setShowModal(false);
                                 setPlaylistToDelete(null);
@@ -226,4 +219,4 @@ function PlaylistDetails() {
     )
 }
 
-export default PlaylistDetails;
+export default AlbumDetails;
