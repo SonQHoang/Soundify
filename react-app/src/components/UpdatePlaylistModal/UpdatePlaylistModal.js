@@ -27,19 +27,15 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
         }
     }, [])
 
-    const handleConfirmUpdate = async () => {
-        dispatch(UpdatePlaylistThunk(playlistId))
-            .then(() => dispatch(getUserPlaylist())) // Triggering the rerender
-        onSubmit();
-        history.push(`/playlist/${playlistId}`)
-    };
-
     //==========================ModalLogic End================================
 
     //===========================Update Form Start===================================
-    const [title, setTitle] = useState('');
-    const [image, setImage] = useState('')
-    const [description, setDescription] = useState("")
+    const current_playlist_information = useSelector(state => state.playlist.singlePlaylist)
+    console.log('current playlist info========>', current_playlist_information)
+    
+    const [title, setTitle] = useState(current_playlist_information.title || '');
+    const [image, setImage] = useState(current_playlist_information.image || '')
+    const [description, setDescription] = useState(current_playlist_information.description || "")
     const [validationErrors, setValidationErrors] = useState([])
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -80,6 +76,18 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
         console.log('formDataObject:', formDataObject);
     };
 
+    const updatedPlaylist = {
+        title: title,
+        image: image,
+        playlist_description: description,
+    }
+    const handleConfirmUpdate = async () => {
+
+        dispatch(UpdatePlaylistThunk(playlistId, updatedPlaylist))
+            .then(() => dispatch(getUserPlaylist())) // Triggering the rerender
+        onSubmit();
+        history.push(`/playlist/${playlistId}`)
+    };
     //==========================UpdateFormEnd===============================
 
 

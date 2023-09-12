@@ -14,6 +14,7 @@ const acGetUserPlaylist = (data) => {
 }
 
 const acUpdatePlaylist = (data) => {
+    console.log('Is the acUpdate still going through======>', data)
     return {
         type: UPDATE_USER_PLAYLIST,
         payload: data
@@ -33,7 +34,6 @@ const acAddSongToPlaylist = (data) => {
     }
 }
 const acCreatePlaylist = (data) => {
-    console.log('Do I see the image data=======>', data)
     return {
         type: CREATE_NEW_PLAYLIST,
         payload: data
@@ -63,15 +63,18 @@ export const getUserPlaylist = () => async (dispatch) => {
     }
 }
 
-export const UpdatePlaylistThunk = (playlistId) => async (dispatch) => {
+export const UpdatePlaylistThunk = (playlistId, updatedData) => async (dispatch) => {
+    console.log('Is the playlistId coming through for the THUNK======>', playlistId)
+    console.log('Is the updatedDat coming through======>', updatedData)
     try {
-        const response = await fetch(`/api/playlist/update/$${playlistId}`, {
+        const response = await fetch(`/api/playlist/update/${playlistId}`, {
             method: "PUT",
-            headers: { "Content-Type": 'application/json' }
+            headers: {"Content-Type": 'application/json'},
+            body: JSON.stringify(updatedData)
         });
+        console.log('What does the response look like for the thunk after the backend=========>', response)
         if (response.ok) {
             dispatch(acUpdatePlaylist(playlistId))
-
         }
     } catch (error) {
         console.error(error)
@@ -199,6 +202,9 @@ const playlistReducer = (state = initialState, action) => {
             }
 
         case UPDATE_USER_PLAYLIST:
+            return {
+                
+            }
 
         case DELETE_USER_PLAYLIST: {
             const newState = { ...state, allPlaylists: { ...state.allPlaylists } }
