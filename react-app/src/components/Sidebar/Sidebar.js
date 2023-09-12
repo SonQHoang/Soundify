@@ -13,7 +13,7 @@ const Sidebar = () => {
                 </NavLink>
             </div>
             <div className="playlists-container">
-                <h1 className="landing-h1">Playlists</h1>
+                <p className="landing-h1">Playlists</p>
                 <UserPlaylist />
                 <NavLink exact to="/playlist/new">
                     <button>Add a New Playlist</button>
