@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
-import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
-import DeletePlaylist from "../DeletePlaylist/DeletePlaylist";
+import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
+import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import { GetSinglePlaylist } from "../../store/playlists";
 import { getAllPlaylists } from "../../store/playlists";
 import { getUserPlaylist } from "../../store/playlists";
@@ -74,7 +74,7 @@ function AlbumDetails() {
     //======================================================DeletePlaylist Start========================================
 
     const [showModal, setShowModal] = useState(false);
-    const [playlistToDelete, setPlaylistToDelete] = useState(null);
+    const [albumToDelete, setAlbumToDelete] = useState(null);
     // console.log("Are we targeting the playlistToDelete=======>", playlistToDelete)
     const [modalType, setModalType] = useState(null);
 
@@ -82,10 +82,10 @@ function AlbumDetails() {
         dispatch(GetSinglePlaylist(albumId))
     }, [dispatch, userId])
 
-    const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
+    const currentAlbum = useSelector((state) => state.playlist.singlePlaylist)
     const handleDeleteClick = async () => {
-        setPlaylistToDelete(currentPlaylist)
-        // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
+        setAlbumToDelete(currentAlbum)
+        // console.log('Playlist to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("delete");
         setShowModal(true)
         await dispatch(getUserPlaylist())
@@ -102,8 +102,8 @@ function AlbumDetails() {
     }, [dispatch, userId])
 
     const handleUpdateClick = async () => {
-        setPlaylistToUpdate(currentPlaylist)
-        // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
+        setPlaylistToUpdate(currentAlbum)
+        // console.log('Playlist to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("update");
         setShowModal(true)
         dispatch(getUserPlaylist())
@@ -123,13 +123,13 @@ function AlbumDetails() {
                         </div>
                         <div className="album-information-container">
                             <p>Album</p>
-                            <h2>{currentPlaylist?.title} {currentPlaylist?.id}</h2>
+                            <h2>{currentAlbum?.title} {currentAlbum?.id}</h2>
                             <div className="album-description">
-                                {currentPlaylist?.playlist_description}
+                                {currentAlbum?.playlist_description}
                             </div>
                             <div className="album-user-details">
                                 <p className="album-user-picture">Profile Pic</p>
-                                <p>{currentPlaylist?.owner}</p>
+                                <p>{currentAlbum?.owner}</p>
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@ function AlbumDetails() {
                         <button className="playlist-delete-button" onClick={() => {
                             return handleDeleteClick(albumId);
                         }}>Delete Album</button>
-                        <DeletePlaylist albumId={albumId} />
+                        <DeleteAlbum albumId={albumId} />
                     </div>
                 </div>
                 <div className='search-bar-container'>
@@ -199,16 +199,16 @@ function AlbumDetails() {
                         />
                     )}
                     {showModal && modalType === "delete" && (
-                        <DeletePlaylistModal
-                            albumId={playlistToDelete.id}
+                        <DeleteAlbumModal
+                            albumId={albumToDelete.id}
                             onSubmit={() => {
                                 setShowModal(false);
-                                setPlaylistToDelete(null);
+                                setAlbumToDelete(null);
                                 setModalType(null);
                             }}
                             onClose={() => {
                                 setShowModal(false);
-                                setPlaylistToDelete(null);
+                                setAlbumToDelete(null);
                                 setModalType(null);
                             }}
                         />
