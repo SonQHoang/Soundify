@@ -11,6 +11,8 @@ const UserAlbum = () => {
     const userId = sessionUser.id
 
     const album = (useSelector(state => state.album.allAlbums))
+    console.log('album useralbum component=========>', album)
+    
     const userAlbum = Object.values(album)
 
     // console.log('userPlaylists=========>', userPlaylist)

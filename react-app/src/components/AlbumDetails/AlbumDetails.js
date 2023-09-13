@@ -31,7 +31,7 @@ function AlbumDetails() {
     const [selectedSongs, setSelectedSongs] = useState([]);
 
     const new_songs = useSelector((state) => state.playlist.singlePlaylist);
-    console.log('Updated Song List=========>', new_songs)
+    // console.log('Updated Song List=========>', new_songs)
 
     useEffect(() => {
         dispatch(getAllSongs())
@@ -83,7 +83,7 @@ function AlbumDetails() {
     }, [dispatch, userId])
 
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
-    console.log('What does currentAlbum look like=========>', currentAlbum)
+    // console.log('What does currentAlbum look like=========>', currentAlbum)
     const handleDeleteClick = async () => {
         setAlbumToDelete(currentAlbum)
         // console.log('Playlist to delete (inside handleDeleteClick):', currentAlbum);

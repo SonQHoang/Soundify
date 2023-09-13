@@ -13,7 +13,7 @@ session = db.session
 @album_routes.route('/user_album', methods=["GET"])
 def get_user_album():
     albums = Albums.query.filter_by(user_id = current_user.id).all()
-    print('albums=====>', albums)
+    # print('albums=====>', albums)
     return [album.to_dict() for album in albums]
 
 @album_routes.route("/all", methods=["GET"])
@@ -40,7 +40,7 @@ def create_albums():
             date_created=datetime.utcnow(),
         )
 
-        print('new_album========>', new_album)
+        # print('new_album========>', new_album)
         db.session.add(new_album)
         db.session.commit()
         # print('respost =======>', {new_album.to_dict()})
@@ -77,24 +77,46 @@ def get_single_album_by_id(albumId):
 @album_routes.route("/update/<int:albumId>", methods=["PUT"])
 def update_albums(albumId):
     current_album = Albums.query.get(albumId)
+    print(f"Current Album:========================> {current_album}")
 
     form = UpdateAlbumForm()
+    print(f"Form:========================> {form}")
+
+
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print("Request JSON Data=============>:", request.json)
+    # Getting expected data up to here 
     if form.validate_on_submit():
+
         if current_user.id != current_album.user_id:
             error = {}
             error.message = "You shouldn't be trying to adjust someone else's album..."
             return jsonify(error), 403
         
+        print("Before Update:")
+        print(f"Title:========================> {current_album.title}")
+        print(f"Album Photo::=================> {current_album.album_photo}")
+        print(f"Album Description::===========> {current_album.album_description}")
+        
         current_album.title = request.json['title']
-        current_album.image = request.json['image']
+        current_album.album_photo = request.json['album_photo']
         current_album.album_description = request.json['album_description']
+
+        print("After Update:")
+        print(f"Title::=================> {current_album.title}")
+        print(f"Image::=================> {current_album.album_photo}")
+        print(f"Description::===========> {current_album.album_description}")
+
         updated_album = current_album
-        updated_album_dict = updated_album.to_dict()
+        # updated_album_dict = updated_album.to_dict()
+
+        db.session.add(updated_album)
         db.session.commit()
-        return updated_album_dict
-    return jsonify(current_album.to_dict())
+
+        return updated_album.to_dict()
+    
+    # return updated_album_dict.to_dict()
 
 @album_routes.route("/delete/<int:albumId>", methods=["DELETE"])
 def delete_albums(albumId):

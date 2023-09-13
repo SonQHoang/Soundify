@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom'
 import { updateAlbumThunk, getUserAlbum } from '../../store/albums';
 
 import "./UpdateAlbumModal.css"
@@ -64,8 +64,8 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
 
         formData.append('author', currentUser.first_name)
         formData.append('title', title)
-        formData.append('photo', image)
-        formData.append('description', description)
+        formData.append('album_photo', image)
+        formData.append('album_description', description)
 
         // Confirming my data is in the form
 
@@ -73,20 +73,23 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
         formData.forEach((value, key) => {
             formDataObject[key] = value;
         });
-        console.log('formDataObject:', formDataObject);
+        console.log('formDataObject:==============>', formDataObject);
     };
 
     const updatedAlbum = {
         title: title,
-        image: image,
+        album_photo: image,
         album_description: description,
     }
+    
     const handleConfirmUpdate = async () => {
 
         dispatch(updateAlbumThunk(albumId, updatedAlbum))
+        // console.log('albumId, updateAlbumModal===========>', albumId)
+        // console.log('updatedAlbum information=========>', updatedAlbum)
             .then(() => dispatch(getUserAlbum())) // Triggering the rerender
         onSubmit();
-        history.push(`/`)
+        history.push(`/album/${albumId}`)
     };
     //==========================UpdateFormEnd===============================
 

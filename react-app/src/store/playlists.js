@@ -8,12 +8,12 @@ const ADD_SONG_TO_PLAYLIST = '/playlists/addSongToPlaylist'
 const GET_PLAYLIST_SONGS = '/playlists/getPlaylistSongs'
 
 const acGetPlaylistSongs = (data) => {
+    // console.log('Is this the data that I want============>', data)
     return {
         type: GET_PLAYLIST_SONGS,
         payload: data 
     }
 }
-
 
 const acGetUserPlaylist = (data) => {
     return {
@@ -38,7 +38,7 @@ const acDeletePlaylist = (data) => {
 }
 
 const acAddSongToPlaylist = (data) => {
-    console.log('What is the song I am adding======>', data)
+    // console.log('What is the song I am adding======>', data)
     return {
         type: ADD_SONG_TO_PLAYLIST,
         payload: data
@@ -96,7 +96,7 @@ export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
     try {
         const response = await fetch(`/api/playlist/delete/${playlistId}`, {
             method: "DELETE",
-            headers: { "Content-Type": 'application/json' }
+            headers: { "Content-Type": 'application/json'}
         });
         if (response.ok) {
             dispatch(acDeletePlaylist(playlistId))
@@ -107,7 +107,7 @@ export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
 }
 
 export const GetSongsForPlaylist = (playlistId) => async (dispatch) => {
-    console.log('playlistId thunk===================>', playlistId)
+    // console.log('playlistId thunk===================>', playlistId) 
     const response = await fetch(`/api/playlist/${playlistId}/songs`, {
     })
     if (response.ok) {
@@ -243,6 +243,16 @@ const playlistReducer = (state = initialState, action) => {
             const newState = { ...state, allPlaylists: { ...state.allPlaylists } }
             delete newState.allPlaylists[action.tipId]
             return newState
+        }
+
+        case GET_PLAYLIST_SONGS: {
+            return {
+                ...state,
+                singlePlaylist: {
+                    ...state.singlePlaylist,
+                    songs: [action.payload.id]= action.payload,
+                }
+            }
         }
         default:
             return state
