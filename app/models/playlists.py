@@ -6,7 +6,7 @@ songs_playlist_association = db.Table('playlist_songs',
     db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id'))),
 )
 
-class Playlists(db.Model):
+class Playlists(db.Model): 
     __tablename__ = "playlists"
 
     if environment == "production":

@@ -9,4 +9,4 @@ class UpdateAlbumForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     year = IntegerField("Year", validators=[DataRequired()])
     album_description = StringField("Description")
-    submit = SubmitField("Create Post") 
+    submit = SubmitField("Create Post")   

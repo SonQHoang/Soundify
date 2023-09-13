@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { UpdatePlaylistThunk, getUserPlaylist } from '../../store/playlists';
+import { useHistory } from 'react-router-dom'
+import { updateAlbumThunk, getUserAlbum } from '../../store/albums';
 
-import "./UpdatePlaylistModal.css"
+import "./UpdateAlbumModal.css"
 
-const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
-    // console.log('Delete Modal playlistId======>', playlistId)
+const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
+    // console.log('Delete Modal albumId======>', albumId)
     const history = useHistory()
     const currentUser = useSelector((state) => state.session.user)
 
@@ -30,12 +30,12 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
     //==========================ModalLogic End================================
 
     //===========================Update Form Start===================================
-    const current_playlist_information = useSelector(state => state.playlist.singlePlaylist)
-    console.log('current playlist info========>', current_playlist_information)
+    const current_album_information = useSelector(state => state.album.singleAlbum)
+    console.log('current album info========>', current_album_information)
     
-    const [title, setTitle] = useState(current_playlist_information.title || '');
-    const [image, setImage] = useState(current_playlist_information.image || '')
-    const [description, setDescription] = useState(current_playlist_information.description || "")
+    const [title, setTitle] = useState(current_album_information.title || '');
+    const [image, setImage] = useState(current_album_information.image || '')
+    const [description, setDescription] = useState(current_album_information.album_description || "")
     const [validationErrors, setValidationErrors] = useState([])
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -64,8 +64,8 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
 
         formData.append('author', currentUser.first_name)
         formData.append('title', title)
-        formData.append('photo', image)
-        formData.append('description', description)
+        formData.append('album_photo', image)
+        formData.append('album_description', description)
 
         // Confirming my data is in the form
 
@@ -73,20 +73,23 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
         formData.forEach((value, key) => {
             formDataObject[key] = value;
         });
-        console.log('formDataObject:', formDataObject);
+        console.log('formDataObject:==============>', formDataObject);
     };
 
-    const updatedPlaylist = {
+    const updatedAlbum = {
         title: title,
-        image: image,
-        playlist_description: description,
+        album_photo: image,
+        album_description: description,
     }
+    
     const handleConfirmUpdate = async () => {
 
-        dispatch(UpdatePlaylistThunk(playlistId, updatedPlaylist))
-            .then(() => dispatch(getUserPlaylist())) // Triggering the rerender
+        dispatch(updateAlbumThunk(albumId, updatedAlbum))
+        // console.log('albumId, updateAlbumModal===========>', albumId)
+        // console.log('updatedAlbum information=========>', updatedAlbum)
+            .then(() => dispatch(getUserAlbum())) // Triggering the rerender
         onSubmit();
-        history.push(`/playlist/${playlistId}`)
+        history.push(`/album/${albumId}`)
     };
     //==========================UpdateFormEnd===============================
 
@@ -99,14 +102,14 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
                     <div className="update-modal-h2">
                         <h2>Edit Details</h2>
                     </div>
-                    <div className="update-playlist-container">
-                        <form className="update-playlist-form-container"
+                    <div className="update-album-container">
+                        <form className="update-album-form-container"
                             onSubmit={(e) => submitForm(e)}
                             encType="multipart/form-data"
                         >
                             <div className="update-form-left-side">
                                 <label className="form-label" htmlFor="image">
-                                    Adjust Your Picture:
+                                    Update Your Album Cover:
                                 </label>
                                 <input
                                     id="image"
@@ -117,7 +120,7 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
                                 />
                                 {imagePreview && (
                                     <div>
-                                        <img src={imagePreview} alt="Playlist Image" width="100" />
+                                        <img src={imagePreview} alt="Album Image" width="100" />
                                     </div>
                                 )}
                             </div>
@@ -158,4 +161,4 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
     );
 };
 
-export default UpdatePlaylisttModal
+export default UpdateAlbumModal

@@ -14,7 +14,7 @@ const acGetUserAlbum = (data) => {
 }
 
 const acUpdateAlbum = (data) => {
-    // console.log('Is the acUpdate still going through======>', data)
+    console.log('Is the acUpdate still going through======>', data)
     return {
         type: UPDATE_USER_ALBUM,
         payload: data
@@ -76,7 +76,10 @@ export const updateAlbumThunk = (albumId, updatedData) => async (dispatch) => {
         });
         console.log('What does the response look like for the thunk after the backend=========>', response)
         if (response.ok) {
-            dispatch(acUpdateAlbum(albumId))
+            const updatedData = await response.json()
+            console.log('What does the updatedData look like, updateAlbumThunk**************', updatedData)
+            dispatch(acUpdateAlbum(updatedData))
+            return updatedData
         }
     } catch (error) {
         console.error(error)
@@ -99,7 +102,7 @@ export const deleteAlbumThunk = (albumId) => async (dispatch) => {
 
 
 export const AddSongToAlbum = (data) => async (dispatch) => {
-    console.log('What is the data here when I add a song to a album THUNK====>', data)
+    // console.log('What is the data here when I add a song to a album THUNK====>', data)
     const response = await fetch('/api/album/add', {
         method: "POST",
         headers: {
@@ -107,11 +110,11 @@ export const AddSongToAlbum = (data) => async (dispatch) => {
         },
         body: JSON.stringify(data)
     })
-    console.log('What does the response from the backend look like=====>', response)
+    // console.log('What does the response from the backend look like=====>', response)
     if (response.ok) {
         const data = await response.json()
         dispatch(acAddSongToAlbum(data))
-        return data
+        return data 
     } else {
         console.log("Could not add song to your album")
     }
@@ -174,14 +177,12 @@ const albumReducer = (state = initialState, action) => {
             }
         }
         case GET_USER_ALBUM: {
-            // console.log('my get user allbum action=====>', action)
             return {
                 ...state,
                 allAlbums: action.payload
             }
         }
         case CREATE_NEW_ALBUM:
-            // console.log('action=======>', action.payload.id)
             return {
                 ...state,
                 allAlbums: {
@@ -213,7 +214,11 @@ const albumReducer = (state = initialState, action) => {
 
         case UPDATE_USER_ALBUM:
             return {
-
+                ...state,
+                singleAlbum: {
+                    ...state.singleAlbum,
+                    [action.payload.id]: action.payload
+                }
             }
 
         case DELETE_USER_ALBUM: {

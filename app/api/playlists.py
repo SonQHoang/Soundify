@@ -99,28 +99,43 @@ def get_songs_for_playlist(playlistId):
     # Getting access to the playlist_songs table
     playlist_songs = playlist.playlist_songs
     print('playlist_songs backend==========>', playlist_songs)
+    # return playlist_songs
+    # return {playlist_songs: [playlist_song.to_dict() for playlist_song in playlist_songs]
 
-    playlist_info = []
+    song_container = []
 
     for playlist_song in playlist_songs:
-        print('Playlist Song: ========>', playlist_song)
-        song = playlist_song.song_playlists
-        print('Song ===$$=====>:', song)
+        # print(playlist_song)
+        song_to_dict = playlist_song.to_dict()
+        print('song_to_dict===============>', song_to_dict)
+        song_container.append(song_to_dict)
+        print('song_container==========+>', song_container)
+        
+    print('song_container_out of for loop----------->', song_container)
+    return song_container
 
-        album = song.song_albums
+    # playlist_info = []
 
-        if album:
-            song_info = {
-                "song_id": song.id,
-                "song_title": song.title,
-                "album_id": album.id,
-                "album_title": album.title  # Include album title if available
-            }
-            playlist_info.append(song_info)
-        playlist_info.append(song_info)
-    print('playlist_info backend=======>', playlist_info)
+    # for playlist_song in playlist_songs:
+    #     print('Playlist Song: ========>', playlist_song)
+    #     song = playlist_song.song_playlists
+    #     print('Song ===$$=====>:', song)
+    #     print('Song ===$$=====>:', song.songs_album)
 
-    return jsonify(playlist_info), 200
+    #     album = song.song_albums
+    #     print('album=============>', album)
+    #     if album:
+    #         song_info = {
+    #             "song_id": song.id,
+    #             "song_title": song.title,
+    #             "album_id": album.id,
+    #             "album_title": album.title  # Include album title if available
+    #         }
+    #         playlist_info.append(song_info)
+    #     playlist_info.append(song_info)
+    # print('playlist_info backend=======>', playlist_info)
+
+    # return jsonify(playlist_info), 200
 
 
 @playlist_routes.route("/<int:playlistId>")
@@ -182,7 +197,7 @@ def update_playlists(playlistId):
             error = {}
             error.message = "You shouldn't be trying to adjust someone else's playlist..."
             return jsonify(error), 403
-        
+            
         current_playlist.title = request.json['title']
         current_playlist.image = request.json['image']
         current_playlist.playlist_description = request.json['playlist_description']

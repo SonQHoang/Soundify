@@ -24,7 +24,6 @@ function PlaylistDetails() {
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
-    // const user_tips = useSelector()
 
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
@@ -37,24 +36,6 @@ function PlaylistDetails() {
     }, [AddSongToPlaylist])
 
     const [selectedSongs, setSelectedSongs] = useState([]);
-    // console.log('*************,song in selectedSongs*************', selectedSongs)
-
-    // useEffect(() => {
-    //     if (selectedSongs.length > 0) {
-    //         // There are selected songs in the array
-    //         console.log("selectedSongs contains songs:", selectedSongs);
-    //     } else {
-    //         // selectedSongs is empty
-    //         console.log("selectedSongs is empty");
-    //     }
-    // }, [selectedSongs]);
-
-    // const singlePlaylist = useSelector((state) => state.playlist);
-    // const playlist_song = Object.values(singlePlaylist)
-    // const playlist_music = playlist_song[1]
-
-    // const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
-    // console.log('Updated Song List=========>', new_songs)
 
     useEffect(() => {
         dispatch(getAllSongs())
@@ -89,15 +70,6 @@ function PlaylistDetails() {
         setQuery("")
     }
 
-    // const addToPlaylist = async (title) => {
-    //     const selectedSong = songLibrary.find(song => song.title === title);
-    //     if (selectedSong) {
-    //         setSelectedSongs([...selectedSongs, selectedSong]);
-    //         dispatch(AddSongToPlaylist(selectedSong));
-    //         setQuery("");
-    //     }
-    // }
-
 
     const addToPlaylist = () => {
         Object.values(filteredSongs).map((song) => {
@@ -105,22 +77,21 @@ function PlaylistDetails() {
                 ...song,
                 playlistId
             }
-            // console.log('song_with_playlist_id=========>', song_with_playlist_id)
             dispatch(AddSongToPlaylist(song_with_playlist_id))
-
-            // console.log('Dispatch addSongToPlaylist being sent out for song:', song_with_playlist_id);
         })
-        // setSelectedSongs([])
     }
 
-    const getPlaylistSongs = () => {
-        dispatch(GetSongsForPlaylist(playlistId))
+    
+    const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
+    console.log('new_songs=========>', new_songs)
+    
+    const getPlaylistSongs = async () => {
+        await dispatch(GetSongsForPlaylist(playlistId))
+        // await dispatch(GetSinglePlaylist(playlistId))
     }
 
-
-    const songs_to_be_added_to_playlist = useSelector(state => state.playlist.singlePlaylist.songs)
-    console.log('songs_to_be_added_to_playlist=======>', songs_to_be_added_to_playlist)
-
+    useEffect(() => {
+    }, [new_songs])
     //======================================================SearchBar End========================================
 
     //======================================================DeletePlaylist Start========================================
@@ -132,7 +103,7 @@ function PlaylistDetails() {
 
     useEffect(() => {
         dispatch(GetSinglePlaylist(playlistId))
-        console.log('Checking that the new playlist is being found==========>', playlistId)
+        // console.log('Checking that the new playlist is being found==========>', playlistId)
     }, [dispatch, userId])
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
@@ -204,11 +175,6 @@ function PlaylistDetails() {
                 </div>
                 <div className='search-bar-container'>
                     <div className='search-bar'>
-                        {/* {new_songs.map((value, index) => (
-                            <div key={index} onClick={() => setSelectedSongs(value)}>
-                                <p>{value.title}</p>
-                            </div>
-                        ))} */}
                         <input
                             type="text"
                             placeholder="Search for a song"
@@ -225,34 +191,22 @@ function PlaylistDetails() {
                     <p>Clock Icon</p>
                 </div>
                 <div className="playlist-songs-container">
-                    {/* <div className="playlist">
-                        <ul>
+                    <div className="playlist">
+                        {/* <div>
                             {(new_songs)?.map((song, index) => (
-                                <div key={index}>
-                                    {song?.title ? (
-                                        <p onClick={() => {selectSong(song); setQuery("") }}>{song.title}</p>
-                                    ) : null}
-                                    <p>{song?.album}</p>
-                                    <p>{song?.date}</p>
-                                    <p>{song?.timeSymbol}</p>
+                                <div>
+                                    <p>{song.title}</p>
+                                    <p>{song.id}</p>
                                 </div>
                             ))}
-                        </ul>
-                    </div> */}
-                    <div className="playlist">
-                        <ul>
-                            {(currentPlaylist.songs)?.map((song, index) => (
+                        </div> */}
+                            {(new_songs)?.map((song, index) => (
                                 <div key={index}>
                                     {song?.title ? (
                                         <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
                                     ) : null}
-                                    {/* <p>{song?.album}</p>
-                                    <p>{song?.date}</p>
-                                    <p>{song?.timeSymbol}</p>
-                                    <p>{song.audio_url}</p> */}
                                 </div>
                             ))}
-                        </ul>
                         {selectedSongs.length > 0 && (
                             <div>
                                 {selectedSongs.map((selectedSong, index) => (
@@ -305,11 +259,12 @@ function PlaylistDetails() {
                         </ul>
                         <button onClick={() => {
                             addToPlaylist();
-                            getPlaylistSongs();
-                        }}>Add To Playlist</button>
-                        {/* <button
-                            onClick={addToPlaylist}
-                        >Add to Playlist</button> */}
+                            // getPlaylistSongs();
+                        }}>Queue Songs</button>
+                        <button onClick={() => {
+                            getPlaylistSongs()
+                        }}>Add to Playlist
+                        </button>
                     </div>
                 </div>
             </div>

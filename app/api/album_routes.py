@@ -4,7 +4,7 @@ from app.models.db import db
 from app.models import Albums, User
 from datetime import datetime
 from ..forms.create_album_form import CreateAlbumForm
-from ..forms.update_playlist_form import UpdatePlaylistForm
+from ..forms.update_album_form import UpdateAlbumForm
 from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 album_routes = Blueprint('album', __name__)
@@ -13,13 +13,13 @@ session = db.session
 @album_routes.route('/user_album', methods=["GET"])
 def get_user_album():
     albums = Albums.query.filter_by(user_id = current_user.id).all()
-    print('albums=====>', albums)
+    # print('albums=====>', albums)
     return [album.to_dict() for album in albums]
 
 @album_routes.route("/all", methods=["GET"])
 def get_all_albums():
     all_albums = Albums.query.all()
-    # print('all_playlists=======>', all_playlists)
+    # print('all_albums=======>', all_albums)
     return [album.to_dict() for album in all_albums]
 
 @album_routes.route("/new", methods=["POST"])
@@ -40,12 +40,12 @@ def create_albums():
             date_created=datetime.utcnow(),
         )
 
-        print('new_album========>', new_album)
+        # print('new_album========>', new_album)
         db.session.add(new_album)
         db.session.commit()
-        # print('respost =======>', {new_playlist.to_dict()})
+        # print('respost =======>', {new_album.to_dict()})
         return {"resPost": new_album.to_dict()}
-        # return jsonify({"message": "Playlist created!"})
+        # return jsonify({"message": "Album created!"})
     else:
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
@@ -64,10 +64,9 @@ def get_single_album_by_id(albumId):
     
     album_data = {
         "id": album.id,
-        "song_id": album.song_id,
         "title": album.title,
         "owner": album.owner,
-        "album_description": album.playlist_description,
+        "album_description": album.album_description,
         "date_created": datetime.utcnow(),
     }
 
@@ -76,29 +75,51 @@ def get_single_album_by_id(albumId):
     return jsonify(album_data)
 
 @album_routes.route("/update/<int:albumId>", methods=["PUT"])
-def update_playlists(albumId):
+def update_albums(albumId):
     current_album = Albums.query.get(albumId)
+    print(f"Current Album:========================> {current_album}")
 
     form = UpdateAlbumForm()
+    print(f"Form:========================> {form}")
+
+
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print("Request JSON Data=============>:", request.json)
+    # Getting expected data up to here 
     if form.validate_on_submit():
+
         if current_user.id != current_album.user_id:
             error = {}
             error.message = "You shouldn't be trying to adjust someone else's album..."
             return jsonify(error), 403
         
+        print("Before Update:")
+        print(f"Title:========================> {current_album.title}")
+        print(f"Album Photo::=================> {current_album.album_photo}")
+        print(f"Album Description::===========> {current_album.album_description}")
+        
         current_album.title = request.json['title']
-        current_album.image = request.json['image']
-        current_album.playlist_description = request.json['playlist_description']
+        current_album.album_photo = request.json['album_photo']
+        current_album.album_description = request.json['album_description']
+
+        print("After Update:")
+        print(f"Title::=================> {current_album.title}")
+        print(f"Image::=================> {current_album.album_photo}")
+        print(f"Description::===========> {current_album.album_description}")
+
         updated_album = current_album
-        updated_album_dict = updated_album.to_dict()
+        # updated_album_dict = updated_album.to_dict()
+
+        db.session.add(updated_album)
         db.session.commit()
-        return updated_album_dict
-    return jsonify(current_album.to_dict())
+
+        return updated_album.to_dict()
+    
+    # return updated_album_dict.to_dict()
 
 @album_routes.route("/delete/<int:albumId>", methods=["DELETE"])
-def delete_playlists(albumId):
+def delete_albums(albumId):
     album_to_delete = Albums.query.get(albumId)
     db.session.delete(album_to_delete)
     db.session.commit()

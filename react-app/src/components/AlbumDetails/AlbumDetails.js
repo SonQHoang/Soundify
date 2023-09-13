@@ -4,19 +4,19 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
-import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
-import DeletePlaylist from "../DeletePlaylist/DeletePlaylist";
-import { GetSinglePlaylist } from "../../store/playlists";
-import { getAllPlaylists } from "../../store/playlists";
-import { getUserPlaylist } from "../../store/playlists";
+import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
+import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
+import { GetSingleAlbum } from "../../store/albums";
+import { getAllAlbums } from "../../store/albums";
+import { getUserAlbum } from "../../store/albums";
 import Player from "../AudioBar/audiobar";
 import "./AlbumDetails.css"
-import UpdatePlaylist from "../UpdatePlaylist/UpdatePlaylist";
-import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
+import UpdateAlbum from "../UpdateAlbum/UpdateAlbum";
+import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
 
 function AlbumDetails() {
     const { albumId } = useParams()
-    // console.log('playlistId in playlistDetails========>', playlistId)
+    // console.log('albumId in albumDetails========>', albumId)
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -26,12 +26,12 @@ function AlbumDetails() {
 
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
-    // const [playlist, setPlaylist] = useState([]); // Initialize playlist as an array of song 
+    // const [album, setAlbum] = useState([]); // Initialize album as an array of song 
     // const [selectedSong, setSelectedSong] = useState(null)
     const [selectedSongs, setSelectedSongs] = useState([]);
 
     const new_songs = useSelector((state) => state.playlist.singlePlaylist);
-    console.log('Updated Song List=========>', new_songs)
+    // console.log('Updated Song List=========>', new_songs)
 
     useEffect(() => {
         dispatch(getAllSongs())
@@ -71,46 +71,47 @@ function AlbumDetails() {
 
     //======================================================SearchBar End========================================
 
-    //======================================================DeletePlaylist Start========================================
+    //======================================================DeleteAlbum Start========================================
 
     const [showModal, setShowModal] = useState(false);
-    const [playlistToDelete, setPlaylistToDelete] = useState(null);
-    // console.log("Are we targeting the playlistToDelete=======>", playlistToDelete)
+    const [albumToDelete, setAlbumToDelete] = useState(null);
+    // console.log("Are we targeting the albumToDelete=======>", albumToDelete)
     const [modalType, setModalType] = useState(null);
 
     useEffect(() => {
-        dispatch(GetSinglePlaylist(albumId))
+        dispatch(GetSingleAlbum(albumId))
     }, [dispatch, userId])
 
-    const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
+    const currentAlbum = useSelector((state) => state.album.singleAlbum)
+    // console.log('What does currentAlbum look like=========>', currentAlbum)
     const handleDeleteClick = async () => {
-        setPlaylistToDelete(currentPlaylist)
-        // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
+        setAlbumToDelete(currentAlbum)
+        // console.log('Playlist to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("delete");
         setShowModal(true)
-        await dispatch(getUserPlaylist())
+        await dispatch(getUserAlbum())
     }
 
-    //======================================================DeletePlaylist End========================================
+    //======================================================DeleteAlbum End========================================
 
-    //======================================================UpdatePlaylist Start========================================
+    //======================================================UpdateAlbum Start========================================
 
-    const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
+    const [albumToUpdate, setAlbumToUpdate] = useState(null);
 
     useEffect(() => {
-        dispatch(GetSinglePlaylist(albumId))
+        dispatch(GetSingleAlbum(albumId))
     }, [dispatch, userId])
 
     const handleUpdateClick = async () => {
-        setPlaylistToUpdate(currentPlaylist)
-        // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
+        setAlbumToUpdate(currentAlbum)
+        // console.log('Album to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("update");
         setShowModal(true)
-        dispatch(getUserPlaylist())
+        dispatch(getUserAlbum())
     }
 
 
-    //======================================================UpdatePlaylist End========================================
+    //======================================================UpdateAlbum End========================================
 
 
     return (
@@ -123,26 +124,27 @@ function AlbumDetails() {
                         </div>
                         <div className="album-information-container">
                             <p>Album</p>
-                            <h2>{currentPlaylist?.title} {currentPlaylist?.id}</h2>
+                            <h2>{currentAlbum?.title} {currentAlbum?.id}</h2>
                             <div className="album-description">
-                                {currentPlaylist?.playlist_description}
+                                {currentAlbum?.album_description}
                             </div>
                             <div className="album-user-details">
                                 <p className="album-user-picture">Profile Pic</p>
-                                <p>{currentPlaylist?.owner}</p>
+                                <p>{currentAlbum?.owner}</p>
                             </div>
                         </div>
                     </div>
                     <div>
                         <button className="album-update-button" onClick={() => {
+                            console.log('album-update-button component CLICKED****************')
                             return handleUpdateClick(albumId);
                         }}>Edit Details</button>
-                        <UpdatePlaylist albumId={albumId} />
+                        <UpdateAlbum albumId={albumId} />
 
-                        <button className="playlist-delete-button" onClick={() => {
+                        <button className="album-delete-button" onClick={() => {
                             return handleDeleteClick(albumId);
                         }}>Delete Album</button>
-                        <DeletePlaylist albumId={albumId} />
+                        <DeleteAlbum albumId={albumId} />
                     </div>
                 </div>
                 <div className='search-bar-container'>
@@ -184,31 +186,31 @@ function AlbumDetails() {
                         <Player key={index} src={song.audio_url} />
                     ))}
                     {showModal && modalType === "update" && (
-                        <UpdatePlaylistModal
-                            albumId={playlistToUpdate.id}
+                        <UpdateAlbumModal
+                            albumId={albumToUpdate.id}
                             onSubmit={() => {
                                 setShowModal(false);
-                                setPlaylistToUpdate(null);
+                                setAlbumToUpdate(null);
                                 setModalType(null);
                             }}
                             onClose={() => {
                                 setShowModal(false);
-                                setPlaylistToUpdate(null);
+                                setAlbumToUpdate(null);
                                 setModalType(null);
                             }}
                         />
                     )}
                     {showModal && modalType === "delete" && (
-                        <DeletePlaylistModal
-                            albumId={playlistToDelete.id}
+                        <DeleteAlbumModal
+                            albumId={albumToDelete.id}
                             onSubmit={() => {
                                 setShowModal(false);
-                                setPlaylistToDelete(null);
+                                setAlbumToDelete(null);
                                 setModalType(null);
                             }}
                             onClose={() => {
                                 setShowModal(false);
-                                setPlaylistToDelete(null);
+                                setAlbumToDelete(null);
                                 setModalType(null);
                             }}
                         />
