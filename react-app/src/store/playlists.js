@@ -5,6 +5,15 @@ const UPDATE_USER_PLAYLIST = '/playlists/updatePlaylist'
 const DELETE_USER_PLAYLIST = '/playlists/deletePlaylist'
 const CREATE_NEW_PLAYLIST = '/playlists/createPlaylist'
 const ADD_SONG_TO_PLAYLIST = '/playlists/addSongToPlaylist'
+const GET_PLAYLIST_SONGS = '/playlists/getPlaylistSongs'
+
+const acGetPlaylistSongs = (data) => {
+    return {
+        type: GET_PLAYLIST_SONGS,
+        payload: data
+    }
+}
+
 
 const acGetUserPlaylist = (data) => {
     return {
@@ -27,8 +36,9 @@ const acDeletePlaylist = (data) => {
         payload: data
     }
 }
+
 const acAddSongToPlaylist = (data) => {
-    console.log('Does this data contain the song I want to add======>', data)
+    console.log('What is the song I am adding======>', data)
     return {
         type: ADD_SONG_TO_PLAYLIST,
         payload: data
@@ -59,21 +69,21 @@ export const getUserPlaylist = () => async (dispatch) => {
     const response = await fetch(`/api/playlist/user_playlist`)
     if (response.ok) {
         const playlist = await response.json()
-        console.log('playlist=======>', playlist)
+        // console.log('playlist=======>', playlist)
         dispatch(acGetUserPlaylist(playlist))
     }
 }
 
 export const UpdatePlaylistThunk = (playlistId, updatedData) => async (dispatch) => {
-    console.log('Is the playlistId coming through for the THUNK======>', playlistId)
-    console.log('Is the updatedDat coming through======>', updatedData)
+    // console.log('Is the playlistId coming through for the THUNK======>', playlistId)
+    // console.log('Is the updatedDat coming through======>', updatedData)
     try {
         const response = await fetch(`/api/playlist/update/${playlistId}`, {
             method: "PUT",
             headers: { "Content-Type": 'application/json' },
             body: JSON.stringify(updatedData)
         });
-        console.log('What does the response look like for the thunk after the backend=========>', response)
+        // console.log('What does the response look like for the thunk after the backend=========>', response)
         if (response.ok) {
             dispatch(acUpdatePlaylist(playlistId))
         }
@@ -96,20 +106,38 @@ export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
     }
 }
 
+export const GetSongsForPlaylist = (playlistId) => async (dispatch) => {
+    console.log('playlistId thunk===================>', playlistId)
+    const response = await fetch(`/api/playlist/${playlistId}/songs`)
+    if (response.ok) {
+        const playlist_songs = await response.json()
+        dispatch(acGetPlaylistSongs(playlist_songs))
+        return playlist_songs
+    } else {
+        console.log("Could not get all of your playlist songs")
+    }
+}
+
 
 export const AddSongToPlaylist = (data) => async (dispatch) => {
-    console.log('What is the data here when I add a song to a playlist THUNK====>', data)
-    const response = await fetch('/api/playlist/add', {
+    const { playlistId } = data
+    const intPlaylistId = parseInt(playlistId, 10)
+    // console.log('playlistId, songId ============>', intPlaylistId)
+    // console.log("********* in AddSongToPlaylist, data:", data.id)
+    // console.log('What is the data here when I add a song to a playlist THUNK====>', data)
+    const response = await fetch(`/api/playlist/${intPlaylistId}/add`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-    console.log('What does the response from the backend look like=====>', response)
+    // console.log('**************AddSongToPlaylist response', response)
     if (response.ok) {
         const data = await response.json()
+        // console.log('**************AddSongToPlaylist res.ok data', data)
         dispatch(acAddSongToPlaylist(data))
+        // console.log('In AddSongToPlaylist=============>', data)
         return data
     } else {
         console.log("Could not add song to your playlist")
@@ -140,7 +168,7 @@ export const createPlaylist = (data) => async (dispatch) => {
     // console.log('What is my response looking like=======>', response)
     if (response.ok) {
         const { resPost } = await response.json()
-        console.log("NEW PLAYLIST DATA =======>", resPost)
+        // console.log("NEW PLAYLIST DATA =======>", resPost)
         dispatch(acCreatePlaylist(resPost))
     } else {
         console.log("There was an error creating your playlist!")
@@ -188,21 +216,16 @@ const playlistReducer = (state = initialState, action) => {
                     [action.payload.id]: action.payload,
                 },
             };
-        case ADD_SONG_TO_PLAYLIST:
-            console.log('My initial state =====>', state);
-            console.log('My song action payload =====>', action.payload);
-
+        case ADD_SONG_TO_PLAYLIST: {
             const updatedState = {
                 ...state,
                 singlePlaylist: {
                     ...state.singlePlaylist,
-                    [action.payload.id]: action.payload
-                }
+                    songs: [...(state.singlePlaylist.songs || []), action.payload],
+                },
             };
-
-            console.log('Updated state =====>', updatedState);
-
             return updatedState;
+        }
 
         case GET_SINGLE_PLAYLIST:
             return {

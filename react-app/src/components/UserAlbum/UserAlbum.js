@@ -16,7 +16,7 @@ const UserAlbum = () => {
     // console.log('userPlaylists=========>', userPlaylist)
 
     useEffect(() => {
-        console.log("I'm dispatching getUserPlaylist")
+        // console.log("I'm dispatching getUserPlaylist")
         dispatch(getUserAlbum())
     }, [dispatch, userId])
 

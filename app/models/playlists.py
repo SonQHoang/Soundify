@@ -1,10 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-# songs_playlist_association = db.Table('playlist_songs',
-#     db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id'))),
-#     db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id'))),
-# )
+songs_playlist_association = db.Table('playlist_songs',
+    db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id'))),
+    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id'))),
+)
 
 class Playlists(db.Model):
     __tablename__ = "playlists"
@@ -17,13 +17,13 @@ class Playlists(db.Model):
     song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=True)
     owner = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
-    image = db.Column(db.String) 
+    image = db.Column(db.String)
     playlist_description = db.Column(db.String(255))
     date_created = db.Column(db.DateTime, nullable=False)
 
     # Playlist has a MANY to MANY relationship with Songs
-    playlist_songs = db.relationship('Songs', back_populates='song_playlists')
-    
+    playlist_songs = db.relationship('Songs', secondary=songs_playlist_association, back_populates='song_playlists')
+
     # Playlist has a MANY to one relationship with user
     playlist_user = db.relationship('User', back_populates='playlist')
 
@@ -34,6 +34,8 @@ class Playlists(db.Model):
             "song_id": self.song_id,
             "owner": self.owner,
             "playlist_description": self.playlist_description,
+            # Taking relationship in line 25 and pulling in all songs that belong to this playlist
+            # "playlist_songs": [playlist_song.to_dict() for playlist_song in self.playlist_songs],
             "image": self.image,
             "title": self.title,
             "date_created": self.date_created,
