@@ -108,13 +108,14 @@ export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
 
 export const GetSongsForPlaylist = (playlistId) => async (dispatch) => {
     console.log('playlistId thunk===================>', playlistId)
-    const response = await fetch(`/api/playlist/${playlistId}/songs`)
+    const response = await fetch(`/api/playlist/${playlistId}/songs`, {
+    })
     if (response.ok) {
         const playlist_songs = await response.json()
         dispatch(acGetPlaylistSongs(playlist_songs))
         return playlist_songs
     } else {
-        console.log("Could not get all of your playlist songs")
+        console.error(`Request failed with status ${response.status}`);
     }
 }
 

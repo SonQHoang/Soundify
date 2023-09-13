@@ -107,12 +107,14 @@ function PlaylistDetails() {
             }
             // console.log('song_with_playlist_id=========>', song_with_playlist_id)
             dispatch(AddSongToPlaylist(song_with_playlist_id))
-            .then(() => {
-                dispatch(GetSongsForPlaylist(playlistId))
-            })
+
             // console.log('Dispatch addSongToPlaylist being sent out for song:', song_with_playlist_id);
         })
         // setSelectedSongs([])
+    }
+
+    const getPlaylistSongs = () => {
+        dispatch(GetSongsForPlaylist(playlistId))
     }
 
 
@@ -301,9 +303,13 @@ function PlaylistDetails() {
                                 <li key={index}>{song.title}</li>
                             ))}
                         </ul>
-                        <button
-                        onClick={addToPlaylist}
-                        >Add to Playlist</button>
+                        <button onClick={() => {
+                            addToPlaylist();
+                            getPlaylistSongs();
+                        }}>Add To Playlist</button>
+                        {/* <button
+                            onClick={addToPlaylist}
+                        >Add to Playlist</button> */}
                     </div>
                 </div>
             </div>

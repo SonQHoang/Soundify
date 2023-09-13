@@ -90,15 +90,11 @@ def add_song_to_playlist(playlistId):
 
 # #3 
 @playlist_routes.route("/<int:playlistId>/songs", methods=["GET"])
-def get_songs_of_playlist(playlistId):
+def get_songs_for_playlist(playlistId):
     print('playlist_id backend============>', playlistId)
     # Getting the plalyist in question with playlistId
     playlist = Playlists.query.get(playlistId)
     print('current_playlist backend========>', playlist)
-
-    data = request.json
-    album_id = data.get('album_id')  
-    print('album_id backend=======>', album_id)
 
     # Getting access to the playlist_songs table
     playlist_songs = playlist.playlist_songs
@@ -109,18 +105,19 @@ def get_songs_of_playlist(playlistId):
     for playlist_song in playlist_songs:
         print('Playlist Song: ========>', playlist_song)
         song = playlist_song.song_playlists
-        print('Song ========>:', song)
+        print('Song ===$$=====>:', song)
 
-        albums = song.album_song
+        album = song.song_albums
 
-        # for album in albums:
-        #     song_info = {
-        #         "song_id": song.id,
-        #         "song_title": song.title,
-        #         "album_id": album.id,
-        #         "album_title": album.title
-        # }
-        # playlist_info.append(song_info)
+        if album:
+            song_info = {
+                "song_id": song.id,
+                "song_title": song.title,
+                "album_id": album.id,
+                "album_title": album.title  # Include album title if available
+            }
+            playlist_info.append(song_info)
+        playlist_info.append(song_info)
     print('playlist_info backend=======>', playlist_info)
 
     return jsonify(playlist_info), 200
