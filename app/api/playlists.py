@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, request
 from flask_login import login_required, current_user
 from app.models.db import db
-from app.models import Playlists, User
+from app.models import Playlists, User, Songs, Albums
 from datetime import datetime
 from ..forms.create_playlist_form import CreatePlaylistForm
 from ..forms.update_playlist_form import UpdatePlaylistForm
@@ -56,11 +56,75 @@ def create_playlists():
     else:
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
+    
+    
+#1
+# @playlist_routes.route("/add", methods=["POST"])
+# def add_song_to_playlist():
+#     data = request.get_json()
+#     return jsonify(data)
 
-@playlist_routes.route("/add", methods=["POST"])
-def add_song_to_playlist():
-    data = request.get_json()
-    return jsonify(data)
+#2
+@playlist_routes.route("/<int:playlistId>/add", methods=["POST"])
+def add_song_to_playlist(playlistId):
+
+    data = request.json
+    song_id = data['id']
+
+    playlist = Playlists.query.get(playlistId)
+
+    if not playlist:
+        return jsonify({"error": "Playlist not found"}), 404
+
+    new_songs = Songs.query.get(song_id)
+
+    if not new_songs:
+        return jsonify({"error": "Song not found"}), 404
+    
+    playlist.playlist_songs.append(new_songs)
+
+    db.session.add(playlist)
+    db.session.commit()
+
+    return jsonify(new_songs.to_dict())
+
+# #3 
+@playlist_routes.route("/<int:playlistId>/songs", methods=["GET"])
+def get_songs_of_playlist(playlistId):
+    print('playlist_id backend============>', playlistId)
+    # Getting the plalyist in question with playlistId
+    playlist = Playlists.query.get(playlistId)
+    print('current_playlist backend========>', playlist)
+
+    data = request.json
+    album_id = data.get('album_id')  
+    print('album_id backend=======>', album_id)
+
+    # Getting access to the playlist_songs table
+    playlist_songs = playlist.playlist_songs
+    print('playlist_songs backend==========>', playlist_songs)
+
+    playlist_info = []
+
+    for playlist_song in playlist_songs:
+        print('Playlist Song: ========>', playlist_song)
+        song = playlist_song.song_playlists
+        print('Song ========>:', song)
+
+        albums = song.album_song
+
+        # for album in albums:
+        #     song_info = {
+        #         "song_id": song.id,
+        #         "song_title": song.title,
+        #         "album_id": album.id,
+        #         "album_title": album.title
+        # }
+        # playlist_info.append(song_info)
+    print('playlist_info backend=======>', playlist_info)
+
+    return jsonify(playlist_info), 200
+
 
 @playlist_routes.route("/<int:playlistId>")
 def get_single_playlist_by_id(playlistId):
@@ -75,12 +139,39 @@ def get_single_playlist_by_id(playlistId):
         "title": playlist.title,
         "owner": playlist.owner,
         "playlist_description": playlist.playlist_description,
+        # "playlist_songs": [song.to_dict() for song in playlist.songs],
         "date_created": datetime.utcnow(),
     }
 
     if hasattr(playlist, "songs"):
         playlist_data["songs"] = [song.to_dict() for song in playlist.songs]
     return jsonify(playlist_data)
+
+# @playlist_routes.route("/<int:playlistId>")
+# def get_single_playlist_by_id(playlistId):
+#     playlist = Playlists.query.get(playlistId)
+#     if playlist: 
+#         playlist_data = playlist.to_dict()
+#         return jsonify(playlist_data)
+#     else:
+#         return jsonify({"error": "Playlist not found"}), 404
+
+    # if playlist is None:
+    #     return jsonify({"error": "Playlist not found"}), 404
+    
+    # playlist_data = {
+    #     "id": playlist.id,
+    #     "song_id": playlist.song_id,
+    #     "title": playlist.title,
+    #     "owner": playlist.owner,
+    #     "playlist_description": playlist.playlist_description,
+    #     "playlist_songs": playlist.playlist_songs,
+    #     "date_created": datetime.utcnow(),
+    # }
+
+    # if hasattr(playlist, "songs"):
+    #     playlist_data["songs"] = [song.to_dict() for song in playlist.songs]
+    # return jsonify(playlist_data)
 
 @playlist_routes.route("/update/<int:playlistId>", methods=["PUT"])
 def update_playlists(playlistId):
