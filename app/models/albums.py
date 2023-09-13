@@ -9,6 +9,7 @@ class Albums(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    # song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=True)
     album_photo = db.Column(db.String)
     owner = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False, unique=True)

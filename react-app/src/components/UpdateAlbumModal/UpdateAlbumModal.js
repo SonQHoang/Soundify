@@ -35,7 +35,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     
     const [title, setTitle] = useState(current_album_information.title || '');
     const [image, setImage] = useState(current_album_information.image || '')
-    const [description, setDescription] = useState(current_album_information.description || "")
+    const [description, setDescription] = useState(current_album_information.album_description || "")
     const [validationErrors, setValidationErrors] = useState([])
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)

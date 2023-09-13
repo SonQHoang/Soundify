@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .playlists import songs_playlist_association
+from .playlists import songs_playlist_association 
 
 class Songs(db.Model):
     __tablename__ = "songs"

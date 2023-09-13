@@ -10,7 +10,7 @@ const GET_PLAYLIST_SONGS = '/playlists/getPlaylistSongs'
 const acGetPlaylistSongs = (data) => {
     return {
         type: GET_PLAYLIST_SONGS,
-        payload: data
+        payload: data 
     }
 }
 

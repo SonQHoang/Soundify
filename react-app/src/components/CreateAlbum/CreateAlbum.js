@@ -44,7 +44,7 @@ const CreateAlbum = () => {
         // console.log('What does author gives us back======>', currentUser)
         formData.append('title', title)
         formData.append('photo', image)
-        formData.append('description', description)
+        formData.append('album_description', description)
         formData.append('year', year)
         formData.append('date_created', date_created)
 

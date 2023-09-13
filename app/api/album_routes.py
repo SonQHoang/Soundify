@@ -4,7 +4,7 @@ from app.models.db import db
 from app.models import Albums, User
 from datetime import datetime
 from ..forms.create_album_form import CreateAlbumForm
-from ..forms.update_playlist_form import UpdatePlaylistForm
+from ..forms.update_album_form import UpdateAlbumForm
 from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 album_routes = Blueprint('album', __name__)
@@ -19,7 +19,7 @@ def get_user_album():
 @album_routes.route("/all", methods=["GET"])
 def get_all_albums():
     all_albums = Albums.query.all()
-    # print('all_playlists=======>', all_playlists)
+    # print('all_albums=======>', all_albums)
     return [album.to_dict() for album in all_albums]
 
 @album_routes.route("/new", methods=["POST"])
@@ -43,9 +43,9 @@ def create_albums():
         print('new_album========>', new_album)
         db.session.add(new_album)
         db.session.commit()
-        # print('respost =======>', {new_playlist.to_dict()})
+        # print('respost =======>', {new_album.to_dict()})
         return {"resPost": new_album.to_dict()}
-        # return jsonify({"message": "Playlist created!"})
+        # return jsonify({"message": "Album created!"})
     else:
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
@@ -64,10 +64,9 @@ def get_single_album_by_id(albumId):
     
     album_data = {
         "id": album.id,
-        "song_id": album.song_id,
         "title": album.title,
         "owner": album.owner,
-        "album_description": album.playlist_description,
+        "album_description": album.album_description,
         "date_created": datetime.utcnow(),
     }
 
@@ -76,7 +75,7 @@ def get_single_album_by_id(albumId):
     return jsonify(album_data)
 
 @album_routes.route("/update/<int:albumId>", methods=["PUT"])
-def update_playlists(albumId):
+def update_albums(albumId):
     current_album = Albums.query.get(albumId)
 
     form = UpdateAlbumForm()
@@ -90,7 +89,7 @@ def update_playlists(albumId):
         
         current_album.title = request.json['title']
         current_album.image = request.json['image']
-        current_album.playlist_description = request.json['playlist_description']
+        current_album.album_description = request.json['album_description']
         updated_album = current_album
         updated_album_dict = updated_album.to_dict()
         db.session.commit()
@@ -98,7 +97,7 @@ def update_playlists(albumId):
     return jsonify(current_album.to_dict())
 
 @album_routes.route("/delete/<int:albumId>", methods=["DELETE"])
-def delete_playlists(albumId):
+def delete_albums(albumId):
     album_to_delete = Albums.query.get(albumId)
     db.session.delete(album_to_delete)
     db.session.commit()

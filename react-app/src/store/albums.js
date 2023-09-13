@@ -111,7 +111,7 @@ export const AddSongToAlbum = (data) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(acAddSongToAlbum(data))
-        return data
+        return data 
     } else {
         console.log("Could not add song to your album")
     }
