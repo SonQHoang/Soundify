@@ -12,7 +12,7 @@ import { getUserPlaylist } from "../../store/playlists";
 import Player from "../AudioBar/audiobar";
 import "./AlbumDetails.css"
 import UpdatePlaylist from "../UpdatePlaylist/UpdatePlaylist";
-import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
+import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
 
 function AlbumDetails() {
     const { albumId } = useParams()
@@ -95,14 +95,14 @@ function AlbumDetails() {
 
     //======================================================UpdatePlaylist Start========================================
 
-    const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
+    const [albumToUpdate, setAlbumToUpdate] = useState(null);
 
     useEffect(() => {
         dispatch(GetSinglePlaylist(albumId))
     }, [dispatch, userId])
 
     const handleUpdateClick = async () => {
-        setPlaylistToUpdate(currentAlbum)
+        setAlbumToUpdate(currentAlbum)
         // console.log('Playlist to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("update");
         setShowModal(true)
@@ -184,16 +184,16 @@ function AlbumDetails() {
                         <Player key={index} src={song.audio_url} />
                     ))}
                     {showModal && modalType === "update" && (
-                        <UpdatePlaylistModal
-                            albumId={playlistToUpdate.id}
+                        <UpdateAlbumModal
+                            albumId={albumToUpdate.id}
                             onSubmit={() => {
                                 setShowModal(false);
-                                setPlaylistToUpdate(null);
+                                setAlbumToUpdate(null);
                                 setModalType(null);
                             }}
                             onClose={() => {
                                 setShowModal(false);
-                                setPlaylistToUpdate(null);
+                                setAlbumToUpdate(null);
                                 setModalType(null);
                             }}
                         />
