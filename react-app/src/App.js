@@ -15,6 +15,7 @@ import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
 import Song from "./components/Songs/Song"
 import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
 import UserAlbum from "./components/UserAlbum/UserAlbum";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <div className="app-container">
           <main className="content">
@@ -59,6 +60,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <LandingPage/>
+          </Route>
+          <Route>
+            <Footer/>
           </Route>
         </Switch>
         </main>

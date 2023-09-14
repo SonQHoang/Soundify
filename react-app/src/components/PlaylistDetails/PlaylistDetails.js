@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
@@ -18,7 +18,7 @@ import { GetSongsForPlaylist } from "../../store/playlists";
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
-    // console.log('playlistId in playlistDetails========>', playlistId)
+    console.log('playlistId in playlistDetails========>', playlistId)
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -39,6 +39,8 @@ function PlaylistDetails() {
 
     useEffect(() => {
         dispatch(getAllSongs())
+        // dispatch(GetSinglePlaylist(playlistId))
+        // console.log('GetAllSongs=========>', getAllSongs())
     }, [dispatch]);
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
@@ -90,8 +92,10 @@ function PlaylistDetails() {
         // await dispatch(GetSinglePlaylist(playlistId))
     }
 
+    
     useEffect(() => {
-    }, [new_songs])
+        dispatch(GetSongsForPlaylist(playlistId))
+    }, [dispatch])
     //======================================================SearchBar End========================================
 
     //======================================================DeletePlaylist Start========================================
@@ -201,10 +205,11 @@ function PlaylistDetails() {
                             ))}
                         </div> */}
                             {(new_songs)?.map((song, index) => (
-                                <div key={index}>
+                                <div key={index} className="individual-playlist-songs">
                                     {song?.title ? (
                                         <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
                                     ) : null}
+                                    <p>{song.date_created}</p>
                                 </div>
                             ))}
                         {selectedSongs.length > 0 && (

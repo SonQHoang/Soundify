@@ -1,8 +1,4 @@
-body, html {
-    /* margin: 0px auto;
-    max-width: 1024px; */
-    /* border: 2px solid red; */
-}
+
 
 .landing-h1 {
     color: white;
@@ -10,50 +6,39 @@ body, html {
 
 .landing-page-container {
     /* border: 2px solid red; */
-    background-color: black;
     display: flex;
-    height: 500px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 230px;
+    height: 100vh;
 }
 
 .main-content-container {
-    border: 2px solid blue;
-    background-color: black;
+    /* border: blue 10px solid; */
     display: flex;
     flex-direction: column;
+    flex: 1
+    /* flex-direction: column;
     width: 75%;
-    box-sizing: border-box;
-}
-
-.side-bar-container {
-    border: 2px solid blue;
-    background-color: black;
-    width: 25%;
-    height: 100%;
+    box-sizing: border-box; */
 }
 
 .landing-page-playlists-container {
+    border: 2px solid red;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
+    justify-content: start;
+    align-items: start;
 }
 
-.soundify-playlists-container,
-.focus-container,
-.playlists-container,
-.library-container {
-    margin: 5px;
-    box-sizing: border-box;
-}
 
-.soundify-playlists-container {
-    height: 50%;
-}
 
 .focus-container {
-    height: 50%;
+    border: 2px solid blue;
+    flex: 1
 }
 
 .soundify-playlists-container,
