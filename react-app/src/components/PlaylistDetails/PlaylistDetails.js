@@ -205,10 +205,11 @@ function PlaylistDetails() {
                             ))}
                         </div> */}
                             {(new_songs)?.map((song, index) => (
-                                <div key={index}>
+                                <div key={index} className="individual-playlist-songs">
                                     {song?.title ? (
                                         <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
                                     ) : null}
+                                    <p>{song.date_created}</p>
                                 </div>
                             ))}
                         {selectedSongs.length > 0 && (

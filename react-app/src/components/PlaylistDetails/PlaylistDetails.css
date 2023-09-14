@@ -25,6 +25,11 @@
     align-items: center;
 }
 
+.individual-playlist-songs {
+    border: 2px solid red;
+    display: flex;
+    justify-content: space-evenly;
+}
 .playlist-user-details {
     border: 2px solid purple;
     display: flex;
