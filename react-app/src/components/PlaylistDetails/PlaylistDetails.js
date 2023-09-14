@@ -49,6 +49,7 @@ function PlaylistDetails() {
         user_id: song.user_id,
         album_id: song.album_id,
         title: song.title,
+        duration: song.duration,
         audio_url: song.audio_url,
         lyrics: song.lyrics,
         date_created: song.date_created
@@ -147,11 +148,6 @@ function PlaylistDetails() {
     //=======================================================Finding Audio Length ====================================
     const totalAudioTimeElement = document.querySelector(".rhap_time.rhap_total-time");
 
-    console.log('audioLength==========>', totalAudioTimeElement)
-    if(totalAudioTimeElement) {
-        const totalAudioTimeElement = totalAudioTimeElement.textContent;
-        console.log("Total audio time:", totalAudioTimeElement);    }
-
     return (
         <>
             <div className="playlist-details-container">
@@ -217,6 +213,7 @@ function PlaylistDetails() {
                                         <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
                                     ) : null}
                                     <p>{song.date_created}</p>
+                                    <p>{song.duration}</p>
                                 </div>
                             ))}
                         {selectedSongs.length > 0 && (

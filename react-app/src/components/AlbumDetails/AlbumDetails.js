@@ -124,7 +124,7 @@ function AlbumDetails() {
                         </div>
                         <div className="album-information-container">
                             <p>Album</p>
-                            <h2>{currentAlbum?.title} {currentAlbum?.id}</h2>
+                            <h2>{currentAlbum?.title}</h2>
                             <div className="album-description">
                                 {currentAlbum?.album_description}
                             </div>

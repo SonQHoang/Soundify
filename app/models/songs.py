@@ -36,6 +36,7 @@ class Songs(db.Model):
             "audio_url": self.audio_url,
             "title": self.title,
             "lyrics": self.lyrics,
+            "duration": self.duration,
             "date_created": self.date_created,
             # "song_song_likes": [like.to_dict() for like in self.song_song_likes],
 
