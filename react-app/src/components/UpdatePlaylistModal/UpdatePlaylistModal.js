@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { UpdatePlaylistThunk, getUserPlaylist } from '../../store/playlists';
+import { GetSinglePlaylist, UpdatePlaylistThunk, getUserPlaylist } from '../../store/playlists';
 
 import "./UpdatePlaylistModal.css"
 
@@ -32,6 +32,7 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
     //===========================Update Form Start===================================
     const current_playlist_information = useSelector(state => state.playlist.singlePlaylist)
     console.log('current playlist info========>', current_playlist_information)
+
     
     const [title, setTitle] = useState(current_playlist_information.title || '');
     const [image, setImage] = useState(current_playlist_information.image || '')
@@ -39,8 +40,13 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
     const [validationErrors, setValidationErrors] = useState([])
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
-
-
+    const [playlistInformation, setPlaylistInformation] = useState(current_playlist_information)
+    
+    useEffect(() => {
+        setPlaylistInformation(current_playlist_information)
+        // history.push(`/playlist/${playlistId}`)
+    }, [playlistInformation])
+    
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -82,12 +88,13 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
         playlist_description: description,
     }
     const handleConfirmUpdate = async () => {
-
-        dispatch(UpdatePlaylistThunk(playlistId, updatedPlaylist))
-            .then(() => dispatch(getUserPlaylist())) // Triggering the rerender
+        await dispatch(UpdatePlaylistThunk(playlistId, updatedPlaylist))
+        .then(() => {
+            dispatch(GetSinglePlaylist(playlistId))
+        })
         onSubmit();
-        history.push(`/playlist/${playlistId}`)
     };
+
     //==========================UpdateFormEnd===============================
 
 

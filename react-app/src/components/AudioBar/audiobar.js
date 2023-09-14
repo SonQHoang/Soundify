@@ -3,7 +3,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
 const Player = ({src}) => {
-    console.log('Player component =======>', src)
+    // console.log('Player component =======>', src)
 
     const handlePlay = (e) => {
         console.log("Audio started playing")

@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
-import { updateAlbumThunk, getUserAlbum } from '../../store/albums';
+import { updateAlbumThunk, getUserAlbum, GetSingleAlbum } from '../../store/albums';
 
 import "./UpdateAlbumModal.css"
+import { GetSinglePlaylist } from '../../store/playlists';
 
 const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     // console.log('Delete Modal albumId======>', albumId)
@@ -39,13 +40,12 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     const [validationErrors, setValidationErrors] = useState([])
     const [album_photo, setAlbum_photo] = useState(current_album_information.album_photo)
     const [hasSubmitted, setHasSubmitted] = useState(false)
+    const [albumInformation, setAlbumInformation] = useState(current_album_information)
 
-    console.log('title:==========>', title);
-    console.log('year:==========>', year);
-    // console.log('album_description:==========>', album_description);
-    // console.log('validationErrors:==========>', validationErrors);
-    // console.log('album_photo:==========>', album_photo);
-    // console.log('hasSubmitted:==========>', hasSubmitted);
+    useEffect(() => {
+        setAlbumInformation(current_album_information)
+    }, [albumInformation])
+    
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -79,7 +79,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
             console.log('albumId component===========>', albumId)
             console.log('formData component information=========>', formData)
 
-            await dispatch(getUserAlbum()) // Triggering the rerender
+            await dispatch(GetSingleAlbum(albumId)) // Triggering the rerender
             onSubmit();
             history.push(`/album/${albumId}`)
         } catch (error) {
@@ -110,17 +110,16 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     //==========================UpdateFormEnd===============================
 
 
-     return (
+    return (
         <>
-            <div className="update-modal-backdrop"></div>
+            <div className='update-modal-backdrop'></div>
             <div className="update-modal-overlay" ref={modalOverlayRef}>
                 <div className="update-modal-content">
                     <div className="update-modal-h2">
                         <h2>Edit Details</h2>
                     </div>
                     <div className="update-album-container">
-                        <form
-                            className="update-album-form-container"
+                        <form className="update-album-form-container"
                             onSubmit={(e) => submitForm(e)}
                             encType="multipart/form-data"
                         >
@@ -131,7 +130,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                 <input
                                     id="image"
                                     type="file"
-                                    name="album_photo" // Add the name attribute here
+                                    name="image"
                                     accept="image/*"
                                     onChange={handleImageUpload}
                                 />
@@ -156,7 +155,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                 </div>
                                 <div className="form-input-box">
                                     <div>
-                                        <label className="form-label" htmlFor="description">
+                                        <label className="form-label" htmlFor='description'>
                                             Description (Optional):
                                         </label>
                                     </div>
@@ -173,7 +172,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                 </div>
                                 <div className="form-input-box">
                                     <div>
-                                        <label className="form-label" htmlFor="year">
+                                        <label className="form-label" htmlFor='year'>
                                             Year
                                         </label>
                                     </div>
@@ -181,18 +180,21 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                         <input
                                             className="input-field"
                                             id="year"
-                                            type="number"
                                             name="year" // Add the name attribute here
+                                            type="number"
                                             onChange={(e) => setYear(e.target.value)}
                                             value={year}
                                         />
                                     </div>
                                 </div>
+
                             </div>
                         </form>
                     </div>
                     <div className="update-modal-buttons">
-                        <button className="update-button" onClick={submitForm}>
+                        <button
+                            className="update-button"
+                            onClick={submitForm}>
                             Save
                         </button>
                     </div>
@@ -205,4 +207,4 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     );
 };
 
-export default UpdateAlbumModal;
+export default UpdateAlbumModal
