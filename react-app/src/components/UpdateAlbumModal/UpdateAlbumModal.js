@@ -32,21 +32,27 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     //===========================Update Form Start===================================
     const current_album_information = useSelector(state => state.album.singleAlbum)
     console.log('current album info========>', current_album_information)
-    
+
     const [title, setTitle] = useState(current_album_information.title || '');
-    const [image, setImage] = useState(current_album_information.image || '')
-    const [description, setDescription] = useState(current_album_information.album_description || "")
+    const [year, setYear] = useState(current_album_information.year || '')
+    const [album_description, setAlbum_Description] = useState(current_album_information.album_description || "")
     const [validationErrors, setValidationErrors] = useState([])
-    const [imagePreview, setImagePreview] = useState(null)
+    const [album_photo, setAlbum_photo] = useState(current_album_information.album_photo)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
+    console.log('title:==========>', title);
+    console.log('year:==========>', year);
+    // console.log('album_description:==========>', album_description);
+    // console.log('validationErrors:==========>', validationErrors);
+    // console.log('album_photo:==========>', album_photo);
+    // console.log('hasSubmitted:==========>', hasSubmitted);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = (e) => {
-                setImagePreview(e.target.result)
+                setAlbum_photo(e.target.result)
                 console.log('Uploaded Image Data:======>', e.target.result);
             }
             reader.readAsDataURL(file)
@@ -64,46 +70,57 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
 
         formData.append('author', currentUser.first_name)
         formData.append('title', title)
-        formData.append('album_photo', image)
-        formData.append('album_description', description)
+        formData.append('year', year)
+        formData.append('album_photo', album_photo)
+        formData.append('album_description', album_description)
 
-        // Confirming my data is in the form
+        try {
+            await dispatch(updateAlbumThunk(albumId, formData))
+            console.log('albumId component===========>', albumId)
+            console.log('formData component information=========>', formData)
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-            formDataObject[key] = value;
-        });
-        console.log('formDataObject:==============>', formDataObject);
-    };
-
-    const updatedAlbum = {
-        title: title,
-        album_photo: image,
-        album_description: description,
+            await dispatch(getUserAlbum()) // Triggering the rerender
+            onSubmit();
+            history.push(`/album/${albumId}`)
+        } catch (error) {
+            console.error("Error while updating album:", error);
+        }
     }
-    
-    const handleConfirmUpdate = async () => {
 
-        dispatch(updateAlbumThunk(albumId, updatedAlbum))
-        // console.log('albumId, updateAlbumModal===========>', albumId)
-        // console.log('updatedAlbum information=========>', updatedAlbum)
-            .then(() => dispatch(getUserAlbum())) // Triggering the rerender
-        onSubmit();
-        history.push(`/album/${albumId}`)
-    };
+
+    // Confirming my data is in the form
+    // console.log('formData in the component============>', formData)
+
+    // const formDataObject = {};
+    // formData.forEach((value, key) => {
+    //         formDataObject[key] = value;
+    //     });
+    //     console.log('formDataObject:==============>', formDataObject);
+    // };
+
+
+    //     const handleConfirmUpdate = () => {
+    // const updatedAlbum = {
+    //     title,
+    //     album_photo,
+    //     year,
+    //     album_description,
+    // }
+    // };
     //==========================UpdateFormEnd===============================
 
 
-    return (
+     return (
         <>
-            <div className='update-modal-backdrop'></div>
+            <div className="update-modal-backdrop"></div>
             <div className="update-modal-overlay" ref={modalOverlayRef}>
                 <div className="update-modal-content">
                     <div className="update-modal-h2">
                         <h2>Edit Details</h2>
                     </div>
                     <div className="update-album-container">
-                        <form className="update-album-form-container"
+                        <form
+                            className="update-album-form-container"
                             onSubmit={(e) => submitForm(e)}
                             encType="multipart/form-data"
                         >
@@ -114,41 +131,68 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                 <input
                                     id="image"
                                     type="file"
-                                    name="image"
+                                    name="album_photo" // Add the name attribute here
                                     accept="image/*"
                                     onChange={handleImageUpload}
                                 />
-                                {imagePreview && (
+                                {album_photo && (
                                     <div>
-                                        <img src={imagePreview} alt="Album Image" width="100" />
+                                        <img src={album_photo} alt="Album Image" width="100" />
                                     </div>
                                 )}
                             </div>
                             <div className="update-form-right-side">
                                 <div className="form-input-box">
                                     <div>
-                                        <input className="input-field" id="title" type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
+                                        <input
+                                            className="input-field"
+                                            id="title"
+                                            type="text"
+                                            name="title" // Add the name attribute here
+                                            onChange={(e) => setTitle(e.target.value)}
+                                            value={title}
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-input-box">
                                     <div>
-                                        <label className="form-label" htmlFor='description'>
+                                        <label className="form-label" htmlFor="description">
                                             Description (Optional):
                                         </label>
                                     </div>
                                     <div>
-                                        <textarea className="input-field" id="title" type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
+                                        <textarea
+                                            className="input-field"
+                                            id="description"
+                                            name="album_description" // Add the name attribute here
+                                            type="text"
+                                            onChange={(e) => setAlbum_Description(e.target.value)}
+                                            value={album_description}
+                                        />
                                     </div>
                                 </div>
-                                <div>
+                                <div className="form-input-box">
+                                    <div>
+                                        <label className="form-label" htmlFor="year">
+                                            Year
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            className="input-field"
+                                            id="year"
+                                            type="number"
+                                            name="year" // Add the name attribute here
+                                            onChange={(e) => setYear(e.target.value)}
+                                            value={year}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div className="update-modal-buttons">
-                        <button
-                            className="update-button"
-                            onClick={handleConfirmUpdate}>
+                        <button className="update-button" onClick={submitForm}>
                             Save
                         </button>
                     </div>
@@ -161,4 +205,4 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     );
 };
 
-export default UpdateAlbumModal
+export default UpdateAlbumModal;

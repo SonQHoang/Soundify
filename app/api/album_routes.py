@@ -10,6 +10,14 @@ from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_
 album_routes = Blueprint('album', __name__)
 session = db.session
 
+# def validation_errors_to_error_messages(validation_errors):
+
+#     errorMessages = []
+#     for field in validation_errors:
+#         for error in validation_errors[field]:
+#             errorMessages.append(f'A album {field} is required')
+#     return errorMessages
+
 @album_routes.route('/user_album', methods=["GET"])
 def get_user_album():
     albums = Albums.query.filter_by(user_id = current_user.id).all()
@@ -49,7 +57,8 @@ def create_albums():
     else:
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
-
+    
+    
 @album_routes.route("/add", methods=["POST"])
 def add_song_to_album():
     data = request.get_json()
@@ -74,50 +83,51 @@ def get_single_album_by_id(albumId):
         album_data["songs"] = [song.to_dict() for song in album.songs]
     return jsonify(album_data)
 
-@album_routes.route("/update/<int:albumId>", methods=["PUT"])
-def update_albums(albumId):
-    current_album = Albums.query.get(albumId)
-    print(f"Current Album:========================> {current_album}")
+#1
+# @album_routes.route("/update/<int:albumId>", methods=["PUT"])
+# def update_albums(albumId):
+#     current_album = Albums.query.get(albumId)
+#     print('current_album===========>', current_album)
 
+#     form = UpdateAlbumForm()
+#     print('form==============>', form)
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#         if current_user.id != current_album.user_id:
+#             error = {"message": "You shouldn't be trying to adjust someone else's album..."}
+#             return jsonify(error), 403
+        
+#         current_album.title = request.json['title']
+#         print('current_album.title==============>', current_album)
+#         current_album.album_photo = request.json['album_photo']
+#         current_album.album_description = request.json['album_description']
+        
+#         updated_album = current_album
+#         updated_album_dict = updated_album.to_dict()
+#         db.session.commit()
+#         return updated_album_dict
+#     return jsonify(current_album.to_dict())
+
+2
+@album_routes.route('/update/<int:albumId>', methods=['PUT'])
+def update_album(albumId):
     form = UpdateAlbumForm()
-    print(f"Form:========================> {form}")
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    print('form.data=======>', form.data)
 
-
-    form['csrf_token'].data = request.cookies['csrf_token']
-
-    print("Request JSON Data=============>:", request.json)
-    # Getting expected data up to here 
     if form.validate_on_submit():
+        current_album = Albums.query.get(albumId)
+        current_album.title = form.title.data
+        current_album.album_photo = form.album_photo.data
+        current_album.year = form.year.data
+        current_album.album_description = form.album_description.data
 
-        if current_user.id != current_album.user_id:
-            error = {}
-            error.message = "You shouldn't be trying to adjust someone else's album..."
-            return jsonify(error), 403
-        
-        print("Before Update:")
-        print(f"Title:========================> {current_album.title}")
-        print(f"Album Photo::=================> {current_album.album_photo}")
-        print(f"Album Description::===========> {current_album.album_description}")
-        
-        current_album.title = request.json['title']
-        current_album.album_photo = request.json['album_photo']
-        current_album.album_description = request.json['album_description']
-
-        print("After Update:")
-        print(f"Title::=================> {current_album.title}")
-        print(f"Image::=================> {current_album.album_photo}")
-        print(f"Description::===========> {current_album.album_description}")
-
-        updated_album = current_album
-        # updated_album_dict = updated_album.to_dict()
-
-        db.session.add(updated_album)
         db.session.commit()
-
-        return updated_album.to_dict()
+        return current_album.to_dict()
+    return jsonify({"errors": form.errors}), 400
     
-    # return updated_album_dict.to_dict()
-
+    
 @album_routes.route("/delete/<int:albumId>", methods=["DELETE"])
 def delete_albums(albumId):
     album_to_delete = Albums.query.get(albumId)

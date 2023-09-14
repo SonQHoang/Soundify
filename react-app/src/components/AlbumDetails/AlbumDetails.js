@@ -131,6 +131,7 @@ function AlbumDetails() {
                             <div className="album-user-details">
                                 <p className="album-user-picture">Profile Pic</p>
                                 <p>{currentAlbum?.owner}</p>
+                                <p>{currentAlbum?.year}</p>
                             </div>
                         </div>
                     </div>
