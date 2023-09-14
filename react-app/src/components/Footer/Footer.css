@@ -1,0 +1,9 @@
+.footer-container {
+    /* border: 2px solid blue; */
+    position: fixed;
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+    padding: 20px;
+    background-color: #272727;
+}

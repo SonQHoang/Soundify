@@ -1,0 +1,12 @@
+.header-container {
+    border: 2px solid orange;
+    background-color: black;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    padding: 20px;
+    background-color: #272727;
+}
