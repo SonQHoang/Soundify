@@ -57,7 +57,7 @@ const acGetSingleAlbum = (data) => {
 
 export const getUserAlbum = () => async (dispatch) => {
     const response = await fetch(`/api/album/user_album`)
-    console.log('What does my response look like for getting the userAlbum====>', response)
+    // console.log('What does my response look like for getting the userAlbum====>', response)
     if (response.ok) {
         const album = await response.json()
         console.log('album=======>', album)
@@ -65,15 +65,18 @@ export const getUserAlbum = () => async (dispatch) => {
     }
 }
 
-export const updateAlbumThunk = (albumId, updatedData) => async (dispatch) => {
+export const updateAlbumThunk = (albumId, formData) => async (dispatch) => {
     console.log('Is the albumId coming through for the THUNK======>', albumId)
-    console.log('Is the updatedDat coming through======>', updatedData)
+    console.log('Is the updatedDat coming through======>', formData)
     try {
         const response = await fetch(`/api/album/update/${albumId}`, {
-            method: "PUT",
-            headers: { "Content-Type": 'application/json' },
-            body: JSON.stringify(updatedData)
+            method: 'PUT',
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },
+            body: formData
         });
+        
         console.log('What does the response look like for the thunk after the backend=========>', response)
         if (response.ok) {
             const updatedData = await response.json()
