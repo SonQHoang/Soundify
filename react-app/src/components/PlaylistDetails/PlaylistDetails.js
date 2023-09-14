@@ -144,6 +144,13 @@ function PlaylistDetails() {
 
     //======================================================UpdatePlaylist End========================================
 
+    //=======================================================Finding Audio Length ====================================
+    const totalAudioTimeElement = document.querySelector(".rhap_time.rhap_total-time");
+
+    console.log('audioLength==========>', totalAudioTimeElement)
+    if(totalAudioTimeElement) {
+        const totalAudioTimeElement = totalAudioTimeElement.textContent;
+        console.log("Total audio time:", totalAudioTimeElement);    }
 
     return (
         <>

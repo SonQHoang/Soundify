@@ -13,7 +13,8 @@ class Songs(db.Model):
     album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')), nullable=False)
     audio_url = db.Column(db.String, nullable=False)
     title = db.Column(db.String(100), nullable=False)
-    lyrics = db.Column(db.String(5000), nullable=False)
+    lyrics = db.Column(db.String(5000))
+    duration = db.Column(db.String(5000), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
 
     #Songs has a MANY to MANY relationship with playlist
