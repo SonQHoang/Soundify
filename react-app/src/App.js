@@ -59,10 +59,10 @@ function App() {
           <Route exact path="/song/all">
             <Song />
           </Route>
-          <Route exact path="/landing-page">
+          <Route exact path="/">
             <SplashPage/>
           </Route>
-          <Route exact path="/">
+          <Route exact path="/landing-page">
             <LandingPage/>
           </Route>
           <Route>
