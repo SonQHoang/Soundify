@@ -18,9 +18,17 @@
     justify-content: space-between;
 }
 
-.home-button-container:hover {
-    color: blue
+.home-link, .search-link, .library-link {
+    color: grey;
+    text-decoration: none;
 }
+
+.home-link:hover, .search-link:hover, .library-link:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
 
 .remaining-side-bar-container {
     /* border: 2px solid blue; */
@@ -47,3 +55,4 @@
     overflow-y: auto;
     padding: 10px;
 }
+
