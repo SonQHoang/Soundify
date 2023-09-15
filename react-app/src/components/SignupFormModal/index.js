@@ -3,11 +3,16 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
+import { useHistory } from "react-router-dom"
 
 function SignupFormModal() {
+	const history = useHistory()
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
+	const [firstname, setFirstname] = useState("");
+	const [lastname, setLastname] = useState("");
+	const [bio, setBio] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -16,19 +21,19 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+			const data = await dispatch(signUp(username, email, password, firstname, lastname, bio));
 			if (data) {
 				setErrors(data);
 			} else {
 				closeModal();
 			}
+			history.push('/landing-page')
 		} else {
 			setErrors([
 				"Confirm Password field must be the same as the Password field",
 			]);
 		}
 	};
-
 	return (
 		<div className='sign-up-form-container'>
 			<div className="title-container">
@@ -50,6 +55,48 @@ function SignupFormModal() {
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
+						placeholder="Enter your email."
+						required
+					/>
+				</label>
+				<label>
+					<div className="sign-up-labels">
+						What's your first name?
+					</div>
+					<input
+						classname="sign-up-input"
+
+						type="text"
+						value={firstname}
+						onChange={(e) => setFirstname(e.target.value)}
+						placeholder="Enter your email."
+						required
+					/>
+				</label>
+				<label>
+					<div className="sign-up-labels">
+						What's your last name?
+					</div>
+					<input
+						classname="sign-up-input"
+
+						type="text"
+						value={lastname}
+						onChange={(e) => setLastname(e.target.value)}
+						placeholder="Enter your email."
+						required
+					/>
+				</label>
+				<label>
+					<div className="sign-up-labels">
+						Would you like to give a brief bio??
+					</div>
+					<input
+						classname="sign-up-input"
+
+						type="text"
+						value={bio}
+						onChange={(e) => setBio(e.target.value)}
 						placeholder="Enter your email."
 						required
 					/>

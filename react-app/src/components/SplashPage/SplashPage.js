@@ -5,6 +5,7 @@ import { logout } from "../../store/session";
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import OpenModalButton from '../OpenModalButton';
+import { useHistory } from 'react-router-dom';
 
 import "./SplashPage.css"
 

@@ -56,7 +56,7 @@ const CreatePlaylist = () => {
             await dispatch(createPlaylist(formData));
             setValidationErrors([]);
             setHasSubmitted(false);
-            history.push(`/`);
+            history.push(`/landing-page`);
         } catch (error) {
             console.error("Error creating playlist:", error);
         }

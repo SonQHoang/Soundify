@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUserPlaylist } from "../../store/playlists"
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import "./UserPlaylist.css"
 
 const UserPlaylist = () => {
@@ -26,10 +26,10 @@ const UserPlaylist = () => {
             <div className="playlist-container">
                 {userPlaylist && userPlaylist.map(playlist => (
                     <div key={playlist.id} className="individual-playlist">
-                        <Link to={`/playlist/${playlist.id}`} className="link-no-underline">
+                        <NavLink to={`/playlist/${playlist.id}`} className="link-no-underline">
                             <p>{playlist.title}</p>
                             <p>{playlist.owner}</p>
-                        </Link>
+                        </NavLink>
                     </div>
                 ))}
             </div>

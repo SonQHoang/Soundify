@@ -14,11 +14,10 @@ import "./PlaylistDetails.css"
 import UpdatePlaylist from "../UpdatePlaylist/UpdatePlaylist";
 import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
 import { GetSongsForPlaylist } from "../../store/playlists";
-
+import Sidebar from "../../components/Sidebar/Sidebar"
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
-    // console.log('playlistId in playlistDetails========>', playlistId)
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -29,29 +28,29 @@ function PlaylistDetails() {
     console.log('new_songs=========>', new_songs)
 
     const [playlistInfo, setPlaylistInfo] = useState(new_songs)
+    const [selectedSongs, setSelectedSongs] = useState([])
+    const [showModal, setShowModal] = useState(false);
+    const [playlistToDelete, setPlaylistToDelete] = useState(null);
+    const [modalType, setModalType] = useState(null);
 
     useEffect(() => {
         // setPlaylistInfo(new_songs)
         getPlaylistSongs(playlistId)
-    },[playlistInfo])
+        dispatch(GetSongsForPlaylist(playlistId))
+        dispatch(GetSinglePlaylist(playlistId))
+        dispatch(getAllSongs())
+    },[playlistInfo, AddSongToPlaylist, dispatch, userId])
 
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
-    // const [playlist, setPlaylist] = useState([]); // Initialize playlist as an array of song 
-    // const [selectedSong, setSelectedSong] = useState(null)
 
-    useEffect(() => {
-        // console.log('AddSongToPlaylist Thunk fired!')
-        dispatch(GetSinglePlaylist(playlistId))
-    }, [AddSongToPlaylist])
+    // useEffect(() => {
+    //     dispatch(GetSinglePlaylist(playlistId))
+    // }, [AddSongToPlaylist])
 
-    const [selectedSongs, setSelectedSongs] = useState([]);
-
-    useEffect(() => {
-        dispatch(getAllSongs())
-        // dispatch(GetSinglePlaylist(playlistId))
-        // console.log('GetAllSongs=========>', getAllSongs())
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAllSongs())
+    // }, [dispatch]);
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const titleKVPairs = songLibrary.map(song => ({
@@ -83,7 +82,6 @@ function PlaylistDetails() {
         setQuery("")
     }
 
-
     const addToPlaylist = () => {
         Object.values(filteredSongs).map((song) => {
             const song_with_playlist_id = {
@@ -96,35 +94,28 @@ function PlaylistDetails() {
 
     const getPlaylistSongs = async () => {
         await dispatch(GetSongsForPlaylist(playlistId))
-        // await dispatch(GetSinglePlaylist(playlistId))
     }
 
 
-    useEffect(() => {
-        dispatch(GetSongsForPlaylist(playlistId))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(GetSongsForPlaylist(playlistId))
+    // }, [])
     //======================================================SearchBar End========================================
 
     //======================================================DeletePlaylist Start========================================
 
-    const [showModal, setShowModal] = useState(false);
-    const [playlistToDelete, setPlaylistToDelete] = useState(null);
-    // console.log("Are we targeting the playlistToDelete=======>", playlistToDelete)
-    const [modalType, setModalType] = useState(null);
+    
 
-    useEffect(() => {
-        dispatch(GetSinglePlaylist(playlistId))
-        // console.log('Checking that the new playlist is being found==========>', playlistId)
-    }, [dispatch, userId])
+    // useEffect(() => {
+    //     dispatch(GetSinglePlaylist(playlistId))
+    // }, [dispatch, userId])
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
     console.log('In  PlaylistDetails, currentPlaylist======>', currentPlaylist)
-    // console.log('In Playlist Details songs?======>', currentPlaylist.songs)
 
 
     const handleDeleteClick = async () => {
         setPlaylistToDelete(currentPlaylist)
-        // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
         setModalType("delete");
         setShowModal(true)
         await dispatch(getUserPlaylist())
@@ -136,9 +127,9 @@ function PlaylistDetails() {
 
     const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
 
-    useEffect(() => {
-        dispatch(GetSinglePlaylist(playlistId))
-    }, [dispatch, userId])
+    // useEffect(() => {
+    //     dispatch(GetSinglePlaylist(playlistId))
+    // }, [dispatch, userId])
 
     const handleUpdateClick = async () => {
         setPlaylistToUpdate(currentPlaylist)
@@ -153,6 +144,7 @@ function PlaylistDetails() {
 
     return (
         <>
+        {/* <Sidebar/> */}
             <div className="playlist-details-container">
                 <div className="playlist-info-container">
                     <div className="playlist-image-and-title-container">

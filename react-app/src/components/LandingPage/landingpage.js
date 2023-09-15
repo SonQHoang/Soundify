@@ -23,7 +23,7 @@ const LandingPage = () => {
     const handleLogout = (e) => {
         e.preventDefault();
         dispatch(logout());
-        history.push('/landing-page')
+        history.push('/')
     };
 
     return (

@@ -28,7 +28,6 @@ def create_playlists():
     form = CreatePlaylistForm() 
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print('form.data========== backend===>', form.data)
 
     if form.validate_on_submit():
 
