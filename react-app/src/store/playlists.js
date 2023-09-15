@@ -45,6 +45,7 @@ const acAddSongToPlaylist = (data) => {
     }
 }
 const acCreatePlaylist = (data) => {
+    console.log('is my image reaching my action creator=========>', data)
     return {
         type: CREATE_NEW_PLAYLIST,
         payload: data
@@ -157,20 +158,19 @@ export const GetSinglePlaylist = (playlistId) => async (dispatch) => {
 }
 
 export const createPlaylist = (data) => async (dispatch) => {
-    // console.log('What data is coming through?=======> FormData', data)
-    for (const [key, value] of data.entries()) {
-        console.log(`Key: ${key}, Value: ${value}`);
-    }
-
+    console.log('What data is coming through?=======> FormData', data)
+    // for (const [key, value] of data.entries()) {
+    //     console.log(`Key: ${key}, Value: ${value}`);
+    // }
     const response = await fetch('/api/playlist/new', {
         method: "POST",
         body: data
     })
-    // console.log('What is my response looking like=======>', response)
+    console.log('What is my response looking like=======>', response)
     if (response.ok) {
-        const { resPost } = await response.json()
-        // console.log("NEW PLAYLIST DATA =======>", resPost)
-        dispatch(acCreatePlaylist(resPost))
+        const new_playlist = await response.json()
+        dispatch(acCreatePlaylist(new_playlist))
+        console.log("NEW PLAYLIST DATA =======>", new_playlist)
     } else {
         console.log("There was an error creating your playlist!")
     }
@@ -205,7 +205,7 @@ const playlistReducer = (state = initialState, action) => {
             // console.log('my get user playlist action=====>', action)
             return {
                 ...state,
-                allPlaylists: action.payload
+                allPlaylists: action.payload,
             }
         }
         case CREATE_NEW_PLAYLIST:
@@ -214,8 +214,9 @@ const playlistReducer = (state = initialState, action) => {
                 ...state,
                 allPlaylists: {
                     ...state.allPlaylists,
-                    [action.payload.id]: action.payload,
+                    [action.payload.resPost.id]: action.payload,
                 },
+                singlePlaylist: action.payload
             };
         case ADD_SONG_TO_PLAYLIST: {
             const updatedState = {

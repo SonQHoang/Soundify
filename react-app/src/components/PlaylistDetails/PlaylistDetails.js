@@ -18,12 +18,22 @@ import { GetSongsForPlaylist } from "../../store/playlists";
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
-    console.log('playlistId in playlistDetails========>', playlistId)
+    // console.log('playlistId in playlistDetails========>', playlistId)
     const dispatch = useDispatch();
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
+
+        const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
+    console.log('new_songs=========>', new_songs)
+
+    const [playlistInfo, setPlaylistInfo] = useState(new_songs)
+
+    useEffect(() => {
+        // setPlaylistInfo(new_songs)
+        getPlaylistSongs(playlistId)
+    },[playlistInfo])
 
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
@@ -31,7 +41,7 @@ function PlaylistDetails() {
     // const [selectedSong, setSelectedSong] = useState(null)
 
     useEffect(() => {
-        console.log('AddSongToPlaylist Thunk fired!')
+        // console.log('AddSongToPlaylist Thunk fired!')
         dispatch(GetSinglePlaylist(playlistId))
     }, [AddSongToPlaylist])
 
@@ -84,16 +94,12 @@ function PlaylistDetails() {
         })
     }
 
-    
-    const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
-    console.log('new_songs=========>', new_songs)
-    
     const getPlaylistSongs = async () => {
         await dispatch(GetSongsForPlaylist(playlistId))
         // await dispatch(GetSinglePlaylist(playlistId))
     }
 
-    
+
     useEffect(() => {
         dispatch(GetSongsForPlaylist(playlistId))
     }, [dispatch])
@@ -112,7 +118,7 @@ function PlaylistDetails() {
     }, [dispatch, userId])
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
-    // console.log('In Plalyist Details, currentPlaylist======>', currentPlaylist)
+    console.log('In  PlaylistDetails, currentPlaylist======>', currentPlaylist)
     // console.log('In Playlist Details songs?======>', currentPlaylist.songs)
 
 
@@ -145,20 +151,19 @@ function PlaylistDetails() {
 
     //======================================================UpdatePlaylist End========================================
 
-    //=======================================================Finding Audio Length ====================================
-    const totalAudioTimeElement = document.querySelector(".rhap_time.rhap_total-time");
-
     return (
         <>
             <div className="playlist-details-container">
                 <div className="playlist-info-container">
                     <div className="playlist-image-and-title-container">
-                        <div className="playlist-image">
-                            <h2>Playlist Graphic Here</h2>
+                        <div className="playlist-image-container">
+                            <img className='playlist-image' src={currentPlaylist.image}></img>
                         </div>
                         <div className="playlist-information-container">
-                            <p>Playlist</p>
-                            <h2>{currentPlaylist?.title} {currentPlaylist?.id}</h2>
+                            <div className="playlist-playlist-title-container">
+                                <p>Playlist</p>
+                                <h1>{currentPlaylist?.title} {currentPlaylist?.id}</h1>
+                            </div>
                             <div className="playlist-description">
                                 {currentPlaylist?.playlist_description}
                             </div>
@@ -199,28 +204,20 @@ function PlaylistDetails() {
                 </div>
                 <div className="playlist-songs-container">
                     <div className="playlist">
-                        {/* <div>
-                            {(new_songs)?.map((song, index) => (
-                                <div>
-                                    <p>{song.title}</p>
-                                    <p>{song.id}</p>
-                                </div>
-                            ))}
-                        </div> */}
-                            {(new_songs)?.map((song, index) => (
-                                <div key={index} className="individual-playlist-songs">
-                                    {song?.title ? (
-                                        <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
-                                    ) : null}
-                                    <p>{song.date_created}</p>
-                                    <p>{song.duration}</p>
-                                </div>
-                            ))}
+                        {(new_songs)?.map((song, index) => (
+                            <div key={index} className="individual-playlist-songs">
+                                {song?.title ? (
+                                    <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
+                                ) : null}
+                                <p>{song.date_created}</p>
+                                <p>{song.duration}</p>
+                            </div>
+                        ))}
                         {selectedSongs.length > 0 && (
                             <div>
                                 {selectedSongs.map((selectedSong, index) => (
                                     <div key={index}>
-                                        <Player src={selectedSong.audio_url} /> {/* Play each selected song */}
+                                        <Player src={selectedSong.audio_url} />
                                     </div>
                                 ))}
                             </div>
@@ -266,14 +263,19 @@ function PlaylistDetails() {
                                 <li key={index}>{song.title}</li>
                             ))}
                         </ul>
-                        <button onClick={() => {
+                        {/* <button onClick={() => {
                             addToPlaylist();
                             // getPlaylistSongs();
-                        }}>Queue Songs</button>
+                        }}>Queue Songs</button> */}
                         <button onClick={() => {
+                            addToPlaylist();
+                            getPlaylistSongs()
+                            // getPlaylistSongs();
+                        }}>Add to Playlist</button>
+                        {/* <button onClick={() => {
                             getPlaylistSongs()
                         }}>Add to Playlist
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

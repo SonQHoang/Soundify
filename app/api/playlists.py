@@ -13,7 +13,7 @@ session = db.session
 @playlist_routes.route('/user_playlist', methods=["GET"])
 def get_user_playlist():
     playlists = Playlists.query.filter_by(user_id = current_user.id).all()
-    print('playlists=====>', playlists)
+    # print('playlists=====>', playlists)
     return [playlist.to_dict() for playlist in playlists]
 
 @playlist_routes.route("/all", methods=["GET"])
@@ -26,33 +26,30 @@ def get_all_playlists():
 def create_playlists():
     user = User.query.get(current_user.id)
     form = CreatePlaylistForm() 
-    # print('form=======>', form)
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        # Commenting out audio-related code
-        # audio = form.audio.data
-        # print('audio=========>', audio)
-        # audio.filename = get_unique_filename(audio.filename)
+    print('form.data========== backend===>', form.data)
 
-        # upload = upload_file_to_s3(audio)
-        # print('upload=========>', upload)
-        # if "url" in upload:
+    if form.validate_on_submit():
+
+        image = form.data['image']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        url = upload['url']
+
         new_playlist = Playlists(
             user_id=user.id,
-            title=form.title.data,
+            title=form.data['title'],
             owner = current_user.first_name,
-            playlist_description=form.playlist_description.data,
-            image = form.image.data,
+            playlist_description=form.data['playlist_description'],
+            image = url,
             date_created=datetime.utcnow(),
         )
-
-        print('new_playlist========>', new_playlist)
+  
         db.session.add(new_playlist)
         db.session.commit()
-        # print('respost =======>', {new_playlist.to_dict()})
         return {"resPost": new_playlist.to_dict()}
-        # return jsonify({"message": "Playlist created!"})
     else:
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
@@ -91,14 +88,14 @@ def add_song_to_playlist(playlistId):
 # #3 
 @playlist_routes.route("/<int:playlistId>/songs", methods=["GET"])
 def get_songs_for_playlist(playlistId):
-    print('playlist_id backend============>', playlistId)
+    # print('playlist_id backend============>', playlistId)
     # Getting the plalyist in question with playlistId
     playlist = Playlists.query.get(playlistId)
-    print('current_playlist backend========>', playlist)
+    # print('current_playlist backend========>', playlist)
 
     # Getting access to the playlist_songs table
     playlist_songs = playlist.playlist_songs
-    print('playlist_songs backend==========>', playlist_songs)
+    # print('playlist_songs backend==========>', playlist_songs)
     # return playlist_songs
     # return {playlist_songs: [playlist_song.to_dict() for playlist_song in playlist_songs]
 
@@ -107,11 +104,11 @@ def get_songs_for_playlist(playlistId):
     for playlist_song in playlist_songs:
         # print(playlist_song)
         song_to_dict = playlist_song.to_dict()
-        print('song_to_dict===============>', song_to_dict)
+        # print('song_to_dict===============>', song_to_dict)
         song_container.append(song_to_dict)
-        print('song_container==========+>', song_container)
+        # print('song_container==========+>', song_container)
         
-    print('song_container_out of for loop----------->', song_container)
+    # print('song_container_out of for loop----------->', song_container)
     return song_container
 
     # playlist_info = []
@@ -149,6 +146,7 @@ def get_single_playlist_by_id(playlistId):
         "id": playlist.id,
         "song_id": playlist.song_id,
         "title": playlist.title,
+        "image": playlist.image,
         "owner": playlist.owner,
         "playlist_description": playlist.playlist_description,
         # "playlist_songs": [song.to_dict() for song in playlist.songs],
@@ -158,32 +156,6 @@ def get_single_playlist_by_id(playlistId):
     if hasattr(playlist, "songs"):
         playlist_data["songs"] = [song.to_dict() for song in playlist.songs]
     return jsonify(playlist_data)
-
-# @playlist_routes.route("/<int:playlistId>")
-# def get_single_playlist_by_id(playlistId):
-#     playlist = Playlists.query.get(playlistId)
-#     if playlist: 
-#         playlist_data = playlist.to_dict()
-#         return jsonify(playlist_data)
-#     else:
-#         return jsonify({"error": "Playlist not found"}), 404
-
-    # if playlist is None:
-    #     return jsonify({"error": "Playlist not found"}), 404
-    
-    # playlist_data = {
-    #     "id": playlist.id,
-    #     "song_id": playlist.song_id,
-    #     "title": playlist.title,
-    #     "owner": playlist.owner,
-    #     "playlist_description": playlist.playlist_description,
-    #     "playlist_songs": playlist.playlist_songs,
-    #     "date_created": datetime.utcnow(),
-    # }
-
-    # if hasattr(playlist, "songs"):
-    #     playlist_data["songs"] = [song.to_dict() for song in playlist.songs]
-    # return jsonify(playlist_data)
 
 @playlist_routes.route("/update/<int:playlistId>", methods=["PUT"])
 def update_playlists(playlistId):

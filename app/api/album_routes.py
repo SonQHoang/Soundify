@@ -40,7 +40,7 @@ def create_albums():
     if form.validate_on_submit():
         new_album = Albums(
             user_id=user.id,
-            title=form.title.data,
+            title=form.data,
             owner = current_user.first_name,
             album_description=form.album_description.data,
             album_photo = form.album_photo.data,
