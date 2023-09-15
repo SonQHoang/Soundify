@@ -23,7 +23,11 @@ function LoginFormPage() {
 
   return (
     <>
+    <div>
+
+    <div>
       <h1>Log In</h1>
+    </div>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -31,25 +35,33 @@ function LoginFormPage() {
           ))}
         </ul>
         <label>
+          <div>
           Email
+          </div>
           <input
             type="text"
             value={email}
+            placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
         <label>
+          <div>
           Password
+          </div>
           <input
             type="password"
             value={password}
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
         <button type="submit">Log In</button>
       </form>
+          </div>
+
     </>
   );
 }

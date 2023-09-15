@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: radial-gradient(circle, #1DB954, black);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.splash-page-logo-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100px;
+    height: 100px;
+}
+
+.splash-page-soundify-logo {
+    height: 125px;
+    width: auto; 
+    margin-right: 20px;
+}
+
+.splash-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 20px;
+    border-bottom: 2px solid black;
+}
+
+.splash-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.splash-page-container h1 {
+    color: white;
+    font-size: 50px;
+}
+
+.soundify-button {
+    border-radius: 40px;
+    padding: 20px;
+    color: black;
+    font-size: bold;
+    background-color: #1DB954;
+    border: 2px solid transparent;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
+}
+
+.sign-up-button {
+    background: none;
+    border: none;
+    border-radius: 40px;
+    color: #9E9E9E;
+    padding: 10px;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+
+.sign-up-button:hover {
+    color: white;
+}
+
+.log-in-button {
+    background-color: white;
+    color: black;
+    border-radius: 40px;
+    font-weight: bold;
+    padding: 10px;
+    width: 100px;
+    height: 50px;
+    margin-left: 20px;
+    cursor: pointer
+}
+
+.sign-up-button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.upcoming-features {
+    border: none;
+    background-color: transparent;
+    color: #9E9E9E;
+    border-radius: 40px;
+    font-weight: bold;
+    height: 50px;
+    margin-right: 20px;
+    border: none;
+}
