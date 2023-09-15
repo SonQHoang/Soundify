@@ -16,6 +16,7 @@ import Song from "./components/Songs/Song"
 import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
 import UserAlbum from "./components/UserAlbum/UserAlbum";
 import Footer from "./components/Footer/Footer";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route exact path="/song/all">
             <Song />
+          </Route>
+          <Route exact path="/landing-page">
+            <SplashPage/>
           </Route>
           <Route exact path="/">
             <LandingPage/>

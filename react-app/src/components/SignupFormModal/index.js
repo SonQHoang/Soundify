@@ -30,53 +30,75 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+		<div className='sign-up-form-container'>
+			<div className="title-container">
+				<h1>Sign Up for free to start listening.</h1>
+			</div>
+			<form className="form-container" onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
 				<label>
-					Email
+					<div className="sign-up-labels">
+						What's your email?
+					</div>
 					<input
+						classname="sign-up-input"
+
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
+						placeholder="Enter your email."
 						required
 					/>
 				</label>
 				<label>
-					Username
+					<div className="sign-up-labels">
+						What should we call you?
+					</div>
 					<input
+						classname="sign-up-input"
+
 						type="text"
 						value={username}
+						placeholder="Enter a profile name."
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
 				</label>
-				<label>
-					Password
+				<label className="sign-up-labels">
+					<div>
+						Create a password
+					</div>
 					<input
+						classname="sign-up-input"
 						type="password"
 						value={password}
+						placerholder="Create a password."
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
 				</label>
-				<label>
-					Confirm Password
+				<label className="sign-up-labels">
+					<div>
+						Confirm Password
+					</div>
 					<input
+						classname="sign-up-input"
+
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<div>
+					<button className="sign-up-sign-up-button" type="submit">Sign Up</button>
+				</div>
 			</form>
-		</>
+		</div>
 	);
 }
 

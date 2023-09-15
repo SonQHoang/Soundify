@@ -6,10 +6,10 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import './ProfileButton.css'
 
-function ProfileButton({ user }) {
+function ProfileButton({ user, showLoginModal, showSignUpModal }) {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
+  // const [showMenu, setShowMenu] = useState(false);
+  // const ulRef = useRef();
 
   // const openMenu = () => {
   //   if (showMenu) return;
@@ -35,8 +35,8 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
+  // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  // const closeMenu = () => setShowMenu(false);
 
   return (
     <div className="login-signin-button">
@@ -48,19 +48,22 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-            <OpenModalButton
+                      {showLoginModal && <LoginFormModal />}
+                      {showSignUpModal && <SignupFormModal />}
+
+            {/* <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
-              className="log-in-button"
+              className="log-in-modal-button"
             />
 
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
-              className='sign-in-button'
-            />
+              className='sign-in-modal-button'
+            /> */}
           </>
         )}
     </div>
