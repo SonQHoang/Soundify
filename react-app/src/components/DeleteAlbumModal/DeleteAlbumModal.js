@@ -29,7 +29,7 @@ const DeleteAlbumModal = ({ onSubmit, onClose, albumId }) => {
             dispatch(deleteAlbumThunk(albumId))
             .then(() => dispatch(getUserAlbum())) // Triggering the rerender
             onSubmit();
-            history.push('/')
+            history.push('/landinge-page')
     };
 
     return (
