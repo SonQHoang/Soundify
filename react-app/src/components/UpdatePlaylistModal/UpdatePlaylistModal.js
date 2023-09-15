@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { GetSinglePlaylist, UpdatePlaylistThunk, getUserPlaylist } from '../../store/playlists';
+import { GetSinglePlaylist, GetSongsForPlaylist, UpdatePlaylistThunk, getUserPlaylist } from '../../store/playlists';
 
 import "./UpdatePlaylistModal.css"
 
@@ -44,7 +44,6 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
     
     useEffect(() => {
         setPlaylistInformation(current_playlist_information)
-        // history.push(`/playlist/${playlistId}`)
     }, [playlistInformation])
     
     const handleImageUpload = (e) => {

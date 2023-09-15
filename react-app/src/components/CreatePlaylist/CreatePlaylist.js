@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPlaylist } from '../../store/playlists';
-import "./CreatePlaylist.css" 
+import "./CreatePlaylist.css"
 
 const CreatePlaylist = () => {
     const dispatch = useDispatch()
@@ -11,32 +11,26 @@ const CreatePlaylist = () => {
     // const [audioFileUrl, setAudioFileUrl] = useState('') 
     // const [audio, setAudio] = useState(null);
     const [title, setTitle] = useState('');
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState(null)
     const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    // useEffect(() => {
-    //     const errors = [];
-    //     if (!audio) errors.push("Please provide an audio file!")
-    //     setValidationErrors(errors);
-    // }, [audio])
-
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setImagePreview(e.target.result)
-                console.log('Uploaded Image Data:======>', e.target.result);
-            }
-            reader.readAsDataURL(file)
-        } else {
-            console.log("No image was uploaded")
-        }
-    }
+    // const handleImageUpload = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         setImageFile(file)
+    //         const reader = new FileReader();
+    //         reader.onload = (e) => {
+    //             setImagePreview(e.target.result)
+    //         }
+    //         reader.readAsDataURL(file)
+    //     } else {
+    //         console.log("No image was uploaded")
+    //     }
+    // }
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -44,23 +38,19 @@ const CreatePlaylist = () => {
         setHasSubmitted(true);
         if (validationErrors.length) return alert("You've got some errors with your upload!");
         const formData = new FormData()
-        // formData.append("audio", audio)
-        // console.log('What does audio give us back=======> The filename', audio)
-        // formData.append('user_id', currentUser.id)
         formData.append('author', currentUser.first_name)
-        // console.log('What does author gives us back======>', currentUser)
         formData.append('title', title)
-        formData.append('photo', image)
-        formData.append('description', description)
+        formData.append('image', image)
+        formData.append('playlist_description', description)
         formData.append('date_created', date_created)
 
         // Confirming my data is in the form
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-            formDataObject[key] = value;
-        });
-        console.log('formDataObject:', formDataObject);
+        // const formDataObject = {};
+        // formData.forEach((value, key) => {
+        //     formDataObject[key] = value;
+        // });
+        // console.log('formDataObject:', formDataObject);
 
         try {
             await dispatch(createPlaylist(formData));
@@ -128,11 +118,19 @@ const CreatePlaylist = () => {
                         type="file"
                         name="image"
                         accept="image/*"
-                        onChange={handleImageUpload}
+                        onChange={(e) => {
+                            setImage(e.target.files[0]);
+                            if (e.target.files[0]) {
+                                const url = URL.createObjectURL(e.target.files[0]);
+                                setImagePreview(url);
+                            } else {
+                                setImagePreview(null);
+                            }
+                        }}
                     />
                     {imagePreview && (
                         <div>
-                                <img src={imagePreview} alt="Playlist Image" width="100"/>
+                            <img src={imagePreview} alt="Playlist Image" width="100" />
                         </div>
                     )}
                 </div>

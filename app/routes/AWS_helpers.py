@@ -6,7 +6,7 @@ import os
 import uuid
 
 
-ALLOWED_EXTENSIONS = {"mp3", "mp4", "m4a", "wav"}
+ALLOWED_EXTENSIONS = {"mp3", "mp4", "m4a", "wav", "jpg", "jpeg", "png"}
 
 # Taking buckname and s3 location from .env
 BUCKET_NAME = os.environ.get("S3_BUCKET")
@@ -52,21 +52,16 @@ def upload_file_to_s3(file, acl="public-read"):
 # If I want to do an audio file, what would I change this to?
 
 ##! Use this for delete routes
-def remove_file_from_s3(audio_url):
-    # AWS needs the audio file name, not the URL, 
-    # so you split that out of the URL
-    parts = audio_url.rsplit("/")
-
-    key = parts[-1]
-
+def remove_file_from_s3(image_url):
+    key = image_url.rsplit("/", 1)[1]
     try:
         s3.delete_object(
         Bucket=BUCKET_NAME,
         Key=key
         )
-        return {"message": f"Audio file '{key}' successfully deleted from S3"}
     except Exception as e:
-        return {"error": str(e)}
+        return { "errors": str(e) }
+    return True
 
 # AWS downloader 
 bucket_name = os.environ.get("S3_BUCKET")
