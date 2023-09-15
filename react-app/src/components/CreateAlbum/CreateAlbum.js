@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom/';
 import { useDispatch, useSelector } from 'react-redux';
 import { createAlbum } from '../../store/albums';
 import "./CreateAlbum.css" 
@@ -17,19 +18,19 @@ const CreateAlbum = () => {
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setImagePreview(e.target.result)
-                console.log('Uploaded Image Data:======>', e.target.result);
-            }
-            reader.readAsDataURL(file)
-        } else {
-            console.log("No image was uploaded")
-        }
-    }
+    // const handleImageUpload = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onload = (e) => {
+    //             setImagePreview(e.target.result)
+    //             console.log('Uploaded Image Data:======>', e.target.result);
+    //         }
+    //         reader.readAsDataURL(file)
+    //     } else {
+    //         console.log("No image was uploaded")
+    //     }
+    // }
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -43,18 +44,18 @@ const CreateAlbum = () => {
         formData.append('author', currentUser.first_name)
         // console.log('What does author gives us back======>', currentUser)
         formData.append('title', title)
-        formData.append('photo', image)
+        formData.append('image', image)
         formData.append('album_description', description)
         formData.append('year', year)
         formData.append('date_created', date_created)
 
         // Confirming my data is in the form
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-            formDataObject[key] = value;
-        });
-        console.log('formDataObject:', formDataObject);
+        // const formDataObject = {};
+        // formData.forEach((value, key) => {
+        //     formDataObject[key] = value;
+        // });
+        // console.log('formDataObject:', formDataObject);
 
         try {
             await dispatch(createAlbum(formData));
@@ -64,6 +65,7 @@ const CreateAlbum = () => {
         } catch (error) {
             console.error("Error creating playlist:", error);
         }
+        history.push(`/`)
     };
 
     return (
@@ -122,8 +124,15 @@ const CreateAlbum = () => {
                         type="file"
                         name="image"
                         accept="image/*"
-                        onChange={handleImageUpload}
-                    />
+                        onChange={(e) => {
+                            setImage(e.target.files[0]);
+                            if (e.target.files[0]) {
+                                const url = URL.createObjectURL(e.target.files[0]);
+                                setImagePreview(url);
+                            } else {
+                                setImagePreview(null);
+                            }
+                        }}                    />
                     {imagePreview && (
                         <div>
                                 <img src={imagePreview} alt="Playlist Image" width="100"/>

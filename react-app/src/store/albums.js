@@ -136,9 +136,9 @@ export const GetSingleAlbum = (albumId) => async (dispatch) => {
 
 export const createAlbum = (data) => async (dispatch) => {
     console.log('What data is coming through?=======> FormData', data)
-    for (const [key, value] of data.entries()) {
-        console.log(`Key: ${key}, Value: ${value}`);
-    }
+    // for (const [key, value] of data.entries()) {
+    //     console.log(`Key: ${key}, Value: ${value}`);
+    // }
 
     const response = await fetch('/api/album/new', {
         method: "POST",
@@ -146,9 +146,9 @@ export const createAlbum = (data) => async (dispatch) => {
     })
     console.log('What is my response looking like=======>', response)
     if (response.ok) {
-        const { resPost } = await response.json()
-        console.log("NEW ALBUM DATA =======>", resPost)
-        dispatch(acCreateAlbum(resPost))
+        const new_album = await response.json()
+        dispatch(acCreateAlbum(new_album))
+        console.log("NEW ALBUM DATA =======>", new_album)
     } else {
         console.log("There was an error creating your album!")
     }

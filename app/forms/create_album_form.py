@@ -7,6 +7,7 @@ from ..routes.AWS_helpers import ALLOWED_EXTENSIONS
 class CreateAlbumForm(FlaskForm):
     album_photo = FileField("Album Photo", validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     title = StringField("Title", validators=[DataRequired()])
+    image = FileField("Playlist Image", validators=[FileAllowed(ALLOWED_EXTENSIONS)])
     year = IntegerField("Year", validators=[DataRequired()])
     date_created = DateField("Date Created", validators=[DataRequired()])
     album_description = StringField("Description")

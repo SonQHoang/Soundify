@@ -34,10 +34,16 @@ def get_all_albums():
 def create_albums():
     user = User.query.get(current_user.id)
     form = CreateAlbumForm() 
-    # print('form=======>', form)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+
+        image = form.data['image']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        
+        url = upload['url']
+
         new_album = Albums(
             user_id=user.id,
             title=form.data,
@@ -45,6 +51,7 @@ def create_albums():
             album_description=form.album_description.data,
             album_photo = form.album_photo.data,
             year = form.year.data,
+            image = url,
             date_created=datetime.utcnow(),
         )
 
