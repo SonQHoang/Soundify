@@ -22,7 +22,7 @@ const UserPlaylist = () => {
 
 
     return (
-        <>
+ 
             <div className="playlist-container">
                 {userPlaylist && userPlaylist.map(playlist => (
                     <div key={playlist.id} className="individual-playlist">
@@ -33,7 +33,6 @@ const UserPlaylist = () => {
                     </div>
                 ))}
             </div>
-        </>
     );
 }
 
