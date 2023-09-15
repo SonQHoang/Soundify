@@ -30,12 +30,12 @@ const LandingPage = () => {
         <>
             <div className="landing-page-container">
                 <Sidebar />
-
                 <div className="main-content-container">
-                    <div className="landing-h1-container">
+                    <div className="soundify-playlists-container">
+                        <div className="landing-h1-container">
                         <h1 className="landing-h1">Soundify Playlists</h1>
                         {user ? (
-                            <div className="log-out-container">
+                            <div>
                                 <div>{user.username}</div>
                                 <div>{user.email}</div>
                                 <button onClick={handleLogout}>LogOut</button>
@@ -46,9 +46,10 @@ const LandingPage = () => {
                                 {showSignUpModal && <SignupFormModal />}
                             </div>
                         )}
-                    </div>
-                    <div className="landing-page-playlists-container">
-                        <UserPlaylist />
+                        </div>
+                        <div className="landing-page-playlists-container">
+                            <UserPlaylist />
+                        </div>
                     </div>
                     <div className="focus-container">
                         <h1 className="landing-h1">Focus</h1>

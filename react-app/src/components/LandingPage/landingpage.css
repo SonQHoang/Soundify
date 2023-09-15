@@ -1,36 +1,32 @@
-/* CSS */
-.landing-page-container {
-    /* border: 2px solid red; */
-    display: grid;
-    grid-template-columns: minmax(230px, auto) 1fr; /* Sidebar width remains constant */
-    background-color: black;
-    color: white;
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-}
-
-.landing-h1-container{
+.landing-h1-container {
     display: flex;
     justify-content: space-between;
 }
 
-.log-out-container {
-    margin-top: 20px;
+.landing-h1 {
+    color: white;
 }
 
-.Sidebar {
-    max-height: 100%;
-    overflow-y: auto;
-}
-
-.soundify-playlists-container {
+.landing-page-container {
     /* border: 2px solid red; */
-    background-color: #1a1a1a;
-    padding: 10px; /* Add padding as needed */
-    /* Other styles for soundify-playlists-container */
+    display: flex;
+    background-color: black;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 230px;
+    height: 100vh;
+    position: sticky;
+    top:0;
+}
+
+.main-content-container {
+    /* border: blue 10px solid; */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-height: 570px;
+    overflow-y: auto;
 }
 
 .landing-page-playlists-container {
@@ -40,5 +36,21 @@
     grid-gap: 20px;
     justify-content: start;
     align-items: start;
-    /* Other styles for landing-page-playlists-container */
+}
+
+
+.focus-container {
+    /* border: 2px solid blue; */
+    flex: 1
+}
+
+.soundify-playlists-container,
+.focus-container,
+.playlists-container,
+.library-container {
+    background-color: #1a1a1a;
+}
+
+.home-button-container {
+    margin: 5px;
 }

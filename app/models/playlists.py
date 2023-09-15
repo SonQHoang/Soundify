@@ -12,9 +12,6 @@ class Playlists(db.Model):
     __tablename__ = "playlists"
 
     if environment == "production":
-        songs_playlist_association.schema = SCHEMA
-
-    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
