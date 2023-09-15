@@ -192,7 +192,7 @@ export const getAllPlaylists = () => async (dispatch) => {
 
 const initialState = { allPlaylists: {}, singlePlaylist: {} }
 
-let newState
+// let newState
 const playlistReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_PLAYLISTS: {

@@ -1,11 +1,10 @@
-import { useHistory } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import UpdatePlaylistModal from '../UpdatePlaylistModal/UpdatePlaylistModal';
 import "./UpdatePlaylist.css"
 
 const UpdatePlaylist = () => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [playlistToUpdate, setPlaylistToUpdate] = useState(null)
