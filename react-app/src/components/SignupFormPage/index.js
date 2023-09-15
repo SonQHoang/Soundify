@@ -9,6 +9,9 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -18,7 +21,7 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
+        const data = await dispatch(signUp(username, email, password, firstname, lastname, bio));
         if (data) {
           setErrors(data)
         }
@@ -26,7 +29,7 @@ function SignupFormPage() {
         setErrors(['Confirm Password field must be the same as the Password field']);
     }
   };
-
+  console.log("firstname, lastname, bio==========+>", firstname, lastname, bio)
   return (
     <>
       <h1>Sign Up</h1>
@@ -40,6 +43,33 @@ function SignupFormPage() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          First Name
+          <input
+            type="text"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            type="text"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Bio
+          <input
+            type="text"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
             required
           />
         </label>
