@@ -25,21 +25,18 @@ function LoginFormModal() {
   };
 
   const handleDemoLogin = async () => {
-    // Simulate input for demo login (replace with your demo credentials)
     const demoEmail = "demo@aa.io";
     const demoPassword = "password";
 
-    // Set email and password state with demo credentials
     setEmail(demoEmail);
     setPassword(demoPassword);
 
-    // Dispatch the login action directly
     const data = await dispatch(login(demoEmail, demoPassword));
     if (data) {
       setErrors(data);
     } else {
       closeModal();
-      history.push('/')
+      history.push('/landing-page')
     }
   };
 
