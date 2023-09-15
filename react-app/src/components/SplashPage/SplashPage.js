@@ -48,7 +48,7 @@ const SplashPage = () => {
             </header>
             <div className="splash-page-container">
                 <h1>Music for everyone.</h1>
-                <button className="soundify-button">Welcome to Soundify</button>
+                <button className="soundify-button" onClick={openLoginModal}>Welcome to Soundify</button>
             </div>
         </>
     )
