@@ -17,6 +17,7 @@ import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
 import UserAlbum from "./components/UserAlbum/UserAlbum";
 import Footer from "./components/Footer/Footer";
 import SplashPage from "./components/SplashPage/SplashPage";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
       {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <div className="app-container">
+          {/* <Sidebar/> */}
           <main className="content">
         <Switch>
           <Route exact path="/login" >

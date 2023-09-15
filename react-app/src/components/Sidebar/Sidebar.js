@@ -12,7 +12,9 @@ const Sidebar = () => {
             <div className="top-of-side-bar">
                 <img className="soundify-logo" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1694681368/SOUNDIFY_9_znffp4.png" />
                     <div className='home-button-container'>
+                        <NavLink exact to ="/">
                         <div>Home</div>
+                        </NavLink>
                         <div>Search</div>
                         <div>Your Library</div>
                     </div>

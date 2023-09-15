@@ -5,7 +5,7 @@
 }
 
 .top-of-side-bar {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     height: 15vh;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .remaining-side-bar-container {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;;
     flex-direction: column;
     height: 100vh;
@@ -38,6 +38,8 @@
     background-color: black;
     padding-left: 10px;
     padding-right: 10px;
+    position: sticky;
+    top:0;
 }
 .playlists-container {
     /* border: 2px solid green; */

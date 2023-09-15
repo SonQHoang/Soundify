@@ -29,7 +29,7 @@ const DeletePlaylistModal = ({ onSubmit, onClose, playlistId }) => {
             dispatch(DeletePlaylistThunk(playlistId))
             .then(() => dispatch(getUserPlaylist())) // Triggering the rerender
             onSubmit();
-            history.push('/')
+            history.push('/landing-page')
     };
 
     return (
