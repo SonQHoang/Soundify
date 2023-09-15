@@ -16,13 +16,17 @@
     padding-right: 10px;
     min-width: 230px;
     height: 100vh;
+    position: sticky;
+    top:0;
 }
 
 .main-content-container {
     /* border: blue 10px solid; */
     display: flex;
     flex-direction: column;
-    flex: 1
+    flex: 1;
+    max-height: 570px;
+    overflow-y: auto;
 }
 
 .landing-page-playlists-container {

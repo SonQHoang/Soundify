@@ -30,9 +30,6 @@ function App() {
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
-        <div className="app-container">
-          {/* <Sidebar/> */}
-          <main className="content">
         <Switch>
           <Route exact path="/login" >
             <LoginFormPage />
@@ -71,8 +68,6 @@ function App() {
             <Footer/>
           </Route>
         </Switch>
-        </main>
-        </div>
       )}
       {/* <Player/> */}
     </>
