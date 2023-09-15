@@ -5,12 +5,12 @@ const DELETE_USER_SONG = '/songs/deleteSong'
 const CREATE_NEW_SONG = '/songs/createSong'
 
 // Song Action Creator
-const acCreateSong = (data) => {
-    return {
-        type: CREATE_NEW_SONG,
-        payload: data
-    }
-}
+// const acCreateSong = (data) => {
+//     return {
+//         type: CREATE_NEW_SONG,
+//         payload: data
+//     }
+// }
 
 const acGetSongs = (data) => {
     // console.log('song data from the ac=======>', data)
@@ -20,26 +20,26 @@ const acGetSongs = (data) => {
     }
 }
 
-const acGetSingleSong = (data) => {
-    return {
-        type: GET_SINGLE_SONG,
-        payload: data
-    }
-}
+// const acGetSingleSong = (data) => {
+//     return {
+//         type: GET_SINGLE_SONG,
+//         payload: data
+//     }
+// }
 
-const acUpdateSong = (data) => {
-    return {
-        type: UPDATE_USER_SONG,
-        payload: data
-    }
-}
+// const acUpdateSong = (data) => {
+//     return {
+//         type: UPDATE_USER_SONG,
+//         payload: data
+//     }
+// }
 
-const acDeleteSong = (data) => {
-    return {
-        type: DELETE_USER_SONG,
-        payload: data
-    }
-}
+// const acDeleteSong = (data) => {
+//     return {
+//         type: DELETE_USER_SONG,
+//         payload: data
+//     }
+// }
 
 // Song Thunk
 
@@ -66,7 +66,7 @@ export const getAllSongs = () => async (dispatch) => {
 const initialState = { allSongs: {}, singleSong: {} }
 
 const songReducer = (state = initialState, action) => {
-    let newState
+    // let newState
     switch (action.type) {
         case GET_SONG: {
             return {
@@ -76,13 +76,21 @@ const songReducer = (state = initialState, action) => {
         }
 
         case CREATE_NEW_SONG:
+            return {
 
+            }
         case GET_SINGLE_SONG:
+            return {
 
+            }
         case UPDATE_USER_SONG:
+            return {
 
+            }
         case DELETE_USER_SONG:
+            return {
 
+            }
         default:
             return state
     }

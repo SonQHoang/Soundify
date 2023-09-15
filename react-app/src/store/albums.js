@@ -170,7 +170,7 @@ export const getAllAlbums = () => async (dispatch) => {
 
 const initialState = { allAlbums: {}, singleAlbum: {} }
 
-let newState
+// let newState
 const albumReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALBUMS: {

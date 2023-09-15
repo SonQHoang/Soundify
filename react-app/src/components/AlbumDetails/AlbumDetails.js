@@ -7,7 +7,7 @@ import { AddSongToPlaylist } from "../../store/playlists";
 import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import { GetSingleAlbum } from "../../store/albums";
-import { getAllAlbums } from "../../store/albums";
+// import { getAllAlbums } from "../../store/albums";
 import { getUserAlbum } from "../../store/albums";
 import Player from "../AudioBar/audiobar";
 import "./AlbumDetails.css"
