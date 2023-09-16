@@ -8,8 +8,7 @@ const CreatePlaylist = () => {
     const dispatch = useDispatch()
     const history = useHistory();
     const currentUser = useSelector((state) => state.session.user)
-    // const [audioFileUrl, setAudioFileUrl] = useState('') 
-    // const [audio, setAudio] = useState(null);
+
     const [title, setTitle] = useState('');
     const [image, setImage] = useState(null)
     const [description, setDescription] = useState("")
@@ -18,19 +17,6 @@ const CreatePlaylist = () => {
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    // const handleImageUpload = (e) => {
-    //     const file = e.target.files[0];
-    //     if (file) {
-    //         setImageFile(file)
-    //         const reader = new FileReader();
-    //         reader.onload = (e) => {
-    //             setImagePreview(e.target.result)
-    //         }
-    //         reader.readAsDataURL(file)
-    //     } else {
-    //         console.log("No image was uploaded")
-    //     }
-    // }
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -44,13 +30,7 @@ const CreatePlaylist = () => {
         formData.append('playlist_description', description)
         formData.append('date_created', date_created)
 
-        // Confirming my data is in the form
-
-        // const formDataObject = {};
-        // formData.forEach((value, key) => {
-        //     formDataObject[key] = value;
-        // });
-        // console.log('formDataObject:', formDataObject);
+    
 
         try {
             await dispatch(createPlaylist(formData));
@@ -62,15 +42,6 @@ const CreatePlaylist = () => {
         }
     };
 
-    // const handleAudioChange = (e) => {
-    //     const audio = e.target.files[0];
-    //     console.log('Selected Audio Binary Data: ======>', audio);
-    //     setAudio(audio)
-    //     const url = URL.createObjectURL(audio);
-    //     console.log('What is this url========>', url)
-    //     setAudioFileUrl(url)
-    // }
-
 
     return (
         <div className="create-playlist-container">
@@ -79,16 +50,7 @@ const CreatePlaylist = () => {
                 onSubmit={(e) => submitForm(e)}
                 encType="multipart/form-data"
             >
-                <div className="form-input-box">
-                    <div>
-                        <label
-                            className="form-label"
-                            htmlFor='audio'
-                        >
-                            Add a Song:
-                        </label>
-                    </div>
-                </div>
+                <h1>Create a New Playlist</h1>
                 <div className="form-input-box">
                     <div>
                         <label className="form-label" htmlFor='title'>

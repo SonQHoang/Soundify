@@ -9,39 +9,45 @@
 
 .landing-page-container {
     /* border: 2px solid red; */
-    display: flex;
     background-color: black;
     color: white;
     padding-left: 10px;
     padding-right: 10px;
-    min-width: 230px;
+    min-width: 100%;
     height: 100vh;
-    position: sticky;
-    top:0;
+
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    grid-template-rows: 1fr max-content;
+    gap: 0px 10px;
+
+    grid-template-areas:
+    "Playlist-bar Landing-Page-Content"
+    "media-player media-player";
 }
 
 .main-content-container {
     /* border: blue 10px solid; */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     flex: 1;
     max-height: 570px;
-    overflow-y: auto;
+    overflow-y: auto; */
 }
 
 .landing-page-playlists-container {
     /* border: 2px solid red; */
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
     justify-content: start;
-    align-items: start;
+    align-items: start; */
 }
 
 
 .focus-container {
     /* border: 2px solid blue; */
-    flex: 1
+    /* flex: 1 */
 }
 
 .soundify-playlists-container,
@@ -53,4 +59,21 @@
 
 .home-button-container {
     margin: 5px;
+}
+
+.landing-page-playlists-container {
+    grid-area: Landinge-Page-Content;
+    overflow-y: auto;
+    background-color: #000000;
+    border-radius: 10px;
+    background: rgb(18, 18, 18);
+    background: linear-gradient(0deg, rgba(18, 18, 18, 1) 60%, rgba(36, 36, 36, 1) 90%);
+
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.07fr 1fr;
+    gap: 0px 0px;
+
 }

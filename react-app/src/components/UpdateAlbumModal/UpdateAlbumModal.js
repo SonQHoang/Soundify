@@ -38,28 +38,15 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     const [year, setYear] = useState(current_album_information.year || '')
     const [album_description, setAlbum_Description] = useState(current_album_information.album_description || "")
     const [validationErrors, setValidationErrors] = useState([])
-    const [album_photo, setAlbum_photo] = useState(current_album_information.album_photo)
+    const [album_photo, setAlbum_Photo] = useState(current_album_information.album_photo)
     const [hasSubmitted, setHasSubmitted] = useState(false)
+    const [imagePreview, setImagePreview] = useState(null)
     const [albumInformation, setAlbumInformation] = useState(current_album_information)
 
     useEffect(() => {
         setAlbumInformation(current_album_information)
     }, [albumInformation])
     
-
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setAlbum_photo(e.target.result)
-                console.log('Uploaded Image Data:======>', e.target.result);
-            }
-            reader.readAsDataURL(file)
-        } else {
-            console.log("No image was uploaded")
-        }
-    }
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -72,7 +59,14 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
         formData.append('title', title)
         formData.append('year', year)
         formData.append('album_photo', album_photo)
+        // console.log('album_photo component ------------>', album_photo)
         formData.append('album_description', album_description)
+
+        const formDataObject = {};
+        formData.forEach((value, key) => {
+                formDataObject[key] = value;
+            });
+            console.log('formData component update album modal:==============>', formDataObject);
 
         try {
             await dispatch(updateAlbumThunk(albumId, formData))
@@ -86,17 +80,6 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
             console.error("Error while updating album:", error);
         }
     }
-
-
-    // Confirming my data is in the form
-    // console.log('formData in the component============>', formData)
-
-    // const formDataObject = {};
-    // formData.forEach((value, key) => {
-    //         formDataObject[key] = value;
-    //     });
-    //     console.log('formDataObject:==============>', formDataObject);
-    // };
 
 
     //     const handleConfirmUpdate = () => {
@@ -132,7 +115,15 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                     type="file"
                                     name="image"
                                     accept="image/*"
-                                    onChange={handleImageUpload}
+                                    onChange={(e) => {
+                                        setAlbum_Photo(e.target.files[0]);
+                                        if (e.target.files[0]) {
+                                            const url = URL.createObjectURL(e.target.files[0]);
+                                            setImagePreview(url);
+                                        } else {
+                                            setImagePreview(null);
+                                        }
+                                    }}
                                 />
                                 {album_photo && (
                                     <div>
@@ -180,7 +171,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                         <input
                                             className="input-field"
                                             id="year"
-                                            name="year" // Add the name attribute here
+                                            name="year"
                                             type="number"
                                             onChange={(e) => setYear(e.target.value)}
                                             value={year}

@@ -154,7 +154,7 @@ function PlaylistDetails() {
                         <div className="playlist-information-container">
                             <div className="playlist-playlist-title-container">
                                 <p>Playlist</p>
-                                <h1>{currentPlaylist?.title} {currentPlaylist?.id}</h1>
+                                <h1>{currentPlaylist?.title}</h1>
                             </div>
                             <div className="playlist-description">
                                 {currentPlaylist?.playlist_description}

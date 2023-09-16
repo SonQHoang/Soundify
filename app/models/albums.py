@@ -15,7 +15,7 @@ class Albums(db.Model):
     title = db.Column(db.String, nullable=False, unique=True)
     album_description = db.Column(db.String)
     year = db.Column(db.Integer, nullable=False)
-    image = db.Column(db.String)
+    # image = db.Column(db.String)
     date_created = db.Column(db.DateTime, nullable=False)
 
     #Albums has a one to MANY relationship with album_likes, songs
@@ -32,7 +32,7 @@ class Albums(db.Model):
             "title": self.title,
             "owner": self.owner,
             "year": self.year,
-            "image": self.image,
+            # "image": self.image,
             "album_description": self.album_description,
             "date_created": self.date_created,
             "album_users": self.album_users.to_dict()

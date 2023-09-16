@@ -36,9 +36,8 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
     
     const [title, setTitle] = useState(current_playlist_information.title || '');
     const [image, setImage] = useState(current_playlist_information.image || '')
-    const [description, setDescription] = useState(current_playlist_information.description || "")
+    const [description, setDescription] = useState(current_playlist_information.playlist_description || "")
     const [validationErrors, setValidationErrors] = useState([])
-    const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [playlistInformation, setPlaylistInformation] = useState(current_playlist_information)
     
@@ -51,7 +50,7 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
         if (file) {
             const reader = new FileReader();
             reader.onload = (e) => {
-                setImagePreview(e.target.result)
+                setImage(e.target.result)
                 console.log('Uploaded Image Data:======>', e.target.result);
             }
             reader.readAsDataURL(file)
@@ -74,11 +73,11 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
 
         // Confirming my data is in the form
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-            formDataObject[key] = value;
-        });
-        console.log('formDataObject:', formDataObject);
+        // const formDataObject = {};
+        // formData.forEach((value, key) => {
+        //     formDataObject[key] = value;
+        // });
+        // console.log('formDataObject:', formDataObject);
     };
 
     const updatedPlaylist = {
@@ -121,9 +120,9 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
                                     accept="image/*"
                                     onChange={handleImageUpload}
                                 />
-                                {imagePreview && (
+                                {image && (
                                     <div>
-                                        <img src={imagePreview} alt="Playlist Image" width="100" />
+                                        <img src={image} alt="Playlist Image" width="100" />
                                     </div>
                                 )}
                             </div>
