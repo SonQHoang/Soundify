@@ -1,8 +1,8 @@
-"""Creating new tables
+"""Updating tables
 
-Revision ID: 59c09297d3a0
+Revision ID: 33198499dc33
 Revises: 
-Create Date: 2023-09-15 12:58:41.119592
+Create Date: 2023-09-16 16:48:03.390781
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '59c09297d3a0'
+revision = '33198499dc33'
 down_revision = None
 branch_labels = None
 depends_on = None
