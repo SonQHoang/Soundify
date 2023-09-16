@@ -22,17 +22,31 @@ const UserPlaylist = () => {
 
 
     return (
- 
-            <div className="playlist-container">
-                {userPlaylist && userPlaylist.map(playlist => (
-                    <div key={playlist.id} className="individual-playlist">
-                        <NavLink to={`/playlist/${playlist.id}`} className="link-no-underline">
-                            <p>{playlist.title}</p>
-                            <p>{playlist.owner}</p>
-                        </NavLink>
-                    </div>
-                ))}
-            </div>
+        <div className="playlist-container">
+            {userPlaylist && userPlaylist.map(playlist => (
+                <div key={playlist.id} className="individual-playlist-map">
+                    <NavLink to={`/playlist/${playlist.id}`} className="link-no-underline">
+
+                        <div className="individual-playlist-container">
+                            <div className="playlist-icon-container">
+                                <p>Playlist Icon</p>
+                            </div>
+                            <div className="playlist-info-container">
+                                <div className="playlist-info-top">
+                                    <p>{playlist.title}</p>
+                                </div>
+                                <div className="playlist-info-bottom">
+                                    <p>Playlist or Album</p>
+                                    <p> . </p>
+                                    <p># Songs</p>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <p>{playlist.owner}</p> */}
+                    </NavLink>
+                </div>
+            ))}
+        </div>
     );
 }
 

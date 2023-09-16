@@ -8,7 +8,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import UserPlaylist from '../UserPlaylist/UserPlaylist'
+// import UserPlaylist from '../UserPlaylist/UserPlaylist'
+import LandingPagePlaylists from '../LandingPagePlaylists/LandingePagePlaylists';
 import Footer from '../Footer/Footer'
 import "./landingpage.css"
 
@@ -33,7 +34,7 @@ const LandingPage = () => {
                 <div className="main-content-container">
                     <div className="soundify-playlists-container">
                         <div className="landing-h1-container">
-                        <h1 className="landing-h1">Soundify Playlists</h1>
+                        <h1 className="landing-h1">Playlists</h1>
                         {user ? (
                             <div>
                                 <div>{user.username}</div>
@@ -48,7 +49,8 @@ const LandingPage = () => {
                         )}
                         </div>
                         <div className="landing-page-playlists-container">
-                            <UserPlaylist />
+                            {/* <UserPlaylist /> */}
+                            <LandingPagePlaylists/>
                         </div>
                     </div>
                     <div className="focus-container">

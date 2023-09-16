@@ -10,7 +10,8 @@ const CreateAlbum = () => {
     const history = useHistory();
     const currentUser = useSelector((state) => state.session.user)
     const [title, setTitle] = useState('');
-    const [image, setImage] = useState('')
+    const [album_photo, setAlbum_Photo] = useState('')
+    // console.log('setAlbum_Photo=======>', setAlbum_Photo)
     const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
     const [year, setYear] = useState('')
@@ -18,19 +19,6 @@ const CreateAlbum = () => {
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    // const handleImageUpload = (e) => {
-    //     const file = e.target.files[0];
-    //     if (file) {
-    //         const reader = new FileReader();
-    //         reader.onload = (e) => {
-    //             setImagePreview(e.target.result)
-    //             console.log('Uploaded Image Data:======>', e.target.result);
-    //         }
-    //         reader.readAsDataURL(file)
-    //     } else {
-    //         console.log("No image was uploaded")
-    //     }
-    // }
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -38,34 +26,30 @@ const CreateAlbum = () => {
         setHasSubmitted(true);
         if (validationErrors.length) return alert("You've got some errors with your upload!");
         const formData = new FormData()
-        // formData.append("audio", audio)
-        // console.log('What does audio give us back=======> The filename', audio)
-        // formData.append('user_id', currentUser.id)
+
         formData.append('author', currentUser.first_name)
-        // console.log('What does author gives us back======>', currentUser)
         formData.append('title', title)
-        formData.append('image', image)
+        formData.append('album_photo', album_photo)
         formData.append('album_description', description)
         formData.append('year', year)
         formData.append('date_created', date_created)
 
         // Confirming my data is in the form
 
-        // const formDataObject = {};
-        // formData.forEach((value, key) => {
-        //     formDataObject[key] = value;
-        // });
-        // console.log('formDataObject:', formDataObject);
+        const formDataObject = {};
+        formData.forEach((value, key) => {
+            formDataObject[key] = value;
+        });
+        console.log('formDataObject=========> component:', formDataObject);
 
         try {
             await dispatch(createAlbum(formData));
             setValidationErrors([]);
             setHasSubmitted(false);
-            history.push(`/`);
+            history.push(`/landing-page`);
         } catch (error) {
             console.error("Error creating playlist:", error);
         }
-        history.push(`/`)
     };
 
     return (
@@ -75,16 +59,7 @@ const CreateAlbum = () => {
                 onSubmit={(e) => submitForm(e)}
                 encType="multipart/form-data"
             >
-                <div className="form-input-box">
-                    <div>
-                        <label
-                            className="form-label"
-                            htmlFor='audio'
-                        >
-                            Add a Song:
-                        </label>
-                    </div>
-                </div>
+                <h1>Create a New Album</h1>
                 <div className="form-input-box">
                     <div>
                         <label className="form-label" htmlFor='title'>
@@ -125,7 +100,7 @@ const CreateAlbum = () => {
                         name="image"
                         accept="image/*"
                         onChange={(e) => {
-                            setImage(e.target.files[0]);
+                            setAlbum_Photo(e.target.files[0]);
                             if (e.target.files[0]) {
                                 const url = URL.createObjectURL(e.target.files[0]);
                                 setImagePreview(url);

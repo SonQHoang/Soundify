@@ -18,6 +18,7 @@ import UserAlbum from "./components/UserAlbum/UserAlbum";
 import Footer from "./components/Footer/Footer";
 import SplashPage from "./components/SplashPage/SplashPage";
 import Sidebar from "./components/Sidebar/Sidebar";
+import LandingPagePlaylists from "./components/LandingPagePlaylists/LandingePagePlaylists";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route exact path="/landing-page">
             <LandingPage/>
+          </Route>
+          <Route>
+            <LandingPagePlaylists/>
           </Route>
           <Route>
             <Footer/>

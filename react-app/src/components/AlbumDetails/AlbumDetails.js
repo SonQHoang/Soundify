@@ -83,7 +83,7 @@ function AlbumDetails() {
     }, [dispatch, userId])
 
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
-    // console.log('What does currentAlbum look like=========>', currentAlbum)
+    console.log('What does currentAlbum look like=========>', currentAlbum)
     const handleDeleteClick = async () => {
         setAlbumToDelete(currentAlbum)
         // console.log('Playlist to delete (inside handleDeleteClick):', currentAlbum);
@@ -119,8 +119,8 @@ function AlbumDetails() {
             <div className="album-details-container">
                 <div className="album-info-container">
                     <div className="album-image-and-title-container">
-                        <div className="album-image">
-                            <h2>Album Graphic Here</h2>
+                        <div className="album-image-container">
+                            <img className="album-image" src={currentAlbum.album_photo}></img>
                         </div>
                         <div className="album-information-container">
                             <p>Album</p>
@@ -131,6 +131,7 @@ function AlbumDetails() {
                             <div className="album-user-details">
                                 <p className="album-user-picture">Profile Pic</p>
                                 <p>{currentAlbum?.owner}</p>
+                                <p>{"[-------------]"}</p>
                                 <p>{currentAlbum?.year}</p>
                             </div>
                         </div>

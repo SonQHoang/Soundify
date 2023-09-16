@@ -45,7 +45,7 @@ def create_playlists():
             image = url,
             date_created=datetime.utcnow(),
         )
-  
+
         db.session.add(new_playlist)
         db.session.commit()
         return {"resPost": new_playlist.to_dict()}

@@ -38,20 +38,22 @@ def create_albums():
 
     if form.validate_on_submit():
 
-        image = form.data['image']
-        image.filename = get_unique_filename(image.filename)
-        upload = upload_file_to_s3(image)
+        album_photo = form.data['album_photo']
+        # print('image backend album routes=============>', image)
+        album_photo.filename = get_unique_filename(album_photo.filename)
+        # print('image fileback album routes==========>', image.filename)
+        upload = upload_file_to_s3(album_photo)
         
         url = upload['url']
 
         new_album = Albums(
-            user_id=user.id,
-            title=form.data,
+            user_id=user.id, 
+            title=form.title.data,
             owner = current_user.first_name,
             album_description=form.album_description.data,
-            album_photo = form.album_photo.data,
+            # album_photo = form.album_photo.data,
             year = form.year.data,
-            image = url,
+            album_photo = url,
             date_created=datetime.utcnow(),
         )
 
@@ -77,11 +79,14 @@ def get_single_album_by_id(albumId):
 
     if album is None:
         return jsonify({"error": "Album not found"}), 404
+
     
     album_data = {
         "id": album.id,
         "title": album.title,
         "owner": album.owner,
+        "album_photo": album.album_photo,
+        "year": album.year,
         "album_description": album.album_description,
         "date_created": datetime.utcnow(),
     }
@@ -125,10 +130,17 @@ def update_album(albumId):
 
     if form.validate_on_submit():
         current_album = Albums.query.get(albumId)
+
         current_album.title = form.title.data
-        current_album.album_photo = form.album_photo.data
         current_album.year = form.year.data
         current_album.album_description = form.album_description.data
+
+        if 'album_photo' in request.files:
+            album_photo = request.files['album_photo']
+            if album_photo.filename != '':
+                album_photo.filename = get_unique_filename(album_photo.filename)
+                upload = upload_file_to_s3(album_photo)
+                current_album.album_photo = upload['url']
 
         db.session.commit()
         return current_album.to_dict()

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUserAlbum } from '../../store/albums';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import "./UserAlbum.css"
 
 const UserAlbum = () => {
@@ -12,7 +12,7 @@ const UserAlbum = () => {
 
     const album = (useSelector(state => state.album.allAlbums))
     console.log('album useralbum component=========>', album)
-    
+
     const userAlbum = Object.values(album)
 
     // console.log('userPlaylists=========>', userPlaylist)
@@ -24,18 +24,30 @@ const UserAlbum = () => {
 
 
     return (
-        <>
-            <div className="album-container">
-                {userAlbum && userAlbum.map(album => (
-                    <div key={album.id} className="individual-album">
-                        <Link to={`/album/${album.id}`} className="link-no-underline">
-                            <p>{album.title}</p>
-                            <p>{album.owner}</p>
-                        </Link>
-                    </div>
-                ))}
-            </div>
-        </>
+        <div className="album-container">
+            {userAlbum && userAlbum.map(album => (
+                <div key={album.id} className="individual-album-map">
+                    <NavLink to={`/album/${album.id}`} className="link-no-underline">
+
+                        <div className="individual-album-container">
+                            <div className="album-icon-container">
+                                <p>Album Icon</p>
+                            </div>
+                            <div className="album-info-container">
+                                <div className="album-info-top">
+                                    <p>{album.title}</p>
+                                </div>
+                                <div className="album-info-bottom">
+                                    <p>Playist or Album</p>
+                                    <p> . </p>
+                                    <p> # Songs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </NavLink>
+                </div>
+            ))}
+        </div>
     );
 }
 

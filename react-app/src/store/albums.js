@@ -34,7 +34,7 @@ const acAddSongToAlbum = (data) => {
     }
 }
 const acCreateAlbum = (data) => {
-    console.log('Is my new album data coming through=====>', data)
+    // console.log('Is my new album data coming through=====>', data)
     return {
         type: CREATE_NEW_ALBUM,
         payload: data
@@ -66,14 +66,15 @@ export const getUserAlbum = () => async (dispatch) => {
 }
 
 export const updateAlbumThunk = (albumId, formData) => async (dispatch) => {
-    console.log('Is the albumId coming through for the THUNK======>', albumId)
-    console.log('Is the updatedDat coming through======>', formData)
+    // console.log('Is the albumId coming through for the THUNK======>', albumId)
+    const formDataObject = {};
+    formData.forEach((value, key) => {
+            formDataObject[key] = value;
+        });
+        console.log('formData component update THUNK:==============>', formDataObject);
     try {
         const response = await fetch(`/api/album/update/${albumId}`, {
             method: 'PUT',
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // },
             body: formData
         });
         
@@ -136,10 +137,6 @@ export const GetSingleAlbum = (albumId) => async (dispatch) => {
 
 export const createAlbum = (data) => async (dispatch) => {
     console.log('What data is coming through?=======> FormData', data)
-    // for (const [key, value] of data.entries()) {
-    //     console.log(`Key: ${key}, Value: ${value}`);
-    // }
-
     const response = await fetch('/api/album/new', {
         method: "POST",
         body: data
@@ -192,6 +189,7 @@ const albumReducer = (state = initialState, action) => {
                     ...state.allAlbums,
                     [action.payload.id]: action.payload,
                 },
+                singleAlbum: action.payload.resPost
             };
         case ADD_SONG_TO_ALBUM:
             console.log('My initial state =====>', state);
