@@ -95,7 +95,6 @@ def seed_users():
     
     song_1 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+Perfectly+Lonely.mp3",
         title = "Perfectly Lonely",
         duration = "4:28",
@@ -184,7 +183,6 @@ def seed_users():
 
     song_2 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Heartbreak+Warfare.mp3",
         title = "Heartbreak Warfare",
         duration = "4:29",
@@ -244,7 +242,6 @@ def seed_users():
 
     song_3 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Wynton+Marsalis+Septet%2C+John+Mayer%2C+Wynton+Marsalis+-+I'm+Gonna+Find+Another+You.mp3",
         title = "I'm Gonna Find Another You",
         duration = "2:44",
@@ -280,7 +277,6 @@ def seed_users():
 
     song_4 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Leon+Bridges%2C+John+Mayer+-+Inside+Friend+(feat.+John+Mayer).mp3",
         title = "Inside Friend (feat. John Mayer)",
         duration = "2:55",
@@ -322,7 +318,6 @@ def seed_users():
 
     song_5 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Last+Train+Home.mp3",
         title = "Last Train Home",
         duration = "3:07",
@@ -369,7 +364,6 @@ def seed_users():
 
     song_6 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Jacob+Collier%2C+Lizzy+McAlpine%2C+John+Mayer+-+Never+Gonna+Be+Alone+(feat.+Lizzy+McAlpine+%26+John+Mayer).mp3",
         title = "Never Gonna Be Alone (feat. Lizzy McAlpine & John Mayer)",
         duration = "4:10",
@@ -409,7 +403,6 @@ def seed_users():
 
     song_7 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+No+Such+Thing.mp3",
         title = "No Such Thing",
         duration = "3:51",
@@ -464,7 +457,6 @@ def seed_users():
 
     song_8 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Queen+of+California.mp3",
         title = "Queen of California",
         duration = "4:10",
@@ -495,7 +487,6 @@ def seed_users():
 
     song_9 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Say.mp3",
         title = "Say",
         duration = "3:50",
@@ -570,7 +561,6 @@ def seed_users():
 
     song_10 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Still+Feel+Like+Your+Man.mp3",
         title = "Still Feel Like Your Man",
         duration = "3:55",
@@ -630,7 +620,6 @@ def seed_users():
 
     song_11 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Waiting+On+the+World+to+Change.mp3",
         title = "Waiting On the World to Change",
         duration = "3:21",
@@ -690,7 +679,6 @@ def seed_users():
 
     song_12 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Wildfire.mp3",
         title = "Wildfire",
         duration = "4:13",
@@ -735,7 +723,6 @@ def seed_users():
 
     song_13 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+XO.mp3",
         title = "XO",
         duration = "3:33",
@@ -795,7 +782,6 @@ def seed_users():
 
     song_14 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Dear+Marie.mp3",
         title = "Dear Marie",
         duration = "3:42",
@@ -820,7 +806,6 @@ def seed_users():
 
     song_15 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Emoji+of+a+Wave.mp3",
         title = "Emoji of a Wave",
         duration = "3:59",
@@ -879,7 +864,6 @@ def seed_users():
 
     song_16 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+Tony+Bennett%2C+John+Mayer+-+One+for+My+Baby+(And+One+More+for+the+Road).mp3",
         title = "One for My Baby (And One More for the Road)",
         duration = "2:56",
@@ -921,7 +905,6 @@ def seed_users():
 
     song_17 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Shouldn't+Matter+but+It+Does.mp3",
         title = "Shouldn't Matter but It Does",
         duration = "3:56",
@@ -969,7 +952,6 @@ def seed_users():
 
     song_18 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+The+Age+of+Worry.mp3",
         title = "The Age of Worry",
         duration = "2:37",
@@ -1013,7 +995,6 @@ def seed_users():
 
     song_19 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Why+Georgia.mp3",
         title = "Why Georgia",
         duration = "4:28",
@@ -1064,7 +1045,6 @@ def seed_users():
 
     song_20 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+-+John+Mayer+-+Half+of+My+Heart.mp3",
         title = "Half of My Heart",
         duration = "4:10",
@@ -1118,7 +1098,6 @@ def seed_users():
 
     song_21 = Songs (
         user_id = 1,
-        album_id = 5,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/02+-+Ed+Sheeran+-+Castle+on+the+Hill.mp3",
         title = "Castle on the Hill",
         duration = "4:21",
@@ -1170,7 +1149,6 @@ def seed_users():
     
     song_22 = Songs (
         user_id = 1,
-        album_id = 5,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/04+-+Ed+Sheeran+-+Shape+of+You.mp3",
         title = "Shape of You",
         duration = "3:53",
@@ -1269,7 +1247,6 @@ def seed_users():
 
     song_23 = Songs (
         user_id = 1,
-        album_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/05+-+Ed+Sheeran+-+Perfect.mp3",
         title = "Perfect",
         duration = "4:23",
@@ -1324,7 +1301,6 @@ def seed_users():
 
     song_24 = Songs (
         user_id = 1,
-        album_id = 5,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/06+-+Ed+Sheeran+-+Galway+Girl.mp3",
         title = "Galway Girl",
         duration = "2:51",
@@ -1385,7 +1361,6 @@ def seed_users():
 
     song_25 = Songs (
         user_id = 1,
-        album_id = 5,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/07+-+Ed+Sheeran+-+Happier.mp3",
         title = "Happier",
         duration = "3:28",
@@ -1433,7 +1408,6 @@ def seed_users():
 
     song_26 = Songs (
         user_id = 1,
-        album_id = 5,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/10+-+Ed+Sheeran+-+What+Do+I+Know.mp3",
         title = "What Do I Know",
         duration = "3:57",
@@ -1500,7 +1474,6 @@ def seed_users():
 
     song_27 = Songs (
         user_id = 1,
-        album_id = 5,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/11+-+Ed+Sheeran+-+How+Would+You+Feel+(Paean).mp3",
         title = "How Would You Feel (Paean)",
         duration = "4:41",
@@ -1544,7 +1517,6 @@ def seed_users():
 
     song_28 = Songs (
         user_id = 1,
-        album_id = 4,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/02+-+Ed+Sheeran+-+Shivers.mp3",
         title = "Shivers",
         duration = "3:28",
@@ -1614,7 +1586,6 @@ def seed_users():
 
     song_29 = Songs (
         user_id = 1,
-        album_id = 4,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/03+-+Ed+Sheeran+-+First+Times.mp3",
         title = "First Times",
         duration = "3:06",
@@ -1658,7 +1629,6 @@ def seed_users():
 
     song_30 = Songs (
         user_id = 1,
-        album_id = 4,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/12+-+Ed+Sheeran+-+Visiting+Hours.mp3",
         title = "Visiting Hours",
         duration = "3:36",
@@ -1693,7 +1663,6 @@ def seed_users():
 
     song_31 = Songs (
         user_id = 1,
-        album_id = 3,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/03+-+Ed+Sheeran+-+Sing.mp3",
         title = "Sing",
         duration = "3:55",
@@ -1797,7 +1766,6 @@ def seed_users():
 
     song_32 = Songs (
         user_id = 1,
-        album_id = 3,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/03+-+Ed+Sheeran+-+Sing.mp3",
         title = "Don't",
         duration = "3:40",
@@ -1864,7 +1832,6 @@ def seed_users():
 
     song_33 = Songs (
         user_id = 1,
-        album_id = 3,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/06+-+Ed+Sheeran+-+Photograph.mp3",
         title = "Photograph",
         duration = "4:19",
@@ -1922,7 +1889,6 @@ def seed_users():
 
     song_34 = Songs (
         user_id = 1,
-        album_id = 3,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/11+-+Ed+Sheeran+-+Thinking+out+Loud.mp3",
         title = "Thinking Out Loud",
         duration = "4:18",
@@ -1973,7 +1939,6 @@ def seed_users():
 
     song_35 = Songs (
         user_id = 1,
-        album_id = 2,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%2B/01+-+Ed+Sheeran+-+The+A+Team.mp3",
         title = "The A Team",
         duration = "4:42",
@@ -2059,7 +2024,6 @@ def seed_users():
 
     song_36 = Songs (
         user_id = 1,
-        album_id = 2,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%2B/09+-+Ed+Sheeran+-+Lego+House.mp3",
         title = "Lego House",
         duration = "3:05",
