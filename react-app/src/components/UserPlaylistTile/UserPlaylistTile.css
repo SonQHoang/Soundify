@@ -1,0 +1,102 @@
+.playlist-tile-wrapper {
+    /* border: 2px solid red; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-gap: 15px;
+    padding: 20px;
+}
+
+.playlist-info-wrapper {
+    padding: 10px;
+}
+
+.playlist-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlist-image {
+    width: 150px;
+    height: 100px;
+    /* Fit the size of the container */
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    margin: 0;
+}
+
+
+.playlist-name {
+    font-weight: bold;
+}
+
+.playlist-tile-container {
+    position: relative;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.playlist-tile-list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.tile {
+    width: 200px;
+    height: 150px;
+    background-color: #f0f0f0;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tile::before {
+    content: attr(title);
+    visibility: hidden;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.tile:hover::before {
+    visibility: visible;
+}
+
+
+
+@media (max-width: 499px) {
+    .playlist-tiles-wrapper {
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1023px) {
+    .playlist-tile-list {
+        width: calc(33.33% - 20px);
+        /* Three columns with a gap */
+    }
+}
+
+@media (min-width: 1024px) {
+    .playlist-tile-list {
+        width: calc(25% - 20px);
+        /* Four columns with a gap */
+    }
+}

@@ -26,7 +26,7 @@ const UserAlbum = () => {
     return (
         <div className="album-container">
             {userAlbum && userAlbum.map(album => (
-                <div key={album.id} className="individual-album-map">
+                <li key={album.id} className="individual-album-map">
                     <NavLink to={`/album/${album.id}`} className="link-no-underline">
 
                         <div className="individual-album-container">
@@ -45,7 +45,7 @@ const UserAlbum = () => {
                             </div>
                         </div>
                     </NavLink>
-                </div>
+                </li>
             ))}
         </div>
     );

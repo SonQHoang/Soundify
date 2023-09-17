@@ -19,6 +19,11 @@ import Footer from "./components/Footer/Footer";
 import SplashPage from "./components/SplashPage/SplashPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import LandingPagePlaylists from "./components/LandingPagePlaylists/LandingePagePlaylists";
+import MainPageTest from "./components/MainPageTest/MainPageTest";
+import TestFooter from "./components/TestComponents/TestFooter";
+import TestNav from "./components/TestComponents/TestNav";
+import TestSideBar from "./components/TestComponents/TestSideBar";
+import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +37,18 @@ function App() {
       {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
+          <Route exact path="sidebar-test">
+            <TestSideBar/>
+          </Route>
+          <Route exact path="/footer-test">
+            <TestFooter/>
+          </Route>
+          <Route exact path="nav-test">
+            <TestNav/>
+          </Route>
+          <Route exact path="/test">
+            <MainPageTest/>
+          </Route>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
@@ -67,6 +84,9 @@ function App() {
           </Route>
           <Route>
             <LandingPagePlaylists/>
+          </Route>
+          <Route>
+            <UserPlaylistTile/>
           </Route>
           <Route>
             <Footer/>
