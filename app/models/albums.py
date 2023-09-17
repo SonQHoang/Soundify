@@ -37,6 +37,8 @@ class Albums(db.Model):
         return {
             "id": self.id,
             "album_photo": self.album_photo,
+            "user_id": self.user_id,
+            "song_id": self.song_id,
             "title": self.title,
             "owner": self.owner,
             "year": self.year,
