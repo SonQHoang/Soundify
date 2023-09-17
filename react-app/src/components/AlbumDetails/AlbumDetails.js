@@ -3,42 +3,61 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
-import { AddSongToPlaylist } from "../../store/playlists";
+import { GetSongsForAlbum } from "../../store/albums";
 import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
-import { GetSingleAlbum } from "../../store/albums";
+import { AddSongToAlbum, GetSingleAlbum } from "../../store/albums";
 // import { getAllAlbums } from "../../store/albums";
 import { getUserAlbum } from "../../store/albums";
 import Player from "../AudioBar/audiobar";
 import "./AlbumDetails.css"
 import UpdateAlbum from "../UpdateAlbum/UpdateAlbum";
 import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
+import TestSideBar from "../TestComponents/TestSideBar";
+import TestNav from "../TestComponents/TestNav";
 
 function AlbumDetails() {
     const { albumId } = useParams()
-    // console.log('albumId in albumDetails========>', albumId)
     const dispatch = useDispatch();
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
-    // const user_tips = useSelector()
+    
+        const new_songs = (useSelector(state => state.album.singleAlbum.songs))
+        console.log('new_songs=========> albums component', new_songs)
+
+    
+    const [albumInfo, setAlbumInfo] = useState()
+    const [selectedSongs, setSelectedSongs] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [albumToDelete, setAlbumToDelete] = useState(null);
+    const [modalType, setModalType] = useState(null);    
+
+    useEffect(() => {
+        // setAlbumInfo(new_songs)
+        getAlbumSongs(albumId)
+        dispatch(GetSongsForAlbum(albumId))
+        dispatch(GetSingleAlbum(albumId))
+        dispatch(getAllSongs())
+    }, [albumInfo, AddSongToAlbum, dispatch, userId])
 
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string
-    // const [album, setAlbum] = useState([]); // Initialize album as an array of song 
-    // const [selectedSong, setSelectedSong] = useState(null)
-    const [selectedSongs, setSelectedSongs] = useState([]);
 
-    const new_songs = useSelector((state) => state.playlist.singlePlaylist);
-    // console.log('Updated Song List=========>', new_songs)
 
-    useEffect(() => {
-        dispatch(getAllSongs())
-    }, [dispatch]);
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
-    const titleKVPairs = songLibrary.map(song => ({ title: song.title, audio_url: song.audio_url }));
+    const titleKVPairs = songLibrary.map(song => ({ 
+        id: song.id,
+        user_id: song.user_id,
+        album_id: song.album_id,
+        title: song.title,
+        duration: song.duration,
+        audio_url: song.audio_url,
+        lyrics: song.lyrics,
+        date_created: song.date_created
+    }));
 
     const queryFilter = (query, titleKVPairs) => {
         if (!query) {
@@ -49,15 +68,6 @@ function AlbumDetails() {
 
     const filteredSongs = queryFilter(query, titleKVPairs);
 
-    const addToPlaylist = async (title) => {
-        const selectedSong = songLibrary.find(song => song.title === title);
-        if (selectedSong) {
-            setSelectedSongs([...selectedSongs, selectedSong]);
-            dispatch(AddSongToPlaylist(selectedSong));
-            setQuery("");
-        }
-    }
-
     const selectSong = (song) => {
         console.log('Selected Song:======>', song)
         if (selectedSongs.includes(song)) {
@@ -65,28 +75,34 @@ function AlbumDetails() {
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
-        dispatch(AddSongToPlaylist(song))
         setQuery("")
+    }
+
+    const addToAlbum = () => {
+        Object.values(filteredSongs).map((song) => {
+            const song_with_album_id = {
+                ...song,
+                albumId
+            }
+            dispatch(AddSongToAlbum(song_with_album_id))
+        })
+    }
+
+    const getAlbumSongs = async () => {
+        await dispatch(GetSongsForAlbum(albumId))
     }
 
     //======================================================SearchBar End========================================
 
     //======================================================DeleteAlbum Start========================================
 
-    const [showModal, setShowModal] = useState(false);
-    const [albumToDelete, setAlbumToDelete] = useState(null);
-    // console.log("Are we targeting the albumToDelete=======>", albumToDelete)
-    const [modalType, setModalType] = useState(null);
-
-    useEffect(() => {
-        dispatch(GetSingleAlbum(albumId))
-    }, [dispatch, userId])
 
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
-    console.log('What does currentAlbum look like=========>', currentAlbum)
+
+
     const handleDeleteClick = async () => {
         setAlbumToDelete(currentAlbum)
-        // console.log('Playlist to delete (inside handleDeleteClick):', currentAlbum);
+        // console.log('Album to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("delete");
         setShowModal(true)
         await dispatch(getUserAlbum())
@@ -97,10 +113,6 @@ function AlbumDetails() {
     //======================================================UpdateAlbum Start========================================
 
     const [albumToUpdate, setAlbumToUpdate] = useState(null);
-
-    useEffect(() => {
-        dispatch(GetSingleAlbum(albumId))
-    }, [dispatch, userId])
 
     const handleUpdateClick = async () => {
         setAlbumToUpdate(currentAlbum)
@@ -113,112 +125,147 @@ function AlbumDetails() {
 
     //======================================================UpdateAlbum End========================================
 
-
     return (
         <>
-            <div className="album-details-container">
-                <div className="album-info-container">
-                    <div className="album-image-and-title-container">
-                        <div className="album-image-container">
-                            <img className="album-image" src={currentAlbum.album_photo}></img>
-                        </div>
-                        <div className="album-information-container">
-                            <p>Album</p>
-                            <h2>{currentAlbum?.title}</h2>
-                            <div className="album-description">
-                                {currentAlbum?.album_description}
-                            </div>
-                            <div className="album-user-details">
-                                <p className="album-user-picture">Profile Pic</p>
-                                <p>{currentAlbum?.owner}</p>
-                                <p>{"[-------------]"}</p>
-                                <p>{currentAlbum?.year}</p>
-                            </div>
-                        </div>
+            <div className="page-container">
+                <TestSideBar />
+                <div className="main-content-container">
+                    <div className="main-content-nav-container">
+                        <TestNav />
                     </div>
-                    <div>
-                        <button className="album-update-button" onClick={() => {
-                            console.log('album-update-button component CLICKED****************')
-                            return handleUpdateClick(albumId);
-                        }}>Edit Details</button>
-                        <UpdateAlbum albumId={albumId} />
+                    <div className="main-content">
+                        <div className="album-image-and-title-container">
+                            <div className="album-image-container">
+                                <img className='album-image' src={currentAlbum.album_photo}></img>
+                            </div>
+                            <div className="album-information-container">
+                                <div className="album-album-title-container">
+                                    <p>Album</p>
+                                    <h1>{currentAlbum?.title}</h1>
+                                </div>
+                                <div className="album-description">
+                                    {currentAlbum?.album_description}
+                                </div>
+                                <div className="album-user-details">
+                                    <p className="album-user-picture">Profile Pic</p>
+                                    <p>{currentAlbum?.owner}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button className="album-update-button" onClick={() => {
+                                return handleUpdateClick(albumId);
+                            }}>Edit Details</button>
+                            <UpdateAlbum albumId={albumId} />
 
-                        <button className="album-delete-button" onClick={() => {
-                            return handleDeleteClick(albumId);
-                        }}>Delete Album</button>
-                        <DeleteAlbum albumId={albumId} />
-                    </div>
-                </div>
-                <div className='search-bar-container'>
-                    <div className='search-bar'>
-                        {filteredSongs.map((value, index) => (
-                            <div key={index} onClick={() => addToPlaylist(value.title)}>
-                                <p>{value.title}</p>
+                            <button className="album-delete-button" onClick={() => {
+                                return handleDeleteClick(albumId);
+                            }}>Delete Album</button>
+                            <DeleteAlbum albumId={albumId} />
+                        </div>
+                        <div className='search-bar-container'>
+                            <div className='search-bar'>
+                                <input
+                                    type="text"
+                                    placeholder="Search for a song"
+                                    onChange={(e) => setQuery(e.target.value)}
+                                />
                             </div>
-                        ))}
-                        <input
-                            type="text"
-                            placeholder="Search for a song"
-                            onChange={(e) => setQuery(e.target.value)}
-                        />
-                    </div>
-                </div>
-                <div className="album-headers">
-                    <p>#</p>
-                    <p>Title</p>
-                    <p>Reaction</p>
-                    <p>Clock Icon</p>
-                </div>
-                <div className="album-songs-container">
-                    <div className="album">
-                        <ul>
-                            {Object.values(new_songs)?.map((song, index) => (
-                                <div key={index}>
-                                    {song?.title ? (
-                                        <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
-                                    ) : null}
-                                    <p>{song?.album}</p>
-                                    <p>{song?.dateAdded}</p>
-                                    <p>{song?.timeSymbol}</p>
+                        </div>
+                        <div className="album-songs-container">
+                            <div className="album-headers">
+                                <div className="grid-row" style={{ width: '200px' }}>
+                                    <div>#</div>
+                                </div>
+                                <div className="grid-row" style={{ width: '200px' }}>
+                                    <div>Title</div>
+                                </div>
+                                <div className="grid-row" style={{ width: '200px' }}>
+                                    <div>Album</div>
+                                </div>
+                                <div className="grid-row" style={{ width: '200px' }}>
+                                    <div>Date Added</div>
+                                </div>
+                                <div className="grid-row" style={{ width: '200px' }}>
+                                    <div>Clock Icon</div>
+                                </div>
+                            </div>
+                            {(new_songs)?.map((song, index) => (
+                                <div key={index} className="individual-album-songs">
+                                    <div className="grid-row" style={{ width: '200px' }}>
+                                        <div>{song.id}</div>
+                                    </div>
+                                    <div className="grid-row" style={{ width: '200px' }}>
+                                        {song?.title ? (
+                                            <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
+                                        ) : null}
+                                    </div>
+                                    <div className="grid-row" style={{ width: '200px' }}>
+                                        <div className="album-info">Album Info</div>
+                                    </div>
+                                    <div className="grid-row" style={{ width: '200px' }}>
+                                        <div className="song-date">{song.date_created}</div>
+                                    </div>
+                                    <div className="grid-row" style={{ width: '200px' }}>
+                                        <div className="song-duration">{song.duration}</div>
+                                    </div>
                                 </div>
                             ))}
-                        </ul>
+                            {selectedSongs.length > 0 && (
+                                <div>
+                                    {selectedSongs.map((selectedSong, index) => (
+                                        <div key={index}>
+                                            <Player src={selectedSong.audio_url} />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                            {showModal && modalType === "update" && (
+                                <UpdateAlbumModal
+                                    albumId={albumToUpdate.id}
+                                    onSubmit={() => {
+                                        setShowModal(false);
+                                        setAlbumToUpdate(null);
+                                        setModalType(null);
+                                    }}
+                                    onClose={() => {
+                                        setShowModal(false);
+                                        setAlbumToUpdate(null);
+                                        setModalType(null);
+                                    }}
+                                />
+                            )}
+                            {showModal && modalType === "delete" && (
+                                <DeleteAlbumModal
+                                    albumId={albumToDelete.id}
+                                    onSubmit={() => {
+                                        setShowModal(false);
+                                        setAlbumToDelete(null);
+                                        setModalType(null);
+                                    }}
+                                    onClose={() => {
+                                        setShowModal(false);
+                                        setAlbumToDelete(null);
+                                        setModalType(null);
+                                    }}
+                                />
+                            )}
+                        </div>
+                        <div className="selected-songs">
+                            <h3>Album Songs</h3>
+                            <ul>
+                                {Object.values(filteredSongs).map((song, index) => (
+                                    <li key={index}>{song.title}</li>
+                                ))}
+                            </ul>
+                            <button onClick={() => {
+                                addToAlbum();
+                                getAlbumSongs()
+                            }}>Add to Album</button>
+                        </div>
                     </div>
-                    {selectedSongs.map((song, index) => (
-                        <Player key={index} src={song.audio_url} />
-                    ))}
-                    {showModal && modalType === "update" && (
-                        <UpdateAlbumModal
-                            albumId={albumToUpdate.id}
-                            onSubmit={() => {
-                                setShowModal(false);
-                                setAlbumToUpdate(null);
-                                setModalType(null);
-                            }}
-                            onClose={() => {
-                                setShowModal(false);
-                                setAlbumToUpdate(null);
-                                setModalType(null);
-                            }}
-                        />
-                    )}
-                    {showModal && modalType === "delete" && (
-                        <DeleteAlbumModal
-                            albumId={albumToDelete.id}
-                            onSubmit={() => {
-                                setShowModal(false);
-                                setAlbumToDelete(null);
-                                setModalType(null);
-                            }}
-                            onClose={() => {
-                                setShowModal(false);
-                                setAlbumToDelete(null);
-                                setModalType(null);
-                            }}
-                        />
-                    )}
                 </div>
-            </div >
+            </div>
         </>
     )
 }

@@ -1,35 +1,76 @@
-.album-details-container {
+.page-container {
     /* border: 2px solid red; */
+    background-color: #000000;
+    min-width: 100%;
+    height: 100vh;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    grid-template-rows: 1fr max-content;
+    gap: 0px 10px;
+    grid-template-areas:
+    "album-sidebar main-content"
+    "testfooter testfooter";
+    overflow-y: scroll;
 }
 
-.album-info-container {
-    /* border: 5px solid green; */
-    padding: 20px;
+.main-content-container {
+    /* border: 2px solid blue; */
+    color: white
+}
+
+.main-content-nav-container {
+    /* border: 2px solid blue; */
+    position: sticky;
+    top: 0;
+}
+
+.main-content {
+    /* border: 3px solid teal; */
 }
 
 .album-image-and-title-container {
     border: 10px solid forestgreen;
+    background: linear-gradient(to bottom, #4A348F);
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    align-items: center;
+    height: 200px;
+    padding: 20px;
 }
 
-.album-information-container {
-    border: 2px solid brown;
+.album-user-details {
+    /* border: 2px solid green; */
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: flex-start;
+    align-items: center;
+    height: 20px;
+    font-size: 15px;
 }
 
 .album-image-container {
+    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 100%;
+    max-height: 400px;
     overflow: hidden;
-    margin-right: 15px
+    margin-right: 15px;
+    height: 200px;
+    width: 300px;
+}
+
+.album-information-container {
+    /* border: 10px solid orange; */
+    color: white;
+    width: 500px;
+    font-size: 25px;
 }
 
 .album-image {
-    border: 2px solid red;
     max-width: 100%;
     max-height: 100%;
     height: auto;
@@ -37,35 +78,42 @@
     margin-left: 30px;
 }
 
-.album-user-details {
-    border: 2px solid purple;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.album-songs-container {
+    background-color: #272727;
+    color: white;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
     align-items: center;
 }
 
-.album-user-picture {
-    border: 2px solid green;
-    margin-right: 10px;
-}
-
-.album-songs-container {
-    border:2px solid purple;
-    padding: 20px;
-}
-
-.search-bar-container {
-    border: 2px solid salmon;
-    padding: 20px;
-}
-
 .album-headers {
+    border: 2px solid mintcream;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    background-color: #272727;
+    color: #9E9E9E
 }
 
-.album-description{
-    border: 2px solid blue;
+.individual-album-songs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.grid-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.personalized-albums {
+    border: 2px solid mintcream
+}
+
+.general-content {
+    border: 2px solid mintcream
 }

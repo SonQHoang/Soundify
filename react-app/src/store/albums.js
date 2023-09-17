@@ -5,6 +5,15 @@ const UPDATE_USER_ALBUM = '/albums/updateAlbum'
 const DELETE_USER_ALBUM = '/albums/deleteAlbum'
 const CREATE_NEW_ALBUM = '/albums/createAlbum'
 const ADD_SONG_TO_ALBUM = '/albums/addSongToAlbum'
+const GET_ALBUM_SONGS = '/playlists/getAlbumSongs'
+
+const acGetAlbumSongs = (data) => {
+    console.log('Is this the data that I want============>', data)
+    return {
+        type: GET_ALBUM_SONGS,
+        payload: data
+    }
+}
 
 const acGetUserAlbum = (data) => {
     return {
@@ -104,10 +113,24 @@ export const deleteAlbumThunk = (albumId) => async (dispatch) => {
     }
 }
 
+export const GetSongsForAlbum = (albumId) => async (dispatch) => {
+    // console.log('albumId thunk===================>', albumId) 
+    const response = await fetch(`/api/playlist/${albumId}/songs`, {
+    })
+    if (response.ok) {
+        const album_songs = await response.json()
+        dispatch(acGetAlbumSongs(album_songs))
+        return album_songs
+    } else {
+        console.error(`Request failed with status ${response.status}`);
+    }
+}
 
 export const AddSongToAlbum = (data) => async (dispatch) => {
-    // console.log('What is the data here when I add a song to a album THUNK====>', data)
-    const response = await fetch('/api/album/add', {
+    const { albumId } = data
+    const intAlbumId = parseInt(albumId, 10)
+
+    const response = await fetch(`/api/album/${intAlbumId}/add`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -192,15 +215,12 @@ const albumReducer = (state = initialState, action) => {
                 singleAlbum: action.payload.resPost
             };
         case ADD_SONG_TO_ALBUM:
-            console.log('My initial state =====>', state);
-            console.log('My song action payload =====>', action.payload);
-
             const updatedState = {
                 ...state,
                 singleAlbum: {
                     ...state.singleAlbum,
-                    [action.payload.id]: action.payload
-                }
+                    songs: [...(state.singleAlbum.songs || []), action.payload],
+                },
             };
 
             console.log('Updated state =====>', updatedState);
@@ -216,8 +236,8 @@ const albumReducer = (state = initialState, action) => {
         case UPDATE_USER_ALBUM:
             return {
                 ...state,
-                singleAlbum: {
-                    ...state.singleAlbum,
+                allAlbums: {
+                    ...state.allAlbums,
                     [action.payload.id]: action.payload
                 }
             }
@@ -226,6 +246,16 @@ const albumReducer = (state = initialState, action) => {
             const newState = { ...state, allAlbums: { ...state.allAlbums } }
             delete newState.allAlbums[action.tipId]
             return newState
+        }
+
+        case GET_ALBUM_SONGS: {
+            return {
+                ...state,
+                singleAlbum: {
+                    ...state.singleAlbum,
+                    songs: [action.payload.id] = action.payload,
+                }
+            }
         }
         default:
             return state

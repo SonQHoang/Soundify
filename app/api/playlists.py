@@ -103,9 +103,9 @@ def get_songs_for_playlist(playlistId):
     for playlist_song in playlist_songs:
         # print(playlist_song)
         song_to_dict = playlist_song.to_dict()
-        # print('song_to_dict===============>', song_to_dict)
+        # print(playlist_song)
         song_container.append(song_to_dict)
-        # print('song_container==========+>', song_container)
+        # print(playlist_song)
         
     # print('song_container_out of for loop----------->', song_container)
     return song_container

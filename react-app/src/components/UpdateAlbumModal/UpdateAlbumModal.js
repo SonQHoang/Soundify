@@ -38,7 +38,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     const [year, setYear] = useState(current_album_information.year || '')
     const [album_description, setAlbum_Description] = useState(current_album_information.album_description || "")
     const [validationErrors, setValidationErrors] = useState([])
-    const [album_photo, setAlbum_Photo] = useState(current_album_information.album_photo)
+    const [album_photo, setAlbum_Photo] = useState(current_album_information.album_photo || '')
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [imagePreview, setImagePreview] = useState(null)
     const [albumInformation, setAlbumInformation] = useState(current_album_information)
@@ -62,11 +62,11 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
         // console.log('album_photo component ------------>', album_photo)
         formData.append('album_description', album_description)
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-                formDataObject[key] = value;
-            });
-            console.log('formData component update album modal:==============>', formDataObject);
+        // const formDataObject = {};
+        // formData.forEach((value, key) => {
+        //         formDataObject[key] = value;
+        //     });
+        //     console.log('formData component update album modal:==============>', formDataObject);
 
         try {
             await dispatch(updateAlbumThunk(albumId, formData))
