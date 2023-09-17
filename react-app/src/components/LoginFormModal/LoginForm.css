@@ -4,8 +4,9 @@
     align-items: center;
     flex-direction: column;
     /* border: 2px solid red; */
-    height: 350px;
-    width: 300px;
+    height: auto;
+    width: auto;
+    margin: 20px;
 }
 
 .log-in-container h1{
@@ -40,4 +41,8 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
+}
+
+.errors-list {
+    color: red;
 }
