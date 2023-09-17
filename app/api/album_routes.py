@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, request
 from flask_login import login_required, current_user
 from app.models.db import db
-from app.models import Albums, User
+from app.models import Albums, User, Songs, Albums
 from datetime import datetime
 from ..forms.create_album_form import CreateAlbumForm
 from ..forms.update_album_form import UpdateAlbumForm
@@ -9,14 +9,6 @@ from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_
 
 album_routes = Blueprint('album', __name__)
 session = db.session
-
-# def validation_errors_to_error_messages(validation_errors):
-
-#     errorMessages = []
-#     for field in validation_errors:
-#         for error in validation_errors[field]:
-#             errorMessages.append(f'A album {field} is required')
-#     return errorMessages
 
 @album_routes.route('/user_album', methods=["GET"])
 def get_user_album():
@@ -67,11 +59,49 @@ def create_albums():
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
     
-    
-@album_routes.route("/add", methods=["POST"])
-def add_song_to_album():
+     
+@album_routes.route("/<int:albumId>/add", methods=["POST"])
+def add_song_to_album(albumId):
     data = request.get_json()
-    return jsonify(data)
+    song_id = data['id']
+
+    album = Albums.query.get(albumId)
+
+    if not album:
+        return jsonify({"error": "Album not found"}), 404
+    
+    new_songs = Songs.query.get(song_id)
+
+    if not new_songs:
+        return jsonify({"error": "Song not found"}), 404
+    
+    album.album_songs.append(new_songs)
+
+    db.session.add(album)
+    db.session.commit()
+
+    return jsonify(new_songs.to_dict())
+
+@album_routes.route("/<int:albumId>/albums", methods=["GET"])
+def get_songs_for_album(albumId):
+
+    album = Albums.query.get(albumId)
+
+    album_songs = album.album_songs
+    print('album_songs backend==========>', album_songs)
+
+    song_container = []
+
+    for album_song in album_songs:
+        print('album_song backend=========>', album_song)
+
+        album_to_dict = album_song.to_dict()
+        # print(album_song)
+
+        song_container.append(album_to_dict)
+        # print(album_song)
+
+
 
 @album_routes.route("/<int:albumId>")
 def get_single_album_by_id(albumId):
