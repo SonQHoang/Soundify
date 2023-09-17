@@ -82,7 +82,7 @@ def upgrade():
     op.create_table('playlists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('song_id', sa.Integer(), nullable=True),
+    sa.Column('song_id', sa.Integer(), nullable=False),
     sa.Column('owner', sa.String(), nullable=False),
     sa.Column('title', sa.String(), nullable=False),
     sa.Column('image', sa.String(), nullable=True),
