@@ -24,9 +24,9 @@ const UserPlaylist = () => {
     return (
         <div className="playlist-container">
             {userPlaylist && userPlaylist.map(playlist => (
-                <div key={playlist.id} className="individual-playlist-map">
-                    <NavLink to={`/playlist/${playlist.id}`} className="link-no-underline">
 
+                <li key={playlist.id} className="individual-playlist-map">
+                    <NavLink to={`/playlist/${playlist.id}`} className="link-no-underline">
                         <div className="individual-playlist-container">
                             <div className="playlist-icon-container">
                                 <p>Playlist Icon</p>
@@ -44,7 +44,7 @@ const UserPlaylist = () => {
                         </div>
                         {/* <p>{playlist.owner}</p> */}
                     </NavLink>
-                </div>
+                </li>
             ))}
         </div>
     );
