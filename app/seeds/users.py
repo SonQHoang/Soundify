@@ -9,7 +9,6 @@ def seed_users():
         username='Demo',
         first_name = 'Demo',
         last_name = 'Tester',
-        bio="First User",
         email='demo@aa.io',
         password='password'
         )
@@ -18,7 +17,6 @@ def seed_users():
         username='marnie',
         first_name = "Marnie",
         last_name = "MA",
-        bio="Second User",
         email='marnie@aa.io',
         password='password',
         )
@@ -27,7 +25,6 @@ def seed_users():
         username='bobbie',
         first_name= "Bobbie",
         last_name = "BA",
-        bio="Third User",
         email='bobbie@aa.io',
         password='password'
         )
