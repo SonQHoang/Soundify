@@ -15,17 +15,66 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/" />; 
 
 
-  // const handleSubmit = async (e) => {
-  //   return
-  // };
+  const isValidEmail = (email) => {
+		return email.includes("@")
+	}
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const newErrors = {};
+
+
+		if (!username) {
+			newErrors.username = "Username is required";
+		} else if (username.length < 5) {
+			newErrors.username = "Please provide a username that is at least 5 characters long."
+		} else if (username.length >= 15) {
+			newErrors.username = "Please provide a username that is less than 15 characters long."
+		}
+
+		if (!firstname) {
+			newErrors.firstname = "First name is required";
+		}
+
+		if (!lastname) {
+			newErrors.lastname = "Last name is required";
+		}
+
+		if (!email) {
+			newErrors.email = "Email is required";
+		} else if (!isValidEmail(email)) {
+			newErrors.email = "Please provide a valid email address."
+		}
+
+
+		if (!password) {
+			newErrors.password = "Password is required";
+		} else if (password.length < 5) {
+			newErrors.password = "Please provide a password that is at least 5 characters long.";
+		}
+
+		if(password !== confirmPassword) {
+			newErrors.confirmPassword = "Confirmed password must patch password"
+		}
+
+		if (Object.keys(newErrors).length === 0) {
+			const data = await dispatch(signUp(username, email, password, firstname, lastname));
+			if (data) {
+				setErrors(data);
+			}
+		} else {
+			setErrors(newErrors);
+		}
+	};
 
   return (
     <>
       <h1>Sign Up</h1>
-      <form /*onSubmit={handleSubmit}*/ >
+      <form onSubmit={handleSubmit} >
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>

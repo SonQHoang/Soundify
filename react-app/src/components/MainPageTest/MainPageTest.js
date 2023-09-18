@@ -1,12 +1,13 @@
 import React from 'react'
 import TestSideBar from '../TestComponents/TestSideBar'
 import TestNav from '../TestComponents/TestNav'
-import TestFooter from '../TestComponents/TestFooter'
 import UserPlaylistTile from '../UserPlaylistTile/UserPlaylistTile'
 import UserAlbumTile from '../UserAlbumTile/UserAlbumTile'
+import Player from '../AudioBar/audiobar'
+import Footer from '../Footer/Footer'
 import "./MainPageTest.css"
 
-const MainPageTest = () => {
+const MainPage = () => {
     return (
         <>
             <div className="page-container">
@@ -31,7 +32,6 @@ const MainPageTest = () => {
                                 <UserAlbumTile />
                             </ul>
                         </div>
-                        
                         <div className="general-content">
                             {/* <h4>General Content</h4>
                             <ul className="generalized-list">
@@ -43,10 +43,10 @@ const MainPageTest = () => {
                         </div>
                     </div>
                 </div>
-                {/* <TestFooter/> */}
             </div>
+            <Footer/>
         </>
     )
 }
 
-export default MainPageTest
+export default MainPage

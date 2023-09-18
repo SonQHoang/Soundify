@@ -22,7 +22,7 @@ const TestSideBar = () => {
                             <img className="home-icon" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695021959/home-5-16_fne9qv.png"></img>
                         </div>
                         <div className="home-text-container">
-                            <NavLink exact to="/test">
+                            <NavLink exact to="/landing-page">
                                 <p>Home</p>
                             </NavLink>
                         </div>

@@ -17,7 +17,7 @@ function SignupFormModal() {
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
-	if (sessionUser) return <Redirect to="/" />;
+	if (sessionUser) return <Redirect to="/" />; 
 
 	const isValidEmail = (email) => {
 		return email.includes("@")

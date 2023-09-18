@@ -20,7 +20,6 @@ import SplashPage from "./components/SplashPage/SplashPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import LandingPagePlaylists from "./components/LandingPagePlaylists/LandingePagePlaylists";
 import MainPageTest from "./components/MainPageTest/MainPageTest";
-import TestFooter from "./components/TestComponents/TestFooter";
 import TestNav from "./components/TestComponents/TestNav";
 import TestSideBar from "./components/TestComponents/TestSideBar";
 import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
@@ -41,13 +40,10 @@ function App() {
           <Route exact path="sidebar-test">
             <TestSideBar/>
           </Route>
-          <Route exact path="/footer-test">
-            <TestFooter/>
-          </Route>
           <Route exact path="nav-test">
             <TestNav/>
           </Route>
-          <Route exact path="/test">
+          <Route exact path="/landing-page">
             <MainPageTest/>
           </Route>
           <Route exact path="/login" >
@@ -80,9 +76,9 @@ function App() {
           <Route exact path="/">
             <SplashPage/>
           </Route>
-          <Route exact path="/landing-page">
+          {/* <Route exact path="/landing-page">
             <LandingPage/>
-          </Route>
+          </Route> */}
           <Route>
             <LandingPagePlaylists/>
           </Route>
