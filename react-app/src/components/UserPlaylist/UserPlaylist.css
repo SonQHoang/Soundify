@@ -8,7 +8,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 75px
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .playlist-icon-container {
@@ -19,9 +20,13 @@
     margin-right: 20px;
 }
 
+.individual-playlist-container:hover {
+    background-color: #232323;
+}
+
 .playlist-info-top {
     /* border: 1px solid red; */
-    font-size: 10px;
+    font-size: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +38,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .link-no-underline {
@@ -42,6 +47,6 @@
 }
 
 .playlist_image {
-    width: 64px;
+    width: 75px;
     height: auto;
 }

@@ -23,16 +23,16 @@ function AlbumDetails() {
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
-    
-        const new_songs = (useSelector(state => state.album.singleAlbum.songs))
-        console.log('new_songs=========> albums component', new_songs)
 
-    
+    const new_songs = (useSelector(state => state.album.singleAlbum.songs))
+    console.log('new_songs=========> albums component', new_songs)
+
+
     const [albumInfo, setAlbumInfo] = useState()
     const [selectedSongs, setSelectedSongs] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [albumToDelete, setAlbumToDelete] = useState(null);
-    const [modalType, setModalType] = useState(null);    
+    const [modalType, setModalType] = useState(null);
 
     useEffect(() => {
         // setAlbumInfo(new_songs)
@@ -48,7 +48,7 @@ function AlbumDetails() {
 
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
-    const titleKVPairs = songLibrary.map(song => ({ 
+    const titleKVPairs = songLibrary.map(song => ({
         id: song.id,
         user_id: song.user_id,
         album_id: song.album_id,
@@ -69,7 +69,7 @@ function AlbumDetails() {
     const filteredSongs = queryFilter(query, titleKVPairs);
 
     const selectSong = (song) => {
-        console.log('Selected Song:======>', song)
+        // console.log('Selected Song:======>', song)
         if (selectedSongs.includes(song)) {
             setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
         } else {
@@ -147,7 +147,7 @@ function AlbumDetails() {
                                     {currentAlbum?.album_description}
                                 </div>
                                 <div className="album-user-details">
-                                    <p className="album-user-picture">Profile Pic</p>
+                                    <img className="album-user-picture" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png"></img>
                                     <p>{currentAlbum?.owner}</p>
                                 </div>
                             </div>
@@ -187,13 +187,13 @@ function AlbumDetails() {
                                     <div>Date Added</div>
                                 </div>
                                 <div className="grid-row" style={{ width: '200px' }}>
-                                    <div>Clock Icon</div>
+                                <img className='clock-icon' src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695032037/icons8-clock-32_bel47j.png" alt="clock-icon"></img>
                                 </div>
                             </div>
                             {(new_songs)?.map((song, index) => (
                                 <div key={index} className="individual-album-songs">
                                     <div className="grid-row" style={{ width: '200px' }}>
-                                        <div>{song.id}</div>
+                                        <div>{index + 1}</div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
                                         {song?.title ? (
@@ -204,7 +204,8 @@ function AlbumDetails() {
                                         <div className="album-info">Album Info</div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
-                                        <div className="song-date">{song.date_created}</div>
+                                        <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', {month: 'short', year: 'numeric' })}
+                                        </div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
                                         <div className="song-duration">{song.duration}</div>

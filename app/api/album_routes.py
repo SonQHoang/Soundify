@@ -82,11 +82,11 @@ def add_song_to_album(albumId):
 
     return jsonify(new_songs.to_dict())
 
-@album_routes.route("/<int:albumId>/albums", methods=["GET"])
+@album_routes.route("/<int:albumId>/songs", methods=["GET"])
 def get_songs_for_album(albumId):
 
     album = Albums.query.get(albumId)
-
+    print('album backend========>', album)
     album_songs = album.album_songs
     print('album_songs backend==========>', album_songs)
 
@@ -94,13 +94,17 @@ def get_songs_for_album(albumId):
 
     for album_song in album_songs:
         print('album_song backend=========>', album_song)
+        song_to_dict = album_song.to_dict()
+        song_container.append(song_to_dict)
+    return song_container
 
-        album_to_dict = album_song.to_dict()
-        # print(album_song)
-
-        song_container.append(album_to_dict)
-        # print(album_song)
-
+    #     album_to_dict = album_song.to_dict()
+    #     # print(album_song)
+    #     song_to_dict = album_songs.to_dict()
+    #     print('song-to-dict backend======>', song_to_dict)
+    #     song_container.append(song_to_dict)
+    #     print('song-container backend=======>', song_container)
+    # return song_container
 
 
 @album_routes.route("/<int:albumId>")

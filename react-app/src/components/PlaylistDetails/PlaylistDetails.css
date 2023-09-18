@@ -117,3 +117,16 @@
 .general-content {
     /* border: 2px solid mintcream */
 }
+
+.playlist-user-picture {
+    margin-right: 10px;
+}
+
+.clock-icon {
+    width: 20px;
+}
+
+#time-info {
+    /* border: 2px solid red; */
+    margin-bottom: 15px
+}

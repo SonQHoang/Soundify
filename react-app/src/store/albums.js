@@ -5,7 +5,7 @@ const UPDATE_USER_ALBUM = '/albums/updateAlbum'
 const DELETE_USER_ALBUM = '/albums/deleteAlbum'
 const CREATE_NEW_ALBUM = '/albums/createAlbum'
 const ADD_SONG_TO_ALBUM = '/albums/addSongToAlbum'
-const GET_ALBUM_SONGS = '/playlists/getAlbumSongs'
+const GET_ALBUM_SONGS = '/albums/getAlbumSongs'
 
 const acGetAlbumSongs = (data) => {
     console.log('Is this the data that I want============>', data)
@@ -115,7 +115,7 @@ export const deleteAlbumThunk = (albumId) => async (dispatch) => {
 
 export const GetSongsForAlbum = (albumId) => async (dispatch) => {
     // console.log('albumId thunk===================>', albumId) 
-    const response = await fetch(`/api/playlist/${albumId}/songs`, {
+    const response = await fetch(`/api/album/${albumId}/songs`, {
     })
     if (response.ok) {
         const album_songs = await response.json()

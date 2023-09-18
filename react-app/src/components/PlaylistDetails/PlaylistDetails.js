@@ -145,7 +145,7 @@ function PlaylistDetails() {
                                     {currentPlaylist?.playlist_description}
                                 </div>
                                 <div className="playlist-user-details">
-                                    <p className="playlist-user-picture">Profile Pic</p>
+                                    <img className="playlist-user-picture" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png"></img>
                                     <p>{currentPlaylist?.owner}</p>
                                 </div>
                             </div>
@@ -185,13 +185,13 @@ function PlaylistDetails() {
                                     <div>Date Added</div>
                                 </div>
                                 <div className="grid-row" style={{ width: '200px' }}>
-                                    <div>Clock Icon</div>
+                                    <img className='clock-icon' src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695032037/icons8-clock-32_bel47j.png" alt="clock-icon"></img>
                                 </div>
                             </div>
                             {(new_songs)?.map((song, index) => (
                                 <div key={index} className="individual-playlist-songs">
                                     <div className="grid-row" style={{ width: '200px' }}>
-                                        <div>{song.id}</div>
+                                        <div>{index + 1}</div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
                                         {song?.title ? (
@@ -202,9 +202,10 @@ function PlaylistDetails() {
                                         <div className="album-info">Album Info</div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
-                                        <div className="song-date">{song.date_created}</div>
+                                        <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                                        </div>
                                     </div>
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row" id="time-info" style={{ width: '200px' }}>
                                         <div className="song-duration">{song.duration}</div>
                                     </div>
                                 </div>

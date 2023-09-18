@@ -38,9 +38,9 @@ const UserAlbum = () => {
                                     <p>{album.title}</p>
                                 </div>
                                 <div className="album-info-bottom">
-                                    <p>Playist or Album</p>
-                                    <p> . </p>
-                                    <p> # Songs</p>
+                                    <p>Album</p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
