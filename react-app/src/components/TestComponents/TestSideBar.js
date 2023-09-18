@@ -13,6 +13,10 @@ const TestSideBar = () => {
         setDropDownMenu(!dropDownMenu)
     }
 
+    const handleFeatureClick = () => {
+        alert("This feature will be added in the future. Check back again soon!")
+    }
+
     return (
         <>
             <div className="side-bar-container">
@@ -32,7 +36,7 @@ const TestSideBar = () => {
                             <img className="search-icon" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695021955/search-3-16_lcobap.png"></img>
                         </div>
                         <div>
-                            <p>Search</p>
+                            <button onClick={handleFeatureClick}>Search</button>
                         </div>
                     </div>
                 </div>
@@ -61,9 +65,9 @@ const TestSideBar = () => {
                             )}
                         </div>
                         <div className='library-create-lower'>
-                            <button>Playlists</button>
-                            <button>Artists</button>
-                            <button>Albums</button>
+                            <button onClick={handleFeatureClick}>Playlists</button>
+                            <button onClick={handleFeatureClick}>Artists</button>
+                            <button onClick={handleFeatureClick}>Albums</button>
                         </div>
                     </div>
                     <div className='create-playlist'>

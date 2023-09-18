@@ -40,7 +40,7 @@ const SplashPage = () => {
                 </div>
                 <div>
                     <button className="upcoming-features">
-                        Upcoming Features
+                        {/* Upcoming Features */}
                     </button>
 
                     <button className="sign-up-button" onClick={openSignUpModal}>Sign Up</button>

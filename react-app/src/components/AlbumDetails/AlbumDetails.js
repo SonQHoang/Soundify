@@ -33,6 +33,7 @@ function AlbumDetails() {
     const [showModal, setShowModal] = useState(false);
     const [albumToDelete, setAlbumToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
+    const [currentSong, setCurrentSong] = useState(null);
 
     useEffect(() => {
         // setAlbumInfo(new_songs)
@@ -75,6 +76,7 @@ function AlbumDetails() {
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
+        setCurrentSong(song)
         setQuery("")
     }
 
@@ -214,11 +216,9 @@ function AlbumDetails() {
                             ))}
                             {selectedSongs.length > 0 && (
                                 <div>
-                                    {selectedSongs.map((selectedSong, index) => (
-                                        <div key={index}>
-                                            <Player src={selectedSong.audio_url} />
+                                        <div>
+                                            <Player src={currentSong.audio_url} />
                                         </div>
-                                    ))}
                                 </div>
                             )}
                             {showModal && modalType === "update" && (

@@ -44,7 +44,7 @@ const MainPage = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            {/* <Footer/> */}
         </>
     )
 }
