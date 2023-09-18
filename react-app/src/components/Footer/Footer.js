@@ -1,9 +1,16 @@
+import Player from "../AudioBar/audiobar"
+
 import "./Footer.css"
 
 const Footer = () => {
     return (
         <div className="footer-container">
-            <h1>Footer Placeholder</h1>
+            <div>
+                <h1>Where is the footer</h1>
+            </div>
+            <div>
+            <Player/>
+            </div>
         </div>
     )
 }
