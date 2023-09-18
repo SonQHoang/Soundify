@@ -15,7 +15,7 @@ const CreatePlaylist = () => {
     const [date_created, setDateCreated] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
     const [imagePreview, setImagePreview] = useState(null)
-    const [hasSubmitted, setHasSubmitted] = useState(false)
+    const [hasSubmitted, setHasSubmitted] = useState(false) 
 
 
     const submitForm = async (e) => {
@@ -71,7 +71,7 @@ const CreatePlaylist = () => {
                         <textarea id="title" type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
                     </div>
                 </div>
-                <div>
+                <div className="form-input-box">
                     <label className="form-label" htmlFor="image">
                         Upload a Picture:
                     </label>
@@ -107,7 +107,7 @@ const CreatePlaylist = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="button">Submit</button>
+                    <button className="playlist-create-submit-button">Submit</button>
                 </div>
             </form>
             {/* Confirmation on the correct file being submitted submitted */}

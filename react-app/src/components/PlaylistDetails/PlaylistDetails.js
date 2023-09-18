@@ -34,6 +34,7 @@ function PlaylistDetails() {
     console.log('Value of showModal:=========>', showModal);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
+    const [currentSong, setCurrentSong] = useState(null);
 
     useEffect(() => {
         // setPlaylistInfo(new_songs)
@@ -74,6 +75,7 @@ function PlaylistDetails() {
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
+        setCurrentSong(song)
         setQuery("")
     }
 
@@ -212,11 +214,9 @@ function PlaylistDetails() {
                             ))}
                             {selectedSongs.length > 0 && (
                                 <div>
-                                    {selectedSongs.map((selectedSong, index) => (
-                                        <div key={index}>
-                                            <Player src={selectedSong.audio_url} />
+                                        <div>
+                                            <Player src={currentSong.audio_url} />
                                         </div>
-                                    ))}
                                 </div>
                             )}
                             {showModal && modalType === "update" && (

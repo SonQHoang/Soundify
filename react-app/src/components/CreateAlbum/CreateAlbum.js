@@ -48,14 +48,14 @@ const CreateAlbum = () => {
             setHasSubmitted(false);
             history.push(`/landing-page`);
         } catch (error) {
-            console.error("Error creating playlist:", error);
+            console.error("Error creating album:", error);
         }
     };
 
     return (
-        <div className="create-playlist-container">
+        <div className="create-album-container">
 
-            <form className="create-playlist-form-container"
+            <form className="create-album-form-container"
                 onSubmit={(e) => submitForm(e)}
                 encType="multipart/form-data"
             >
@@ -87,7 +87,7 @@ const CreateAlbum = () => {
                         </label>
                     </div>
                     <div>
-                        <textarea id="title" type="text" onChange={(e) => setYear(e.target.value)} value={year} />
+                        <input id="title" type="number" onChange={(e) => setYear(e.target.value)} value={year} />
                     </div>
                 </div>
                 <div>
@@ -110,7 +110,7 @@ const CreateAlbum = () => {
                         }}                    />
                     {imagePreview && (
                         <div>
-                                <img src={imagePreview} alt="Playlist Image" width="100"/>
+                                <img src={imagePreview} alt="album Image" width="100"/>
                         </div>
                     )}
                 </div>
@@ -125,7 +125,7 @@ const CreateAlbum = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="button">Submit</button>
+                    <button className="album-create-submit-button">Submit</button>
                 </div>
             </form>
         </div>

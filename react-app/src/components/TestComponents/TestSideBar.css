@@ -3,7 +3,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 8rem 1.8fr;
-    /* grid-template-rows: 0.2fr 1.8fr; */
     gap: 0px 0px;
     overflow: auto;
     scrollbar-width: none;
@@ -16,7 +15,10 @@
     width: 350px;
     border-radius: 5px;
 }
-
+.home-text-container p {
+    color: white;
+    margin-left: 5px;
+}
 
 .home-button-top {
     /* border: 2px solid blue; */
@@ -52,6 +54,16 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+}
+
+.home-button-bottom button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    transition: 200ms color ease-in;
+    cursor: pointer;
+    /* font-weight: bold; */
+    font-size: 14px;
 }
 
 .search-icon-container {
@@ -101,6 +113,7 @@
     border: none;
     margin-right: 15px;
     transition: 200ms color ease-in;
+    cursor: pointer
 }
 
 .library-create-lower button:hover {

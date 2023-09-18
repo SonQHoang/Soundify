@@ -17,7 +17,7 @@ import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
 import UserAlbum from "./components/UserAlbum/UserAlbum";
 import Footer from "./components/Footer/Footer";
 import SplashPage from "./components/SplashPage/SplashPage";
-import Sidebar from "./components/Sidebar/Sidebar";
+// import Sidebar from "./components/Sidebar/Sidebar";
 import LandingPagePlaylists from "./components/LandingPagePlaylists/LandingePagePlaylists";
 import MainPageTest from "./components/MainPageTest/MainPageTest";
 import TestNav from "./components/TestComponents/TestNav";

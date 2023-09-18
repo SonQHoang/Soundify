@@ -8,12 +8,15 @@ body, html {
 .create-playlist-container {
     /* border: 2px red solid; */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 500px;
-    margin: 0;
-    padding: 0;
+    margin-top: 165px;
+}
+
+.create-playlist-container h1{
+    /* border: 2px red solid; */
+    color: white;
+    margin-bottom: 20px;
 }
 
 .create-playlist-form-container {
@@ -22,14 +25,24 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 20rem;
+    height: 28rem;
+    background-color: #272727;;
 }
 
 .form-label {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5px;
+    color: white;
+    /* border: 2px solid blue; */
 }
+
+.form-input-box {
+    /* border: 2px solid red; */
+    margin-bottom: 20px;
+}
+
 
 #audio {
     /* border: 2px solid green; */
@@ -37,4 +50,12 @@ body, html {
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
+}
+
+.playlist-create-submit-button {
+    color: white;
+    border-radius: 20px;
+    background-color: #1DB954; 
+    padding: 10px;
+    margin-bottom: 20px;
 }

@@ -11,29 +11,70 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/" />; 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password, firstname, lastname, bio));
-        if (data) {
-          setErrors(data)
-        }
-    } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
-    }
-  };
-  // console.log("firstname, lastname, bio==========+>", firstname, lastname, bio)
+
+  const isValidEmail = (email) => {
+		return email.includes("@")
+	}
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const newErrors = {};
+
+
+		if (!username) {
+			newErrors.username = "Username is required";
+		} else if (username.length < 5) {
+			newErrors.username = "Please provide a username that is at least 5 characters long."
+		} else if (username.length >= 15) {
+			newErrors.username = "Please provide a username that is less than 15 characters long."
+		}
+
+		if (!firstname) {
+			newErrors.firstname = "First name is required";
+		}
+
+		if (!lastname) {
+			newErrors.lastname = "Last name is required";
+		}
+
+		if (!email) {
+			newErrors.email = "Email is required";
+		} else if (!isValidEmail(email)) {
+			newErrors.email = "Please provide a valid email address."
+		}
+
+
+		if (!password) {
+			newErrors.password = "Password is required";
+		} else if (password.length < 5) {
+			newErrors.password = "Please provide a password that is at least 5 characters long.";
+		}
+
+		if(password !== confirmPassword) {
+			newErrors.confirmPassword = "Confirmed password must patch password"
+		}
+
+		if (Object.keys(newErrors).length === 0) {
+			const data = await dispatch(signUp(username, email, password, firstname, lastname));
+			if (data) {
+				setErrors(data);
+			}
+		} else {
+			setErrors(newErrors);
+		}
+	};
+
   return (
     <>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -61,15 +102,6 @@ function SignupFormPage() {
             type="text"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Bio
-          <input
-            type="text"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
             required
           />
         </label>
