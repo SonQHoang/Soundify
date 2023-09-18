@@ -8,7 +8,7 @@ import SignupFormModal from '../SignupFormModal';
 import './TestNav.css'
 
 const TestNav = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   const history = useHistory()
   const [dropDownMenu, setDropDownMenu] = useState(false)
 
@@ -30,12 +30,14 @@ const TestNav = () => {
     <>
       <div className="nav-component-nav-container">
         <div className="about-me-links">
-          <a>Github</a>
-          <a>LinkedIn</a>
+          {/* <a>Github</a>
+          <a>LinkedIn</a> */}
         </div>
         <div className="logout-container">
           {user ? (
-          <button onClick={handleDropDown}>Icon</button>
+          <button className="profile-icon-container" onClick={handleDropDown}>
+            <img src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png" alt="icon" className="profile-icon"/>
+          </button>
           ) : (
             <>
               {showLoginModal && <LoginFormModal />}
@@ -43,7 +45,7 @@ const TestNav = () => {
             </>
           )}
           {dropDownMenu && (
-            <div>
+            <div className="drop-down-profile-menu">
               <div>{user.username}</div>
               <div>{user.email}</div>
               <button onClick={handleLogout}>LogOut</button>

@@ -2,24 +2,74 @@
     /* border: 2px solid blue; */
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 5rem 1.8fr;
+    grid-template-rows: 8rem 1.8fr;
     /* grid-template-rows: 0.2fr 1.8fr; */
     gap: 0px 0px;
-    grid-template-areas:
-        "ButtonContainer"
-        "PlaylistContainer";
     overflow: auto;
+    scrollbar-width: none;
 }
 
 .home-button-container {
     /* border: 2px solid red; */
     background-color: #121212;
+    margin-top: 8px;
+    width: 350px;
+    border-radius: 5px;
 }
 
 
+.home-button-top {
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.home-button-bottom {
+    /* border: 2px solid green; */
+}
+
+.home-icon-container {
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.home-icon {
+    /* border: 2px solid blue; */
+    height: 25px;
+    width: 25px;
+}
+
+.home-button-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.search-icon-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.search-icon {
+    height: 25px;
+    width: 25px;
+}
 .playlist-albums-container {
     /* border: 2px solid green; */
+    margin-top: 3px;
     background-color: #121212;
+    border-radius: 5px;
 }
 .library-create-playlist-container {
 }
@@ -31,14 +81,30 @@
     align-items: center;
     margin-bottom: 10px;
     background-color: #121212;
+    padding: 10px;
 }
 
 .library-create-lower {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     background-color: #121212;
+    padding: 10px;
+}
+
+.library-create-lower button {
+    padding: 10px;
+    border-radius: 20px;
+    color: grey;
+    background-color: #232323;
+    border: none;
+    margin-right: 15px;
+    transition: 200ms color ease-in;
+}
+
+.library-create-lower button:hover {
+    color: white
 }
 
 .create-playlist-button {
@@ -46,19 +112,22 @@
     border: none;
     margin-right: 10px;
     background-color: #121212;
+    padding: 15px;
 }
 
 .create-playlist {
     /* border: 2px solid red; */
     background-color: #121212;
+    padding: 10px;
 }
 
 .albums-container {
     /* border: 2px solid purple; */
     background-color: #121212;
+    padding: 10px;
 }
 
-.playlist-list-contaienr {
+.playlist-list-container {
     /* border: 2px solid green; */
     background-color: #121212;
 }
@@ -66,4 +135,29 @@
 .create-albums-button-container {
     /* border: 2px solid green; */
     background-color: #121212;
+    padding: 10px;
+}
+
+.dropdown-menu {
+    background-color: #282828;
+    padding: 10px;
+    position: fixed;
+    margin-left: 300px;
+    margin-top: 80px;
+}
+
+.dropdown-menu button {
+    color: grey;
+    background-color: #282828;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 200ms color ease-in;
+}
+
+.dropdown-menu button:hover {
+    color: white
+
 }

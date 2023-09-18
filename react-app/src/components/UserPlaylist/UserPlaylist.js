@@ -36,9 +36,7 @@ const UserPlaylist = () => {
                                     <p>{playlist.title}</p>
                                 </div>
                                 <div className="playlist-info-bottom">
-                                    <p>Playlist or Album</p>
-                                    <p> . </p>
-                                    <p># Songs</p>
+                                    <p>Playlist</p>
                                 </div>
                             </div>
                         </div>

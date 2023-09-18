@@ -1,16 +1,11 @@
 .page-container {
-    /* border: 2px solid red; */
     background-color: #000000;
     min-width: 100%;
     height: 100vh;
-    /* padding: 10px; */
     display: grid;
     grid-template-columns: 25% 1fr;
     grid-template-rows: 1fr max-content;
     gap: 0px 10px;
-    grid-template-areas:
-    "album-sidebar main-content"
-    "testfooter testfooter";
     overflow-y: scroll;
 }
 
@@ -30,7 +25,7 @@
 }
 
 .album-image-and-title-container {
-    border: 10px solid forestgreen;
+    /* border: 10px solid forestgreen; */
     background: linear-gradient(to bottom, #4A348F);
     display: flex;
     flex-direction: row;
@@ -116,4 +111,8 @@
 
 .general-content {
     /* border: 2px solid mintcream */
+}
+
+.album-user-picture {
+    margin-right: 10px;
 }
