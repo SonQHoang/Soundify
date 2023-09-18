@@ -1,11 +1,11 @@
 .album-container {
-    border: 10px solid green;
+    /* border: 10px solid green; */
     display: flex;
     flex-direction: column;
 }
 
 .individual-album-container{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -14,14 +14,15 @@
 }
 
 .album-icon-container {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 20px;
 }
 
 .album-info-top {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     font-size: 10px;
     display: flex;
     justify-content: center;
@@ -29,7 +30,7 @@
 }
 
 .album-info-bottom {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -41,4 +42,9 @@
 .link-no-underline {
     text-decoration: none;
     color: white
+}
+
+.album-photo {
+    height: auto;
+    width: 63px;
 }

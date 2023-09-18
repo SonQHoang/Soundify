@@ -24,6 +24,7 @@ import TestFooter from "./components/TestComponents/TestFooter";
 import TestNav from "./components/TestComponents/TestNav";
 import TestSideBar from "./components/TestComponents/TestSideBar";
 import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
+import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
 
 function App() {
   const dispatch = useDispatch();
@@ -87,6 +88,9 @@ function App() {
           </Route>
           <Route>
             <UserPlaylistTile/>
+          </Route>
+          <Route>
+            <UserAlbumTile/>
           </Route>
           <Route>
             <Footer/>

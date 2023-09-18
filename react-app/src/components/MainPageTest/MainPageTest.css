@@ -1,14 +1,11 @@
+
 .page-container {
     /* border: 2px solid purple; */
     background-color: #000000;
     height: 100vh;
-    padding: 10px;
     display: grid;
     grid-template-columns: 25% 1fr;
     grid-template-rows: 1fr max-content;
-    grid-template-areas:
-    "playlist-sidebar main-content"
-    "testfooter testfooter";
 }
 
 .playlist-sidebar {
@@ -29,21 +26,23 @@
 }
 
 .main-content {
-    border: 3px solid teal;
+    /* border: 3px solid teal; */
+    background-color: #121212;
+    
 }
 
 .personalized-content-container {
-    border: 2px solid green;
+    /* border: 2px solid green; */
 }
 
 .personalized-playlist {
-    border: 2px solid mintcream
+    /* border: 2px solid mintcream */
 }
 
 .personalized-albums {
-    border: 2px solid mintcream
+    /* border: 2px solid mintcream */
 }
 
 .general-content {
-    border: 2px solid mintcream
+    /* border: 2px solid mintcream */
 }

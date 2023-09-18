@@ -51,7 +51,7 @@
 }
 
 .update-form-left-side {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,7 +62,7 @@
 }
 
 .update-form-right-side {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     flex-direction: column;
     justify-content: center;

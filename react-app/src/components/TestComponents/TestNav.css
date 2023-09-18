@@ -1,16 +1,26 @@
 .nav-component-nav-container {
-    border: 5px solid maroon;
+    /* border: 5px solid maroon; */
     max-width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    background-color: transparent;
+    padding: 15px;
+    /* padding: 10px; */
+    background-color: #1C0F40;
+    height: 60px;
+    z-index: 1000000000;
+    position: relative;
 }
 
 .about-me-links {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
+    background-color: #1C0F40;
+}
+
+.about-me-links a {
+    background-color: #1C103F;
 }
 
 .logout-container {
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
+    background-color: #1C0F40;
 }

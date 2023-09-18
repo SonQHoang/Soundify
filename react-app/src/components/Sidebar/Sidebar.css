@@ -10,7 +10,7 @@
 }
 
 .home-button-container {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     color: grey;
     cursor: pointer;
     transition: 200ms color ease-in;
@@ -52,7 +52,7 @@
 }
 
 .library-container {
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .library-top {
