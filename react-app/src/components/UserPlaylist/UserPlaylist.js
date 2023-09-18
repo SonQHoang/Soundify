@@ -13,7 +13,7 @@ const UserPlaylist = () => {
     const playlist = (useSelector(state => state.playlist.allPlaylists))
     const userPlaylist = Object.values(playlist)
 
-    // console.log('userPlaylists=========>', userPlaylist)
+    console.log('userPlaylists Image=========>', userPlaylist)
 
     useEffect(() => {
         console.log("I'm dispatching getUserPlaylist")
@@ -25,11 +25,11 @@ const UserPlaylist = () => {
         <div className="playlist-container">
             {userPlaylist && userPlaylist.map(playlist => (
 
-                <li key={playlist.id} className="individual-playlist-map">
+                <div key={playlist.id} className="individual-playlist-map">
                     <NavLink to={`/playlist/${playlist.id}`} className="link-no-underline">
                         <div className="individual-playlist-container">
                             <div className="playlist-icon-container">
-                                <p>Playlist Icon</p>
+                                <img src={playlist.image} className="playlist_image"></img>
                             </div>
                             <div className="playlist-info-container">
                                 <div className="playlist-info-top">
@@ -44,7 +44,7 @@ const UserPlaylist = () => {
                         </div>
                         {/* <p>{playlist.owner}</p> */}
                     </NavLink>
-                </li>
+                </div>
             ))}
         </div>
     );

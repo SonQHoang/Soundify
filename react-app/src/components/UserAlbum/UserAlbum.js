@@ -26,12 +26,12 @@ const UserAlbum = () => {
     return (
         <div className="album-container">
             {userAlbum && userAlbum.map(album => (
-                <li key={album.id} className="individual-album-map">
+                <div key={album.id} className="individual-album-map">
                     <NavLink to={`/album/${album.id}`} className="link-no-underline">
 
                         <div className="individual-album-container">
                             <div className="album-icon-container">
-                                <p>Album Icon</p>
+                                <img src={album.album_photo} className="album-photo"></img>
                             </div>
                             <div className="album-info-container">
                                 <div className="album-info-top">
@@ -45,7 +45,7 @@ const UserAlbum = () => {
                             </div>
                         </div>
                     </NavLink>
-                </li>
+                </div>
             ))}
         </div>
     );

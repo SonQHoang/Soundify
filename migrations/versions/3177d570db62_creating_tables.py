@@ -1,8 +1,8 @@
 """Creating tables
 
-Revision ID: 036a1e533f1a
+Revision ID: 3177d570db62
 Revises: 
-Create Date: 2023-09-17 10:25:12.227027
+Create Date: 2023-09-17 22:22:19.402843
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '036a1e533f1a'
+revision = '3177d570db62'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,14 +26,10 @@ def upgrade():
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('first_name', sa.String(length=40), nullable=False),
     sa.Column('last_name', sa.String(length=40), nullable=False),
-    sa.Column('bio', sa.String(length=40), nullable=True),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('bio'),
     sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('first_name'),
-    sa.UniqueConstraint('last_name'),
     sa.UniqueConstraint('username')
     )
     op.create_table('songs',

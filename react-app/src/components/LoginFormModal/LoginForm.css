@@ -1,11 +1,11 @@
 .log-in-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
     /* border: 2px solid red; */
-    height: 350px;
-    width: 300px;
+    height: 50%;
+    width: 100%;
 }
 
 .log-in-container h1{
@@ -16,10 +16,9 @@
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 200px;
-    margin-bottom: 20px;
+    width: 300px;
 }
 
 .login-submit-container {
@@ -28,7 +27,6 @@
 
 .login-submit-button {
     margin-top: 10px;
-    margin-bottom: 5px;
     background-color: #1DB954;
     border-radius: 20px;
     padding: 10px;
@@ -40,4 +38,8 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
+}
+
+.errors-list {
+    color: red;
 }

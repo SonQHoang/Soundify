@@ -9,7 +9,6 @@ def seed_users():
         username='Demo',
         first_name = 'Demo',
         last_name = 'Tester',
-        bio="First User",
         email='demo@aa.io',
         password='password'
         )
@@ -18,7 +17,6 @@ def seed_users():
         username='marnie',
         first_name = "Marnie",
         last_name = "MA",
-        bio="Second User",
         email='marnie@aa.io',
         password='password',
         )
@@ -27,14 +25,14 @@ def seed_users():
         username='bobbie',
         first_name= "Bobbie",
         last_name = "BA",
-        bio="Third User",
         email='bobbie@aa.io',
         password='password'
         )
     
     album_1 = Albums (
         user_id = 1,
-        title = "Gravity",
+        title = "Continuum",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Continuum+Album+Art+John+Mayer.png",
         owner = "John Mayer",
         year = 2006,
         date_created = datetime(2023, 9, 6)
@@ -43,6 +41,7 @@ def seed_users():
     album_2 = Albums (
         user_id = 1,
         title = "+",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Plus+Album+Art+Ed+Sheeran.png",
         owner = "Ed Sheeran",
         year = 2011,
         date_created = datetime(2023, 9, 6)
@@ -51,6 +50,7 @@ def seed_users():
     album_3 = Albums (
         user_id = 1,
         title = "x",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Multiply+Album+Art+Ed+Sheeran.jpeg",
         owner = "Ed Sheeran",
         year = 2014,
         date_created = datetime(2023, 9, 6)
@@ -59,6 +59,7 @@ def seed_users():
     album_4 = Albums (
         user_id = 1,
         title = "=",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Equals+Album+Art.png",
         owner = "Ed Sheeran",
         year = 2013,
         date_created = datetime(2023, 9, 6)
@@ -67,14 +68,35 @@ def seed_users():
     album_5 = Albums (
         user_id = 1,
         title = "÷",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Divide+Album+Art+Ed+Sheeran.jpg",
         owner = "Ed Sheeran",
         year = 2021,
         date_created = datetime(2023, 9, 6)
     )
 
+    album_6 = Albums (
+        user_id = 1,
+        title = "It's Time",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Its+Time+Album+Art+Michael+Buble.jpeg",
+        owner = "Michael Buble",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_7 = Albums (
+        user_id = 1,
+        title = "Red",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Red+Album+Art+Taylor+Swift.jpeg",
+        owner = "Taylor Swift",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+    
+
     playlist_1 = Playlists (
         user_id = 1,
         owner = "Demo",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+John+Mayer.jpeg",
         title = "This is John Mayer",
         date_created = datetime(2023, 9, 6)
     )
@@ -89,7 +111,24 @@ def seed_users():
     playlist_3 = Playlists (
         user_id = 1,
         owner = "Demo",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+Ed+Sheeran.jpeg",
         title = "This is Ed Sheeran",
+        date_created = datetime(2023, 9, 6)
+    )
+
+    playlist_4 = Playlists (
+        user_id = 1,
+        owner = "Demo",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+Taylor+Swift.jpeg",
+        title = "This is Taylor Swift",
+        date_created = datetime(2023, 9, 6)
+    )
+
+    playlist_5 = Playlists (
+        user_id = 1,
+        owner = "Demo",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+Michael+Buble.jpeg",
+        title = "This is Michael Buble",
         date_created = datetime(2023, 9, 6)
     )
     
@@ -2080,22 +2119,1962 @@ def seed_users():
                 And out of all these things I've done
                 I will love you better now
                         """,
+        date_created = datetime(2023, 9, 6),
+    )
+
+    song_37 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+1989/02+-+Taylor+Swift+-+Blank+Space.mp3",
+        title = "Blank Space",
+        duration = "3:51",
+        lyrics = """
+                Nice to meet you, where you been?
+                I could show you incredible things
+                Magic, madness, heaven, sin
+                Saw you there and I thought
+                "Oh, my God, look at that face
+                You look like my next mistake
+                Love's a game, wanna play?" Ay
+                New money, suit and tie
+                I can read you like a magazine
+                Ain't it funny? Rumors fly
+                And I know you heard about me
+                So hey, let's be friends
+                I'm dying to see how this one ends
+                Grab your passport and my hand
+                I can make the bad guys good for a weekend
+                So it's gonna be forever
+                Or it's gonna go down in flames
+                You can tell me when it's over, mm
+                If the high was worth the pain
+                Got a long list of ex-lovers
+                They'll tell you I'm insane
+                'Cause you know I love the players
+                And you love the game
+                'Cause we're young, and we're reckless
+                We'll take this way too far
+                It'll leave you breathless, mm
+                Or with a nasty scar
+                Got a long list of ex-lovers
+                They'll tell you I'm insane
+                But I've got a blank space, baby
+                And I'll write your name
+                Cherry lips, crystal skies
+                I could show you incredible things
+                Stolen kisses, pretty lies
+                You're the King, baby, I'm your Queen
+                Find out what you want
+                Be that girl for a month
+                Wait, the worst is yet to come, oh, no
+                Screaming, crying, perfect storms
+                I can make all the tables turn
+                Rose garden filled with thorns
+                Keep you second guessing like
+                "Oh, my God, who is she?"
+                I get drunk on jealousy
+                But you'll come back each time you leave
+                'Cause, darling, I'm a nightmare dressed like a daydream
+                So it's gonna be forever
+                Or it's gonna go down in flames
+                You can tell me when it's over, mm
+                If the high was worth the pain
+                Got a long list of ex-lovers
+                They'll tell you I'm insane
+                'Cause you know I love the players
+                And you love the game
+                'Cause we're young, and we're reckless (oh)
+                We'll take this way too far
+                It'll leave you breathless, mm (oh)
+                Or with a nasty scar
+                Got a long list of ex-lovers
+                They'll tell you I'm insane (insane)
+                But I've got a blank space, baby
+                And I'll write your name
+                Boys only want love if it's torture
+                Don't say I didn't, say I didn't warn ya
+                Boys only want love if it's torture
+                Don't say I didn't, say I didn't warn ya
+                So it's gonna be forever
+                Or it's gonna go down in flames
+                You can tell me when it's over (over)
+                If the high was worth the pain
+                Got a long list of ex-lovers
+                They'll tell you I'm insane (I'm insane)
+                'Cause you know I love the players
+                And you love the game
+                'Cause we're young, and we're reckless
+                We'll take this way too far (ooh)
+                It'll leave you breathless, mm
+                Or with a nasty scar (leave a nasty scar)
+                Got a long list of ex-lovers
+                They'll tell you I'm insane
+                But I've got a blank space, baby
+                And I'll write your name
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_38 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+1989/06+-+Taylor+Swift+-+Shake+It+Off.mp3",
+        title = "Shake It Off",
+        duration = "3:39",
+        lyrics = """
+                I stay out too late
+                Got nothing in my brain
+                That's what people say, mmm-mmm
+                That's what people say, mmm-mmm
+
+                I go on too many dates
+                But I can't make them stay
+                At least that's what people say, mmm-mmm
+                That's what people say, mmm-mmm
+
+                But I keep cruising
+                Can't stop, won't stop moving
+                It's like I got this music
+                In my mind
+                Saying, "It's gonna be alright."
+
+                'Cause the players gonna play, play, play, play, play
+                And the haters gonna hate, hate, hate, hate, hate
+                Baby, I'm just gonna shake, shake, shake, shake, shake
+                I shake it off, I shake it off
+                Heart-breakers gonna break, break, break, break, break
+                And the fakers gonna fake, fake, fake, fake, fake
+                Baby, I'm just gonna shake, shake, shake, shake, shake
+                I shake it off, I shake it off
+
+                I never miss a beat
+                I'm lightning on my feet
+                And that's what they don't see, mmm-mmm
+                That's what they don't see, mmm-mmm
+
+                I'm dancing on my own (dancing on my own)
+                I make the moves up as I go (moves up as I go)
+                And that's what they don't know, mmm-mmm
+                That's what they don't know, mmm-mmm
+
+                But I keep cruising
+                Can't stop, won't stop grooving
+                It's like I got this music
+                In my mind
+                Saying, "It's gonna be alright."
+
+                'Cause the players gonna play, play, play, play, play
+                And the haters gonna hate, hate, hate, hate, hate
+                Baby, I'm just gonna shake, shake, shake, shake, shake
+                I shake it off, I shake it off
+                Heart-breakers gonna break, break, break, break, break
+                And the fakers gonna fake, fake, fake, fake, fake
+                Baby, I'm just gonna shake, shake, shake, shake, shake
+                I shake it off, I shake it off
+
+                Shake it off, I shake it off,
+                I, I, I shake it off, I shake it off,
+                I, I, I shake it off, I shake it off,
+                I, I, I shake it off, I shake it off
+
+                Hey, hey, hey
+                Just think while you've been getting down and out about the liars and the dirty, dirty cheats of the world,
+                You could've been getting down to this sick beat.
+
+                My ex-man brought his new girlfriend
+                She's like "Oh, my God!" but I'm just gonna shake.
+                And to the fella over there with the hella good hair
+                Won't you come on over, baby? We can shake, shake, shake
+
+                Yeah ohhh
+
+                'Cause the players gonna play, play, play, play, play
+                And the haters gonna hate, hate, hate, hate, hate (haters gonna hate)
+                I'm just gonna shake, shake, shake, shake, shake
+                I shake it off, I shake it off
+                Heart-breakers gonna break, break, break, break, break (mmmm)
+                And the fakers gonna fake, fake, fake, fake, fake (and fake, and fake, and fake)
+                Baby, I'm just gonna shake, shake, shake, shake, shake
+                I shake it off, I shake it off
+
+                Shake it off, I shake it off,
+                I, I, I shake it off, I shake it off,
+                I, I, I shake it off, I shake it off
+                I, I, I shake it off, I shake it off
+
+                Shake it off, I shake it off,
+                I, I, I shake it off, I shake it off,
+                I, I, I shake it off, I shake it off,
+                I, I, I shake it off, I shake it off
+
+                Shake it off, I shake it off,
+                I, I, I shake it off, I shake it off (you've got to),
+                I, I, I shake it off, I shake it off,
+                I, I, I shake it off, I shake it off
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_39 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Fearless+(Taylor%E2%80%99s+Version)+The+I+Remember+What+You+Said+Last+Night+Chapter/01+-+Taylor+Swift+-+You+Belong+With+Me+(Taylor%E2%80%99s+Version).mp3",
+        title = "You Belong With Me (Taylor's Version)",
+        duration = "3:51",
+        lyrics = """
+                You're on the phone with your girlfriend, she's upset
+                She's going off about something that you said
+                'Cause she doesn't get your humor like I do
+                I'm in the room, it's a typical Tuesday night
+                I'm listening to the kind of music she doesn't like
+                And she'll never know your story like I do
+                But she wears short skirts
+                I wear T-shirts
+                She's Cheer Captain, and I'm on the bleachers
+                Dreaming about the day when you wake up and find
+                That what you're looking for has been here the whole time
+                If you could see that I'm the one
+                Who understands you
+                Been here all along
+                So, why can't you see?
+                You belong with me
+                You belong with me
+                Walk in the streets with you in your worn-out jeans
+                I can't help thinking this is how it ought to be
+                Laughing on a park bench thinking to myself
+                Hey, isn't this easy?
+                And you've got a smile
+                That can light up this whole town
+                I haven't seen it in a while
+                Since she brought you down
+                You say you're fine, I know you better than that
+                Hey, what you doing with a girl like that?
+                She wears high heels
+                I wear sneakers
+                She's Cheer Captain, and I'm on the bleachers
+                Dreaming about the day when you wake up and find
+                That what you're looking for has been here the whole time
+                If you could see that I'm the one
+                Who understands you
+                Been here all along
+                So, why can't you see?
+                You belong with me
+                Standing by and waiting at your backdoor
+                All this time how could you not know, baby?
+                You belong with me
+                You belong with me
+                Oh, I remember you driving to my house
+                In the middle of the night
+                I'm the one who makes you laugh
+                When you know you're 'bout to cry
+                And I know your favorite songs
+                And you tell me 'bout your dreams
+                Think I know where you belong
+                Think I know it's with me
+                Can't you see that I'm the one
+                Who understands you?
+                Been here all along
+                So, why can't you see?
+                You belong with me
+                Standing by and waiting at your backdoor
+                All this time how could you not know, baby?
+                You belong with me
+                You belong with me
+                You belong with me
+                Have you ever thought just maybe
+                You belong with me?
+                You belong with me
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_40 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Fearless/02+-+Taylor+Swift+-+Fifteen.mp3",
+        title = "Fifteen",
+        duration = "4:54",
+        lyrics = """
+                You take a deep breath
+                And you walk through the doors
+                It's the morning of your very first day
+                You say hi to your friends you ain't seen in awhile
+                Try and stay out of everybody's way
+                It's your freshman year
+                And you're gonna be here for the next four years
+                In this town
+                Hoping one of those senior boys
+                Will wink at you and say, "you know I haven't seen you around, before"
+                'Cause when you're fifteen,
+                Somebody tells you they love you
+                You're gonna believe them
+                And when you're fifteen
+                Feeling like there's nothing to figure out
+                Count to ten
+                Take it in
+                This is life before you know who you're gonna be
+                At fifteen
+                You sit in class next to a red-head named Abigail
+                And soon enough you're best friends
+                Laughing at the other girls
+                Who they think they're so cool
+                We'll be out of here as soon as we can
+                And then you're on your very first date
+                And he's got a car
+                And you're feeling like flying
+                And you're mama's waiting up
+                And you're thinking he's the one
+                And you're dancing around the room when the night ends
+                When the night ends
+                'Cause when you're fifteen,
+                Somebody tells you they love you
+                You're gonna believe them
+                And when you're fifteen
+                And your first kiss makes your head spin around
+                But in your life you'll do things
+                Greater than dating the boy on the football team
+                But I didn't know it at fifteen
+                When all you wanted
+                Was to be wanted
+                Wish you could go back
+                And tell yourself what you know now
+                Back then I swore I was gonna marry him someday
+                But I realized some bigger dreams of mine
+                And Abigail gave everything she had
+                To a boy who changed his mind
+                And we both cried
+                'Cause when you're fifteen,
+                Somebody tells you they love you
+                You're gonna believe them
+                And when you're fifteen
+                Don't forget to look before you fall
+                I've found time can heal most anything
+                And you just might find who you're supposed to be
+                I didn't know who I was supposed to be
+                At fifteen
+                La la la la la
+                Your very first day
+                Take a deep breath girl
+                And take a deep breath as you walk through the doors
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_41 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version)/01+-+Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version).mp3",
+        title = "Love Story (Taylor's Version)",
+        duration = "3:55",
+        lyrics = """
+                We were both young when I first saw you
+                I close my eyes and the flashback starts
+                I'm standin' there
+                On a balcony in summer air
+                See the lights, see the party, the ball gowns
+                See you make your way through the crowd
+                And say, "Hello"
+                Little did I know
+                That you were Romeo, you were throwin' pebbles
+                And my daddy said, "Stay away from Juliet"
+                And I was cryin' on the staircase
+                Beggin' you, "Please don't go, " and I said
+                Romeo, take me somewhere we can be alone
+                I'll be waiting, all there's left to do is run
+                You'll be the prince and I'll be the princess
+                It's a love story, baby, just say, "Yes"
+                So I sneak out to the garden to see you
+                We keep quiet, 'cause we're dead if they knew
+                So close your eyes
+                Escape this town for a little while, oh oh
+                'Cause you were Romeo, I was a scarlet letter
+                And my daddy said, "Stay away from Juliet"
+                But you were everything to me
+                I was beggin' you, "Please don't go, " and I said
+                Romeo, take me somewhere we can be alone
+                I'll be waiting, all there's left to do is run
+                You'll be the prince and I'll be the princess
+                It's a love story, baby, just say, "Yes"
+                Romeo, save me, they're tryna tell me how to feel
+                This love is difficult, but it's real
+                Don't be afraid, we'll make it out of this mess
+                It's a love story, baby, just say, "Yes"
+                Oh, oh
+                I got tired of waiting
+                Wonderin' if you were ever comin' around
+                My faith in you was fading
+                When I met you on the outskirts of town, and I said
+                Romeo, save me, I've been feeling so alone
+                I keep waiting for you, but you never come
+                Is this in my head? I don't know what to think
+                He knelt to the ground and pulled out a ring
+                And said, "Marry me, Juliet
+                You'll never have to be alone
+                I love you and that's all I really know
+                I talked to your dad, go pick out a white dress
+                It's a love story, baby, just say, "Yes"
+                Oh, oh, oh
+                Oh, oh, oh, oh
+                'Cause we were both young when I first saw you
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_42 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Lover/16+-+Taylor+Swift%2C+Brendon+Urie%2C+Panic!+At+The+Disco+-+ME!+(feat.+Brendon+Urie+of+Panic!+At+The+Disco).mp3",
+        title = "ME! (feat. Brendon Urie of Panic! At The Disco)",
+        duration = "3:13",
+        lyrics = """
+                I promise that you'll never find another like me
+                I know that I'm a handful, baby, uh
+                I know I never think before I jump
+                And you're the kind of guy the ladies want
+                (And there's a lot of cool chicks out there)
+                I know that I went psycho on the phone
+                I never leave well enough alone
+                And trouble's gonna follow where I go
+                (And there's a lot of cool chicks out there)
+                But one of these things is not like the others
+                Like a rainbow with all of the colors
+                Baby doll, when it comes to a lover
+                I promise that you'll never find another like
+                Me-e-e, ooh-ooh-ooh-ooh
+                I'm the only one of me
+                Baby, that's the fun of me
+                Eeh-eeh-eeh, ooh-ooh-ooh-ooh
+                You're the only one of you
+                Baby, that's the fun of you
+                And I promise that nobody's gonna love you like me-e-e
+                I know I tend to make it about me
+                I know you never get just what you see
+                But I will never bore you, baby
+                (And there's a lot of lame guys out there)
+                And when we had that fight out in the rain
+                You ran after me and called my name
+                I never wanna see you walk away
+                (And there's a lot of lame guys out there)
+                'Cause one of these things is not like the others
+                Livin' in winter, I am your summer
+                Baby doll, when it comes to a lover
+                I promise that you'll never find another like
+                Me-e-e, ooh-ooh-ooh-ooh
+                I'm the only one of me
+                Let me keep you company
+                Eeh-eeh-eeh, ooh-ooh-ooh-ooh
+                You're the only one of you
+                Baby, that's the fun of you
+                And I promise that nobody's gonna love you like me-e-e
+                Hey, kids!
+                Spelling is fun!
+                Girl, there ain't no I in "team"
+                But you know there is a "me"
+                Strike the band up, one, two, three
+                I promise that you'll never find another like me
+                Girl, there ain't no I in "team"
+                But you know there is a "me"
+                And you can't spell "awesome" without "me"
+                I promise that you'll never find another like
+                Me-e-e (yeah), ooh-ooh-ooh-ooh (and I won't stop, baby)
+                I'm the only one of me (I'm the only one of me)
+                Baby, that's the fun of me (baby, that's the fun of me)
+                Eeh-eeh-eeh, ooh-ooh-ooh-ooh (oh)
+                You're the only one of you (oh)
+                Baby, that's the fun of you
+                And I promise that nobody's gonna love you like me-e-e
+                Girl, there ain't no I in "team" (ooh-ooh-ooh-ooh)
+                But you know there is a "me"
+                I'm the only one of me (oh-oh)
+                Baby, that's the fun of me
+                (Eeh-eeh-eeh, ooh-ooh-ooh-ooh)
+                Strike the band up, one, two, three
+                You can't spell "awesome" without "me"
+                You're the only one of you
+                Baby, that's the fun of you
+                And I promise that nobody's gonna love you like me-e-e
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_43 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/04+-+Taylor+Swift+-+I+Knew+You+Were+Trouble+(Taylor's+Version).mp3",
+        title = "I Knew You Were Trouble (Taylor's Version)",
+        duration = "3:39",
+        lyrics = """
+                Once upon a time
+                A few mistakes ago
+                I was in your sights
+                You got me alone
+                You found me
+                You found me
+                You found me
+                I guess you didn't care
+                And I guess I liked that
+                And when I fell hard
+                You took a step back
+                Without me
+                Without me
+                Without me
+                And he's long gone
+                When he's next to me
+                And I realize
+                The blame is on me
+                'Cause I knew you were trouble when you walked in
+                So shame on me now
+                Flew me to places I'd never been
+                'Til you put me down, oh
+                I knew you were trouble when you walked in
+                So, shame on me now
+                Flew me to places I'd never been
+                Now I'm lyin' on the cold hard ground
+                Oh, oh
+                Trouble, trouble, trouble
+                Oh, oh
+                Trouble, trouble, trouble
+                No apologies
+                He'll never see you cry
+                Pretends he doesn't know
+                That he's the reason why
+                You're drowning
+                You're drowning
+                You're drowning
+                And I heard you moved on
+                From whispers on the street
+                A new notch in your belt
+                Is all I'll ever be
+                And now I see
+                Now I see
+                Now I see
+                He was long gone
+                When he met me
+                And I realize
+                The joke is on me, hey
+                I knew you were trouble when you walked in (oh)
+                So shame on me now
+                Flew me to places I'd never been
+                'Til you put me down, oh
+                I knew you were trouble when you walked in
+                So shame on me now
+                Flew me to places I'd never been, yeah
+                Now I'm lyin' on the cold hard ground
+                Oh, oh (yeah)
+                Trouble, trouble, trouble
+                Oh, oh
+                Trouble, trouble, trouble
+                And the saddest fear
+                Comes creepin' in
+                That you never loved me
+                Or her
+                Or anyone
+                Or anything
+                Yeah
+                I knew you were trouble when you walked in
+                So shame on me now
+                Flew me to places I'd never been (never been)
+                'Til you put me down, oh
+                I knew you were trouble when you walked in (knew it right there)
+                So shame on me now (knew it right there)
+                Flew me to places I'd never been
+                (Ooh) now I'm lyin' on the cold hard ground
+                Oh, oh
+                Trouble, trouble, trouble (oh)
+                Oh, oh
+                Trouble, trouble, trouble
+                I knew you were trouble when you walked in
+                Trouble, trouble, trouble
+                I knew you were trouble when you walked in
+                Trouble, trouble, trouble
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_44 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/06+-+Taylor+Swift+-+22+(Taylor's+Version).mp3",
+        title = "22 (Taylor's Version)",
+        duration = "3:51",
+        lyrics = """
+                It feels like a perfect night
+                To dress up like hipsters
+                And make fun of our exes
+                Ah-ah, ah-ah
+                It feels like a perfect night
+                For breakfast at midnight
+                To fall in love with strangers
+                Ah-ah, ah-ah
+                Yeah, we're happy, free, confused, and lonely at the same time
+                It's miserable and magical, oh yeah
+                Tonight's the night when we forget about the deadlines
+                It's time, oh-oh
+                I don't know about you, but I'm feeling 22
+                Everything will be alright if you keep me next to you
+                You don't know about me, but I'll bet you want to
+                Everything will be alright if we just keep dancing like we're 22
+                22
+                It seems like one of those nights
+                This place is too crowded
+                Too many cool kids
+                Ah ah, ah ah ("Who's Taylor Swift anyway? Ew")
+                It seems like one of those nights
+                We ditched the whole scene
+                And end up dreaming, instead of sleeping
+                Yeah, we're happy, free, confused, and lonely in the best way
+                It's miserable and magical, oh yeah
+                Tonight's the night when we forget about the heartbreaks
+                It's time, oh-oh
+                I don't know about you, but I'm feeling 22
+                Everything will be alright if you keep me next to you
+                You don't know about me, but I'll bet you want to
+                Everything will be alright (alright) if we just keep dancing like we're 22
+                (Oh, oh, oh, oh, oh)
+                22 (I don't know about you)
+                22
+                22
+                We ditched the whole scene
+                (It feels like one of those nights)
+                We won't be sleeping
+                (It feels like one of those nights)
+                You look like bad news
+                I gotta have you
+                I gotta have you
+                Oh, oh, oh, oh, yeah
+                but I'm feeling 22
+                Everything will be alright if you keep me next to you
+                You don't know about me (you don't know about me) but I'll bet you want to
+                Everything will be alright if we just keep dancing like we're 22
+                Oh-whoa, oh, oh, oh
+                22 (dancing like)
+                22 (yeah, yeah)
+                22 (yeah, yeah, yeah)
+                We ditched the whole scene
+                (It feels like one of those nights)
+                We won't be sleeping
+                (It feels like one of those nights)
+                You look like bad news
+                I gotta have you
+                I gotta have you
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_45 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/08+-+Taylor+Swift+-+We+Are+Never+Ever+Getting+Back+Together+(Taylor's+Version).mp3",
+        title = "We Are Never Ever Getting Back Together (Taylor's Version)",
+        duration = "3:13",
+        lyrics = """
+                I remember when we broke up the first time
+                Saying, "This is it, I've had enough," 'cause like
+                We hadn't seen each other in a month
+                When you said you needed space. (What?)
+                Then you come around again and say
+                "Baby, I miss you and I swear I'm gonna change, trust me."
+                Remember how that lasted for a day?
+                I say, "I hate you," we break up, you call me, "I love you."
+
+                Ooh, we called it off again last night
+                But ooh, this time I'm telling you, I'm telling you
+
+                We are never ever ever getting back together
+                We are never ever ever getting back together
+                You go talk to your friends, talk to my friends, talk to me
+                But we are never ever ever ever getting back together
+
+                Like, ever
+
+                I'm really gonna miss you picking fights
+                And me falling for it screaming that I'm right
+                And you would hide away and find your peace of mind
+                With some indie record that's much cooler than mine
+
+                Ooh, you called me up again tonight
+                But ooh, this time I'm telling you, I'm telling you
+
+                We are never, ever, ever getting back together
+                We are never, ever, ever getting back together
+                You go talk to your friends, talk to my friends, talk to me (talk to me)
+                But we are never ever ever ever getting back together
+
+                Ooh, yeah, ooh yeah, ooh yeah
+                Oh oh oh
+
+                I used to think that we were forever ever
+                And I used to say, "Never say never..."
+                Uggg... so he calls me up and he's like, "I still love you,"
+                And I'm like... "I just... I mean this is exhausting, you know, like
+                We are never getting back together. Like, ever"
+
+                No!
+
+                We are never ever ever getting back together
+                We are never ever ever getting back together
+                You go talk to your friends, talk to my friends, talk to me
+                But we are never ever ever ever getting back together
+
+                We, ooh, getting back together, ohhh
+                We, ooh, getting back together
+
+                You go talk to your friends, talk to my friends, talk to me (talk to me)
+                But we are never ever ever ever getting back together
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_46 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/22+-+Taylor+Swift+-+Better+Man+(Taylor's+Version)+(From+The+Vault).mp3",
+        title = "Better Man (Taylor's Version)",
+        duration = "4:57",
+        lyrics = """
+                I know I'm probably better off on my own
+                Than lovin' a man who didn't know
+                What he had when he had it
+                And I see the permanent damage you did to me
+                Never again, I just wish I could forget when it was magic
+                I wish it wasn't 4am, standing in the mirror
+                Saying to myself, you know you had to do it
+                I know the bravest thing I ever did was run
+
+                Sometimes, in the middle of the night, I can feel you again
+                But I just miss you, and I just wish you were a better man
+                And I know why we had to say goodbye like the back of my hand
+                But I just miss you, and I just wish you were a better man
+                A better man
+
+                I know I'm probably better off all alone
+                Than needing a man who could change his mind at any given minute
+                And it was always on your terms
+                I waited on every careless word
+                Hoping it might turn sweet again
+                Like it was in the beginning
+                But your jealousy, oh, I can hear it now
+                You're talking down to me like I'll always be around
+                You push my love away like it was some kind of loaded gun
+                Oh, you never thought I'd run
+
+                Sometimes, in the middle of the night, I can feel you again
+                But I just miss you, and I just wish you were a better man
+                I know why we had to say goodbye like the back of my hand
+                And I just miss you, and I just wish you were a better man
+                A better man
+
+                I hold onto this pride because these days it's all I have
+                And I gave to you my best and we both know you can't say that
+
+                I wish you were a better man
+                I wonder what we would've become
+                If you were a better man
+                We might still be in love
+                If you were a better man
+                You would've been the one
+                If you were a better man
+                Yeah, yeah
+
+                Sometimes, in the middle of the night, I can feel you again
+                But I just miss you, and I just wish you were a better man
+                I know why we had to say goodbye like the back of my hand
+                But I just miss you and I just wish you were a better man
+                A better man
+
+                Sometimes, in the middle of the night, I can feel you again
+                (We might still be in love, if you were a better man)
+                But I just miss you, and I just wish you were a better man
+                I know why we had to say goodbye
+                Like the back of my hand
+                But I just miss you and I just wish you were a better man
+                A better man
+                We might still be in love, if you were a better man
+                You would've been the one
+                If you were a better man
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_47 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/26+-+Taylor+Swift%2C+Chris+Stapleton+-+I+Bet+You+Think+About+Me+(feat.+Chris+Stapleton)+(Taylor%E2%80%99s+Version)+(From+The+Vault).mp3",
+        title = "I Bet You Think About Me (feat. Chris Stapleton) (Taylor's Version)",
+        duration = "4:45",
+        lyrics = """
+                3 a.m. and I'm still awake, I'll bet you're just fine
+                Fast asleep in your city that's better than mine
+                And the girl in your bed has a fine pedigree
+                And I'll bet your friends tell you she's better than me, huh
+                Well, I tried to fit in with your upper-crust circles
+                Yeah, they let me sit in back when we were in love
+                Oh, they sit around talkin' 'bout the meaning of life
+                And the book that just saved 'em that I hadn't heard of
+                But now that we're done and it's over
+                I bet you couldn't believe
+                When you realized I'm harder to forget than I was to leave
+                And I bet you think about me
+                You grew up in a silver-spoon, gated community
+                Glamorous, shiny, bright Beverly Hills
+                I was raised on a farm, no, it wasn't a mansion
+                Just livin' room dancin' and kitchen table bills
+                But you know what they say, you can't help who you fall for
+                And you and I fell like an early spring snow
+                But reality crept in, you said we're too different
+                You laughed at my dreams, rolled your eyes at my jokes
+                Mr. Superior Thinkin'
+                Do you have all the space that you need?
+                I don't have to be your shrink to know that you'll never be happy
+                And I bet you think about me
+                I bet you think about me
+                Yes, I bet you think about me
+                Oh, block it all out
+                The voices so loud sayin', "Why did you let her go?"
+                Does it make you feel sad
+                That the love that you're lookin' for
+                Is the love that you had?
+                Now you're out in the world, searchin' for your soul
+                Scared not to be hip, scared to get old
+                Chasing make-believe status, last time you felt free
+                Was when none of that shit mattered 'cause you were with me
+                But now that we're done, and it's over
+                I bet it's hard to believe
+                But it turned out I'm harder to forget than I was to leave
+                Then, yeah, I bet you think about me
+                I bet you think about me
+                Yes, I bet you think about me
+                I bet you think about me when you're out
+                At your cool indie music concerts every week
+                I bet you think about me in your house
+                With your organic shoes and your million-dollar couch
+                I bet you think about me when you say
+                "Oh my God, she's insane, she wrote a song about me"
+                I bet you think about me
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_48 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/03+-+Taylor+Swift+-+Back+To+December+(Taylor's+Version).mp3",
+        title = "Back To Decemeber (Taylor's Version)",
+        duration = "4:54",
+        lyrics = """
+                I'm so glad you made time to see me
+                How's life? Tell me, how's your family?
+                I haven't seen them in a while
+                You've been good, busier than ever
+                We small talk, work and the weather
+                Your guard is up and I know why
+                Because the last time you saw me
+                Is still burned in the back of your mind
+                You gave me roses and I left them there to die
+                So this is me swallowin' my pride
+                Standin' in front of you sayin' I'm sorry for that night
+                And I go back to December all the time
+                It turns out freedom ain't nothin' but missin' you
+                Wishin' I'd realized what I had when you were mine
+                I'd go back to December, turn around and make it alright
+                I go back to December all the time
+                These days, I haven't been sleepin'
+                Stayin' up playin' back myself leavin'
+                When your birthday passed and I didn't call
+                Then I think about summer, all the beautiful times
+                I watched you laughin' from the passenger's side
+                And realized I loved you in the fall
+                And then the cold came, the dark days
+                When fear crept into my mind
+                You gave me all your love and all I gave you was goodbye
+                So this is me swallowin' my pride
+                Standin' in front of you sayin' I'm sorry for that night
+                And I go back to December all the time
+                It turns out freedom ain't nothin' but missin' you
+                Wishin' I'd realized what I had when you were mine
+                I'd go back to December, turn around and change my own mind
+                I go back to December all the time
+                I miss your tan skin, your sweet smile
+                So good to me, so right
+                And how you held me in your arms that September night
+                The first time you ever saw me cry
+                Maybe this is wishful thinkin'
+                Probably mindless dreamin'
+                But if we loved again, I swear I'd love you right
+                I'd go back in time and change it, but I can't
+                So if the chain is on your door, I understand
+                But this is me swallowin' my pride
+                Standin' in front of you sayin' I'm sorry for that night
+                And I go back to December
+                It turns out freedom ain't nothin' but missin' you
+                Wishin' I'd realized what I had when you were mine
+                I'd go back to December, turn around and make it alright
+                I'd go back to December, turn around and change my own mind
+                I go back to December all the time
+                All the time
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_49 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/05+-+Taylor+Swift+-+Dear+John+(Taylor's+Version).mp3",
+        title = "Dear John (Taylor's Version)",
+        duration = "6:45",
+        lyrics = """
+                Long were the nights when
+                My days once revolved around you
+                Counting my footsteps
+                Praying the floor won't fall through again
+                And my mother accused me of losing my mind
+                But I swore I was fine
+                You paint me a blue sky
+                And go back and turn it to rain
+                And I lived in your chess game
+                But you changed the rules every day
+                Wondering which version of you I might get on the phone tonight
+                Well, I stopped picking up and this song is to let you know why
+                Dear John, I see it all now that you're gone
+                Don't you think I was too young to be messed with?
+                The girl in the dress, cried the whole way home
+                I should've known
+                Well, maybe it's me
+                And my blind optimism to blame
+                Or maybe it's you and your sick need
+                To give love then take it away
+                And you'll add my name to your long list of traitors
+                Who don't understand
+                And I'll look back and regret how I ignored when they said
+                "Run as fast as you can"
+                Dear John, I see it all now that you're gone
+                Don't you think I was too young to be messed with?
+                The girl in the dress, cried the whole way home
+                Dear John, I see it all now, it was wrong
+                Don't you think nineteen's too young
+                To be played by your dark, twisted games when I loved you so?
+                I should've known
+                You are an expert at sorry and keeping the lines blurry
+                Never impressed by me acing your tests
+                All the girls that you've run dry have tired lifeless eyes
+                'Cause you burned them out
+                But I took your matches before fire could catch me
+                So don't look now
+                I'm shining like fireworks over your sad empty town
+                Oh, oh
+                Dear John, I see it all now that you're gone
+                Don't you think I was too young to be messed with?
+                The girl in the dress, cried the whole way home
+                I see it all now that you're gone
+                Don't you think I was too young to be messed with?
+                The girl in the dress wrote you a song
+                You should've known
+                You should've known
+                Don't you think I was too young?
+                You should've known
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_50 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/09+-+Taylor+Swift+-+Enchanted+(Taylor's+Version).mp3",
+        title = "Enchanted (Taylor's Version)",
+        duration = "5:53",
+        lyrics = """
+                There I was again tonight
+                Forcing laughter, faking smiles
+                Same old tired, lonely place
+                Walls of insincerity, shifting eyes and vacancy
+                Vanished when I saw your face
+                All I can say is, it was enchanting to meet you
+                Your eyes whispered, "Have we met?"
+                'Cross the room your silhouette
+                Starts to make its way to me
+                The playful conversation starts
+                Counter all your quick remarks
+                Like passing notes in secrecy
+                And it was enchanting to meet you
+                All I can say is, I was enchanted to meet you
+                This night is sparkling, don't you let it go
+                I'm wonderstruck, blushing all the way home
+                I'll spend forever wondering if you knew
+                I was enchanted to meet you
+                The lingering question kept me up
+                2 AM, who do you love?
+                I wonder 'til I'm wide awake
+                And now I'm pacing back and forth
+                Wishing you were at my door
+                I'd open up and you would say, "Hey"
+                It was enchanting to meet you
+                All I know is, I was enchanted to meet you
+                This night is sparkling, don't you let it go
+                I'm wonderstruck, blushing all the way home
+                I'll spend forever wondering if you knew
+                That this night is flawless, don't you let it go
+                I'm wonderstruck, dancing around all alone
+                I'll spend forever wondering if you knew
+                I was enchanted to meet you
+                This is me praying that
+                This was the very first page
+                Not where the story line ends
+                My thoughts will echo your name, until I see you again
+                These are the words I held back, as I was leaving too soon
+                I was enchanted to meet you
+                Please don't be in love with someone else
+                Please don't have somebody waiting on you
+                Please don't be in love with someone else
+                Please don't have somebody waiting on you
+                This night is sparkling, don't you let it go
+                I'm wonderstruck, blushing all the way home
+                I'll spend forever wondering if you knew
+                This night is flawless, don't you let it go
+                I'm wonderstruck, dancing around all alone
+                I'll spend forever wondering if you knew
+                I was enchanted to meet you
+                Please don't be in love with someone else
+                Please don't have somebody waiting on you
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_51 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+-+John+Mayer+-+New+Light.mp3",
+        title = "New Light",
+        duration = "3:37",
+        lyrics = """
+                I'm the boy in your other phone
+                Lighting up inside your drawer at home all alone
+                Pushing 40 in the friend zone
+                We talk and then you walk away every day
+                Oh you don't think twice bout me
+                And maybe you're right to doubt me but
+                But if you give me just one night
+                You're gonna see me in a new light
+                Yeah if you give me just one night
+                To meet you underneath the moonlight
+                Oh I want a take two
+                I wanna break through
+                I wanna know the real thing about you
+                So I can see you in a new light
+                Take a ride up to Malibu
+                I just wanna sit and look at you, look at you
+                What would it matter if your friends knew
+                Who cares what other people say anyway
+                Oh we can go far from here
+                And make a new world together babe
+                'Cause if you give me just one night
+                You're gonna see me in a new light
+                Yeah, if you give me just one night
+                To meet you underneath the moonlight
+                Oh I want a take two
+                I wanna break through
+                I wanna know the real thing about you
+                So I can see you in a new light
+                Yeah if you give me just one night
+                You're gonna see me in a new light
+                Yeah if you give me just one night
+                To meet you underneath the moonlight
+                What do I do with all this
+                What do I do with all this
+                This love that's running through my veins for you
+                What do I do with all this
+                What do I do with all this
+                This love that's running through my veins for you
+                What do I do with all this
+                What do I do with all this
+                This love that's running through my veins for you
+                What do I do with all this
+                What do I do with all this, oooh
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_52 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible+(Deluxe)/14+-+Michael+Bubl%C3%A9+-+L+O+V+E.mp3",
+        title = "L O V E",
+        duration = "2:50",
+        lyrics = """
+                L is for the way you look at me
+                O is for the only one I see
+                V is very, very extraordinary
+                E is even more than anyone that you adore
+                And love is all that I can give to you
+                Love is more than just a game for two
+                Two in love can make it
+                Take my heart but please don't break it
+                Love was made for me and you
+                L is for the way you look at me
+                O is for the only one I see
+                V is very, very extraordinary
+                E is even more than anyone that you adore
+                And love is all that I can give to you
+                Love, love, love is more than just a game for two
+                Two in love can make it
+                Take my heart but please don't break it
+                'Cause love was made for me and you
+                I said love was made for me and you
+                You know that love was made for me and you
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_53 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible/09+-+Michael+Bubl%C3%A9+-+Everything.mp3",
+        title = "Everything",
+        duration = "3:32",
+        lyrics = """
+                You're a falling star, you're the get away car
+                You're the line in the sand when I go too far
+                You're the swimming pool, on an August day
+                And you're the perfect thing to say
+                And you play it coy, but it's kinda cute
+                Oh, when you smile at me you know exactly what you do
+                Baby don't pretend, that you don't know it's true
+                'Cause you can see it when I look at you
+                And in this crazy life, and through these crazy times
+                It's you, it's you, you make me sing
+                You're every line, you're every word, you're everything
+                You're a carousel, you're a wishing well
+                And you light me up, when you ring my bell
+                You're a mystery, you're from outer space
+                You're every minute of my everyday
+                And I can't believe, uh that I'm your man
+                And I get to kiss you baby just because I can
+                Whatever comes our way, oh we'll see it through
+                And you know that's what our love can do
+                And in this crazy life, and through these crazy times
+                It's you, it's you, you make me sing
+                You're every line, you're every word, you're everything
+                So, la, la, la, la, la, la, la
+                So, la, la, la, la, la, la, la
+                And in this crazy life, and through these crazy times
+                It's you, it's you, you make me sing
+                You're every line, you're every word, you're everything
+                You're every song, and I sing along
+                'Cause you're my everything
+                Yeah, yeah
+                So, la, la, la, la, la, la, la
+                So, la, la, la, la, la, la, la, la, la, la, la
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_54 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Crazy+Love/05+-+Michael+Bubl%C3%A9+-+Haven't+Met+You+Yet.mp3",
+        title = "Haven't Met You Yet",
+        duration = "4:03",
+        lyrics = """
+                I'm not surprised, not everything lasts
+                I've broken my heart so many times I stopped keeping track
+                Talk myself in, I talk myself out
+                I get all worked up then I let myself down
+
+                I tried so very hard not to lose it
+                I came up with a million excuses
+                I thought, I thought of every possibility
+
+                And I know some day that it'll all turn out
+                You'll make me work so we can work to work it out
+                And I promise you kid that I'll give so much more than I get
+                I just haven't met you yet
+
+                Hmm... hmm
+
+                I might have to wait, I'll never give up
+                I guess it's half timing and the other half's luck
+                Wherever you are, whenever it's right
+                You'll come out of nowhere and into my life
+
+                And I know that we can be so amazing
+                And baby your love is gonna change me
+                And now I can see every possibility
+
+                Somehow I know that it'll all turn out
+                You'll make me work so we can work to work it out
+                And promise you kid I'll give so much more than I get
+                I just haven't met you yet
+
+                They say all's fair in love and war
+                But I won't need to fight it
+                We'll get it right and we'll be united
+
+                And I know that we can be so amazing
+                And being in your life is gonna change me
+                And now I can see every single possibility
+
+                And someday I know it'll all turn out
+                And I'll work to work it out
+                Promise you kid I'll give more than I get, than I get, than I get, than I get
+
+                Oh you know it'll all turn out
+                And you'll make me work so we can work to work it out
+                And promise you kid to give so much more than I get yeah
+                I just haven't met you yet
+
+                I just haven't met you yet
+                Oh promise you kid to give so much more than I get
+                I said love love love love love love love
+                I just haven't met you yet
+                Yeah, I just haven't met you yet
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_55 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/01+-+Michael+Bubl%C3%A9+-+Feeling+Good.mp3",
+        title = "Feeling Good",
+        duration = "3:56",
+        lyrics = """
+                Birds flying high
+                You know how I feel
+                Sun in the sky
+                You know how I feel
+                Breeze driftin' on by
+                You know how I feel
+                It's a new dawn
+                It's a new day
+                It's a new life
+                For me
+                And I'm feeling good
+                I'm feeling good
+                Fish in the sea
+                You know how I feel
+                River running free
+                You know how I feel
+                Blossom on a tree
+                You know how I feel
+                It's a new dawn
+                It's a new day
+                It's a new life
+                For me
+                And I'm feeling good
+                Dragonfly out in the sun, you know what I mean, don't you know
+                Butterflies all havin' fun, you know what I mean
+                Sleep in peace when day is done, that's what I mean
+                And this old world is a new world
+                And a bold world
+                For me
+                For me
+                Stars when you shine
+                You know how I feel
+                Scent of the pine
+                You know how I feel
+                Oh, freedom is mine
+                And I know how I feel
+                It's a new dawn
+                It's a new day
+                It's a new life
+                It's a new dawn
+                It's a new day
+                It's a new life
+                It's a new dawn
+                It's a new day
+                It's a new life
+                It's a new life
+                For me
+                And I'm feeling good
+                I'm feeling good
+                I feel so good
+                I feel so good
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_56 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/05+-+Michael+Bubl%C3%A9+-+Home.mp3",
+        title = "Home",
+        duration = "3:45",
+        lyrics = """
+                Another summer day
+                Has come and gone away
+                In Paris and Rome
+                But I wanna go home, mmm
+                May be surrounded by
+                A million people I
+                Still feel all alone
+                Just wanna go home
+                Oh, I miss you, you know
+                And I've been keeping all the letters
+                That I wrote to you
+                Each one a line or two
+                I'm fine baby, how are you?
+                Well I would send them but I know
+                That it's just not enough
+                My words were cold and flat
+                And you deserve more than that
+                Another airplane
+                Another sunny place
+                I'm lucky I know
+                But I wanna go home
+                Mmm, I got to go home
+                Let me go home
+                I'm just too far
+                From where you are
+                I wanna come home
+                And I feel just like
+                I'm living someone else's life
+                It's like I just stepped outside
+                When everything was going right
+                And I know just why you could not
+                Come along with me
+                That this was not your dream
+                But you always believed in me
+                Another winter day
+                Has come and gone away
+                In even Paris and Rome
+                And I wanna go home
+                Let me go home
+                And I'm surrounded by
+                A million people I
+                I still feel alone
+                Oh, let me go home
+                Oh, I miss you, you know
+                Let me go home
+                I've had my run
+                Baby, I'm done
+                I gotta go home
+                Let me go home
+                It'll all be all right
+                I'll be home tonight
+                I'm coming back home
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_57 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/08+-+Michael+Bubl%C3%A9+-+Save+the+Last+Dance+for+Me.mp3",
+        title = "Save The Last Dance For Me",
+        duration = "3:37",
+        lyrics = """
+                Now you can dance every dance with the guy
+                Who gives you the eye, let him hold you tight
+                And you can smile every smile for the man
+                Who held your hand beneath the pale moon light
+                But don't forget who's takin' you home
+                And in whose arms you're gonna be
+                So darling, save the last dance for me
+                Oh, I know that the music's fine
+                Like sparklin' wine, go and have your fun
+                Laugh and sing, but while we're apart
+                Don't give your heart to anyone
+                And don't forget who's takin' you home
+                And in whose arms you're gonna be
+                So darling, save the last dance for me
+                Baby, don't you know I love you so
+                Can't you feel it when we touch
+                I will never, never let you go
+                I love you oh, so much
+                You can dance, go and carry on
+                'Til the night is gone
+                And it's time to go
+                If he asks if you're all alone
+                Can he walk you home, you must tell him no
+                'Cause don't forget who's taking you home
+                And in whose arms you're gonna be
+                Save the last dance for me
+                Oh, I know that the music's fine
+                Like sparklin' wine, go and have your fun
+                Laugh and sing, but while we're apart
+                Don't give your heart to anyone
+                And don't forget who's taking you home
+                And in whose arms you're gonna be
+                So darling, save the last dance for me
+                So don't forget who's taking you home
+                Or in whose arms you're gonna be
+                So darling, save the last dance for me
+                Oh baby, won't you save the last dance for me
+                Ooh, you make a promise
+                That you'll save the last dance for me
+                Save the last dance
+                The very last dance
+                For me
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_58 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+love+(Deluxe+Edition)/03+-+Michael+Bubl%C3%A9+-+Love+You+Anymore.mp3",
+        title = "Love You Anymore",
+        duration = "3:02",
+        lyrics = """
+                Just because I wander 'round the places we would go
+                Hoping that I'd run into you one last time
+                Just because I never took your picture off my phone
+                Doesn't mean that you're still on my mind
+
+                Just because I accidentally slip and say your name
+                When I hear our song, it makes me insecure
+                Just because I know I'll never ever feel the same
+                Doesn't mean I love you anymore
+
+                Am I lying to myself again
+                When I say you're not the best I've ever had
+                Am I lying to myself again
+                When I say that I'm not missing you so bad
+
+                Just because I'm on my knees and swearing I will change
+                And I'd do anything to hear you say "I'm yours"
+                Just because I know I'll never ever feel the same
+                Doesn't mean I love you anymore
+
+                Am I lying to myself again
+                When I say you're not the best I've ever had
+                Am I lying to myself again
+                When I say that I'm not missing you so bad
+
+                Just because I'm on my knees and swearing I will change
+                And do anything to hear you say "I'm yours"
+                Just because I know I'll never ever feel the same
+                Doesn't mean I love you anymore, more
+                Doesn't mean I love you anymore (anymore, anymore)
+                Doesn't mean I love you anymore
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_59 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/04+-+Michael+Bubl%C3%A9+-+For+Once+in+My+Life.mp3",
+        title = "For Once in My Life",
+        duration = "2:33",
+        lyrics = """
+                For once in my life, I've got someone who needs me
+                Someone I've needed so long
+                For once unafraid, I can go where life leads me
+                And somehow I know I'll be strong
+                For once I can touch what my heart used to dream of
+                Long before I knew someone warm like you
+                Could make my dreams come true
+                For once in my life, I won't let sorrow hurt me
+                Not like it's hurt me before
+                For once I have someone I know won't desert me
+                I'm not alone anymore
+                For once I can say, "This is mine, you can't take it
+                Long as I know I've got love, I can make it"
+                For once in my life, I've got someone who needs me
+                At least for once I can say, "This is mine, you can't take it
+                Long as I know I've got love, I can make it"
+                For once in my life, I've got someone
+                For once in my life, I found someone
+                For once in my life, I've got someone who needs me
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_37 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/10+-+Michael+Bubl%C3%A9+-+Sway.mp3",
+        title = "Sway",
+        duration = "3:08",
+        lyrics = """
+                When marimba rhythms start to play
+                Dance with me, make me sway
+                Like a lazy ocean hugs the shore
+                Hold me close, sway me more
+                Like a flower bending in the breeze
+                Bend with me, sway with ease
+                When we dance, you have a way with me
+                Stay with me, sway with me
+                Other dancers may be on the floor
+                Dear, but my eyes will see only you
+                Only you have that magic technique
+                When we sway, I go weak
+                I can hear the sounds of violins
+                Long before it begins
+                Make me thrill as only you know how
+                Sway me smooth, sway me now
+                Other dancers may be on the floor
+                Dear, but my eyes will see only you
+                Only you have that magic technique
+                When we sway, I go weak
+                I can hear the sounds of violins
+                Long before it begins
+                Make me thrill as only you know how
+                Sway me smooth, sway me now
+                When marimba rhythms start to play
+                Dance with me, make me sway
+                Like a lazy ocean hugs the shore
+                Hold me close, sway me more
+                Like a flower bending in the breeze
+                Bend with me, sway with ease
+                When we dance you have a way with me
+                Stay with me, sway with me
+                When marimbas start to play
+                Hold me close, make me sway
+                Like a lazy ocean hugs the shore
+                Hold me close, sway me more
+                Like a flower bending in the breeze
+                Bend with me, sway with ease
+                When we dance, you have a way with me
+                Stay with me, sway with me
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_60 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/11+-+Michael+Bubl%C3%A9+-+The+Way+You+Look+Tonight.mp3",
+        title = "The Way You Look Tonight",
+        duration = "4:39",
+        lyrics = """
+                Someday when I'm awfully low
+                When the world is cold
+                I will feel a glow just thinking of you
+                And the way you look tonight
+                You're lovely, with your smile so warm
+                And your cheeks, so soft
+                There is nothing for me but to love you
+                And the way you look tonight
+                With each word, your tenderness grows
+                Tearing my fears apart
+                And that laugh that wrinkles your nose
+                It touches my foolish heart, hmm
+                Lovely, never ever change
+                Keep that breathless charm
+                Won't you please arrange it? 'Cause I love you
+                Just the way you look tonight
+                With each word, your tenderness grows
+                Tearing my fears apart
+                And that laugh that wrinkles your nose
+                It touches my foolish heart
+                Lovely, don't you ever change
+                Keep that breathless charm
+                Won't you please arrange it? 'Cause I love you
+                Just the way you look tonight
+                Ooh, tonight
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_61 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/12+-+Michael+Bubl%C3%A9+-+Come+Fly+with+Me.mp3",
+        title = "Come Fly with Me",
+        duration = "3:18",
+        lyrics = """
+                Come fly with me, let's fly, let's fly away
+                If you can use some exotic booze
+                There's a bar in far Bombay
+                Come fly with me
+                Let's fly, let's fly away
+                Come fly with me, let's float down to Peru
+                In lama land, there's a one man band
+                And he'll toot his flute for you
+                Come fly with me, let's take off in the blue
+                Once I get you up there
+                Where the air is rarefied
+                We'll just glide
+                Starry eyed
+                Once I get you up there
+                I'll be holding you so near
+                You may hear the angels cheer
+                Because we're together
+                Weather wise it's such a lovely day
+                Just say the words and we'll beat those birds
+                Down to Acapulco bay
+                It's perfect, for a flying honeymoon, they say
+                So come fly with me
+                Let's fly, let's fly away
+                (Oh, come on and fly)
+                Once I get you up there
+                Where the air is rarefied
+                We'll just glide
+                Starry eyed
+                Once I get you up there
+                I'll be holding you so near
+                You may hear all the angels cheer
+                Because we're together
+                Weather wise it's such a lovely day
+                You just say those words and we'll beat those birds
+                Down to Acapulco bay
+                It's so perfect, for a flying honeymoon, they say
+                Come fly with me
+                Let's fly, let's fly
+                Pack up, let's fly away
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_62 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Special+Delivery/03+-+Michael+Bubl%C3%A9+-+Dream+a+Little+Dream+of+Me.mp3",
+        title = "Dream a Little Dream of Me",
+        duration = "3:07",
+        lyrics = """
+                Stars shining bright above you
+                Night breezes seem to whisper, "I love you"
+                Birds singing in the sycamore tree
+                Dream a little dream of me
+                Say "nighty-night" and kiss me
+                Just hold me tight and tell me you'll miss me
+                While I'm alone and blue as can be
+                Dream a little dream of me
+                Stars fading, but I linger on, dear
+                Still craving your kiss
+                I'm longing to linger 'til dawn, dear
+                Just saying this
+                Sweet dreams 'til sunbeams find you
+                Sweet dreams that leave all worries behind you
+                But in your dreams, whatever they be
+                Dream a little dream of me
+                Stars fading, but I linger on, dear
+                Still craving your kiss
+                I'm longing to linger 'til dawn, dear
+                Just saying this
+                Sweet dreams 'til sunbeams find you
+                Sweet dreams that leave all worries behind you
+                But in your dreams, whatever they be
+                Dream a little dream of
+                Dream a little dream of
+                Dream a little dream of me
+                Of me
+                Dream a little dream of me
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_63 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/02+-+Michael+Bubl%C3%A9+-+It's+a+Beautiful+Day.mp3",
+        title = "It's a Beautiful Day",
+        duration = "3:18",
+        lyrics = """
+                I don't know why
+                You think that you could hold me
+                When you couldn't get by by yourself
+                And I don't know who
+                Would ever want to tear the seam of someone's dream
+                Baby, it's fine, you said that we should just be friends
+                While I came up with that line and I'm sure
+                That it's for the best
+                If you ever change your mind, don't hold your breath
+                'Cause you may not believe
+                That baby, I'm relieved, hmm
+                When you said goodbye, my whole world shines
+                Hey hey hey
+                It's a beautiful day and I can't stop myself from smiling
+                If we're drinking, then I'm buying
+                And I know there's no denying
+                It's a beautiful day, the sun is up, the music's playing
+                And even if it started raining
+                You won't hear this boy complaining
+                'Cause I'm glad that you're the one who got away
+                It's a beautiful day
+                It's my turn to fly, so girls, get in line
+                'Cause I'm easy, no playing this guy like a fool
+                Now I'm alright
+                Might've had me caged before, but not tonight
+                And you may not believe, hmm
+                That baby, I'm relieved
+                This fire inside, it burns too bright
+                I don't want to say "So long", I just want to say "Goodbye"
+                It's a beautiful day and I can't stop myself from smiling
+                If we're drinking, then I'm buying
+                And I know there's no denying
+                That it's a beautiful day, the sun is up, the music's playing
+                And even if it started raining
+                You won't hear this boy complaining
+                'Cause I'm glad that you're the one who got away, hmm
+                'Cause if you ever think I'll take up
+                My time with thinking of our break-up
+                Then, you've got another thing coming your way
+                'Cause it's a beautiful day
+                Beautiful day
+                Oh, baby, any day that you're gone away
+                It's a beautiful day
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_64 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/09+-+Michael+Bubl%C3%A9%2C+Naturally+7+-+Have+I+Told+You+Lately+That+I+Love+You+(with+Naturally+7).mp3",
+        title = "Have I Told You Lately That I Love You (with Naturally 7)",
+        duration = "3:25",
+        lyrics = """
+                Have I told you lately that I love you?
+                Can I tell you once again somehow?
+                Have I told with all my heart and soul how I adore you?
+                Well darlin', I'm tellin' you now
+                Have I told you lately when I'm sleepin'
+                Every dream I dream is you somehow?
+                Have I told you why the nights are long when you're not with me?
+                Well darlin', I'm telling you now
+                My heart would break in two if I should loose you
+                It's no good without you anyhow
+                Have I told you lately that I love you?
+                Well my darling, I'm telling you now
+                Have I told you how the nights are long
+                When you're not with me?
+                Well darling, I'm telling you now
+                My heart would break in two if I should loose you
+                It's no good without you anyhow
+                Oh, have I told you lately that I love you?
+                Well darling, I'm telling you now
+                My sweet darling, I'm telling you now
+                Darling, I'm telling you now
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_65 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/04+-+John+Mayer+-+Gravity.mp3",
+        title = "Gravity",
+        duration = "4:05",
+        lyrics = """
+                Gravity is working against me
+                And gravity wants to bring me down
+                Oh, I'll never know
+                What makes this man, with all the love that his heart can stand
+                Dream of ways to throw it all away
+                Whoa, whoa
+                Gravity is working against me
+                And gravity wants to bring me down
+                Oh, twice as much ain't twice as good
+                And can't sustain like one half could
+                It's wanting more that's gonna send me to my knees
+                Oh, twice as much ain't twice as good
+                And can't sustain like one half could
+                It's wanting more that's gonna send me to my knees
+                Whoa, whoa
+                Gravity, stay the hell away from me
+                Whoa, whoa
+                Gravity has taken better men than me
+                Now how can that be?
+                Just keep me where the light is
+                Just keep me where the light is
+                Just keep me where the light is
+                Come on, keep me where the light is
+                Come on, keep me where the light is
+                Come on, keep me where, now, keep me where the light is
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_66 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+The+Heart+of+Life.mp3",
+        title = "The Heart of Life",
+        duration = "3:18",
+        lyrics = """
+                I hate to see you cry
+                Lying there in that position
+                There's things you need to hear
+                So turn off your tears and listen
+                Pain throws your heart to the ground
+                Love turns the whole thing around
+                No, it won't all go the way it should
+                But I know the heart of life is good
+                You know it's nothing new
+                Bad news never had good timing
+                But then the circle of your friends
+                Will defend the silver lining
+                Pain throws your heart to the ground
+                Love turns the whole thing around
+                No, it won't all go the way it should
+                But I know the heart of life is good
+                Pain throws your heart to the ground
+                Love turns the whole thing around
+                Fear is a friend who's misunderstood
+                But I know the heart of life is good
+                I know it's good
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_67 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/07+-+John+Mayer+-+Stop+This+Train.mp3",
+        title = "Stop This Train",
+        duration = "4:45",
+        lyrics = """
+                No, I'm not colorblind
+                I know the world is black and white
+                I try to keep an open mind
+                But I just can't sleep on this tonight
+                Stop this train
+                I want to get off and go home again
+                I can't take the speed it's moving in
+                I know I can't
+                But honestly, won't someone stop this train?
+                Don't know how else to say it
+                Don't want to see my parents go
+                I'm one generation's length away
+                From fighting life out on my own
+                Oh, come on, stop this train
+                I want to get off and go home again
+                I can't take the speed it's moving in
+                I know I can't
+                But honestly, won't someone stop this train?
+                I'm so scared of getting older
+                I'm only good at being young
+                So I play the numbers game
+                To find a way to say my life has just begun
+                Had a talk with my old man
+                Said, "Help me understand"
+                He said "Turn 68, oh, you'll re-negotiate"
+                "Don't stop this train
+                Don't for a minute change the place you're in
+                And don't think I couldn't ever understand
+                I tried my hand
+                John, honestly we'll never stop this train"
+                Oh, now, once in a while, when it's good
+                It'll feel like it should
+                And they're all still around
+                And you're still safe and sound
+                And you don't miss a thing
+                'Til you cry
+                When you're driving away in the dark, yeah
+                Singing
+                Stop this train
+                I want to get off and go back home again
+                I can't take the speed this thing moving in
+                I know I can't
+                'Cause now I see, I'm never gonna stop this train
+                Never gonna stop this train
+                Oh, I'm never gonna stop this train
+                Oh, I'm never gonna stop this train
+                Oh, I'm never gonna stop this train
+                Thank you
+                How you feel tonight? You ready to hear alot of music
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_68 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/08+-+John+Mayer+-+Slow+Dancing+in+a+Burning+Room.mp3",
+        title = "Slow Dancing in a Burning Room",
+        duration = "4:02",
+        lyrics = """
+                It's not a silly little moment
+                It's not the storm before the calm
+                This is the deep and dying breath of
+                This love that we've been working on
+                Can't seem to hold you like I want to
+                So I can feel you in my arms
+                Nobody's gonna come and save you
+                We pulled too many false alarms
+                We're going down
+                And you can see it too
+                We're going down
+                And you know that we're doomed
+                My dear
+                We're slow dancing in a burning room
+                I was the one you always dreamed of
+                You were the one I tried to draw
+                How dare you say it's nothing to me?
+                Baby, you're the only light I ever saw
+                I'll make the most of all the sadness
+                You'll be a bitch because you can
+                You try to hit me just to hurt me
+                So you leave me feeling dirty
+                'Cause you can't understand
+                We're going down
+                And you can see it too
+                We're going down
+                And you know that we're doomed
+                My dear
+                We're slow dancing in a burning room
+                Go cry about it, why don't you?
+                Go cry about it, why don't you?
+                Go cry about it, why don't you?
+                My dear, we're slow dancing in a burning room
+                Burning room
+                Burning room
+                Don't you think we oughta know by now?
+                Don't you think we should have learned somehow?
+                Dont you think we oughta know by now?
+                Dont you think we should have learned somehow?
+                Don't you think we oughta know by now?
+                Don't you think we should have learned somehow?
+                        """,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    song_69 = Songs (
+        user_id = 1,
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/10+-+John+Mayer+-+Dreaming+with+a+Broken+Heart.mp3",
+        title = "Dreaming with a Broken Heart",
+        duration = "4:05",
+        lyrics = """
+                It's not a silly little moment
+                It's not the storm before the calm
+                This is the deep and dying breath of
+                This love that we've been working on
+                Can't seem to hold you like I want to
+                So I can feel you in my arms
+                Nobody's gonna come and save you
+                We pulled too many false alarms
+                We're going down
+                And you can see it too
+                We're going down
+                And you know that we're doomed
+                My dear
+                We're slow dancing in a burning room
+                I was the one you always dreamed of
+                You were the one I tried to draw
+                How dare you say it's nothing to me?
+                Baby, you're the only light I ever saw
+                I'll make the most of all the sadness
+                You'll be a bitch because you can
+                You try to hit me just to hurt me
+                So you leave me feeling dirty
+                'Cause you can't understand
+                We're going down
+                And you can see it too
+                We're going down
+                And you know that we're doomed
+                My dear
+                We're slow dancing in a burning room
+                Go cry about it, why don't you?
+                Go cry about it, why don't you?
+                Go cry about it, why don't you?
+                My dear, we're slow dancing in a burning room
+                Burning room
+                Burning room
+                Don't you think we oughta know by now?
+                Don't you think we should have learned somehow?
+                Dont you think we oughta know by now?
+                Dont you think we should have learned somehow?
+                Don't you think we oughta know by now?
+                Don't you think we should have learned somehow?
+                        """,
         date_created = datetime(2023, 9, 6)
     )
 
 
 
-
     db.session.add_all([demo, marnie, bobbie])
     # 30 more if I want to access all of them, should probably split them up based on different playlists
-    db.session.add_all([album_1, album_2, album_3, album_4, album_5])
-    db.session.add_all([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30, song_31, song_32, song_33, song_34, song_35, song_36])
-    db.session.add_all([playlist_1, playlist_2, playlist_3])
+    db.session.add_all([album_1, album_2, album_3, album_4, album_5, album_6, album_7])
 
-    playlist_1.playlist_songs.extend([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20])
+    db.session.add_all([playlist_1, playlist_2, playlist_3, playlist_4, playlist_5])
+
+    db.session.add_all([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30, song_31, song_32, song_33, song_34, song_35, song_36,
+                        song_37, song_38, song_39, song_40, song_41, song_42, song_43, song_44, song_45, song_46, song_47, song_48, song_49, song_50, song_51, song_52,
+                        song_53, song_54, song_55, song_56, song_57, song_58, song_59, song_60, song_61, song_62, song_63, song_64, song_65, song_66])
+
+
+    album_1.album_songs.extend([song_11,song_65, song_66, song_67, song_68, song_69])
+    
+    album_2.album_songs.extend([song_35, song_36])
+
+    album_3.album_songs.extend([song_31, song_32, song_33, song_34])
+
+    album_4.album_songs.extend([song_28, song_29, song_30])
+
+    album_5.album_songs.extend([song_21, song_22, song_23, song_24, song_25, song_26, song_27])
+    
+    playlist_1.playlist_songs.extend([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_51, song_65, song_66, song_67, song_68, song_69])
 
     playlist_3.playlist_songs.extend([song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30, song_31, song_32, song_33, song_34, song_35, song_36])
     
+    playlist_4.playlist_songs.extend([song_38, song_39, song_40, song_41, song_42, song_43, song_44, song_45, song_46, song_47, song_48, song_49, song_50])
+
+    playlist_5.playlist_songs.extend([song_37, song_52, song_53, song_54, song_55, song_56, song_57, song_58, song_59, song_60, song_61, song_62, song_63, song_64])
+
+
+    album_6.album_songs.extend([song_55, song_56, song_57])
+
+    album_7.album_songs.extend([song_43, song_44, song_45, song_46, song_47])
     db.session.commit()
 
     # playlist_song_association = playlist_songs.insert().values(

@@ -11,29 +11,21 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password, firstname, lastname, bio));
-        if (data) {
-          setErrors(data)
-        }
-    } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
-    }
-  };
-  console.log("firstname, lastname, bio==========+>", firstname, lastname, bio)
+
+  // const handleSubmit = async (e) => {
+  //   return
+  // };
+
   return (
     <>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form /*onSubmit={handleSubmit}*/ >
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -61,15 +53,6 @@ function SignupFormPage() {
             type="text"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Bio
-          <input
-            type="text"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
             required
           />
         </label>

@@ -11,12 +11,12 @@ const TestSideBar = () => {
         <>
             <div className="side-bar-container">
                 <ul className="home-button-container">
-                    <li>
-                        <NavLink exact to="/">
+                    <div>
+                        <NavLink exact to="/test">
                             <p>Home</p>
                         </NavLink>
                         <p>Search - Add a pop up saying 'Coming Soon!'</p>
-                    </li>
+                    </div>
                 </ul>
                 <div className="playlist-albums-container">
                     <div className="library-create-playlist-container">

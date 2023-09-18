@@ -1,8 +1,4 @@
-a {
-    text-decoration: none;
-}
-
-.playlist-tile-wrapper {
+.album-tile-wrapper {
     /* border: 2px solid red; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -12,18 +8,18 @@ a {
     padding: 20px;
 }
 
-.playlist-info-wrapper {
+.album-info-wrapper {
     padding: 10px;
 }
 
-.playlist-info {
+.album-info {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: white
 }
 
-.playlist-image {
+.album-image {
     width: 150px;
     height: 150px;
     /* Fit the size of the container */
@@ -33,12 +29,12 @@ a {
 }
 
 
-.playlist-name {
+.album-name {
     font-weight: bold;
 }
 
-.playlist-tile-container {
-    /* position: relative; */
+.album-tile-container {
+    position: relative;
     width: 150px;
     display: flex;
     flex-direction: column;
@@ -48,7 +44,7 @@ a {
     cursor: pointer;
 }
 
-.playlist-tile-list {
+.album-tile-list {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -87,20 +83,20 @@ a {
 
 
 @media (max-width: 499px) {
-    .playlist-tiles-wrapper {
+    .album-tiles-wrapper {
         width: 100%;
     }
 }
 
 @media (min-width: 900px) and (max-width: 1023px) {
-    .playlist-tile-list {
+    .album-tile-list {
         width: calc(33.33% - 20px);
         /* Three columns with a gap */
     }
 }
 
 @media (min-width: 1024px) {
-    .playlist-tile-list {
+    .album-tile-list {
         width: calc(25% - 20px);
         /* Four columns with a gap */
     }
