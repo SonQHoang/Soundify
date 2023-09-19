@@ -4054,36 +4054,20 @@ def seed_users():
 
 
     album_1.album_songs.extend([song_11,song_65, song_66, song_67, song_68, song_69])
-    
     album_2.album_songs.extend([song_35, song_36])
-
     album_3.album_songs.extend([song_31, song_32, song_33, song_34])
-
     album_4.album_songs.extend([song_28, song_29, song_30])
-
     album_5.album_songs.extend([song_21, song_22, song_23, song_24, song_25, song_26, song_27])
     
     playlist_1.playlist_songs.extend([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_51, song_65, song_66, song_67, song_68, song_69])
-
     playlist_3.playlist_songs.extend([song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30, song_31, song_32, song_33, song_34, song_35, song_36])
-    
     playlist_4.playlist_songs.extend([song_38, song_39, song_40, song_41, song_42, song_43, song_44, song_45, song_46, song_47, song_48, song_49, song_50])
-
     playlist_5.playlist_songs.extend([song_37, song_52, song_53, song_54, song_55, song_56, song_57, song_58, song_59, song_60, song_61, song_62, song_63, song_64])
 
-
     album_6.album_songs.extend([song_55, song_56, song_57])
-
     album_7.album_songs.extend([song_43, song_44, song_45, song_46, song_47])
+
     db.session.commit()
-
-    # playlist_song_association = playlist_songs.insert().values(
-    #     playlist_id=playlist_1.id,
-    #     song_id=song_1.id
-    # )
-
-    # db.session.execute(playlist_song_association)
-    # db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

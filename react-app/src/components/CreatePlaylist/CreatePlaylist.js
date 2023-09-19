@@ -13,7 +13,7 @@ const CreatePlaylist = () => {
     const [image, setImage] = useState(null)
     const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
-    const [validationErrors, setValidationErrors] = useState([])
+	const [errors, setErrors] = useState([]);
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false) 
 
@@ -21,24 +21,51 @@ const CreatePlaylist = () => {
     const submitForm = async (e) => {
         e.preventDefault();
 
+        const newErrors = {}
+
+        if(!title) {
+            newErrors.title = "Playlist title is required"
+        } else if (title.length > 15) {
+            newErrors.title = "Please submit a playlist title that is less than 15 characters long"
+        } else if (title.length <= 5) {
+            newErrors.title = "Playlist title must be at least 5 character long"
+        }
+
+        if(!description) {
+            newErrors.description = "Description is required"
+        } else if (description.length <= 15) {
+            newErrors.description = "Description must be at least 10 characters long"
+        } else if (description.length >= 30) {
+            newErrors.description = "Description cannot exceed 25 characters in length"
+        }
+
+        if (!image) {
+            newErrors.image = "Playlist image is required"
+        }
+
+        if (!date_created) {
+            newErrors.date_created = "You must submit a date for your playlist"
+        }
+
+        setErrors(newErrors)
         setHasSubmitted(true);
-        if (validationErrors.length) return alert("You've got some errors with your upload!");
-        const formData = new FormData()
-        formData.append('author', currentUser.first_name)
-        formData.append('title', title)
-        formData.append('image', image)
-        formData.append('playlist_description', description)
-        formData.append('date_created', date_created)
 
+        if(Object.keys(newErrors).length === 0) {
+            const formData = new FormData()
+            formData.append('author', currentUser.first_name)
+            formData.append('title', title)
+            formData.append('image', image)
+            formData.append('playlist_description', description)
+            formData.append('date_created', date_created)
     
-
-        try {
-            await dispatch(createPlaylist(formData));
-            setValidationErrors([]);
-            setHasSubmitted(false);
-            history.push(`/landing-page`);
-        } catch (error) {
-            console.error("Error creating playlist:", error);
+            try {
+                await dispatch(createPlaylist(formData));
+                setErrors({});
+                setHasSubmitted(false);
+                history.push(`/landing-page`);
+            } catch (error) {
+                console.error("Error creating playlist:", error);
+            }
         }
     };
 
@@ -53,6 +80,7 @@ const CreatePlaylist = () => {
                 <h1>Create a New Playlist</h1>
                 <div className="form-input-box">
                     <div>
+                    <div className="error-message">{errors.title}</div>
                         <label className="form-label" htmlFor='title'>
                             Playlist Title:
                         </label>
@@ -63,8 +91,9 @@ const CreatePlaylist = () => {
                 </div>
                 <div className="form-input-box">
                     <div>
+                    <div className="error-message">{errors.description}</div>
                         <label className="form-label" htmlFor='title'>
-                            Description (Optional):
+                            Description:
                         </label>
                     </div>
                     <div>
@@ -72,6 +101,7 @@ const CreatePlaylist = () => {
                     </div>
                 </div>
                 <div className="form-input-box">
+                <div className="error-message">{errors.image}</div>
                     <label className="form-label" htmlFor="image">
                         Upload a Picture:
                     </label>
@@ -98,6 +128,7 @@ const CreatePlaylist = () => {
                 </div>
                 <div className="form-input-box">
                     <div>
+                    <div className="error-message">{errors.date_created}</div>
                         <label className="form-label" htmlFor='date_created'>
                             Date Created:
                         </label>

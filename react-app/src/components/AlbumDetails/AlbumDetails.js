@@ -100,7 +100,10 @@ function AlbumDetails() {
 
 
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
-
+    const isOwner = currentAlbum.owner === sessionUser.first_name
+    // console.log('userId========>', userId)
+    // console.log('currentAlbum.id=========>', currentAlbum.id)
+    // console.log('isOwner========+>', isOwner)
 
     const handleDeleteClick = async () => {
         setAlbumToDelete(currentAlbum)
@@ -154,6 +157,7 @@ function AlbumDetails() {
                                 </div>
                             </div>
                         </div>
+                        {isOwner && (
                         <div>
                             <button className="album-update-button" onClick={() => {
                                 return handleUpdateClick(albumId);
@@ -165,6 +169,7 @@ function AlbumDetails() {
                             }}>Delete Album</button>
                             <DeleteAlbum albumId={albumId} />
                         </div>
+                        )}
                         <div className='search-bar-container'>
                             <div className='search-bar'>
                                 <input

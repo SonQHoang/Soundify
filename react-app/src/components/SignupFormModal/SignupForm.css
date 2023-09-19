@@ -5,17 +5,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20rem;
-    height: 30rem;
+    height: 600px
 }
 
 .title-container {
     /* border: 2px solid green; */
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
 
 .title-container h1 {
@@ -25,9 +22,7 @@
 }
 
 .form-container {
-    /* border: 2px red solid; */
-    height: 350px;
-    width: 300px;
+    /* border: 2px blue solid; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,6 +48,10 @@
 
 .sign-up-input {
     /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
     width: 200px;
 }

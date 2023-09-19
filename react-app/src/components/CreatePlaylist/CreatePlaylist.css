@@ -25,8 +25,8 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20rem;
-    height: 28rem;
+    width: 22rem;
+    height: 34rem;
     background-color: #272727;;
 }
 
@@ -35,12 +35,17 @@ body, html {
     align-items: center;
     justify-content: center;
     color: white;
+    margin-bottom: 10px;
     /* border: 2px solid blue; */
 }
 
 .form-input-box {
     /* border: 2px solid red; */
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -58,4 +63,8 @@ body, html {
     background-color: #1DB954; 
     padding: 10px;
     margin-bottom: 20px;
+}
+
+.error-message {
+    color: red;
 }

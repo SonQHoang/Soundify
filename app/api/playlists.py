@@ -12,7 +12,8 @@ session = db.session
 
 @playlist_routes.route('/user_playlist', methods=["GET"])
 def get_user_playlist():
-    playlists = Playlists.query.filter_by(user_id = current_user.id).all()
+    # playlists = Playlists.query.filter_by(user_id = current_user.id).all()
+    playlists = Playlists.query.all()
     # print('playlists=====>', playlists)
     return [playlist.to_dict() for playlist in playlists]
 

@@ -26,8 +26,8 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20rem;
-    height: 28rem;
+    width: 23rem;
+    height: 36rem;
     background-color: #272727;;
 }
 
@@ -59,4 +59,12 @@ body, html {
     background-color: #1DB954; 
     padding: 10px;
     margin-bottom: 30px;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

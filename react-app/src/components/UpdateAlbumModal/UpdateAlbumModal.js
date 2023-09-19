@@ -37,7 +37,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     const [title, setTitle] = useState(current_album_information.title || '');
     const [year, setYear] = useState(current_album_information.year || '')
     const [album_description, setAlbum_Description] = useState(current_album_information.album_description || "")
-    const [validationErrors, setValidationErrors] = useState([])
+    const [errors, setErrors] = useState([]);
     const [album_photo, setAlbum_Photo] = useState(current_album_information.album_photo || '')
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [imagePreview, setImagePreview] = useState(null)
@@ -46,40 +46,71 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
     useEffect(() => {
         setAlbumInformation(current_album_information)
     }, [albumInformation])
-    
+
 
     const submitForm = async (e) => {
         e.preventDefault();
 
+        const newErrors = {}
+
+        if (!title) {
+            newErrors.title = "Album title cannot be empty"
+        } else if (title.length > 15) {
+            newErrors.title = "Updated album title must be less than 15 characters long"
+        } else if (title.length <= 0) {
+            newErrors.title = "Updated album title must be at least 1 character long"
+        }
+
+        if (!album_description) {
+            newErrors.album_description = "Description cannot be empty"
+        } else if (album_description.length <= 15) {
+            newErrors.album_description = "Updated description must be at least 15 characters long"
+        } else if (album_description.length >= 30) {
+            newErrors.album_description = "Updated description cannot exceed 40 characters in length"
+        }
+
+        if (!year) {
+            newErrors.year = "Year is required"
+        } else if (isNaN(year) || parseInt(year) <= 0) {
+            newErrors.year = "Year must be a positive number greater than 0"
+        }
+
+        if (!album_photo) {
+            newErrors.album_photo = "Album Cover is required"
+        }
+
+        setErrors(newErrors)
         setHasSubmitted(true);
-        if (validationErrors.length) return alert("You've got some errors with your edit!");
-        const formData = new FormData()
 
-        formData.append('author', currentUser.first_name)
-        formData.append('title', title)
-        formData.append('year', year)
-        formData.append('album_photo', album_photo)
-        // console.log('album_photo component ------------>', album_photo)
-        formData.append('album_description', album_description)
+        if (Object.keys(newErrors).length === 0) {
+            const formData = new FormData()
+            formData.append('author', currentUser.first_name)
+            formData.append('title', title)
+            formData.append('year', year)
+            formData.append('album_photo', album_photo)
+            formData.append('album_description', album_description)
 
-        // const formDataObject = {};
-        // formData.forEach((value, key) => {
-        //         formDataObject[key] = value;
-        //     });
-        //     console.log('formData component update album modal:==============>', formDataObject);
+            try {
+                await dispatch(updateAlbumThunk(albumId, formData))
+                console.log('albumId component===========>', albumId)
+                console.log('formData component information=========>', formData)
 
-        try {
-            await dispatch(updateAlbumThunk(albumId, formData))
-            console.log('albumId component===========>', albumId)
-            console.log('formData component information=========>', formData)
+                await dispatch(GetSingleAlbum(albumId)) // Triggering the rerender
+                onSubmit();
+                history.push(`/album/${albumId}`)
+            } catch (error) {
+                console.error("Error while updating album:", error);
+            }
 
-            await dispatch(GetSingleAlbum(albumId)) // Triggering the rerender
-            onSubmit();
-            history.push(`/album/${albumId}`)
-        } catch (error) {
-            console.error("Error while updating album:", error);
         }
     }
+
+    // const formDataObject = {};
+    // formData.forEach((value, key) => {
+    //         formDataObject[key] = value;
+    //     });
+    //     console.log('formData component update album modal:==============>', formDataObject);
+
 
 
     //     const handleConfirmUpdate = () => {
@@ -107,6 +138,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                             encType="multipart/form-data"
                         >
                             <div className="update-form-left-side">
+                                <div className="error-message">{errors.album_photo}</div>
                                 <label className="form-label" htmlFor="image">
                                     Update Your Album Cover:
                                 </label>
@@ -133,6 +165,10 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                             </div>
                             <div className="update-form-right-side">
                                 <div className="form-input-box">
+                                        <div className="error-message">{errors.title}</div>
+                                        <label>
+                                            Title:
+                                        </label>
                                     <div>
                                         <input
                                             className="input-field"
@@ -146,8 +182,9 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                 </div>
                                 <div className="form-input-box">
                                     <div>
+                                        <div className="error-message">{errors.album_description}</div>
                                         <label className="form-label" htmlFor='description'>
-                                            Description (Optional):
+                                            Description:
                                         </label>
                                     </div>
                                     <div>
@@ -163,6 +200,7 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
                                 </div>
                                 <div className="form-input-box">
                                     <div>
+                                        <div className="error-message">{errors.year}</div>
                                         <label className="form-label" htmlFor='year'>
                                             Year
                                         </label>

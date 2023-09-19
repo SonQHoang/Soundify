@@ -3,8 +3,6 @@ import TestSideBar from '../TestComponents/TestSideBar'
 import TestNav from '../TestComponents/TestNav'
 import UserPlaylistTile from '../UserPlaylistTile/UserPlaylistTile'
 import UserAlbumTile from '../UserAlbumTile/UserAlbumTile'
-import Player from '../AudioBar/audiobar'
-import Footer from '../Footer/Footer'
 import "./MainPageTest.css"
 
 const MainPage = () => {
