@@ -1,6 +1,12 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const POPULATE_USER_PROFILE_DEMO = 'userProfile/POPULATE_USER_PROFILE_DEMO';
+
+const populateUserProfileDemo = (userData) => ({
+	type: POPULATE_USER_PROFILE_DEMO,
+	payload: userData,
+});
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -28,6 +34,26 @@ export const authenticate = () => async (dispatch) => {
 		dispatch(setUser(data));
 	}
 };
+
+export const userAccessDemoData = (email, password) => async (dispatch) => {
+	console.log("What's the email=====> THUNK", email)
+	console.log("What's the password=====> THUNK", password)
+	const data = {
+		email: email,
+		password: password,
+	}
+
+	const response = await fetch('/api/users/demo-user-profile', {
+		method: 'POST',
+		body: data
+	});
+
+	if (!response.ok) {
+		throw new Error('Failed to fetch demo user data')
+	}
+	const userData = await response.json()
+	dispatch(populateUserProfileDemo(userData))
+}
 
 export const login = (email, password) => async (dispatch) => {
 	const response = await fetch("/api/auth/login", {

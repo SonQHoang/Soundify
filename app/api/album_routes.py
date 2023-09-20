@@ -12,7 +12,9 @@ session = db.session
 
 @album_routes.route('/user_album', methods=["GET"])
 def get_user_album():
-    albums = Albums.query.filter_by(user_id = current_user.id).all()
+    # albums = Albums.query.filter_by(user_id = current_user.id).all()
+    albums = Albums.query.all()
+
     # print('albums=====>', albums)
     return [album.to_dict() for album in albums]
 

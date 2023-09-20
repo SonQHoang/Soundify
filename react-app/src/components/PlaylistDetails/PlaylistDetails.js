@@ -99,7 +99,10 @@ function PlaylistDetails() {
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
     // console.log('In  PlaylistDetails, currentPlaylist======>', currentPlaylist)
-
+    const isOwner = currentPlaylist.owner === sessionUser.first_name
+    // console.log('currentPlayist=======>', currentPlaylist)
+    // console.log('userId========+>', userId)
+    // console.log('isOwner=====>', isOwner)
 
     const handleDeleteClick = async () => {
         setPlaylistToDelete(currentPlaylist)
@@ -152,6 +155,7 @@ function PlaylistDetails() {
                                 </div>
                             </div>
                         </div>
+                        {isOwner && (
                         <div>
                             <button className="playlist-update-button" onClick={() => {
                                 return handleUpdateClick(playlistId);
@@ -163,6 +167,7 @@ function PlaylistDetails() {
                             }}>Delete Playlist</button>
                             <DeletePlaylist playlistId={playlistId} />
                         </div>
+                        )}
                         <div className='search-bar-container'>
                             <div className='search-bar'>
                                 <input
@@ -214,9 +219,9 @@ function PlaylistDetails() {
                             ))}
                             {selectedSongs.length > 0 && (
                                 <div>
-                                        <div>
-                                            <Player src={currentSong.audio_url} />
-                                        </div>
+                                    <div>
+                                        <Player src={currentSong.audio_url} />
+                                    </div>
                                 </div>
                             )}
                             {showModal && modalType === "update" && (

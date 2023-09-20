@@ -15,7 +15,7 @@ const CreateAlbum = () => {
     const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
     const [year, setYear] = useState('')
-    const [validationErrors, setValidationErrors] = useState([])
+	const [errors, setErrors] = useState([]);
     const [imagePreview, setImagePreview] = useState(null)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -23,33 +23,67 @@ const CreateAlbum = () => {
     const submitForm = async (e) => {
         e.preventDefault();
 
-        setHasSubmitted(true);
-        if (validationErrors.length) return alert("You've got some errors with your upload!");
-        const formData = new FormData()
+        const newErrors = {}
 
-        formData.append('author', currentUser.first_name)
-        formData.append('title', title)
-        formData.append('album_photo', album_photo)
-        formData.append('album_description', description)
-        formData.append('year', year)
-        formData.append('date_created', date_created)
+        if(!title) {
+            newErrors.title = "Album title is required"
+        } else if (title.length > 15) {
+            newErrors.title = "Please submit an album title that is less than 15 characters long"
+        } else if (title.length <= 0) {
+            newErrors.title = "Album title must be at least 1 character long"
+        }
+        
+        if(!description) {
+            newErrors.description = "Description is required"
+        } else if (description.length <= 15) {
+            newErrors.description = "Description must be at least 15 characters long"
+        } else if (description.length >= 30) {
+            newErrors.description = "Description cannot exceed 40 characters in length"
+        }
+
+        if(!year) {
+            newErrors.year = "Year is required"
+        } else if (isNaN(year) || parseInt(year) <= 0) {
+            newErrors.year = "Year must be a positive number greater than 0"
+        }
+
+        if (!album_photo) {
+            newErrors.album_photo = "Album Cover is required"
+        }
+
+        if (!date_created) {
+            newErrors.date_created = "You must submit a date for your album"
+        }
+
+        setErrors(newErrors)
+        setHasSubmitted(true)
+
+        if(Object.keys(newErrors).length === 0) {
+            const formData = new FormData()
+            formData.append('author', currentUser.first_name)
+            formData.append('title', title)
+            formData.append('album_photo', album_photo)
+            formData.append('album_description', description)
+            formData.append('year', year)
+            formData.append('date_created', date_created)
+            try {
+                await dispatch(createAlbum(formData));
+                setErrors({});
+                setHasSubmitted(false);
+                history.push(`/landing-page`);
+            } catch (error) {
+                console.error("Error creating album:", error);
+            }
+        }
 
         // Confirming my data is in the form
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-            formDataObject[key] = value;
-        });
-        console.log('formDataObject=========> component:', formDataObject);
+        // const formDataObject = {};
+        // formData.forEach((value, key) => {
+        //     formDataObject[key] = value;
+        // });
+        // console.log('formDataObject=========> component:', formDataObject);
 
-        try {
-            await dispatch(createAlbum(formData));
-            setValidationErrors([]);
-            setHasSubmitted(false);
-            history.push(`/landing-page`);
-        } catch (error) {
-            console.error("Error creating album:", error);
-        }
     };
 
     return (
@@ -62,6 +96,7 @@ const CreateAlbum = () => {
                 <h1>Create a New Album</h1>
                 <div className="form-input-box">
                     <div>
+                    <div className="error-message">{errors.title}</div>
                         <label className="form-label" htmlFor='title'>
                             Album Title:
                         </label>
@@ -72,6 +107,7 @@ const CreateAlbum = () => {
                 </div>
                 <div className="form-input-box">
                     <div>
+                    <div className="error-message">{errors.description}</div>
                         <label className="form-label" htmlFor='title'>
                             Description:
                         </label>
@@ -82,6 +118,7 @@ const CreateAlbum = () => {
                 </div>
                 <div className="form-input-box">
                     <div>
+                    <div className="error-message">{errors.year}</div>
                         <label className="form-label" htmlFor='title'>
                             Year:
                         </label>
@@ -91,6 +128,7 @@ const CreateAlbum = () => {
                     </div>
                 </div>
                 <div>
+                <div className="error-message">{errors.album_photo}</div>
                     <label className="form-label" htmlFor="image">
                         Upload an Album Cover:
                     </label>
@@ -116,6 +154,7 @@ const CreateAlbum = () => {
                 </div>
                 <div className="form-input-box">
                     <div>
+                    <div className="error-message">{errors.date_created}</div>
                         <label className="form-label" htmlFor='date_created'>
                             Date Created:
                         </label>

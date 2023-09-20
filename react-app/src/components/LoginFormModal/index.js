@@ -3,6 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom"
+import { userAccessDemoData } from "../../store/session";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -20,7 +21,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       closeModal()
-      history.push('/')
+      history.push('/landing-page')
     }
   };
 
