@@ -1,19 +1,16 @@
 """Creating tables
 
-Revision ID: 061cf5959edc
-Revises: 
-Create Date: 2023-09-20 09:35:26.355923
-
+Revision ID: 83284e1ecc51
+Revises:
+Create Date: 2023-09-03 17:54:00.228608
 """
 from alembic import op
 import sqlalchemy as sa
-
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
-
 # revision identifiers, used by Alembic.
-revision = '061cf5959edc'
+revision = '83284e1ecc51'
 down_revision = None
 branch_labels = None
 depends_on = None
