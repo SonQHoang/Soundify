@@ -20,18 +20,15 @@ import TestNav from "../TestComponents/TestNav";
 function PlaylistDetails() {
     const { playlistId } = useParams()
     const dispatch = useDispatch();
-    const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
 
     const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
-    console.log('new_songs=========>', new_songs)
 
     const [playlistInfo, setPlaylistInfo] = useState(new_songs)
     const [selectedSongs, setSelectedSongs] = useState([])
     const [showModal, setShowModal] = useState(false);
-    console.log('Value of showModal:=========>', showModal);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
     const [currentSong, setCurrentSong] = useState(null);
