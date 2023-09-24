@@ -13,14 +13,6 @@
     border-radius: 5px 5px 0 0;
 }
 
-.about-me-links {
-    /* border: 1px solid yellow; */
-    background-color: #121212;
-}
-
-.about-me-links a {
-    background-color: #121212;
-}
 
 .logout-container {
     /* border: 1px solid purple; */
@@ -58,4 +50,8 @@
 
 .drop-down-profile-menu button:hover {
     color: white
+}
+
+.about-me-links a{
+    color: white;
 }

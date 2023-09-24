@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import { NavLink } from 'react-router-dom';
 import './TestNav.css'
 
 const TestNav = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const history = useHistory()
   const [dropDownMenu, setDropDownMenu] = useState(false)
 
@@ -30,14 +31,14 @@ const TestNav = () => {
     <>
       <div className="nav-component-nav-container">
         <div className="about-me-links">
-          {/* <a>Github</a>
-          <a>LinkedIn</a> */}
+        <a href='https://github.com/SonQHoang' id="github-link">GitHub</a>
+  <a href='https://linkedin.com/in/sean-hoang' id="linkedin-link">LinkedIn</a>
         </div>
         <div className="logout-container">
           {user ? (
-          <button className="profile-icon-container" onClick={handleDropDown}>
-            <img src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png" alt="icon" className="profile-icon"/>
-          </button>
+            <button className="profile-icon-container" onClick={handleDropDown}>
+              <img src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png" alt="icon" className="profile-icon" />
+            </button>
           ) : (
             <>
               {showLoginModal && <LoginFormModal />}
