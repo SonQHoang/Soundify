@@ -161,6 +161,11 @@ function PlaylistDetails() {
                             </div>
                         )}
                         <div className='search-bar-container'>
+                            <div className="play-button-playlist-container">
+                                <button className='play-playlist-button'>
+                                    <img className="play-button-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695962350/Untitled_design_4_olkf9a.png" alt="play button" />
+                                </button>
+                            </div>
                             <div className='search-bar'>
                                 <input
                                     type="text"
@@ -255,11 +260,15 @@ function PlaylistDetails() {
                     </div>
                 </div>
             </div>
-            {selectedSongs.length > 0 && currentSong && (
+
+            {/* {selectedSongs.length > 0 && currentSong && (
                 <div>
                     <Player src={currentSong.audio_url} />
                 </div>
-            )}
+            )} */}
+            <div>
+                <Player src={currentSong ? currentSong.audio_url : null} />
+            </div>
         </>
     )
 }
