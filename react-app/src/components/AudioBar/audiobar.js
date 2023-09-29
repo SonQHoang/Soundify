@@ -1,19 +1,21 @@
 import React from 'react'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import './audiobar.css'
 
 const Player = ({src}) => {
-    // console.log('Player component =======>', src)
 
     const handlePlay = (e) => {
         console.log("Audio started playing")
     }
     return (
-        <AudioPlayer
-            autoPlay
-            src={src}
-            onPlay={handlePlay}
-        />
+        <div className="audiobar-background">
+            <AudioPlayer
+                autoPlay
+                src={src}
+                onPlay={handlePlay}
+            />
+        </div>
     )
 }
 

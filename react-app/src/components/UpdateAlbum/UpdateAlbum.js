@@ -1,6 +1,5 @@
-import { useHistory } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import UpdateAlbumModal from '../UpdateAlbumModal/UpdateAlbumModal';
 import "./UpdateAlbum.css"
 

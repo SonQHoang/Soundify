@@ -1,6 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom/';
+import {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createAlbum } from '../../store/albums';
 import "./CreateAlbum.css" 

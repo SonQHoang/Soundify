@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
 import { GetSongsForAlbum } from "../../store/albums";
@@ -15,11 +14,11 @@ import UpdateAlbum from "../UpdateAlbum/UpdateAlbum";
 import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
+import Footer from "../Footer/Footer";
 
 function AlbumDetails() {
     const { albumId } = useParams()
     const dispatch = useDispatch();
-    const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
@@ -158,17 +157,17 @@ function AlbumDetails() {
                             </div>
                         </div>
                         {isOwner && (
-                        <div>
-                            <button className="album-update-button" onClick={() => {
-                                return handleUpdateClick(albumId);
-                            }}>Edit Details</button>
-                            <UpdateAlbum albumId={albumId} />
+                            <div>
+                                <button className="album-update-button" onClick={() => {
+                                    return handleUpdateClick(albumId);
+                                }}>Edit Details</button>
+                                <UpdateAlbum albumId={albumId} />
 
-                            <button className="album-delete-button" onClick={() => {
-                                return handleDeleteClick(albumId);
-                            }}>Delete Album</button>
-                            <DeleteAlbum albumId={albumId} />
-                        </div>
+                                <button className="album-delete-button" onClick={() => {
+                                    return handleDeleteClick(albumId);
+                                }}>Delete Album</button>
+                                <DeleteAlbum albumId={albumId} />
+                            </div>
                         )}
                         <div className='search-bar-container'>
                             <div className='search-bar'>
@@ -194,7 +193,7 @@ function AlbumDetails() {
                                     <div>Date Added</div>
                                 </div>
                                 <div className="grid-row" style={{ width: '200px' }}>
-                                <img className='clock-icon' src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695032037/icons8-clock-32_bel47j.png" alt="clock-icon"></img>
+                                    <img className='clock-icon' src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695032037/icons8-clock-32_bel47j.png" alt="clock-icon"></img>
                                 </div>
                             </div>
                             {(new_songs)?.map((song, index) => (
@@ -211,7 +210,7 @@ function AlbumDetails() {
                                         <div className="album-info">Album Info</div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
-                                        <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', {month: 'short', year: 'numeric' })}
+                                        <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                                         </div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
@@ -219,13 +218,6 @@ function AlbumDetails() {
                                     </div>
                                 </div>
                             ))}
-                            {selectedSongs.length > 0 && (
-                                <div>
-                                        <div>
-                                            <Player src={currentSong.audio_url} />
-                                        </div>
-                                </div>
-                            )}
                             {showModal && modalType === "update" && (
                                 <UpdateAlbumModal
                                     albumId={albumToUpdate.id}
@@ -272,6 +264,11 @@ function AlbumDetails() {
                     </div>
                 </div>
             </div>
+            {selectedSongs.length > 0 && (
+                    <div>
+                        <Player src={currentSong.audio_url} />
+                    </div>
+            )}
         </>
     )
 }

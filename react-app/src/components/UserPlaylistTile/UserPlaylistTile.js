@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getUserPlaylist } from '../../store/playlists';
@@ -7,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 import "./UserPlaylistTile.css"; // Make sure to include the correct CSS file
 
 const UserPlaylistTile = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const playlists = useSelector(state => state.playlist.allPlaylists);
   console.log('What are my playlists like?=====>', playlists);
