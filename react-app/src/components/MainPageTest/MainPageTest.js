@@ -1,6 +1,7 @@
 import React from 'react'
 import TestSideBar from '../TestComponents/TestSideBar'
 import TestNav from '../TestComponents/TestNav'
+import Footer from '../Footer/Footer'
 import UserPlaylistTile from '../UserPlaylistTile/UserPlaylistTile'
 import UserAlbumTile from '../UserAlbumTile/UserAlbumTile'
 import "./MainPageTest.css"
@@ -42,7 +43,9 @@ const MainPage = () => {
                     </div>
                 </div>
             </div>
-            {/* <Footer/> */}
+                <div className="footer">
+                    <Footer />
+                </div>
         </>
     )
 }

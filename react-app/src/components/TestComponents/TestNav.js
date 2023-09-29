@@ -31,8 +31,14 @@ const TestNav = () => {
     <>
       <div className="nav-component-nav-container">
         <div className="about-me-links">
-        <a href='https://github.com/SonQHoang' id="github-link">GitHub</a>
-  <a href='https://linkedin.com/in/sean-hoang' id="linkedin-link">LinkedIn</a>
+          <a rel="noopener noreferrer" href='https://github.com/SonQHoang' id="github-link">
+            <div className='about-me-github'>
+            </div>
+          </a>
+          <a rel="noopener noreferrer" href='https://linkedin.com/in/sean-hoang' id="linkedin-link">
+            <div className='about-me-linkedin'>
+            </div>
+          </a>
         </div>
         <div className="logout-container">
           {user ? (

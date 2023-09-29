@@ -45,7 +45,7 @@ const TestSideBar = () => {
                 <div className="playlist-albums-container">
                     <div className="library-create-playlist-container">
                         <div className="library-create-upper">
-                            <h2>Your Library</h2>
+                            <h2>Your Library</h2> 
                             <button className="create-playlist-button" onClick={handleDropDown}>
                                 <img src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1694920890/icons8-plus-16_2_w7ebvj.png" alt="Create Playlist" />
                             </button>
@@ -74,7 +74,7 @@ const TestSideBar = () => {
                     </div>
                     {activeLink === 'playlists' && (
                         <div className='create-playlist'>
-                            <h2>Playlists</h2>
+                            {/* <h2>Playlists</h2> */}
                             <ul className="playlist-list-container">
                                 <UserPlaylist />
                             </ul>
@@ -82,7 +82,7 @@ const TestSideBar = () => {
                     )}
                     {activeLink === 'albums' && (
                         <div className="albums-container">
-                            <h2>Albums</h2>
+                            {/* <h2>Albums</h2> */}
                             <div className="create-albums-button-container">
                                 <ul>
                                     <UserAlbum />

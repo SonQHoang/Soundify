@@ -6,10 +6,7 @@ const Footer = () => {
     return (
         <div className="footer-container">
             <div>
-                <h1>Where is the footer</h1>
-            </div>
-            <div>
-            <Player/>
+                <Player/>
             </div>
         </div>
     )

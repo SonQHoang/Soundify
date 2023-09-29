@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 // import Navigation from "./components/Navigation/Navigation";
 // import Player from "./components/AudioBar/audiobar";
-import LandingPage from "./components/LandingPage/landingpage";
+// import LandingPage from "./components/LandingPage/landingpage";
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
 // import Playlist from "./components/Playlists/Playlists";
 import UserPlaylist from "./components/UserPlaylist/UserPlaylist";
@@ -24,6 +24,7 @@ import TestNav from "./components/TestComponents/TestNav";
 import TestSideBar from "./components/TestComponents/TestSideBar";
 import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
+// import { PlayerProvider } from "./context/AudioPlayerContext";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
+      {/* <PlayerProvider> */}
       {isLoaded && (
         <Switch>
           <Route exact path="sidebar-test">
@@ -94,6 +96,7 @@ function App() {
         </Switch>
       )}
       {/* <Player/> */}
+      {/* </PlayerProvider> */}
     </>
   );
 }

@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { GetSinglePlaylist, GetSongsForPlaylist, UpdatePlaylistThunk, getUserPlaylist } from '../../store/playlists';
 
 import "./UpdatePlaylistModal.css"
 
 const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
     // console.log('Delete Modal playlistId======>', playlistId)
-    const history = useHistory()
     const currentUser = useSelector((state) => state.session.user)
 
     //========================Modal Logic Start==================

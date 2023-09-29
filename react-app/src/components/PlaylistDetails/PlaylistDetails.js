@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
 import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
 import DeletePlaylist from "../DeletePlaylist/DeletePlaylist";
 import { GetSinglePlaylist } from "../../store/playlists";
-import { getAllPlaylists } from "../../store/playlists";
 import { getUserPlaylist } from "../../store/playlists";
 import Player from "../AudioBar/audiobar";
-import "./PlaylistDetails.css"
 import UpdatePlaylist from "../UpdatePlaylist/UpdatePlaylist";
 import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
 import { GetSongsForPlaylist } from "../../store/playlists";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
+import Footer from "../Footer/Footer";
+import "./PlaylistDetails.css"
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
@@ -34,7 +33,6 @@ function PlaylistDetails() {
     const [currentSong, setCurrentSong] = useState(null);
 
     useEffect(() => {
-        // setPlaylistInfo(new_songs)
         getPlaylistSongs(playlistId)
         dispatch(GetSongsForPlaylist(playlistId))
         dispatch(GetSinglePlaylist(playlistId))
@@ -95,11 +93,8 @@ function PlaylistDetails() {
     //======================================================DeletePlaylist Start========================================
 
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
-    // console.log('In  PlaylistDetails, currentPlaylist======>', currentPlaylist)
     const isOwner = currentPlaylist.owner === sessionUser.first_name
-    // console.log('currentPlayist=======>', currentPlaylist)
-    // console.log('userId========+>', userId)
-    // console.log('isOwner=====>', isOwner)
+
 
     const handleDeleteClick = async () => {
         setPlaylistToDelete(currentPlaylist)
@@ -153,17 +148,17 @@ function PlaylistDetails() {
                             </div>
                         </div>
                         {isOwner && (
-                        <div>
-                            <button className="playlist-update-button" onClick={() => {
-                                return handleUpdateClick(playlistId);
-                            }}>Edit Details</button>
-                            <UpdatePlaylist playlistId={playlistId} />
+                            <div>
+                                <button className="playlist-update-button" onClick={() => {
+                                    return handleUpdateClick(playlistId);
+                                }}>Edit Details</button>
+                                <UpdatePlaylist playlistId={playlistId} />
 
-                            <button className="playlist-delete-button" onClick={() => {
-                                return handleDeleteClick(playlistId);
-                            }}>Delete Playlist</button>
-                            <DeletePlaylist playlistId={playlistId} />
-                        </div>
+                                <button className="playlist-delete-button" onClick={() => {
+                                    return handleDeleteClick(playlistId);
+                                }}>Delete Playlist</button>
+                                <DeletePlaylist playlistId={playlistId} />
+                            </div>
                         )}
                         <div className='search-bar-container'>
                             <div className='search-bar'>
@@ -214,13 +209,6 @@ function PlaylistDetails() {
                                     </div>
                                 </div>
                             ))}
-                            {selectedSongs.length > 0 && (
-                                <div>
-                                    <div>
-                                        <Player src={currentSong.audio_url} />
-                                    </div>
-                                </div>
-                            )}
                             {showModal && modalType === "update" && (
                                 <UpdatePlaylistModal
                                     playlistId={playlistToUpdate.id}
@@ -267,6 +255,11 @@ function PlaylistDetails() {
                     </div>
                 </div>
             </div>
+            {selectedSongs.length > 0 && currentSong && (
+                <div>
+                    <Player src={currentSong.audio_url} />
+                </div>
+            )}
         </>
     )
 }
