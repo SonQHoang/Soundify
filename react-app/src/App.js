@@ -15,7 +15,6 @@ import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
 import Song from "./components/Songs/Song"
 import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
 import UserAlbum from "./components/UserAlbum/UserAlbum";
-import Footer from "./components/Footer/Footer";
 import SplashPage from "./components/SplashPage/SplashPage";
 // import Sidebar from "./components/Sidebar/Sidebar";
 import LandingPagePlaylists from "./components/LandingPagePlaylists/LandingePagePlaylists";
@@ -24,7 +23,8 @@ import TestNav from "./components/TestComponents/TestNav";
 import TestSideBar from "./components/TestComponents/TestSideBar";
 import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
-// import { PlayerProvider } from "./context/AudioPlayerContext";
+import { PlayerProvider } from "./context/AudioPlayerContext";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
-      {/* <PlayerProvider> */}
+      <PlayerProvider>
       {isLoaded && (
         <Switch>
           <Route exact path="sidebar-test">
@@ -96,7 +96,8 @@ function App() {
         </Switch>
       )}
       {/* <Player/> */}
-      {/* </PlayerProvider> */}
+      {/* <Footer/> */}
+      </PlayerProvider>
     </>
   );
 }

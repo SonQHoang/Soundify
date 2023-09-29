@@ -1,15 +1,20 @@
-import Player from "../AudioBar/audiobar"
-
-import "./Footer.css"
+import React from "react";
+import Player from "../AudioBar/audiobar";
+import { usePlayer } from "../../context/AudioPlayerContext";
+import "./Footer.css";
 
 const Footer = () => {
-    return (
-        <div className="footer-container">
-            <div>
-                <Player/>
-            </div>
-        </div>
-    )
-}
+  const { currentSong } = usePlayer();
 
-export default Footer
+  return (
+    <div className="footer-container">
+      {currentSong && (
+        <div>
+          <Player src={currentSong} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Footer;

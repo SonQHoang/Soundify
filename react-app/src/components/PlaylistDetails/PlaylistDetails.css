@@ -130,3 +130,30 @@
     /* border: 2px solid red; */
     margin-bottom: 15px
 }
+
+.play-button-playlist-container {
+    /* border: 2px solid red; */
+}
+
+.play-button-playlist {
+    background-color: #121212;
+    border: none;
+    height: auto;
+    width: 100px
+}
+
+.play-playlist-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+    width: 200px;
+}
+
+.search-bar-container {
+    /* border: 2px solid yellow; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}

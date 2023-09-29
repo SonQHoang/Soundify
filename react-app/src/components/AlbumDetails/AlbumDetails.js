@@ -100,6 +100,7 @@ function AlbumDetails() {
 
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
     const isOwner = currentAlbum.owner === sessionUser.first_name
+    // console.log('album owner=====>', currentAlbum.owner)
     // console.log('userId========>', userId)
     // console.log('currentAlbum.id=========>', currentAlbum.id)
     // console.log('isOwner========+>', isOwner)
@@ -170,6 +171,11 @@ function AlbumDetails() {
                             </div>
                         )}
                         <div className='search-bar-container'>
+                            <div className="play-button-albums-container">
+                                <button className='play-albums-button'>
+                                    <img className="play-button-albums" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695962350/Untitled_design_4_olkf9a.png" alt="play button" />
+                                </button>
+                            </div>
                             <div className='search-bar'>
                                 <input
                                     type="text"
@@ -264,11 +270,14 @@ function AlbumDetails() {
                     </div>
                 </div>
             </div>
-            {selectedSongs.length > 0 && (
+            {/* {selectedSongs.length > 0 && (
                     <div>
                         <Player src={currentSong.audio_url} />
                     </div>
-            )}
+            )} */}
+            <div>
+                <Player src={currentSong ? currentSong.audio_url : null} />
+            </div>
         </>
     )
 }
