@@ -8,7 +8,7 @@ const ADD_SONG_TO_ALBUM = '/albums/addSongToAlbum'
 const GET_ALBUM_SONGS = '/albums/getAlbumSongs'
 
 const acGetAlbumSongs = (data) => {
-    console.log('Is this the data that I want============>', data)
+    // console.log('Is this the data that I want============>', data)
     return {
         type: GET_ALBUM_SONGS,
         payload: data

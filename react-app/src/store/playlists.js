@@ -8,7 +8,7 @@ const ADD_SONG_TO_PLAYLIST = '/playlists/addSongToPlaylist'
 const GET_PLAYLIST_SONGS = '/playlists/getPlaylistSongs'
 
 const acGetPlaylistSongs = (data) => {
-    console.log('Is this the data that I want============>', data)
+    // console.log('Is this the data that I want============>', data)
     return {
         type: GET_PLAYLIST_SONGS,
         payload: data
@@ -108,11 +108,12 @@ export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
 }
 
 export const GetSongsForPlaylist = (playlistId) => async (dispatch) => {
-    // console.log('playlistId thunk===================>', playlistId) 
+    console.log('playlistId thunk===================>', playlistId) 
     const response = await fetch(`/api/playlist/${playlistId}/songs`, {
     })
     if (response.ok) {
         const playlist_songs = await response.json()
+        console.log('playlist_songs for Taylor Swift====>', playlist_songs)
         dispatch(acGetPlaylistSongs(playlist_songs))
         return playlist_songs
     } else {

@@ -4,11 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-// import Navigation from "./components/Navigation/Navigation";
-// import Player from "./components/AudioBar/audiobar";
-// import LandingPage from "./components/LandingPage/landingpage";
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
-// import Playlist from "./components/Playlists/Playlists";
 import UserPlaylist from "./components/UserPlaylist/UserPlaylist";
 import PlaylistDetails from "./components/PlaylistDetails/PlaylistDetails";
 import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
@@ -16,15 +12,14 @@ import Song from "./components/Songs/Song"
 import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
 import UserAlbum from "./components/UserAlbum/UserAlbum";
 import SplashPage from "./components/SplashPage/SplashPage";
-// import Sidebar from "./components/Sidebar/Sidebar";
 import LandingPagePlaylists from "./components/LandingPagePlaylists/LandingePagePlaylists";
 import MainPageTest from "./components/MainPageTest/MainPageTest";
 import TestNav from "./components/TestComponents/TestNav";
 import TestSideBar from "./components/TestComponents/TestSideBar";
 import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
-import { PlayerProvider } from "./context/AudioPlayerContext";
-import Footer from "./components/Footer/Footer";
+import { AudioPlayerProvider } from "./context/AudioPlayerContext";
+// import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +31,6 @@ function App() {
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
-      <PlayerProvider>
       {isLoaded && (
         <Switch>
           <Route exact path="sidebar-test">
@@ -90,14 +84,13 @@ function App() {
           <Route>
             <UserAlbumTile/>
           </Route>
-          <Route>
+          {/* <Route>
             <Footer/>
-          </Route>
+          </Route> */}
         </Switch>
       )}
       {/* <Player/> */}
       {/* <Footer/> */}
-      </PlayerProvider>
     </>
   );
 }

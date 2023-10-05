@@ -6,7 +6,6 @@ import { GetSongsForAlbum } from "../../store/albums";
 import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import { AddSongToAlbum, GetSingleAlbum } from "../../store/albums";
-// import { getAllAlbums } from "../../store/albums";
 import { getUserAlbum } from "../../store/albums";
 import Player from "../AudioBar/audiobar";
 import "./AlbumDetails.css"
@@ -24,7 +23,6 @@ function AlbumDetails() {
     const userId = sessionUser.id
 
     const new_songs = (useSelector(state => state.album.singleAlbum.songs))
-    console.log('new_songs=========> albums component', new_songs)
 
 
     const [albumInfo, setAlbumInfo] = useState()
@@ -33,6 +31,7 @@ function AlbumDetails() {
     const [albumToDelete, setAlbumToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
     const [currentSong, setCurrentSong] = useState(null);
+    console.log("What is my currentSong; inside of AlbumDetails======>", currentSong)
 
     useEffect(() => {
         // setAlbumInfo(new_songs)
@@ -270,14 +269,10 @@ function AlbumDetails() {
                     </div>
                 </div>
             </div>
-            {/* {selectedSongs.length > 0 && (
-                    <div>
-                        <Player src={currentSong.audio_url} />
-                    </div>
-            )} */}
             <div>
                 <Player src={currentSong ? currentSong.audio_url : null} />
             </div>
+            {/* This is responsible for sending the songs to the AudioPlayer */}
         </>
     )
 }

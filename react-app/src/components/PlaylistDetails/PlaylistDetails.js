@@ -260,12 +260,6 @@ function PlaylistDetails() {
                     </div>
                 </div>
             </div>
-
-            {/* {selectedSongs.length > 0 && currentSong && (
-                <div>
-                    <Player src={currentSong.audio_url} />
-                </div>
-            )} */}
             <div>
                 <Player src={currentSong ? currentSong.audio_url : null} />
             </div>

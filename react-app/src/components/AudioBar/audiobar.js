@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
-import { usePlayer } from "../../context/AudioPlayerContext";
 import 'react-h5-audio-player/lib/styles.css';
-import './audiobar.css';
+import './audiobar.css'; 
 
 const Player = ({ src }) => {
-    const { playSong } = usePlayer();
-
-    useEffect(() => {
-        playSong(src);
-    }, [playSong, src]);
-
+    console.log('src in the audioPlayer=======>', src)
+    
     const handlePlay = (e) => {
         console.log("Audio started playing");
     }
