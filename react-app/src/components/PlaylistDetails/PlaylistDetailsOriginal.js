@@ -25,7 +25,7 @@ function PlaylistDetails() {
     const userId = sessionUser.id
 
     const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
-    console.log('new_songs=========>', new_songs)
+    // console.log('new_songs=========>', new_songs)
 
     const [playlistInfo, setPlaylistInfo] = useState(new_songs)
     const [selectedSongs, setSelectedSongs] = useState([])
