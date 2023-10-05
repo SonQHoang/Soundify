@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
@@ -13,6 +13,7 @@ import UpdateAlbum from "../UpdateAlbum/UpdateAlbum";
 import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
+import { SongContext } from "../../context/SongContext";
 import Footer from "../Footer/Footer";
 
 function AlbumDetails() {
@@ -30,8 +31,8 @@ function AlbumDetails() {
     const [showModal, setShowModal] = useState(false);
     const [albumToDelete, setAlbumToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const [currentSong, setCurrentSong] = useState(null);
-    console.log("What is my currentSong; inside of AlbumDetails======>", currentSong)
+    // const [currentSong, setCurrentSong] = useState(null);
+    const { isPlaying, play, pause, currentSong, setCurrentSong } = useContext(SongContext);
 
     useEffect(() => {
         // setAlbumInfo(new_songs)
@@ -74,7 +75,9 @@ function AlbumDetails() {
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
-        setCurrentSong(song)
+        // setCurrentSong(song)
+        setCurrentSong(song.audio_url)
+        play()
         setQuery("")
     }
 

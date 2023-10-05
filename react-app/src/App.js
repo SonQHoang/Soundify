@@ -18,7 +18,7 @@ import TestNav from "./components/TestComponents/TestNav";
 import TestSideBar from "./components/TestComponents/TestSideBar";
 import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
-import { AudioPlayerProvider } from "./context/AudioPlayerContext";
+import { SongProvider } from "./context/SongContext";
 // import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -30,67 +30,67 @@ function App() {
 
   return (
     <>
-      {/* <Navigation isLoaded={isLoaded} /> */}
-      {isLoaded && (
-        <Switch>
-          <Route exact path="sidebar-test">
-            <TestSideBar/>
-          </Route>
-          <Route exact path="nav-test">
-            <TestNav/>
-          </Route>
-          <Route exact path="/landing-page">
-            <MainPageTest/>
-          </Route>
-          <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route exact path="/playlist/new">
-            <CreatePlaylist/>
-          </Route>
-          <Route exact path="/album/new">
-            <CreateAlbum/>
-          </Route>
-          <Route exact path="/playlist/all">
-            <UserPlaylist/>
-          </Route>
-          <Route exact path="/album/all">
-            <UserAlbum/>
-          </Route>
-          <Route exact path="/playlist/:playlistId">
-            <PlaylistDetails/>
-          </Route>
-          <Route exact path="/album/:albumId">
-            <AlbumDetails/>
-          </Route>
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path="/song/all">
-            <Song />
-          </Route>
-          <Route exact path="/">
-            <SplashPage/>
-          </Route>
-          {/* <Route exact path="/landing-page">
+      <SongProvider>
+        {/* <Navigation isLoaded={isLoaded} /> */}
+        {isLoaded && (
+          <Switch>
+            <Route exact path="sidebar-test">
+              <TestSideBar />
+            </Route>
+            <Route exact path="nav-test">
+              <TestNav />
+            </Route>
+            <Route exact path="/landing-page">
+              <MainPageTest />
+            </Route>
+            <Route exact path="/login" >
+              <LoginFormPage />
+            </Route>
+            <Route exact path="/playlist/new">
+              <CreatePlaylist />
+            </Route>
+            <Route exact path="/album/new">
+              <CreateAlbum />
+            </Route>
+            <Route exact path="/playlist/all">
+              <UserPlaylist />
+            </Route>
+            <Route exact path="/album/all">
+              <UserAlbum />
+            </Route>
+            <Route exact path="/playlist/:playlistId">
+              <PlaylistDetails />
+            </Route>
+            <Route exact path="/album/:albumId">
+              <AlbumDetails />
+            </Route>
+            <Route exact path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route exact path="/song/all">
+              <Song />
+            </Route>
+            <Route exact path="/">
+              <SplashPage />
+            </Route>
+            {/* <Route exact path="/landing-page">
             <LandingPage/>
           </Route> */}
-          <Route>
-            <LandingPagePlaylists/>
-          </Route>
-          <Route>
-            <UserPlaylistTile/>
-          </Route>
-          <Route>
-            <UserAlbumTile/>
-          </Route>
-          {/* <Route>
+            <Route>
+              <LandingPagePlaylists />
+            </Route>
+            <Route>
+              <UserPlaylistTile />
+            </Route>
+            <Route>
+              <UserAlbumTile />
+            </Route>
+            {/* <Route>
             <Footer/>
           </Route> */}
-        </Switch>
-      )}
-      {/* <Player/> */}
-      {/* <Footer/> */}
+          </Switch>
+        )}
+      </SongProvider>
     </>
   );
 }

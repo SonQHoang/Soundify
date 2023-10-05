@@ -88,52 +88,16 @@ def add_song_to_playlist(playlistId):
 # #3 
 @playlist_routes.route("/<int:playlistId>/songs", methods=["GET"])
 def get_songs_for_playlist(playlistId):
-    # print('playlist_id backend============>', playlistId)
-    # Getting the plalyist in question with playlistId
     playlist = Playlists.query.get(playlistId)
-    # print('current_playlist backend========>', playlist)
-
-    # Getting access to the playlist_songs table
     playlist_songs = playlist.playlist_songs
-    print('playlist_songs backend==========>', playlist_songs)
-    # return playlist_songs
-    # return {playlist_songs: [playlist_song.to_dict() for playlist_song in playlist_songs]
 
     song_container = []
 
     for playlist_song in playlist_songs:
-        # print(playlist_song)
         song_to_dict = playlist_song.to_dict()
-        # print(playlist_song)
         song_container.append(song_to_dict)
-        # print(playlist_song)
         
-    # print('song_container_out of for loop----------->', song_container)
     return song_container
-
-    # playlist_info = []
-
-    # for playlist_song in playlist_songs:
-    #     print('Playlist Song: ========>', playlist_song)
-    #     song = playlist_song.song_playlists
-    #     print('Song ===$$=====>:', song)
-    #     print('Song ===$$=====>:', song.songs_album)
-
-    #     album = song.song_albums
-    #     print('album=============>', album)
-    #     if album:
-    #         song_info = {
-    #             "song_id": song.id,
-    #             "song_title": song.title,
-    #             "album_id": album.id,
-    #             "album_title": album.title  # Include album title if available
-    #         }
-    #         playlist_info.append(song_info)
-    #     playlist_info.append(song_info)
-    # print('playlist_info backend=======>', playlist_info)
-
-    # return jsonify(playlist_info), 200
-
 
 @playlist_routes.route("/<int:playlistId>")
 def get_single_playlist_by_id(playlistId):
@@ -149,7 +113,6 @@ def get_single_playlist_by_id(playlistId):
         "image": playlist.image,
         "owner": playlist.owner,
         "playlist_description": playlist.playlist_description,
-        # "playlist_songs": [song.to_dict() for song in playlist.songs],
         "date_created": datetime.utcnow(),
     }
 
