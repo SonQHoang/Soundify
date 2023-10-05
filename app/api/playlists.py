@@ -95,7 +95,7 @@ def get_songs_for_playlist(playlistId):
 
     # Getting access to the playlist_songs table
     playlist_songs = playlist.playlist_songs
-    # print('playlist_songs backend==========>', playlist_songs)
+    print('playlist_songs backend==========>', playlist_songs)
     # return playlist_songs
     # return {playlist_songs: [playlist_song.to_dict() for playlist_song in playlist_songs]
 

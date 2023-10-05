@@ -108,11 +108,12 @@ export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
 }
 
 export const GetSongsForPlaylist = (playlistId) => async (dispatch) => {
-    // console.log('playlistId thunk===================>', playlistId) 
+    console.log('playlistId thunk===================>', playlistId) 
     const response = await fetch(`/api/playlist/${playlistId}/songs`, {
     })
     if (response.ok) {
         const playlist_songs = await response.json()
+        console.log('playlist_songs for Taylor Swift====>', playlist_songs)
         dispatch(acGetPlaylistSongs(playlist_songs))
         return playlist_songs
     } else {
