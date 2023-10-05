@@ -13,6 +13,7 @@ import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
 import { GetSongsForPlaylist } from "../../store/playlists";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
+import { SongContext } from "../../context/SongContext";
 import Footer from "../Footer/Footer";
 import "./PlaylistDetails.css"
 
@@ -30,7 +31,8 @@ function PlaylistDetails() {
     const [showModal, setShowModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const [currentSong, setCurrentSong] = useState(null);
+    // const [currentSong, setCurrentSong] = useState(null);
+    const { isPlaying, play, pause, currentSong, setCurrentSong } = useContext(SongContext);
 
     useEffect(() => {
         getPlaylistSongs(playlistId)
@@ -70,7 +72,8 @@ function PlaylistDetails() {
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
-        setCurrentSong(song)
+        setCurrentSong(song.audio_url)
+        play()
         setQuery("")
     }
 
