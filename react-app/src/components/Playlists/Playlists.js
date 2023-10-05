@@ -9,7 +9,6 @@
 
 
 //     const allPlaylists = Object.values(useSelector(state => state.playlist.allPlaylists))
-//     console.log('allplaylists=========>', allPlaylists)
 
 //     useEffect(() => {
 //         dispatch(getAllPlaylists())

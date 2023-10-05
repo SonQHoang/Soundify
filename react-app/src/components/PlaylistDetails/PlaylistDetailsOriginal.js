@@ -25,7 +25,6 @@
 //     const userId = sessionUser.id
 
 //     const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
-//     // console.log('new_songs=========>', new_songs)
 
 //     const [playlistInfo, setPlaylistInfo] = useState(new_songs)
 //     const [selectedSongs, setSelectedSongs] = useState([])
@@ -94,7 +93,6 @@
 //     //======================================================DeletePlaylist Start========================================
 
 //     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
-//     console.log('In  PlaylistDetails, currentPlaylist======>', currentPlaylist)
 
 
 //     const handleDeleteClick = async () => {
@@ -112,7 +110,6 @@
 
 //     const handleUpdateClick = async () => {
 //         setPlaylistToUpdate(currentPlaylist)
-//         // console.log('Playlist to delete (inside handleDeleteClick):', currentPlaylist);
 //         setModalType("update");
 //         setShowModal(true)
 //         dispatch(getUserPlaylist())

@@ -17,7 +17,6 @@ const LandingPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector((state) => state.session.user);
-    // console.log('user======>', user)
     const showLoginModal = useSelector((state) => state.showLoginModal);
     const showSignUpModal = useSelector((state) => state.showSignUpModal);
 

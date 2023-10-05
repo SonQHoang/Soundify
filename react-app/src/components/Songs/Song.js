@@ -12,7 +12,6 @@ const Song = () => {
     const [selectedSongUrl, setSelectedSongUrl] = useState(null)
 
     useEffect(() => {
-        console.log('Dispatching getAllSongs');
         dispatch(getAllSongs())
     }, [dispatch]);
 

@@ -31,8 +31,7 @@ function AlbumDetails() {
     const [showModal, setShowModal] = useState(false);
     const [albumToDelete, setAlbumToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    // const [currentSong, setCurrentSong] = useState(null);
-    const { isPlaying, play, pause, currentSong, setCurrentSong } = useContext(SongContext);
+    const { play, currentSong, setCurrentSong } = useContext(SongContext);
 
     useEffect(() => {
         // setAlbumInfo(new_songs)
@@ -69,7 +68,6 @@ function AlbumDetails() {
     const filteredSongs = queryFilter(query, titleKVPairs);
 
     const selectSong = (song) => {
-        // console.log('Selected Song:======>', song)
         if (selectedSongs.includes(song)) {
             setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
         } else {
@@ -102,14 +100,9 @@ function AlbumDetails() {
 
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
     const isOwner = currentAlbum.owner === sessionUser.first_name
-    // console.log('album owner=====>', currentAlbum.owner)
-    // console.log('userId========>', userId)
-    // console.log('currentAlbum.id=========>', currentAlbum.id)
-    // console.log('isOwner========+>', isOwner)
 
     const handleDeleteClick = async () => {
         setAlbumToDelete(currentAlbum)
-        // console.log('Album to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("delete");
         setShowModal(true)
         await dispatch(getUserAlbum())
@@ -123,7 +116,6 @@ function AlbumDetails() {
 
     const handleUpdateClick = async () => {
         setAlbumToUpdate(currentAlbum)
-        // console.log('Album to delete (inside handleDeleteClick):', currentAlbum);
         setModalType("update");
         setShowModal(true)
         dispatch(getUserAlbum())
@@ -143,7 +135,7 @@ function AlbumDetails() {
                     <div className="main-content">
                         <div className="album-image-and-title-container">
                             <div className="album-image-container">
-                                <img className='album-image' src={currentAlbum.album_photo}></img>
+                                <img className='album-image' src={currentAlbum.album_photo} alt="album-cover"></img>
                             </div>
                             <div className="album-information-container">
                                 <div className="album-album-title-container">
@@ -154,7 +146,7 @@ function AlbumDetails() {
                                     {currentAlbum?.album_description}
                                 </div>
                                 <div className="album-user-details">
-                                    <img className="album-user-picture" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png"></img>
+                                    <img className="album-user-picture" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png" alt="current-user"></img>
                                     <p>{currentAlbum?.owner}</p>
                                 </div>
                             </div>

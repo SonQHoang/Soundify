@@ -36,8 +36,7 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const userAccessDemoData = (email, password) => async (dispatch) => {
-	console.log("What's the email=====> THUNK", email)
-	console.log("What's the password=====> THUNK", password)
+
 	const data = {
 		email: email,
 		password: password,
@@ -94,8 +93,7 @@ export const logout = () => async (dispatch) => {
 };
 
 export const signUp = (username, email, password, firstName, lastName) => async (dispatch) => {
-	console.log('firstName in signup thunk==========>', firstName)
-	console.log('lastName in signup thunk==========>', lastName)
+
 
 	const response = await fetch("/api/auth/signup", {
 		method: "POST",

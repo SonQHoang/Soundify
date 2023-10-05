@@ -31,8 +31,7 @@ function PlaylistDetails() {
     const [showModal, setShowModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    // const [currentSong, setCurrentSong] = useState(null);
-    const { isPlaying, play, pause, currentSong, setCurrentSong } = useContext(SongContext);
+    const { play, currentSong, setCurrentSong } = useContext(SongContext);
 
     useEffect(() => {
         getPlaylistSongs(playlistId)
@@ -114,7 +113,6 @@ function PlaylistDetails() {
 
     const handleUpdateClick = async () => {
         setPlaylistToUpdate(currentPlaylist)
-        console.log('Playlist to Update (inside updateClick):', currentPlaylist);
         setModalType("update");
         setShowModal(true)
         dispatch(getUserPlaylist())

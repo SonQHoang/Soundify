@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
-import { updateAlbumThunk, getUserAlbum, GetSingleAlbum } from '../../store/albums';
+import { updateAlbumThunk, GetSingleAlbum } from '../../store/albums';
 
 import "./UpdateAlbumModal.css"
-import { GetSinglePlaylist } from '../../store/playlists';
 
 const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
-    // console.log('Delete Modal albumId======>', albumId)
     const history = useHistory()
     const currentUser = useSelector((state) => state.session.user)
 
@@ -32,7 +30,6 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
 
     //===========================Update Form Start===================================
     const current_album_information = useSelector(state => state.album.singleAlbum)
-    console.log('current album info========>', current_album_information)
 
     const [title, setTitle] = useState(current_album_information.title || '');
     const [year, setYear] = useState(current_album_information.year || '')
@@ -92,8 +89,6 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
 
             try {
                 await dispatch(updateAlbumThunk(albumId, formData))
-                console.log('albumId component===========>', albumId)
-                console.log('formData component information=========>', formData)
 
                 await dispatch(GetSingleAlbum(albumId)) // Triggering the rerender
                 onSubmit();
@@ -104,23 +99,6 @@ const UpdateAlbumModal = ({ onSubmit, onClose, albumId }) => {
 
         }
     }
-
-    // const formDataObject = {};
-    // formData.forEach((value, key) => {
-    //         formDataObject[key] = value;
-    //     });
-    //     console.log('formData component update album modal:==============>', formDataObject);
-
-
-
-    //     const handleConfirmUpdate = () => {
-    // const updatedAlbum = {
-    //     title,
-    //     album_photo,
-    //     year,
-    //     album_description,
-    // }
-    // };
     //==========================UpdateFormEnd===============================
 
 

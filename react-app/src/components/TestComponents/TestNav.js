@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useState } from 'react'
 import { logout } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import { NavLink } from 'react-router-dom';
 import './TestNav.css'
 
 const TestNav = () => {

@@ -8,7 +8,6 @@ const ADD_SONG_TO_ALBUM = '/albums/addSongToAlbum'
 const GET_ALBUM_SONGS = '/albums/getAlbumSongs'
 
 const acGetAlbumSongs = (data) => {
-    // console.log('Is this the data that I want============>', data)
     return {
         type: GET_ALBUM_SONGS,
         payload: data
@@ -23,7 +22,6 @@ const acGetUserAlbum = (data) => {
 }
 
 const acUpdateAlbum = (data) => {
-    console.log('Is the acUpdate still going through======>', data)
     return {
         type: UPDATE_USER_ALBUM,
         payload: data
@@ -43,7 +41,6 @@ const acAddSongToAlbum = (data) => {
     }
 }
 const acCreateAlbum = (data) => {
-    // console.log('Is my new album data coming through=====>', data)
     return {
         type: CREATE_NEW_ALBUM,
         payload: data
@@ -66,31 +63,25 @@ const acGetSingleAlbum = (data) => {
 
 export const getUserAlbum = () => async (dispatch) => {
     const response = await fetch(`/api/album/user_album`)
-    // console.log('What does my response look like for getting the userAlbum====>', response)
     if (response.ok) {
         const album = await response.json()
-        console.log('album=======>', album)
         dispatch(acGetUserAlbum(album))
     }
 }
 
 export const updateAlbumThunk = (albumId, formData) => async (dispatch) => {
-    // console.log('Is the albumId coming through for the THUNK======>', albumId)
     const formDataObject = {};
     formData.forEach((value, key) => {
             formDataObject[key] = value;
         });
-        console.log('formData component update THUNK:==============>', formDataObject);
     try {
         const response = await fetch(`/api/album/update/${albumId}`, {
             method: 'PUT',
             body: formData
         });
         
-        console.log('What does the response look like for the thunk after the backend=========>', response)
         if (response.ok) {
             const updatedData = await response.json()
-            console.log('What does the updatedData look like, updateAlbumThunk**************', updatedData)
             dispatch(acUpdateAlbum(updatedData))
             return updatedData
         }
@@ -114,7 +105,6 @@ export const deleteAlbumThunk = (albumId) => async (dispatch) => {
 }
 
 export const GetSongsForAlbum = (albumId) => async (dispatch) => {
-    // console.log('albumId thunk===================>', albumId) 
     const response = await fetch(`/api/album/${albumId}/songs`, {
     })
     if (response.ok) {
@@ -137,7 +127,6 @@ export const AddSongToAlbum = (data) => async (dispatch) => {
         },
         body: JSON.stringify(data)
     })
-    // console.log('What does the response from the backend look like=====>', response)
     if (response.ok) {
         const data = await response.json()
         dispatch(acAddSongToAlbum(data))
@@ -149,7 +138,6 @@ export const AddSongToAlbum = (data) => async (dispatch) => {
 
 export const GetSingleAlbum = (albumId) => async (dispatch) => {
     const response = await fetch(`/api/album/${albumId}`)
-    // console.log('What does the respone for a singleAlbum look like======>', response)
     if (response.ok) {
         const album = await response.json()
         dispatch(acGetSingleAlbum(album))
@@ -159,16 +147,13 @@ export const GetSingleAlbum = (albumId) => async (dispatch) => {
 }
 
 export const createAlbum = (data) => async (dispatch) => {
-    console.log('What data is coming through?=======> FormData', data)
     const response = await fetch('/api/album/new', {
         method: "POST",
         body: data
     })
-    console.log('What is my response looking like=======>', response)
     if (response.ok) {
         const new_album = await response.json()
         dispatch(acCreateAlbum(new_album))
-        console.log("NEW ALBUM DATA =======>", new_album)
     } else {
         console.log("There was an error creating your album!")
     }
@@ -176,7 +161,6 @@ export const createAlbum = (data) => async (dispatch) => {
 
 export const getAllAlbums = () => async (dispatch) => {
     const response = await fetch('/api/album/all')
-    console.log('response========>', response)
     if (response.ok) {
         const data = await response.json()
         dispatch(acGetAllAlbum(data))
@@ -222,8 +206,6 @@ const albumReducer = (state = initialState, action) => {
                     songs: [...(state.singleAlbum.songs || []), action.payload],
                 },
             };
-
-            console.log('Updated state =====>', updatedState);
 
             return updatedState;
 

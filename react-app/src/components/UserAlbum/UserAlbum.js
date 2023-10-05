@@ -11,14 +11,11 @@ const UserAlbum = () => {
     const userId = sessionUser.id
 
     const album = (useSelector(state => state.album.allAlbums))
-    console.log('album useralbum component=========>', album)
 
     const userAlbum = Object.values(album)
 
-    // console.log('userPlaylists=========>', userPlaylist)
 
     useEffect(() => {
-        // console.log("I'm dispatching getUserPlaylist")
         dispatch(getUserAlbum())
     }, [dispatch, userId])
 
@@ -31,7 +28,7 @@ const UserAlbum = () => {
 
                         <div className="individual-album-container">
                             <div className="album-icon-container">
-                                <img src={album.album_photo} className="album-photo"></img>
+                                <img src={album.album_photo} className="album-photo" alt="album cover"></img>
                             </div>
                             <div className="album-info-container">
                                 <div className="album-info-top">

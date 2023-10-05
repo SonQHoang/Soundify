@@ -19,6 +19,7 @@ import TestSideBar from "./components/TestComponents/TestSideBar";
 import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
 import { SongProvider } from "./context/SongContext";
+import Player from "./components/AudioBar/audiobar";
 // import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -33,11 +34,12 @@ function App() {
       <SongProvider>
         {/* <Navigation isLoaded={isLoaded} /> */}
         {isLoaded && (
+          <>
           <Switch>
-            <Route exact path="sidebar-test">
+            <Route exact path="/sidebar-test">
               <TestSideBar />
             </Route>
-            <Route exact path="nav-test">
+            <Route exact path="/nav-test">
               <TestNav />
             </Route>
             <Route exact path="/landing-page">
@@ -89,6 +91,8 @@ function App() {
             <Footer/>
           </Route> */}
           </Switch>
+          <Player/>
+          </>
         )}
       </SongProvider>
     </>

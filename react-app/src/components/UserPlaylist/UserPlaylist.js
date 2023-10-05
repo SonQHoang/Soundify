@@ -26,7 +26,7 @@ const UserPlaylist = () => {
                     <NavLink to={`/playlist/${playlist.id}`} className="link-no-underline">
                         <div className="individual-playlist-container">
                             <div className="playlist-icon-container">
-                                <img src={playlist.image} className="playlist_image"></img>
+                                <img src={playlist.image} className="playlist_image" alt="playlist cover"></img>
                             </div>
                             <div className="playlist-info-container">
                                 <div className="playlist-info-top">
