@@ -75,9 +75,6 @@ function App() {
             <Route exact path="/">
               <SplashPage />
             </Route>
-            {/* <Route exact path="/landing-page">
-            <LandingPage/>
-          </Route> */}
             <Route>
               <LandingPagePlaylists />
             </Route>
@@ -87,9 +84,7 @@ function App() {
             <Route>
               <UserAlbumTile />
             </Route>
-            {/* <Route>
-            <Footer/>
-          </Route> */}
+      
           </Switch>
           <Player/>
           </>

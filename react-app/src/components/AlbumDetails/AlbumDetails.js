@@ -264,9 +264,9 @@ function AlbumDetails() {
                     </div>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 <Player src={currentSong ? currentSong.audio_url : null} />
-            </div>
+            </div> */}
             {/* This is responsible for sending the songs to the AudioPlayer */}
         </>
     )
