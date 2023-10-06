@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import UpdatePlaylistModal from '../UpdatePlaylistModal/UpdatePlaylistModal';
 import "./UpdatePlaylist.css"
 
 const UpdatePlaylist = () => {
-    // const dispatch = useDispatch()
 
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [playlistToUpdate, setPlaylistToUpdate] = useState(null)
 
     const handleOpenUpdateModal = (playlist) => {
-        console.log('Opening Update Modal');
         setPlaylistToUpdate(playlist);
         setShowUpdateModal(true)
     }
 
     const handleCloseUpdateModal = () => {
-        console.log('Closing Update Modal');
         setShowUpdateModal(false);
         setPlaylistToUpdate(null)
     }

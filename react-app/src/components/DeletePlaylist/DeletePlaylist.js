@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
 import DeletePlaylistModal from '../DeletePlaylistModal/DeletePlaylistModal'
 
 
 function DeletePlaylist({playlistId}) {
-    const dispatch = useDispatch()   
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null)
 
     const handleOpenDeleteModal = (playlist) => {
-        console.log('Opening Delete Modal');
         setPlaylistToDelete(playlist);
         setShowDeleteModal(true)
     }
 
     const handleCloseDeleteModal = () => {
-        console.log('Closing Delete Modal');
         setShowDeleteModal(false);
         setPlaylistToDelete(null)
     }

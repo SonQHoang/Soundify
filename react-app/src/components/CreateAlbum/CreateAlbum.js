@@ -10,7 +10,6 @@ const CreateAlbum = () => {
     const currentUser = useSelector((state) => state.session.user)
     const [title, setTitle] = useState('');
     const [album_photo, setAlbum_Photo] = useState('')
-    // console.log('setAlbum_Photo=======>', setAlbum_Photo)
     const [description, setDescription] = useState("")
     const [date_created, setDateCreated] = useState('');
     const [year, setYear] = useState('')
@@ -74,15 +73,6 @@ const CreateAlbum = () => {
                 console.error("Error creating album:", error);
             }
         }
-
-        // Confirming my data is in the form
-
-        // const formDataObject = {};
-        // formData.forEach((value, key) => {
-        //     formDataObject[key] = value;
-        // });
-        // console.log('formDataObject=========> component:', formDataObject);
-
     };
 
     return (

@@ -6,7 +6,6 @@ import { deleteAlbumThunk, getUserAlbum } from '../../store/albums';
 import "./DeleteAlbumModal.css"
 
 const DeleteAlbumModal = ({ onSubmit, onClose, albumId }) => {
-    // console.log('Delete Modal albumId======>', albumId)
     const history = useHistory()
 
     const modalOverlayRef = useRef();

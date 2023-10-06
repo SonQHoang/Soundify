@@ -8,7 +8,6 @@ import "./UserPlaylistTile.css"; // Make sure to include the correct CSS file
 const UserPlaylistTile = () => {
   const dispatch = useDispatch();
   const playlists = useSelector(state => state.playlist.allPlaylists);
-  console.log('What are my playlists like?=====>', playlists);
 
   useEffect(() => {
     dispatch(getUserPlaylist());
@@ -19,7 +18,7 @@ const UserPlaylistTile = () => {
         {Object.values(playlists).map(playlist => (
           <NavLink to={`/playlist/${playlist.id}`}>
           <div key={playlist.id} className="playlist-tile-container">
-            <img src={playlist.image} className="playlist-image" alt="Logo" />
+            <img src={playlist.image} className="playlist-image" alt="playlist cover" />
             <div className="playlist-info-wrapper">
               <div className="playlist-info">
                 <p>{playlist.title}</p>

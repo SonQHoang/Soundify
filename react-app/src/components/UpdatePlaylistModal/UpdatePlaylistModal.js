@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { GetSinglePlaylist, GetSongsForPlaylist, UpdatePlaylistThunk, getUserPlaylist } from '../../store/playlists';
+import { GetSinglePlaylist, UpdatePlaylistThunk } from '../../store/playlists';
 
 import "./UpdatePlaylistModal.css"
 
 const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
-    // console.log('Delete Modal playlistId======>', playlistId)
-    const currentUser = useSelector((state) => state.session.user)
+    // const currentUser = useSelector((state) => state.session.user)
 
     //========================Modal Logic Start==================
     const modalOverlayRef = useRef();
@@ -29,8 +28,6 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
 
     //===========================Update Form Start===================================
     const current_playlist_information = useSelector(state => state.playlist.singlePlaylist)
-    console.log('current playlist info========>', current_playlist_information)
-
     
     const [title, setTitle] = useState(current_playlist_information.title || '');
     const [image, setImage] = useState(current_playlist_information.image || '')
@@ -85,12 +82,7 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
         setErrors(newErrors)
         setHasSubmitted(true);
 
-        if(Object.keys(newErrors).length == 0) {
-            // const formData = new FormData()
-            // formData.append('author', currentUser.first_name)
-            // formData.append('title', title)
-            // formData.append('photo', image)
-            // formData.append('description', description)
+        if(Object.keys(newErrors).length === 0) {
             await dispatch(UpdatePlaylistThunk(playlistId, updatedPlaylist))
             .then(() => {
                 dispatch(GetSinglePlaylist(playlistId))

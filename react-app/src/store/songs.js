@@ -13,7 +13,6 @@ const CREATE_NEW_SONG = '/songs/createSong'
 // }
 
 const acGetSongs = (data) => {
-    // console.log('song data from the ac=======>', data)
     return {
         type: GET_SONG,
         payload: data
@@ -46,7 +45,6 @@ const acGetSongs = (data) => {
 export const getAllSongs = () => async (dispatch) => {
     try {
         const response = await fetch('/api/song/all');
-        // console.log('My song response=======>', response);
         if (response.ok) {
             const data = await response.json();
             dispatch(acGetSongs(data));

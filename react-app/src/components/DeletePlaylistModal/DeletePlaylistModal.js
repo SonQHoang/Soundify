@@ -6,7 +6,6 @@ import { DeletePlaylistThunk, getUserPlaylist } from '../../store/playlists';
 import "./DeletePlaylistModal.css"
 
 const DeletePlaylistModal = ({ onSubmit, onClose, playlistId }) => {
-    // console.log('Delete Modal playlistId======>', playlistId)
     const history = useHistory()
 
     const modalOverlayRef = useRef();

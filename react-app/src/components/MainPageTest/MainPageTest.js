@@ -46,9 +46,9 @@ const MainPage = () => {
                 {/* <div className="footer">
                     <Footer />
                 </div> */}
-                <div>
+                {/* <div>
                     <Player/>
-                </div>
+                </div> */}
         </>
     )
 }

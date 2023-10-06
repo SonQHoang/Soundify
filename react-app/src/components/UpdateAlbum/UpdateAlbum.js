@@ -10,13 +10,11 @@ const UpdateAlbum = () => {
     const [albumToUpdate, setAlbumToUpdate] = useState(null)
 
     const handleOpenUpdateModal = (playlist) => {
-        console.log('Opening Update Modal');
         setAlbumToUpdate(playlist);
         setShowUpdateModal(true)
     }
 
     const handleCloseUpdateModal = () => {
-        console.log('Closing Update Modal');
         setShowUpdateModal(false);
         setAlbumToUpdate(null)
     }
