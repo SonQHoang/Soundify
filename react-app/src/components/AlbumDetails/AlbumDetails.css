@@ -98,6 +98,10 @@
     align-items: center;
 }
 
+.individual-album-songs:hover {
+    background-color: #232323;
+}
+
 .grid-row {
     display: flex;
     justify-content: center;
