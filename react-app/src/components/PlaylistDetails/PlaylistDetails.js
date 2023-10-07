@@ -196,7 +196,7 @@ function PlaylistDetails() {
                             {(new_songs)?.map((song, index) => (
                                 <div key={index} className="individual-playlist-songs">
                                     <div className="grid-row" style={{ width: '200px' }}>
-                                        <div>{index + 1}</div>
+                                        <div className="playlist-song-count">{index + 1}</div>
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
                                         {song?.title ? (

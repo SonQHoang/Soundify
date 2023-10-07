@@ -103,6 +103,10 @@
     align-items: center;
 }
 
+.individual-playlist-songs:hover {
+    background-color: #232323;
+}
+
 .grid-row {
     display: flex;
     justify-content: center;
@@ -156,4 +160,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.playlist-song-count {
+}
+
+.playlist-song-count:hover {
+    
 }
