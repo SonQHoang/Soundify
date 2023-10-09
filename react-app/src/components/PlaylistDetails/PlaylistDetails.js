@@ -268,10 +268,8 @@ function PlaylistDetails() {
                         </div>
                     </div>
                 </div>
+                
             </div>
-            {/* <div>
-                <Player src={currentSong ? currentSong.audio_url : null} />
-            </div> */}
         </>
     )
 }

@@ -1,7 +1,18 @@
+
+
+
+.audio-bar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .rhap_container {
-    /* border: 2px solid green; */
+    border: 2px solid green;
     background-color: #000000;
-    position: sticky;
+    box-sizing: border-box;
 }
 
 .rhap_time {

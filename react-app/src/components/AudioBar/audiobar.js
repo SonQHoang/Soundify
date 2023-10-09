@@ -5,28 +5,28 @@ import './audiobar.css';
 import { SongContext } from '../../context/SongContext';
 
 const Player = () => {
-    const playerRef = useRef()
+    const playerRef = useRef();
     const { isPlaying, play, pause, currentSong, currentTime, setCurrentTime } = useContext(SongContext);
-    
+
     const handleListen = (e) => {
-        setCurrentTime(e.target.currentTime)
-    }
+        setCurrentTime(e.target.currentTime);
+    };
     const handlePlay = (e) => {
         play();
-    }
-    
+    };
+
     const handlePause = (e) => {
         pause();
-    }
+    };
 
     useEffect(() => {
         if (playerRef.current && playerRef.current.audio.current) {
-            playerRef.current.audio.current.currentTime = currentTime
+            playerRef.current.audio.current.currentTime = currentTime;
         }
-    }, [currentTime, currentSong])
+    }, [currentTime, currentSong]);
 
     return (
-        <div className="audiobar-background">
+        <div className="audio-bar-container">
             <AudioPlayer
                 ref={playerRef}
                 autoPlayAfterSrcChange={false}
@@ -38,6 +38,6 @@ const Player = () => {
             />
         </div>
     );
-}
+};
 
 export default Player;
