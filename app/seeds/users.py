@@ -136,6 +136,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+Perfectly+Lonely.mp3",
         title = "Perfectly Lonely",
+        artist = "John Mayer",
         duration = "4:28",
         lyrics = """    
                     Had a little love
@@ -224,6 +225,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Heartbreak+Warfare.mp3",
         title = "Heartbreak Warfare",
+        artist = "John Mayer",
         duration = "4:29",
         lyrics = """
                     Lightning strikes
@@ -283,6 +285,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Wynton+Marsalis+Septet%2C+John+Mayer%2C+Wynton+Marsalis+-+I'm+Gonna+Find+Another+You.mp3",
         title = "I'm Gonna Find Another You",
+        artist = "John Mayer",
         duration = "2:44",
         lyrics = """
                     It's really over
@@ -318,6 +321,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Leon+Bridges%2C+John+Mayer+-+Inside+Friend+(feat.+John+Mayer).mp3",
         title = "Inside Friend (feat. John Mayer)",
+        artist = "John Mayer",
         duration = "2:55",
         lyrics = """
                     You can be my inside friend
@@ -359,6 +363,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Last+Train+Home.mp3",
         title = "Last Train Home",
+        artist = "John Mayer",
         duration = "3:07",
         lyrics = """
                 If you wanna roll me
@@ -405,6 +410,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Jacob+Collier%2C+Lizzy+McAlpine%2C+John+Mayer+-+Never+Gonna+Be+Alone+(feat.+Lizzy+McAlpine+%26+John+Mayer).mp3",
         title = "Never Gonna Be Alone (feat. Lizzy McAlpine & John Mayer)",
+        artist = "John Mayer",
         duration = "4:10",
         lyrics = """
                 There's a patch of sunlight in my room
@@ -444,6 +450,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+No+Such+Thing.mp3",
         title = "No Such Thing",
+        artist = "John Mayer",
         duration = "3:51",
         lyrics = """
                 Welcome to the real world
@@ -498,6 +505,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Queen+of+California.mp3",
         title = "Queen of California",
+        artist = "John Mayer",
         duration = "4:10",
         lyrics = """
                 Goodbye cold, goodbye rain
@@ -528,6 +536,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Say.mp3",
         title = "Say",
+        artist = "John Mayer",
         duration = "3:50",
         lyrics = """
                 Take all of your wasted honor
@@ -602,6 +611,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Still+Feel+Like+Your+Man.mp3",
         title = "Still Feel Like Your Man",
+        artist = "John Mayer",
         duration = "3:55",
         lyrics = """
                 I still feel like your man, oh
@@ -661,6 +671,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Waiting+On+the+World+to+Change.mp3",
         title = "Waiting On the World to Change",
+        artist = "John Mayer",
         duration = "3:21",
         lyrics = """
                 One, two
@@ -720,6 +731,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Wildfire.mp3",
         title = "Wildfire",
+        artist = "John Mayer",
         duration = "4:13",
         lyrics = """
                 River's strong you can swim inside it
@@ -764,6 +776,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+XO.mp3",
         title = "XO",
+        artist = "John Mayer",
         duration = "3:33",
         lyrics = """
                 Your love is bright as ever
@@ -823,6 +836,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Dear+Marie.mp3",
         title = "Dear Marie",
+        artist = "John Mayer",
         duration = "3:42",
         lyrics = """
                 Dear Marie, tell me what it was I used to be
@@ -847,6 +861,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Emoji+of+a+Wave.mp3",
         title = "Emoji of a Wave",
+        artist = "John Mayer",
         duration = "3:59",
         lyrics = """
                 Oh honey
@@ -905,6 +920,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+Tony+Bennett%2C+John+Mayer+-+One+for+My+Baby+(And+One+More+for+the+Road).mp3",
         title = "One for My Baby (And One More for the Road)",
+        artist = "John Mayer",
         duration = "2:56",
         lyrics = """
                 It's quarter to three
@@ -946,6 +962,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Shouldn't+Matter+but+It+Does.mp3",
         title = "Shouldn't Matter but It Does",
+        artist = "John Mayer",
         duration = "3:56",
         lyrics = """
                 Shoulda been open
@@ -993,6 +1010,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+The+Age+of+Worry.mp3",
         title = "The Age of Worry",
+        artist = "John Mayer",
         duration = "2:37",
         lyrics = """
                 Close your eyes and clone yourself
@@ -1036,6 +1054,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Why+Georgia.mp3",
         title = "Why Georgia",
+        artist = "John Mayer",
         duration = "4:28",
         lyrics = """
                 I am driving up 85 in the
@@ -1086,6 +1105,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+-+John+Mayer+-+Half+of+My+Heart.mp3",
         title = "Half of My Heart",
+        artist = "John Mayer",
         duration = "4:10",
         lyrics = """
                 I was born in the arms of imaginary friends
@@ -1139,6 +1159,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/02+-+Ed+Sheeran+-+Castle+on+the+Hill.mp3",
         title = "Castle on the Hill",
+        artist = "Ed Sheeran",
         duration = "4:21",
         lyrics = """
                 When I was six years old, I broke my leg
@@ -1190,6 +1211,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/04+-+Ed+Sheeran+-+Shape+of+You.mp3",
         title = "Shape of You",
+        artist = "Ed Sheeran",
         duration = "3:53",
         lyrics = """
                 The club isn't the best place to find a lover
@@ -1288,6 +1310,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/05+-+Ed+Sheeran+-+Perfect.mp3",
         title = "Perfect",
+        artist = "Ed Sheeran",
         duration = "4:23",
         lyrics = """
                 I found a love, for me
@@ -1342,6 +1365,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/06+-+Ed+Sheeran+-+Galway+Girl.mp3",
         title = "Galway Girl",
+        artist = "Ed Sheeran",
         duration = "2:51",
         lyrics = """
                 She played the fiddle in an Irish band
@@ -1402,6 +1426,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/07+-+Ed+Sheeran+-+Happier.mp3",
         title = "Happier",
+        artist = "Ed Sheeran",
         duration = "3:28",
         lyrics = """
                 Walking down 29th and Park
@@ -1449,6 +1474,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/10+-+Ed+Sheeran+-+What+Do+I+Know.mp3",
         title = "What Do I Know",
+        artist = "Ed Sheeran",
         duration = "3:57",
         lyrics = """
                 Ain't got a soapbox I can stand upon
@@ -1515,6 +1541,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/11+-+Ed+Sheeran+-+How+Would+You+Feel+(Paean).mp3",
         title = "How Would You Feel (Paean)",
+        artist = "Ed Sheeran",
         duration = "4:41",
         lyrics = """
                 You are the one girl
@@ -1558,6 +1585,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/02+-+Ed+Sheeran+-+Shivers.mp3",
         title = "Shivers",
+        artist = "Ed Sheeran",
         duration = "3:28",
         lyrics = """
                 I took an arrow to the heart
@@ -1627,6 +1655,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/03+-+Ed+Sheeran+-+First+Times.mp3",
         title = "First Times",
+        artist = "Ed Sheeran",
         duration = "3:06",
         lyrics = """
                 I thought it'd feel different playing Wembley
@@ -1670,6 +1699,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/12+-+Ed+Sheeran+-+Visiting+Hours.mp3",
         title = "Visiting Hours",
+        artist = "Ed Sheeran",
         duration = "3:36",
         lyrics = """
                 I wish that heaven had visiting hours
@@ -1704,6 +1734,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/03+-+Ed+Sheeran+-+Sing.mp3",
         title = "Sing",
+        artist = "Ed Sheeran",
         duration = "3:55",
         lyrics = """
                 It's late in the evening
@@ -1807,6 +1838,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/03+-+Ed+Sheeran+-+Sing.mp3",
         title = "Don't",
+        artist = "Ed Sheeran",
         duration = "3:40",
         lyrics = """
                 Don't, don't play with her, don't be dishonest (Ayy)
@@ -1873,6 +1905,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/06+-+Ed+Sheeran+-+Photograph.mp3",
         title = "Photograph",
+        artist = "Ed Sheeran",
         duration = "4:19",
         lyrics = """
                 Loving can hurt, loving can hurt sometimes
@@ -1930,6 +1963,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/11+-+Ed+Sheeran+-+Thinking+out+Loud.mp3",
         title = "Thinking Out Loud",
+        artist = "Ed Sheeran",
         duration = "4:18",
         lyrics = """
                 When your legs don't work like they used to before
@@ -1980,6 +2014,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%2B/01+-+Ed+Sheeran+-+The+A+Team.mp3",
         title = "The A Team",
+        artist = "Ed Sheeran",
         duration = "4:42",
         lyrics = """
                 White lips, pale face
@@ -2065,6 +2100,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%2B/09+-+Ed+Sheeran+-+Lego+House.mp3",
         title = "Lego House",
+        artist = "Ed Sheeran",
         duration = "3:05",
         lyrics = """
                 I'm gonna pick up the pieces
@@ -2126,6 +2162,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+1989/02+-+Taylor+Swift+-+Blank+Space.mp3",
         title = "Blank Space",
+        artist = "Taylor Swift",
         duration = "3:51",
         lyrics = """
                 Nice to meet you, where you been?
@@ -2218,6 +2255,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+1989/06+-+Taylor+Swift+-+Shake+It+Off.mp3",
         title = "Shake It Off",
+        artist = "Taylor Swift",
         duration = "3:39",
         lyrics = """
                 I stay out too late
@@ -2317,6 +2355,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Fearless+(Taylor%E2%80%99s+Version)+The+I+Remember+What+You+Said+Last+Night+Chapter/01+-+Taylor+Swift+-+You+Belong+With+Me+(Taylor%E2%80%99s+Version).mp3",
         title = "You Belong With Me (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "3:51",
         lyrics = """
                 You're on the phone with your girlfriend, she's upset
@@ -2389,6 +2428,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Fearless/02+-+Taylor+Swift+-+Fifteen.mp3",
         title = "Fifteen",
+        artist = "Taylor Swift",
         duration = "4:54",
         lyrics = """
                 You take a deep breath
@@ -2460,6 +2500,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version)/01+-+Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version).mp3",
         title = "Love Story (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "3:55",
         lyrics = """
                 We were both young when I first saw you
@@ -2519,6 +2560,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Lover/16+-+Taylor+Swift%2C+Brendon+Urie%2C+Panic!+At+The+Disco+-+ME!+(feat.+Brendon+Urie+of+Panic!+At+The+Disco).mp3",
         title = "ME! (feat. Brendon Urie of Panic! At The Disco)",
+        artist = "Taylor Swift",
         duration = "3:13",
         lyrics = """
                 I promise that you'll never find another like me
@@ -2595,6 +2637,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/04+-+Taylor+Swift+-+I+Knew+You+Were+Trouble+(Taylor's+Version).mp3",
         title = "I Knew You Were Trouble (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "3:39",
         lyrics = """
                 Once upon a time
@@ -2688,6 +2731,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/06+-+Taylor+Swift+-+22+(Taylor's+Version).mp3",
         title = "22 (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "3:51",
         lyrics = """
                 It feels like a perfect night
@@ -2757,6 +2801,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/08+-+Taylor+Swift+-+We+Are+Never+Ever+Getting+Back+Together+(Taylor's+Version).mp3",
         title = "We Are Never Ever Getting Back Together (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "3:13",
         lyrics = """
                 I remember when we broke up the first time
@@ -2820,6 +2865,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/22+-+Taylor+Swift+-+Better+Man+(Taylor's+Version)+(From+The+Vault).mp3",
         title = "Better Man (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "4:57",
         lyrics = """
                 I know I'm probably better off on my own
@@ -2890,6 +2936,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/26+-+Taylor+Swift%2C+Chris+Stapleton+-+I+Bet+You+Think+About+Me+(feat.+Chris+Stapleton)+(Taylor%E2%80%99s+Version)+(From+The+Vault).mp3",
         title = "I Bet You Think About Me (feat. Chris Stapleton) (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "4:45",
         lyrics = """
                 3 a.m. and I'm still awake, I'll bet you're just fine
@@ -2948,6 +2995,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/03+-+Taylor+Swift+-+Back+To+December+(Taylor's+Version).mp3",
         title = "Back To Decemeber (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "4:54",
         lyrics = """
                 I'm so glad you made time to see me
@@ -3008,6 +3056,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/05+-+Taylor+Swift+-+Dear+John+(Taylor's+Version).mp3",
         title = "Dear John (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "6:45",
         lyrics = """
                 Long were the nights when
@@ -3067,6 +3116,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/09+-+Taylor+Swift+-+Enchanted+(Taylor's+Version).mp3",
         title = "Enchanted (Taylor's Version)",
+        artist = "Taylor Swift",
         duration = "5:53",
         lyrics = """
                 There I was again tonight
@@ -3129,6 +3179,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+-+John+Mayer+-+New+Light.mp3",
         title = "New Light",
+        artist = "John Mayer",
         duration = "3:37",
         lyrics = """
                 I'm the boy in your other phone
@@ -3182,6 +3233,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible+(Deluxe)/14+-+Michael+Bubl%C3%A9+-+L+O+V+E.mp3",
         title = "L O V E",
+        artist = "Michael Buble",
         duration = "2:50",
         lyrics = """
                 L is for the way you look at me
@@ -3212,6 +3264,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible/09+-+Michael+Bubl%C3%A9+-+Everything.mp3",
         title = "Everything",
+        artist = "Michael Buble",
         duration = "3:32",
         lyrics = """
                 You're a falling star, you're the get away car
@@ -3254,6 +3307,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Crazy+Love/05+-+Michael+Bubl%C3%A9+-+Haven't+Met+You+Yet.mp3",
         title = "Haven't Met You Yet",
+        artist = "Michael Buble",
         duration = "4:03",
         lyrics = """
                 I'm not surprised, not everything lasts
@@ -3316,6 +3370,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/01+-+Michael+Bubl%C3%A9+-+Feeling+Good.mp3",
         title = "Feeling Good",
+        artist = "Michael Buble",
         duration = "3:56",
         lyrics = """
                 Birds flying high
@@ -3377,6 +3432,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/05+-+Michael+Bubl%C3%A9+-+Home.mp3",
         title = "Home",
+        artist = "Michael Buble",
         duration = "3:45",
         lyrics = """
                 Another summer day
@@ -3439,6 +3495,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/08+-+Michael+Bubl%C3%A9+-+Save+the+Last+Dance+for+Me.mp3",
         title = "Save The Last Dance For Me",
+        artist = "Michael Buble",
         duration = "3:37",
         lyrics = """
                 Now you can dance every dance with the guy
@@ -3491,6 +3548,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+love+(Deluxe+Edition)/03+-+Michael+Bubl%C3%A9+-+Love+You+Anymore.mp3",
         title = "Love You Anymore",
+        artist = "Michael Buble",
         duration = "3:02",
         lyrics = """
                 Just because I wander 'round the places we would go
@@ -3532,6 +3590,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/04+-+Michael+Bubl%C3%A9+-+For+Once+in+My+Life.mp3",
         title = "For Once in My Life",
+        artist = "Michael Buble",
         duration = "2:33",
         lyrics = """
                 For once in my life, I've got someone who needs me
@@ -3561,6 +3620,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/10+-+Michael+Bubl%C3%A9+-+Sway.mp3",
         title = "Sway",
+        artist = "Michael Buble",
         duration = "3:08",
         lyrics = """
                 When marimba rhythms start to play
@@ -3611,6 +3671,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/11+-+Michael+Bubl%C3%A9+-+The+Way+You+Look+Tonight.mp3",
         title = "The Way You Look Tonight",
+        artist = "Michael Buble",
         duration = "4:39",
         lyrics = """
                 Someday when I'm awfully low
@@ -3646,6 +3707,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/12+-+Michael+Bubl%C3%A9+-+Come+Fly+with+Me.mp3",
         title = "Come Fly with Me",
+        artist = "Michael Buble",
         duration = "3:18",
         lyrics = """
                 Come fly with me, let's fly, let's fly away
@@ -3695,6 +3757,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Special+Delivery/03+-+Michael+Bubl%C3%A9+-+Dream+a+Little+Dream+of+Me.mp3",
         title = "Dream a Little Dream of Me",
+        artist = "Michael Buble",
         duration = "3:07",
         lyrics = """
                 Stars shining bright above you
@@ -3733,6 +3796,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/02+-+Michael+Bubl%C3%A9+-+It's+a+Beautiful+Day.mp3",
         title = "It's a Beautiful Day",
+        artist = "Michael Buble",
         duration = "3:18",
         lyrics = """
                 I don't know why
@@ -3786,6 +3850,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/09+-+Michael+Bubl%C3%A9%2C+Naturally+7+-+Have+I+Told+You+Lately+That+I+Love+You+(with+Naturally+7).mp3",
         title = "Have I Told You Lately That I Love You (with Naturally 7)",
+        artist = "Michael Buble",
         duration = "3:25",
         lyrics = """
                 Have I told you lately that I love you?
@@ -3817,6 +3882,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/04+-+John+Mayer+-+Gravity.mp3",
         title = "Gravity",
+        artist = "John Mayer",
         duration = "4:05",
         lyrics = """
                 Gravity is working against me
@@ -3852,6 +3918,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+The+Heart+of+Life.mp3",
         title = "The Heart of Life",
+        artist = "John Mayer",
         duration = "3:18",
         lyrics = """
                 I hate to see you cry
@@ -3883,6 +3950,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/07+-+John+Mayer+-+Stop+This+Train.mp3",
         title = "Stop This Train",
+        artist = "John Mayer",
         duration = "4:45",
         lyrics = """
                 No, I'm not colorblind
@@ -3942,6 +4010,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/08+-+John+Mayer+-+Slow+Dancing+in+a+Burning+Room.mp3",
         title = "Slow Dancing in a Burning Room",
+        artist = "John Mayer",
         duration = "4:02",
         lyrics = """
                 It's not a silly little moment
@@ -3993,6 +4062,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/10+-+John+Mayer+-+Dreaming+with+a+Broken+Heart.mp3",
         title = "Dreaming with a Broken Heart",
+        artist = "John Mayer",
         duration = "4:05",
         lyrics = """
                 It's not a silly little moment

@@ -6,8 +6,13 @@ import { SongContext } from '../../context/SongContext';
 
 const Player = () => {
     const playerRef = useRef();
-    const { isPlaying, play, pause, currentSong, currentTime, setCurrentTime } = useContext(SongContext);
+    const { 
+        isPlaying, play, pause, currentSong, setCurrentSong, 
+        currentTime, setCurrentTime, songTitle, setSongTitle, 
+        artistName, setArtistName 
+    } = useContext(SongContext);
 
+    console.log('What is the songTitle=====>', songTitle)
     const handleListen = (e) => {
         setCurrentTime(e.target.currentTime);
     };
@@ -27,6 +32,15 @@ const Player = () => {
 
     return (
         <div className="audio-bar-container">
+            <div className="audio-bar-song-info">
+                <div>
+                    Album Cover
+                </div>
+                <div>
+                    <div>{songTitle}</div>
+                    <div>{artistName}</div>
+                </div>
+            </div>
             <AudioPlayer
                 ref={playerRef}
                 autoPlayAfterSrcChange={false}

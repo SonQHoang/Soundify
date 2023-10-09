@@ -31,7 +31,7 @@ function PlaylistDetails() {
     const [showModal, setShowModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const { play, currentSong, setCurrentSong } = useContext(SongContext);
+    const { play, currentSong, setCurrentSong, songTitle, setSongTitle, artistName, setArtistName } = useContext(SongContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -53,6 +53,7 @@ function PlaylistDetails() {
         user_id: song.user_id,
         album_id: song.album_id,
         title: song.title,
+        artist: song.artist,
         duration: song.duration,
         audio_url: song.audio_url,
         lyrics: song.lyrics,
@@ -69,12 +70,15 @@ function PlaylistDetails() {
     const filteredSongs = queryFilter(query, titleKVPairs);
 
     const selectSong = (song) => {
+        console.log("what is the song here=========>", song)
         if (selectedSongs.includes(song)) {
             setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
         setCurrentSong(song.audio_url)
+        setSongTitle(song.title)
+        setArtistName(song.artist)
         play()
         setQuery("")
     }
