@@ -165,9 +165,9 @@ const UpdatePlaylisttModal = ({ onSubmit, onClose, playlistId }) => {
                             Save
                         </button>
                     </div>
-                    <div className="disclaimer-text">
+                    {/* <div className="disclaimer-text">
                         By proceeding, you agree to give Soundify access to the image you choose to upload. Please make sure you have the right to upload the image.
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

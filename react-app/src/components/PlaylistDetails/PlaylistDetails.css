@@ -168,3 +168,20 @@
 .playlist-song-count:hover {
     
 }
+
+.playlist-dropdown-button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #A7A7A7;
+}
+
+.playlist-dropdown-button:focus {
+    outline: none;
+}
+
+.playlist-update-button,
+.playlist-delete,button {
+    cursor: pointer;
+}

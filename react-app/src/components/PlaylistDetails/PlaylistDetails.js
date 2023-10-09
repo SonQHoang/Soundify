@@ -32,6 +32,9 @@ function PlaylistDetails() {
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
     const { play, currentSong, setCurrentSong } = useContext(SongContext);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     useEffect(() => {
         getPlaylistSongs(playlistId)
@@ -149,16 +152,21 @@ function PlaylistDetails() {
                             </div>
                         </div>
                         {isOwner && (
-                            <div>
-                                <button className="playlist-update-button" onClick={() => {
-                                    return handleUpdateClick(playlistId);
-                                }}>Edit Details</button>
-                                <UpdatePlaylist playlistId={playlistId} />
+                            <div className="playlist-options-dropdown">
+                                <button className="playlist-dropdown-button" onClick={toggleDropdown}>. . .</button>
+                                {isDropdownOpen && (
+                                    <div className="dropdown-content">
+                                        <button className="playlist-update-button" onClick={() => {
+                                            setIsDropdownOpen(false);
+                                            return handleUpdateClick(playlistId);
+                                        }}>Edit Details</button>
 
-                                <button className="playlist-delete-button" onClick={() => {
-                                    return handleDeleteClick(playlistId);
-                                }}>Delete Playlist</button>
-                                <DeletePlaylist playlistId={playlistId} />
+                                        <button className="playlist-delete-button" onClick={() => {
+                                            setIsDropdownOpen(false);  
+                                            return handleDeleteClick(playlistId);
+                                        }}>Delete Playlist</button>
+                                    </div>
+                                )}
                             </div>
                         )}
                         <div className='search-bar-container'>
