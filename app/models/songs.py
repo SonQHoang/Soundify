@@ -13,8 +13,8 @@ class Songs(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     # album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')), nullable=False)
     audio_url = db.Column(db.String, nullable=False)
-    title = db.Column(db.String(100), nullable=False),
-    artist = db.Column(db.String(100), nullable=False),
+    title = db.Column(db.String(100), nullable=False)
+    artist = db.Column(db.String(100), nullable=False)
     lyrics = db.Column(db.String(5000))
     duration = db.Column(db.String(5000), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
