@@ -41,7 +41,7 @@ const TestSideBar = () => {
                             <button onClick={handleFeatureClick}>Search</button>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div className="playlist-albums-container">
                     <div className="library-create-playlist-container">
                         <div className="library-create-upper">

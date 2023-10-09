@@ -35,58 +35,57 @@ function App() {
         {/* <Navigation isLoaded={isLoaded} /> */}
         {isLoaded && (
           <>
-          <Switch>
-            <Route exact path="/sidebar-test">
-              <TestSideBar />
-            </Route>
-            <Route exact path="/nav-test">
-              <TestNav />
-            </Route>
-            <Route exact path="/landing-page">
-              <MainPageTest />
-            </Route>
-            <Route exact path="/login" >
-              <LoginFormPage />
-            </Route>
-            <Route exact path="/playlist/new">
-              <CreatePlaylist />
-            </Route>
-            <Route exact path="/album/new">
-              <CreateAlbum />
-            </Route>
-            <Route exact path="/playlist/all">
-              <UserPlaylist />
-            </Route>
-            <Route exact path="/album/all">
-              <UserAlbum />
-            </Route>
-            <Route exact path="/playlist/:playlistId">
-              <PlaylistDetails />
-            </Route>
-            <Route exact path="/album/:albumId">
-              <AlbumDetails />
-            </Route>
-            <Route exact path="/signup">
-              <SignupFormPage />
-            </Route>
-            <Route exact path="/song/all">
-              <Song />
-            </Route>
-            <Route exact path="/">
-              <SplashPage />
-            </Route>
-            <Route>
-              <LandingPagePlaylists />
-            </Route>
-            <Route>
-              <UserPlaylistTile />
-            </Route>
-            <Route>
-              <UserAlbumTile />
-            </Route>
-      
-          </Switch>
-          <Player/>
+            <Switch>
+              <Route exact path="/sidebar-test">
+                <TestSideBar />
+              </Route>
+              <Route exact path="/nav-test">
+                <TestNav />
+              </Route>
+              <Route exact path="/landing-page">
+                <MainPageTest />
+              </Route>
+              <Route exact path="/login" >
+                <LoginFormPage />
+              </Route>
+              <Route exact path="/playlist/new">
+                <CreatePlaylist />
+              </Route>
+              <Route exact path="/album/new">
+                <CreateAlbum />
+              </Route>
+              <Route exact path="/playlist/all">
+                <UserPlaylist />
+              </Route>
+              <Route exact path="/album/all">
+                <UserAlbum />
+              </Route>
+              <Route exact path="/playlist/:playlistId">
+                <PlaylistDetails />
+              </Route>
+              <Route exact path="/album/:albumId">
+                <AlbumDetails />
+              </Route>
+              <Route exact path="/signup">
+                <SignupFormPage />
+              </Route>
+              <Route exact path="/song/all">
+                <Song />
+              </Route>
+              <Route exact path="/">
+                <SplashPage />
+              </Route>
+              <Route>
+                <LandingPagePlaylists />
+              </Route>
+              <Route>
+                <UserPlaylistTile />
+              </Route>
+              <Route>
+                <UserAlbumTile />
+              </Route>
+            </Switch>
+            <Player />
           </>
         )}
       </SongProvider>

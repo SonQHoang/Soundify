@@ -15,7 +15,7 @@ import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
 import { SongContext } from "../../context/SongContext";
 import Footer from "../Footer/Footer";
-
+ 
 function AlbumDetails() {
     const { albumId } = useParams()
     const dispatch = useDispatch();
@@ -32,6 +32,10 @@ function AlbumDetails() {
     const [albumToDelete, setAlbumToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
     const { play, currentSong, setCurrentSong } = useContext(SongContext);
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     useEffect(() => {
         // setAlbumInfo(new_songs)
@@ -152,16 +156,21 @@ function AlbumDetails() {
                             </div>
                         </div>
                         {isOwner && (
-                            <div>
-                                <button className="album-update-button" onClick={() => {
-                                    return handleUpdateClick(albumId);
-                                }}>Edit Details</button>
-                                <UpdateAlbum albumId={albumId} />
+                            <div className="album-options-dropdown">
+                                <button className="album-dropdown-button" onClick={toggleDropdown}>. . .</button>
+                                {isDropdownOpen && (
+                                    <div className="dropdown-content">
+                                        <button className="album-update-button" onClick={() => {
+                                            setIsDropdownOpen(false);  
+                                            return handleUpdateClick(albumId);
+                                        }}>Edit Details</button>
 
-                                <button className="album-delete-button" onClick={() => {
-                                    return handleDeleteClick(albumId);
-                                }}>Delete Album</button>
-                                <DeleteAlbum albumId={albumId} />
+                                        <button className="album-delete-button" onClick={() => {
+                                            setIsDropdownOpen(false);
+                                            return handleDeleteClick(albumId);
+                                        }}>Delete Album</button>
+                                    </div>
+                                )}
                             </div>
                         )}
                         <div className='search-bar-container'>
@@ -264,10 +273,6 @@ function AlbumDetails() {
                     </div>
                 </div>
             </div>
-            {/* <div>
-                <Player src={currentSong ? currentSong.audio_url : null} />
-            </div> */}
-            {/* This is responsible for sending the songs to the AudioPlayer */}
         </>
     )
 }

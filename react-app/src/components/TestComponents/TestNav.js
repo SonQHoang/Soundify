@@ -11,6 +11,7 @@ const TestNav = () => {
   const dispatch = useDispatch();
   const history = useHistory()
   const [dropDownMenu, setDropDownMenu] = useState(false)
+  const [hoverInfoVisible, setHoverInfoVisible] = useState(true)
 
   const user = useSelector((state) => state.session.user);
   const showLoginModal = useSelector((state) => state.showLoginModal);
@@ -24,7 +25,12 @@ const TestNav = () => {
 
   const handleDropDown = () => {
     setDropDownMenu(!dropDownMenu)
+    setHoverInfoVisible(dropDownMenu)
   }
+
+  const handleFeatureClick = () => {
+    alert("This feature will be added in the future. Check back again soon!")
+}
 
   return (
     <>
@@ -41,9 +47,17 @@ const TestNav = () => {
         </div>
         <div className="logout-container">
           {user ? (
-            <button className="profile-icon-container" onClick={handleDropDown}>
-              <img src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png" alt="icon" className="profile-icon" />
-            </button>
+            <div className="profile-info-container">
+              <button className="profile-icon-container" onClick={handleDropDown}>
+                <img src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695022422/user-4-16_jlmfwj.png" alt="icon" className="profile-icon" />
+              </button>
+              {hoverInfoVisible && !dropDownMenu && (
+                <div className="hover-info">
+                  <div>{user.username}</div>
+                  <div>{user.email}</div>
+                </div>
+              )}
+            </div>
           ) : (
             <>
               {showLoginModal && <LoginFormModal />}
@@ -52,10 +66,11 @@ const TestNav = () => {
           )}
           {dropDownMenu && (
             <div className="drop-down-profile-menu">
-              <div>{user.username}</div>
-              <div>{user.email}</div>
-              <button onClick={handleLogout}>LogOut</button>
+              <button onClick={handleFeatureClick}className="account-button" >Account</button>
+              <button onClick={handleFeatureClick}className="settings-button" >Settings</button>
+              <button className="log-out-button" onClick={handleLogout}>LogOut</button>
             </div>
+
           )}
         </div>
       </div>

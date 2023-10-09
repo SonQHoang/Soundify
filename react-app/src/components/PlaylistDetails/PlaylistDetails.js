@@ -31,7 +31,10 @@ function PlaylistDetails() {
     const [showModal, setShowModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const { play, currentSong, setCurrentSong } = useContext(SongContext);
+    const { play, currentSong, setCurrentSong, songTitle, setSongTitle, artistName, setArtistName } = useContext(SongContext);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     useEffect(() => {
         getPlaylistSongs(playlistId)
@@ -50,6 +53,7 @@ function PlaylistDetails() {
         user_id: song.user_id,
         album_id: song.album_id,
         title: song.title,
+        artist: song.artist,
         duration: song.duration,
         audio_url: song.audio_url,
         lyrics: song.lyrics,
@@ -66,12 +70,15 @@ function PlaylistDetails() {
     const filteredSongs = queryFilter(query, titleKVPairs);
 
     const selectSong = (song) => {
+        console.log("what is the song here=========>", song)
         if (selectedSongs.includes(song)) {
             setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
         setCurrentSong(song.audio_url)
+        setSongTitle(song.title)
+        setArtistName(song.artist)
         play()
         setQuery("")
     }
@@ -149,16 +156,21 @@ function PlaylistDetails() {
                             </div>
                         </div>
                         {isOwner && (
-                            <div>
-                                <button className="playlist-update-button" onClick={() => {
-                                    return handleUpdateClick(playlistId);
-                                }}>Edit Details</button>
-                                <UpdatePlaylist playlistId={playlistId} />
+                            <div className="playlist-options-dropdown">
+                                <button className="playlist-dropdown-button" onClick={toggleDropdown}>. . .</button>
+                                {isDropdownOpen && (
+                                    <div className="dropdown-content">
+                                        <button className="playlist-update-button" onClick={() => {
+                                            setIsDropdownOpen(false);
+                                            return handleUpdateClick(playlistId);
+                                        }}>Edit Details</button>
 
-                                <button className="playlist-delete-button" onClick={() => {
-                                    return handleDeleteClick(playlistId);
-                                }}>Delete Playlist</button>
-                                <DeletePlaylist playlistId={playlistId} />
+                                        <button className="playlist-delete-button" onClick={() => {
+                                            setIsDropdownOpen(false);  
+                                            return handleDeleteClick(playlistId);
+                                        }}>Delete Playlist</button>
+                                    </div>
+                                )}
                             </div>
                         )}
                         <div className='search-bar-container'>
@@ -260,10 +272,8 @@ function PlaylistDetails() {
                         </div>
                     </div>
                 </div>
+                
             </div>
-            {/* <div>
-                <Player src={currentSong ? currentSong.audio_url : null} />
-            </div> */}
         </>
     )
 }

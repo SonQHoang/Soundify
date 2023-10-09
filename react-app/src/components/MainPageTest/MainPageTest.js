@@ -42,12 +42,12 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
+            {/* <div>
+                <Player/>
+            </div> */}
             </div>
                 {/* <div className="footer">
                     <Footer />
-                </div> */}
-                {/* <div>
-                    <Player/>
                 </div> */}
         </>
     )
