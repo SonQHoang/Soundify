@@ -20,6 +20,7 @@ import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
 import { SongProvider } from "./context/SongContext";
 import Player from "./components/AudioBar/audiobar";
+import SongDetails from "./components/SongDetails/SongDetails";
 // import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -74,6 +75,9 @@ function App() {
               </Route>
               <Route exact path="/">
                 <SplashPage />
+              </Route>
+              <Route exact path="/song/:songId">
+                <SongDetails/>
               </Route>
               <Route>
                 <LandingPagePlaylists />

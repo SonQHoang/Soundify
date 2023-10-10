@@ -114,9 +114,10 @@
 }
 
 .playlist-headers .time-header {
-    margin-left: 170px;
+    margin-left: 165px;
 }
 .individual-playlist-songs {
+    /* border: 2px solid red; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -229,6 +230,7 @@
     margin-left: 35px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .song-item img {
@@ -237,4 +239,12 @@
     width: auto;
     height: auto;
     margin-right: 10px;
+}
+
+.album-title {
+    cursor: pointer;
+}
+
+.album-title p {
+    color: white;
 }

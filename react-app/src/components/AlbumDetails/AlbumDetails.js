@@ -1,20 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom";
 import { getAllSongs } from "../../store/songs";
 import { GetSongsForAlbum } from "../../store/albums";
 import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
-import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
-import { AddSongToAlbum, GetSingleAlbum } from "../../store/albums";
-import { getUserAlbum } from "../../store/albums";
-import Player from "../AudioBar/audiobar";
-import "./AlbumDetails.css"
-import UpdateAlbum from "../UpdateAlbum/UpdateAlbum";
 import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
+import { AddSongToAlbum, GetSingleAlbum, getUserAlbum } from "../../store/albums";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
 import { SongContext } from "../../context/SongContext";
-import Footer from "../Footer/Footer";
+import "./AlbumDetails.css"
  
 function AlbumDetails() {
     const { albumId } = useParams()
@@ -31,14 +26,20 @@ function AlbumDetails() {
     const [showModal, setShowModal] = useState(false);
     const [albumToDelete, setAlbumToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const { play, currentSong, setCurrentSong } = useContext(SongContext);
-
+    const { play,
+        // currentSong,
+        setCurrentSong,
+        // songTitle,
+        setSongTitle,
+        // artistName,
+        setArtistName,
+        // albumCover,
+        setAlbumCover
+    } = useContext(SongContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     useEffect(() => {
-        // setAlbumInfo(new_songs)
         getAlbumSongs(albumId)
         dispatch(GetSongsForAlbum(albumId))
         dispatch(GetSingleAlbum(albumId))
@@ -57,7 +58,7 @@ function AlbumDetails() {
         album_id: song.album_id,
         title: song.title,
         duration: song.duration,
-        audio_url: song.audio_url,
+        audio_url: song.audio_url, 
         lyrics: song.lyrics,
         date_created: song.date_created
     }));
@@ -77,8 +78,10 @@ function AlbumDetails() {
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
-        // setCurrentSong(song)
         setCurrentSong(song.audio_url)
+        setSongTitle(song.title)
+        setArtistName(song.artist)
+        setAlbumCover(song.album_arts)
         play()
         setQuery("")
     }
@@ -189,40 +192,34 @@ function AlbumDetails() {
                         </div>
                         <div className="album-songs-container">
                             <div className="album-headers">
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className="grid-row grid-row-width">
                                     <div>#</div>
                                 </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className="grid-row grid-row-width">
                                     <div>Title</div>
                                 </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
-                                    <div>Album</div>
-                                </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className="grid-row grid-row-width">
                                     <div>Date Added</div>
                                 </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className="grid-row grid-row-width">
                                     <img className='clock-icon' src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695032037/icons8-clock-32_bel47j.png" alt="clock-icon"></img>
                                 </div>
                             </div>
                             {(new_songs)?.map((song, index) => (
                                 <div key={index} className="individual-album-songs">
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row grid-row-width">
                                         <div>{index + 1}</div>
                                     </div>
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row grid-row-width">
                                         {song?.title ? (
                                             <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
                                         ) : null}
                                     </div>
-                                    <div className="grid-row" style={{ width: '200px' }}>
-                                        <div className="album-info">Album Info</div>
-                                    </div>
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row grid-row-width">
                                         <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                                         </div>
                                     </div>
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row grid-row-width">
                                         <div className="song-duration">{song.duration}</div>
                                     </div>
                                 </div>

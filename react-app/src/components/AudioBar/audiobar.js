@@ -7,12 +7,21 @@ import { SongContext } from '../../context/SongContext';
 const Player = () => {
     const playerRef = useRef();
     const {
-        isPlaying, play, pause, currentSong, setCurrentSong,
-        currentTime, setCurrentTime, songTitle, setSongTitle,
-        artistName, setArtistName, albumCover, setAlbumCover
+        isPlaying,
+        play,
+        pause,
+        currentSong,
+        // setCurrentSong,
+        currentTime,
+        setCurrentTime,
+        songTitle,
+        // setSongTitle,
+        artistName,
+        // setArtistName,
+        albumCover,
+        // setAlbumCover
     } = useContext(SongContext);
 
-    console.log('What is the albumCover=====>', albumCover)
     const handleListen = (e) => {
         setCurrentTime(e.target.currentTime);
     };

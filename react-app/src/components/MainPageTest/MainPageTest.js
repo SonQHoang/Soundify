@@ -1,7 +1,6 @@
 import React from 'react'
 import TestSideBar from '../TestComponents/TestSideBar'
 import TestNav from '../TestComponents/TestNav'
-import Player from '../AudioBar/audiobar'
 import UserPlaylistTile from '../UserPlaylistTile/UserPlaylistTile'
 import UserAlbumTile from '../UserAlbumTile/UserAlbumTile'
 import "./MainPageTest.css"
@@ -18,7 +17,7 @@ const MainPage = () => {
                     <div className="main-content">
                         <div className="personalized-content-container">
                             <div className="personalized-playlist">
-                                <h2>Your Playlists</h2>
+                                <h2>Playlists</h2>
                                 <div className="playlist-list">
                                     <UserPlaylistTile />
                                 </div>
@@ -26,7 +25,7 @@ const MainPage = () => {
                         </div>
 
                         <div className="personalized-albums">
-                            <h2>Your Albums</h2>
+                            <h2>Albums</h2>
                             <ul className="albums-list">
                                 <UserAlbumTile />
                             </ul>
@@ -42,13 +41,8 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
-            {/* <div>
-                <Player/>
-            </div> */}
             </div>
-                {/* <div className="footer">
-                    <Footer />
-                </div> */}
+            
         </>
     )
 }

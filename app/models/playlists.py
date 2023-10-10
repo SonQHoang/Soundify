@@ -39,8 +39,6 @@ class Playlists(db.Model):
             "song_id": self.song_id,
             "owner": self.owner,
             "playlist_description": self.playlist_description,
-            # Taking relationship in line 25 and pulling in all songs that belong to this playlist
-            # "playlist_songs": [playlist_song.to_dict() for playlist_song in self.playlist_songs],
             "image": self.image,
             "title": self.title,
             "date_created": self.date_created,
