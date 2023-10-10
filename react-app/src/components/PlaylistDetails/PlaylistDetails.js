@@ -4,17 +4,13 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
 import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
-import DeletePlaylist from "../DeletePlaylist/DeletePlaylist";
 import { GetSinglePlaylist } from "../../store/playlists";
 import { getUserPlaylist } from "../../store/playlists";
-import Player from "../AudioBar/audiobar";
-import UpdatePlaylist from "../UpdatePlaylist/UpdatePlaylist";
 import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
 import { GetSongsForPlaylist } from "../../store/playlists";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
 import { SongContext } from "../../context/SongContext";
-import Footer from "../Footer/Footer";
 import "./PlaylistDetails.css"
 
 function PlaylistDetails() {
@@ -25,14 +21,14 @@ function PlaylistDetails() {
     const userId = sessionUser.id
 
     const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
-    console.log('What is new_songs=====>', new_songs)
+    console.log('what is in new_songs=====>', new_songs)
 
     const [playlistInfo, setPlaylistInfo] = useState(new_songs)
     const [selectedSongs, setSelectedSongs] = useState([])
     const [showModal, setShowModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const { play, currentSong, setCurrentSong, songTitle, setSongTitle, artistName, setArtistName } = useContext(SongContext);
+    const { play, currentSong, setCurrentSong, songTitle, setSongTitle, artistName, setArtistName, albumCover, setAlbumCover} = useContext(SongContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -79,6 +75,8 @@ function PlaylistDetails() {
         setCurrentSong(song.audio_url)
         setSongTitle(song.title)
         setArtistName(song.artist)
+        setAlbumCover(song.album_arts)
+        console.log('song.album_arts', song.album_arts)
         play()
         setQuery("")
     }
@@ -189,43 +187,46 @@ function PlaylistDetails() {
                         </div>
                         <div className="playlist-songs-container">
                             <div className="playlist-headers">
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className=" hashtag-header">
                                     <div>#</div>
                                 </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className=" title-header">
                                     <div>Title</div>
                                 </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className=" album-header">
                                     <div>Album</div>
                                 </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className=" date-header">
                                     <div>Date Added</div>
                                 </div>
-                                <div className="grid-row" style={{ width: '200px' }}>
+                                <div className=" time-header">
                                     <img className='clock-icon' src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695032037/icons8-clock-32_bel47j.png" alt="clock-icon"></img>
                                 </div>
                             </div>
                             {(new_songs)?.map((song, index) => (
                                 <div key={index} className="individual-playlist-songs">
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row">
                                         <div className="playlist-song-count">{index + 1}</div>
                                     </div>
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row">
                                         {song?.title ? (
-                                            <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
+                                            <div className="song-item" onClick={() => { selectSong(song); setQuery("") }}>
+                                                <div className="song-image-container">
+                                                    <img src={song.album_arts[0]} alt="Album Art" />
+                                                </div>
+                                                <p>{song.title}</p>
+                                            </div>
                                         ) : null}
                                     </div>
-                                    <div className="grid-row" style={{ width: '200px' }}>
+                                    <div className="grid-row">
                                         {song?.album_titles?.map((albumTitle, index) => (
                                             <p key={index}>{albumTitle}</p>
                                         ))}
                                     </div>
-
-                                    <div className="grid-row" style={{ width: '200px' }}>
-                                        <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                                        </div>
+                                    <div className="grid-row">
+                                        <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
                                     </div>
-                                    <div className="grid-row" id="time-info" style={{ width: '200px' }}>
+                                    <div className="grid-row" id="time-info">
                                         <div className="song-duration">{song.duration}</div>
                                     </div>
                                 </div>
