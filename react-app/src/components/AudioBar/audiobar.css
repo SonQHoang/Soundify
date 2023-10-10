@@ -9,7 +9,7 @@
 }
 
 .audio-bar-song-info {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     color: white;
     width: 500px;
     display: flex;
@@ -21,9 +21,13 @@
     background-color: black;
 }
 
+.album-cover-image {
+    width: 50px;
+    height: 50px;
+}
 
 .rhap_container {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     background-color: #000000;
     box-sizing: border-box;
     flex:3;

@@ -4324,7 +4324,7 @@ def seed_users():
                         song_53, song_54, song_55, song_56, song_57, song_58, song_59, song_60, song_61, song_62, song_63, song_64, song_65, song_66])
 
 
-    album_1.album_songs.extend([song_11,song_65, song_66, song_67, song_68, song_69])
+    album_1.album_songs.extend([song_3, song_11,song_65, song_66, song_67, song_68, song_69])
     album_2.album_songs.extend([song_35, song_36])
     album_3.album_songs.extend([song_31, song_32, song_33, song_34])
     album_4.album_songs.extend([song_28, song_29, song_30])

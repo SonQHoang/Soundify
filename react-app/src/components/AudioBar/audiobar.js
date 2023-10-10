@@ -6,13 +6,13 @@ import { SongContext } from '../../context/SongContext';
 
 const Player = () => {
     const playerRef = useRef();
-    const { 
-        isPlaying, play, pause, currentSong, setCurrentSong, 
-        currentTime, setCurrentTime, songTitle, setSongTitle, 
-        artistName, setArtistName 
+    const {
+        isPlaying, play, pause, currentSong, setCurrentSong,
+        currentTime, setCurrentTime, songTitle, setSongTitle,
+        artistName, setArtistName, albumCover, setAlbumCover
     } = useContext(SongContext);
 
-    console.log('What is the songTitle=====>', songTitle)
+    console.log('What is the albumCover=====>', albumCover)
     const handleListen = (e) => {
         setCurrentTime(e.target.currentTime);
     };
@@ -33,9 +33,9 @@ const Player = () => {
     return (
         <div className="audio-bar-container">
             <div className="audio-bar-song-info">
-                <div>
-                    Album Cover
-                </div>
+                <div className="audio-bar-album-cover=">
+                {albumCover ? <img className="album-cover-image" src={albumCover} alt="Album Cover" /> : null}
+                </div>                
                 <div>
                     <div>{songTitle}</div>
                     <div>{artistName}</div>

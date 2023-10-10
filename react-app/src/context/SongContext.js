@@ -8,6 +8,7 @@ export const SongProvider = ({ children }) => {
     const [currentTime, setCurrentTime] = useState(0);
     const [songTitle, setSongTitle] = useState(null);
     const [artistName, setArtistName] = useState(null);
+    const [albumCover, setAlbumCover] = useState(null);
 
     const play = () => setIsPlaying(true);
     const pause = () => setIsPlaying(false);
@@ -24,7 +25,9 @@ export const SongProvider = ({ children }) => {
             songTitle, 
             setSongTitle, 
             artistName, 
-            setArtistName
+            setArtistName,
+            albumCover,
+            setAlbumCover
             }}>
             {children}
         </SongContext.Provider>
