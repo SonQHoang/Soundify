@@ -25,6 +25,7 @@ function PlaylistDetails() {
     const userId = sessionUser.id
 
     const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
+    console.log('What is new_songs=====>', new_songs)
 
     const [playlistInfo, setPlaylistInfo] = useState(new_songs)
     const [selectedSongs, setSelectedSongs] = useState([])
@@ -70,7 +71,6 @@ function PlaylistDetails() {
     const filteredSongs = queryFilter(query, titleKVPairs);
 
     const selectSong = (song) => {
-        console.log("what is the song here=========>", song)
         if (selectedSongs.includes(song)) {
             setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
         } else {
@@ -166,7 +166,7 @@ function PlaylistDetails() {
                                         }}>Edit Details</button>
 
                                         <button className="playlist-delete-button" onClick={() => {
-                                            setIsDropdownOpen(false);  
+                                            setIsDropdownOpen(false);
                                             return handleDeleteClick(playlistId);
                                         }}>Delete Playlist</button>
                                     </div>
@@ -216,8 +216,11 @@ function PlaylistDetails() {
                                         ) : null}
                                     </div>
                                     <div className="grid-row" style={{ width: '200px' }}>
-                                        <div className="album-info">Album Info</div>
+                                        {song?.album_titles?.map((albumTitle, index) => (
+                                            <p key={index}>{albumTitle}</p>
+                                        ))}
                                     </div>
+
                                     <div className="grid-row" style={{ width: '200px' }}>
                                         <div className="song-date">{new Date(song.date_created).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                                         </div>
@@ -272,7 +275,7 @@ function PlaylistDetails() {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </>
     )
