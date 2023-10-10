@@ -15,7 +15,7 @@ class Songs(db.Model):
     audio_url = db.Column(db.String, nullable=False)
     title = db.Column(db.String(100), nullable=False)
     artist = db.Column(db.String(100), nullable=False)
-    lyrics = db.Column(db.String(5000))
+    lyrics = db.Column(db.String(5000)) 
     duration = db.Column(db.String(5000), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
 

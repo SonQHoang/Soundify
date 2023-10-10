@@ -19,26 +19,27 @@ const acGetSongs = (data) => {
     }
 }
 
-// const acGetSingleSong = (data) => {
-//     return {
-//         type: GET_SINGLE_SONG,
-//         payload: data
-//     }
-// }
+const acGetSingleSong = (data) => {
+    // console.log('What does acSingleSong data look like======>', data)
+    return {
+        type: GET_SINGLE_SONG,
+        payload: data
+    }
+}
 
-// const acUpdateSong = (data) => {
-//     return {
-//         type: UPDATE_USER_SONG,
-//         payload: data
-//     }
-// }
+const acUpdateSong = (data) => {
+    return {
+        type: UPDATE_USER_SONG,
+        payload: data
+    }
+}
 
-// const acDeleteSong = (data) => {
-//     return {
-//         type: DELETE_USER_SONG,
-//         payload: data
-//     }
-// }
+const acDeleteSong = (data) => {
+    return {
+        type: DELETE_USER_SONG,
+        payload: data
+    }
+}
 
 // Song Thunk
 
@@ -55,9 +56,28 @@ export const getAllSongs = () => async (dispatch) => {
         }
     } catch (error) {
         console.error('An error occurred:', error);
-        throw error; // Optionally, rethrow the error to propagate it further
+        throw error;
     }
 };
+
+export const getSingleSong = (songId) => async (dispatch) => {
+    const songIdInt = parseInt(songId, 10)
+        try {
+        const response = await fetch(`/api/song/${songIdInt}`)
+        // console.log("What does my response look like for my song route====>", response)
+        if (response.ok) {
+            const data = await response.json()
+            // console.log("what does this data look like=======>", data)
+            dispatch(acGetSingleSong(data))
+        } else {
+            const errors = await response.json();
+            return errors
+        }
+    } catch (error) {
+        console.error('An error occurred', error)
+        throw error
+    }
+}
 
 // Song Store
 
@@ -79,8 +99,13 @@ const songReducer = (state = initialState, action) => {
             }
         case GET_SINGLE_SONG:
             return {
-
+                ...state,
+                singleSong: {
+                    ...state.singleSong,
+                    [action.payload.id]: action.payload,
+                },
             }
+
         case UPDATE_USER_SONG:
             return {
 

@@ -275,7 +275,7 @@ def seed_users():
     album_28 = Albums (
         user_id = 1,
         title = "To Be Loved",
-        album_photo = "",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/To+Be+Loved+Michael+Buble.jpeg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)

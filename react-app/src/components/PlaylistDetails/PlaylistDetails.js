@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom"
 import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
 import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
@@ -16,19 +16,28 @@ import "./PlaylistDetails.css"
 function PlaylistDetails() {
     const { playlistId } = useParams()
     const dispatch = useDispatch();
+    const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
 
     const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
-    console.log('what is in new_songs=====>', new_songs)
 
     const [playlistInfo, setPlaylistInfo] = useState(new_songs)
     const [selectedSongs, setSelectedSongs] = useState([])
     const [showModal, setShowModal] = useState(false);
     const [playlistToDelete, setPlaylistToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const { play, currentSong, setCurrentSong, songTitle, setSongTitle, artistName, setArtistName, albumCover, setAlbumCover} = useContext(SongContext);
+    const { play,
+        // currentSong,
+        setCurrentSong,
+        // songTitle,
+        setSongTitle,
+        // artistName,
+        setArtistName,
+        // albumCover,
+        setAlbumCover
+    } = useContext(SongContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -76,7 +85,6 @@ function PlaylistDetails() {
         setSongTitle(song.title)
         setArtistName(song.artist)
         setAlbumCover(song.album_arts)
-        console.log('song.album_arts', song.album_arts)
         play()
         setQuery("")
     }
@@ -218,7 +226,7 @@ function PlaylistDetails() {
                                             </div>
                                         ) : null}
                                     </div>
-                                    <div className="grid-row">
+                                    <div className="grid-row album-title">
                                         {song?.album_titles?.map((albumTitle, index) => (
                                             <p key={index}>{albumTitle}</p>
                                         ))}
@@ -276,7 +284,6 @@ function PlaylistDetails() {
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
     )

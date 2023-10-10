@@ -11,7 +11,7 @@ session = db.session
 @song_routes.route("/all", methods=["GET"])
 def get_all_songs():
     all_songs = Songs.query.all()
-    print('all_songs============>', all_songs)
+    # print('all_songs============>', all_songs)
     return [songs.to_dict() for songs in all_songs]
 
 @song_routes.route("/new", methods=["POST"])
@@ -25,3 +25,22 @@ def update_songs():
 @song_routes.route("/delete", methods=["DELETE"])
 def delete_songs():
     pass
+
+@song_routes.route("/<int:songIdInt>", methods=["GET"])
+def get_single_song(songIdInt):
+    song = Songs.query.get(songIdInt)
+    print('What does song look like=====>', song)
+
+    if song is None:
+        return jsonify({"error": "Song not found"}), 404
+    
+    song_data = {
+        "id": song.id,
+        "title": song.title,
+        "artist": song.artist,
+        "lyrics": song.lyrics,
+        "duration": song.duration,
+        "date_created": datetime.utcnow(),  
+    }
+
+    return jsonify(song_data)
