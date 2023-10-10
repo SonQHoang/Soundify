@@ -281,6 +281,15 @@ def seed_users():
         date_created = datetime(2023, 9, 6)
     )
 
+    album_29 = Albums (
+        user_id = 1,
+        title = "Duets II (Feat. John Mayer)",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Duets+II+John+Mayer.jpeg",
+        owner = "Tony Bennett",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
     playlist_1 = Playlists (
         user_id = 1,
         owner = "Demo",
@@ -4305,7 +4314,7 @@ def seed_users():
     db.session.add_all([demo, bobbie])
     # db.session.add_all([marnie])
     # 30 more if I want to access all of them, should probably split them up based on different playlists
-    db.session.add_all([album_1, album_2, album_3, album_4, album_5, album_6, album_7, album_8, album_9, album_10, album_11, album_12, album_13, album_14, album_15, album_16, album_17, album_18, album_19, album_20, album_21, album_22, album_23, album_24, album_25, album_26, album_27, album_28])
+    db.session.add_all([album_1, album_2, album_3, album_4, album_5, album_6, album_7, album_8, album_9, album_10, album_11, album_12, album_13, album_14, album_15, album_16, album_17, album_18, album_19, album_20, album_21, album_22, album_23, album_24, album_25, album_26, album_27, album_28, album_29])
 
     db.session.add_all([playlist_1, playlist_3, playlist_4, playlist_5])
     # db.session.add_all([playlist_2])
@@ -4343,6 +4352,7 @@ def seed_users():
     album_26.album_songs.extend([song_37, song_59, song_60, song_61])
     album_27.album_songs.extend([song_62])
     album_28.album_songs.extend([song_63, song_64])
+    album_29.album_songs.extend([song_16])
 
     playlist_1.playlist_songs.extend([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_51, song_65, song_66, song_67, song_68, song_69])
     playlist_3.playlist_songs.extend([song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30, song_31, song_32, song_33, song_34, song_35, song_36])
