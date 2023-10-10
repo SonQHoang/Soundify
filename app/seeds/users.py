@@ -2162,7 +2162,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/11+-+Ed+Sheeran+-+Thinking+out+Loud.mp3",
         title = "Thinking Out Loud",
-        artist = "Ed Sheeran",
+        artist = "Ed Sheeran", 
         duration = "4:18",
         lyrics = """
                 When your legs don't work like they used to before
