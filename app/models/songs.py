@@ -40,8 +40,7 @@ class Songs(db.Model):
             "lyrics": self.lyrics,
             "duration": self.duration,
             "date_created": self.date_created,
-            # "song_song_likes": [like.to_dict() for like in self.song_song_likes],
-
+            "album_titles": [album.title for album in self.song_albums]
             # This will return an array of all of the lists of the different playlists where this song is attached
             # "song_playlists": [song.to_dict() for song in self.song_playlists]
         }

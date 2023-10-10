@@ -78,7 +78,7 @@ def seed_users():
         user_id = 1,
         title = "It's Time",
         album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Its+Time+Album+Art+Michael+Buble.jpeg",
-        owner = "Michael Buble",
+        owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
     )
@@ -91,7 +91,204 @@ def seed_users():
         year = 2021,
         date_created = datetime(2023, 9, 6)
     )
-    
+
+    album_8 = Albums (
+        user_id = 1,
+        title = "Battle Studies",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Battle+Studies+John+Mayer.jpeg",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_9 = Albums (
+        user_id = 1,
+        title = "Born and Raised",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Born+and+Raised+John+Mayer.jpeg",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_10 = Albums (
+        user_id = 1,
+        title = "Paradise Valley",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Paradise+Valley+John+Mayer.jpeg",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_11 = Albums (
+        user_id = 1,
+        title = "Room For Squares",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Room+For+Squares+John+Mayer.jpeg",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_12 = Albums (
+        user_id = 1,
+        title = "Say",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Say+John+Mayer.png",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_13 = Albums (
+        user_id = 1,
+        title = "Sob Rock",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Sob+Rock+John+Mayer.png",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_14 = Albums (
+        user_id = 1,
+        title = "The Search for Everything",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/The+Search+for+Everything+John+Mayer.jpeg",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_15 = Albums (
+        user_id = 1,
+        title = "XO",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/XO+John+Mayer.jpeg",
+        owner = "John Mayer",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_16 = Albums (
+        user_id = 1,
+        title = "1989",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/1989+Taylor+Swift.webp",
+        owner = "Taylor Swift",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_17 = Albums (
+        user_id = 1,
+        title = "Fearless",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Fearless+Orig+Taylor+Swift.png",
+        owner = "Taylor Swift",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_18 = Albums (
+        user_id = 1,
+        title = "Fearless (Taylor's Version)",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Fearless+Taylor+Swift.png",
+        owner = "Taylor Swift",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_19 = Albums (
+        user_id = 1,
+        title = "Love Story (Taylor's Version)",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Love+Story+Taylor+Swift.jpeg",
+        owner = "Taylor Swift",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_20 = Albums (
+        user_id = 1,
+        title = "Lover",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Lover+Taylor+Swift.jpeg",
+        owner = "Taylor Swift",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_21 = Albums (
+        user_id = 1,
+        title = "Speak Now (Taylor's Version)",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Speak+Now+Taylor+Swift.png",
+        owner = "Taylor Swift",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_22 = Albums (
+        user_id = 1,
+        title = "Call Me Irresponsible",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_23 = Albums (
+        user_id = 1,
+        title = "Call Me Irresponsible (Deluxe)",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_24 = Albums (
+        user_id = 1,
+        title = "Crazy Love",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Crazy+Love+Michael+Buble.png",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_25 = Albums (
+        user_id = 1,
+        title = "It's Time",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/It's+time+Michael+Buble.jpeg",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_26 = Albums (
+        user_id = 1,
+        title = "Love (Deluxe Edition)",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Love+Michael+Buble.jpg",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_27 = Albums (
+        user_id = 1,
+        title = "Michael Bublé",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Michael+Buble.jpeg",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_28 = Albums (
+        user_id = 1,
+        title = "Special Delivery",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Special+Delivery+Michael+Buble.jpg",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
+
+    album_29 = Albums (
+        user_id = 1,
+        title = "To Be Loved",
+        album_photo = "",
+        owner = "Michael Bublé",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
 
     playlist_1 = Playlists (
         user_id = 1,
@@ -128,7 +325,7 @@ def seed_users():
         user_id = 1,
         owner = "Demo",
         image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+Michael+Buble.jpeg",
-        title = "This is Michael Buble",
+        title = "This is Michael Bublé",
         date_created = datetime(2023, 9, 6)
     )
     
@@ -319,42 +516,41 @@ def seed_users():
 
     song_4 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Leon+Bridges%2C+John+Mayer+-+Inside+Friend+(feat.+John+Mayer).mp3",
-        title = "Inside Friend (feat. John Mayer)",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/08+-+John+Mayer+-+Love+Is+A+Verb.mp3",
+        title = "Love is a Verb",
         artist = "John Mayer",
-        duration = "2:55",
+        duration = "2:24",
         lyrics = """
-                    You can be my inside friend
-                    You can be my inside friend
-                    Slide through when you want
-                    You know I want to put you on
-                    It's evil out there
-                    Let's keep it at home
-                    So come on
-                    I wanna see you slide across the kitchen floor
-                    Can't give you more but
-                    You can be my inside friend
-                    You can be my inside friend
-                    My inside friend
-                    Won't you be my inside friend?
-                    Come through with your hair still wet
-                    Yoga pants, sweatshirt on the bed
-                    Heart heavy and your week been crazy
-                    We can be lazy, baby, embrace me
-                    In this feeling so right
-                    Don't think about leaving anytime tonight
-                    You can just slide across my kitchen floor
-                    And tell me goodbye
-                    And just see yourself right out my door
-                    Come back through when you want to
-                    If you do
-                    You never call me anymore
-                    That's what inside friends are for
-                    You can be my inside friend
-                    You can be my inside friend
-                    My inside friend
-                    Won't you be my inside friend?
-                    (Don't you wanna be, don't you wanna be, don't you wanna be my)
+                    Love is a verb
+                    It ain't a thing
+                    It's not something you own
+                    It's not something you scream
+                    When you show me love
+                    I don't need your words
+                    Yeah love ain't a thing
+                    Love is a verb
+                    Love ain't a thing
+                    Love is a verb
+                    Love ain't a crutch
+                    It ain't an excuse
+                    No you can't get through love
+                    On just a pile of I-O-Us
+                    Love ain't a drug
+                    Despite what you've heard
+                    Yeah love ain't a thing
+                    Love is a verb
+                    Love ain't a thing
+                    Love is a verb
+                    So you gotta show, show, show me
+                    Show, show, show me
+                    Show, show, show me
+                    That love is a verb
+                    You gotta show, show, show me
+                    Show, show, show me
+                    Show, show, show me
+                    That love is a verb
+                    Love ain't a thing
+                    Love is a verb
                         """,
         date_created = datetime(2023, 9, 6)
     )
@@ -408,40 +604,43 @@ def seed_users():
 
     song_6 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Jacob+Collier%2C+Lizzy+McAlpine%2C+John+Mayer+-+Never+Gonna+Be+Alone+(feat.+Lizzy+McAlpine+%26+John+Mayer).mp3",
-        title = "Never Gonna Be Alone (feat. Lizzy McAlpine & John Mayer)",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+Neon.mp3",
+        title = "Neon",
         artist = "John Mayer",
-        duration = "4:10",
+        duration = "4:21",
         lyrics = """
-                There's a patch of sunlight in my room
-                On the carpet where I held you for a moment in June
-                There was something so sweet about it, never been so unguarded
-                And it made me fall for you
-                There's a tree that looks up at the moon
-                In the garden, where I held you for a moment in the gloom
-                There was something so sweet about it, I'm holding onto this moment
-                'Cause it made me fall for you
-                Made me fall for you
-                Take me back to the window, take me back to the door
-                You'll be right where I left you sittin' on the floor
-                Now I'm never gonna be alone, mm, mm
-                Take me back to the window, take me back to the door
-                You'll be right where I left you sittin' on the floor
-                Now I'm never gonna be alone
-                And I know, I know
-                There's so much I want to say to you
-                Even though I know
-                Nothing's gonna change
-                But I'll always find my way back here to you
-                Take me back to the window, take me back to the door
-                You'll be right where I left you sittin' on the floor
-                Now I'm never gonna be alone
-                (Never gonna be alone, never gonna be alone, be alone, be alone)
-                Take me back to the window, take me back to the door
-                You'll be right where I left you sittin' on the floor
-                Now I'm never gonna be alone (be alone)
-                There's a patch of sunlight in my room
-                On the carpet where I held you for a moment
+            When sky blue gets dark enough
+            To see the colors of the city lights
+            A trail of ruby red and diamond white
+            Hits her like a sunrise
+            She comes and she goes
+            Like no one can
+            Tonight she's out to lose herself
+            And find a high on Peachtree Street
+            From mixed drinks to techno beats it's always
+            Heavy into everything
+            She comes and goes and comes and goes
+            Like no one can
+            She comes and goes and no one knows
+            She's slipping through my hands
+            She's always buzzing just like
+            Neon, neon
+            Neon, neon
+            Who knows how long, how long, how long
+            She can go before she burns away
+            I can't be her angel now
+            You know it's not my place to hold her down
+            And it's hard for me to take a stand
+            When I would take her anyway I can
+            She comes and goes and comes and goes
+            Like no one can
+            She comes and goes and no one knows
+            She's slipping through my hands
+            She's always buzzing just like
+            Neon, neon
+            Neon, neon
+            Who knows how long, how long, how long
+            She can go before she burns away
                         """,
         date_created = datetime(2023, 9, 6)
     )
@@ -1836,7 +2035,7 @@ def seed_users():
 
     song_32 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/03+-+Ed+Sheeran+-+Sing.mp3",
+        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/04+-+Ed+Sheeran+-+Don't.mp3",
         title = "Don't",
         artist = "Ed Sheeran",
         duration = "3:40",
@@ -3233,7 +3432,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible+(Deluxe)/14+-+Michael+Bubl%C3%A9+-+L+O+V+E.mp3",
         title = "L O V E",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "2:50",
         lyrics = """
                 L is for the way you look at me
@@ -3264,7 +3463,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible/09+-+Michael+Bubl%C3%A9+-+Everything.mp3",
         title = "Everything",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:32",
         lyrics = """
                 You're a falling star, you're the get away car
@@ -3307,7 +3506,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Crazy+Love/05+-+Michael+Bubl%C3%A9+-+Haven't+Met+You+Yet.mp3",
         title = "Haven't Met You Yet",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "4:03",
         lyrics = """
                 I'm not surprised, not everything lasts
@@ -3370,7 +3569,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/01+-+Michael+Bubl%C3%A9+-+Feeling+Good.mp3",
         title = "Feeling Good",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:56",
         lyrics = """
                 Birds flying high
@@ -3432,7 +3631,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/05+-+Michael+Bubl%C3%A9+-+Home.mp3",
         title = "Home",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:45",
         lyrics = """
                 Another summer day
@@ -3495,7 +3694,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/08+-+Michael+Bubl%C3%A9+-+Save+the+Last+Dance+for+Me.mp3",
         title = "Save The Last Dance For Me",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:37",
         lyrics = """
                 Now you can dance every dance with the guy
@@ -3548,7 +3747,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+love+(Deluxe+Edition)/03+-+Michael+Bubl%C3%A9+-+Love+You+Anymore.mp3",
         title = "Love You Anymore",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:02",
         lyrics = """
                 Just because I wander 'round the places we would go
@@ -3590,7 +3789,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/04+-+Michael+Bubl%C3%A9+-+For+Once+in+My+Life.mp3",
         title = "For Once in My Life",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "2:33",
         lyrics = """
                 For once in my life, I've got someone who needs me
@@ -3620,7 +3819,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/10+-+Michael+Bubl%C3%A9+-+Sway.mp3",
         title = "Sway",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:08",
         lyrics = """
                 When marimba rhythms start to play
@@ -3671,7 +3870,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/11+-+Michael+Bubl%C3%A9+-+The+Way+You+Look+Tonight.mp3",
         title = "The Way You Look Tonight",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "4:39",
         lyrics = """
                 Someday when I'm awfully low
@@ -3707,7 +3906,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/12+-+Michael+Bubl%C3%A9+-+Come+Fly+with+Me.mp3",
         title = "Come Fly with Me",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:18",
         lyrics = """
                 Come fly with me, let's fly, let's fly away
@@ -3757,7 +3956,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Special+Delivery/03+-+Michael+Bubl%C3%A9+-+Dream+a+Little+Dream+of+Me.mp3",
         title = "Dream a Little Dream of Me",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:07",
         lyrics = """
                 Stars shining bright above you
@@ -3796,7 +3995,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/02+-+Michael+Bubl%C3%A9+-+It's+a+Beautiful+Day.mp3",
         title = "It's a Beautiful Day",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:18",
         lyrics = """
                 I don't know why
@@ -3850,7 +4049,7 @@ def seed_users():
         user_id = 1,
         audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/09+-+Michael+Bubl%C3%A9%2C+Naturally+7+-+Have+I+Told+You+Lately+That+I+Love+You+(with+Naturally+7).mp3",
         title = "Have I Told You Lately That I Love You (with Naturally 7)",
-        artist = "Michael Buble",
+        artist = "Michael Bublé",
         duration = "3:25",
         lyrics = """
                 Have I told you lately that I love you?
@@ -4132,7 +4331,29 @@ def seed_users():
     album_5.album_songs.extend([song_21, song_22, song_23, song_24, song_25, song_26, song_27])
     album_6.album_songs.extend([song_55, song_56, song_57])
     album_7.album_songs.extend([song_43, song_44, song_45, song_46, song_47])
-    
+    album_8.album_songs.extend([song_1, song_2, song_20])
+    album_9.album_songs.extend([song_4, song_8, song_18])
+    album_10.album_songs.extend([song_12, song_14])
+    album_11.album_songs.extend([song_6, song_7, song_19])
+    album_12.album_songs.extend([song_9])
+    album_13.album_songs.extend([song_5, song_17, song_51])
+    album_14.album_songs.extend([song_10, song_15])
+    album_15.album_songs.extend([song_13])
+    album_16.album_songs.extend([song_37, song_38])
+    album_17.album_songs.extend([song_40])
+    album_18.album_songs.extend([song_39])
+    album_19.album_songs.extend([song_41])
+    album_20.album_songs.extend([song_42])
+    album_21.album_songs.extend([song_48,song_49,song_50])
+    album_22.album_songs.extend([song_53])
+    album_23.album_songs.extend([song_52])
+    album_24.album_songs.extend([song_54])
+    album_25.album_songs.extend([song_55, song_56, song_57, ])
+    album_26.album_songs.extend([song_58])
+    album_27.album_songs.extend([song_37, song_59, song_60, song_61])
+    album_28.album_songs.extend([song_62])
+    album_29.album_songs.extend([song_63, song_64])
+
     playlist_1.playlist_songs.extend([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_51, song_65, song_66, song_67, song_68, song_69])
     playlist_3.playlist_songs.extend([song_21, song_22, song_23, song_24, song_25, song_26, song_27, song_28, song_29, song_30, song_31, song_32, song_33, song_34, song_35, song_36])
     playlist_4.playlist_songs.extend([song_38, song_39, song_40, song_41, song_42, song_43, song_44, song_45, song_46, song_47, song_48, song_49, song_50])
