@@ -480,7 +480,7 @@ def seed_users():
 
     song_3 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+Wynton+Marsalis+Septet%2C+John+Mayer%2C+Wynton+Marsalis+-+I'm+Gonna+Find+Another+You.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+Wynton+Marsalis+Septet%2C+John+Mayer%2C+Wynton+Marsalis+-+I'm+Gonna+Find+Another+You.mp3",
         title = "I'm Gonna Find Another You",
         artist = "John Mayer",
         duration = "2:44",
@@ -516,7 +516,7 @@ def seed_users():
 
     song_4 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/08+-+John+Mayer+-+Love+Is+A+Verb.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/08+-+John+Mayer+-+Love+Is+A+Verb.mp3",
         title = "Love is a Verb",
         artist = "John Mayer",
         duration = "2:24",
@@ -557,7 +557,7 @@ def seed_users():
 
     song_5 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Last+Train+Home.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+Last+Train+Home.mp3",
         title = "Last Train Home",
         artist = "John Mayer",
         duration = "3:07",
@@ -604,7 +604,7 @@ def seed_users():
 
     song_6 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+Neon.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/05+-+John+Mayer+-+Neon.mp3",
         title = "Neon",
         artist = "John Mayer",
         duration = "4:21",
@@ -647,7 +647,7 @@ def seed_users():
 
     song_7 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+No+Such+Thing.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+No+Such+Thing.mp3",
         title = "No Such Thing",
         artist = "John Mayer",
         duration = "3:51",
@@ -702,7 +702,7 @@ def seed_users():
 
     song_8 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Queen+of+California.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+Queen+of+California.mp3",
         title = "Queen of California",
         artist = "John Mayer",
         duration = "4:10",
@@ -733,7 +733,7 @@ def seed_users():
 
     song_9 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Say.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+Say.mp3",
         title = "Say",
         artist = "John Mayer",
         duration = "3:50",
@@ -808,7 +808,7 @@ def seed_users():
 
     song_10 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Still+Feel+Like+Your+Man.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+Still+Feel+Like+Your+Man.mp3",
         title = "Still Feel Like Your Man",
         artist = "John Mayer",
         duration = "3:55",
@@ -868,7 +868,7 @@ def seed_users():
 
     song_11 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Waiting+On+the+World+to+Change.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+Waiting+On+the+World+to+Change.mp3",
         title = "Waiting On the World to Change",
         artist = "John Mayer",
         duration = "3:21",
@@ -928,7 +928,7 @@ def seed_users():
 
     song_12 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+Wildfire.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+Wildfire.mp3",
         title = "Wildfire",
         artist = "John Mayer",
         duration = "4:13",
@@ -973,7 +973,7 @@ def seed_users():
 
     song_13 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/01+-+John+Mayer+-+XO.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/01+-+John+Mayer+-+XO.mp3",
         title = "XO",
         artist = "John Mayer",
         duration = "3:33",
@@ -1033,7 +1033,7 @@ def seed_users():
 
     song_14 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Dear+Marie.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/02+-+John+Mayer+-+Dear+Marie.mp3",
         title = "Dear Marie",
         artist = "John Mayer",
         duration = "3:42",
@@ -1058,7 +1058,7 @@ def seed_users():
 
     song_15 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Emoji+of+a+Wave.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/02+-+John+Mayer+-+Emoji+of+a+Wave.mp3",
         title = "Emoji of a Wave",
         artist = "John Mayer",
         duration = "3:59",
@@ -1117,7 +1117,7 @@ def seed_users():
 
     song_16 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+Tony+Bennett%2C+John+Mayer+-+One+for+My+Baby+(And+One+More+for+the+Road).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/02+-+Tony+Bennett%2C+John+Mayer+-+One+for+My+Baby+(And+One+More+for+the+Road).mp3",
         title = "One for My Baby (And One More for the Road)",
         artist = "John Mayer",
         duration = "2:56",
@@ -1159,7 +1159,7 @@ def seed_users():
 
     song_17 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Shouldn't+Matter+but+It+Does.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/02+-+John+Mayer+-+Shouldn't+Matter+but+It+Does.mp3",
         title = "Shouldn't Matter but It Does",
         artist = "John Mayer",
         duration = "3:56",
@@ -1207,7 +1207,7 @@ def seed_users():
 
     song_18 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+The+Age+of+Worry.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/02+-+John+Mayer+-+The+Age+of+Worry.mp3",
         title = "The Age of Worry",
         artist = "John Mayer",
         duration = "2:37",
@@ -1251,7 +1251,7 @@ def seed_users():
 
     song_19 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/02+-+John+Mayer+-+Why+Georgia.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/02+-+John+Mayer+-+Why+Georgia.mp3",
         title = "Why Georgia",
         artist = "John Mayer",
         duration = "4:28",
@@ -1302,7 +1302,7 @@ def seed_users():
 
     song_20 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+-+John+Mayer+-+Half+of+My+Heart.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/03+-+John+Mayer+-+Half+of+My+Heart.mp3",
         title = "Half of My Heart",
         artist = "John Mayer",
         duration = "4:10",
