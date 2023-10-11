@@ -2,64 +2,61 @@ import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom"
 import { getAllSongs } from "../../store/songs";
-import { AddSongToPlaylist } from "../../store/playlists";
-import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
-import { GetSinglePlaylist } from "../../store/playlists";
-import { getUserPlaylist } from "../../store/playlists";
-import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
-import { GetSongsForPlaylist } from "../../store/playlists";
-import TestSideBar from "../TestComponents/TestSideBar";
-import TestNav from "../TestComponents/TestNav";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { SongContext } from "../../context/SongContext";
+import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
+import { AddSongToPlaylist, GetSinglePlaylist, getUserPlaylist, GetSongsForPlaylist } from "../../store/playlists";
+import TestNav from "../TestComponents/TestNav";
+import TestSideBar from "../TestComponents/TestSideBar";
+import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
 import "./PlaylistDetails.css"
 
 function PlaylistDetails() {
-    const { playlistId } = useParams()
-    const dispatch = useDispatch();
 
-    const sessionUser = useSelector(state => state.session.user)
-    const userId = sessionUser.id
+        // Retrieving data from Redux store
+        const sessionUser = useSelector(state => state.session.user);
+        const new_songs = useSelector(state => state.playlist.singlePlaylist.songs);
+        const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
+        const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist);
+    
+        // URL params
+        const { playlistId } = useParams();
+    
+        // Local component state
+        const [isLoading, setIsLoading] = useState(true);
+        const [query, setQuery] = useState("");
+        const [selectedSongs, setSelectedSongs] = useState([]);
+        const [showModal, setShowModal] = useState(false);
+        const [playlistToDelete, setPlaylistToDelete] = useState(null);
+        const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
+        const [modalType, setModalType] = useState(null);
+        const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+        const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-    const new_songs = (useSelector(state => state.playlist.singlePlaylist.songs))
+        // Context
+        const { play, setCurrentSong, setSongTitle, setArtistName, setAlbumCover } = useContext(SongContext);
+    
+        // Dispatch
+        const dispatch = useDispatch();
 
-    const [playlistInfo, setPlaylistInfo] = useState(new_songs)
-    const [selectedSongs, setSelectedSongs] = useState([])
-    const [showModal, setShowModal] = useState(false);
-    const [playlistToDelete, setPlaylistToDelete] = useState(null);
-    const [modalType, setModalType] = useState(null);
-    const { play,
-        // currentSong,
-        setCurrentSong,
-        // songTitle,
-        setSongTitle,
-        // artistName,
-        setArtistName,
-        // albumCover,
-        setAlbumCover
-    } = useContext(SongContext);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+        const getPlaylistSongs = async () => {
+            await dispatch(GetSongsForPlaylist(playlistId))
+        }
 
-    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+        useEffect(() => {
+            setIsLoading(true);
+            getPlaylistSongs(playlistId)
+            dispatch(getAllSongs());
+            dispatch(GetSongsForPlaylist(playlistId));
+            dispatch(GetSinglePlaylist(playlistId))
+                .finally(() => setIsLoading(false));
+        }, [dispatch, playlistId]);
 
-    // useEffect(() => {
-    //     getPlaylistSongs(playlistId)
-    //     dispatch(GetSongsForPlaylist(playlistId))
-    //     dispatch(GetSinglePlaylist(playlistId))
-    //     dispatch(getAllSongs())
-    // }, [playlistInfo, AddSongToPlaylist, dispatch, userId])
-
-    useEffect(() => {
-        getPlaylistSongs(playlistId)
-        dispatch(getAllSongs())
-        dispatch(GetSongsForPlaylist(playlistId));
-        dispatch(GetSinglePlaylist(playlistId));
-    }, [dispatch, playlistId]);
+        if (isLoading) {
+            return <LoadingSpinner />
+        }
 
     //=========================================== Searchbar Start============================================== 
-    const [query, setQuery] = useState(""); // Initialize query with an empty string
-
-
-    const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const titleKVPairs = songLibrary.map(song => ({
         id: song.id,
         user_id: song.user_id,
@@ -105,17 +102,12 @@ function PlaylistDetails() {
         })
     }
 
-    const getPlaylistSongs = async () => {
-        await dispatch(GetSongsForPlaylist(playlistId))
-    }
 
     //======================================================SearchBar End========================================
 
     //======================================================DeletePlaylist Start========================================
 
-    const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist)
     const isOwner = currentPlaylist.owner === sessionUser.first_name
-
 
     const handleDeleteClick = async () => {
         setPlaylistToDelete(currentPlaylist)
@@ -128,15 +120,12 @@ function PlaylistDetails() {
 
     //======================================================UpdatePlaylist Start========================================
 
-    const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
-
     const handleUpdateClick = async () => {
         setPlaylistToUpdate(currentPlaylist)
         setModalType("update");
         setShowModal(true)
         dispatch(getUserPlaylist())
     }
-
 
     //======================================================UpdatePlaylist End========================================
 
