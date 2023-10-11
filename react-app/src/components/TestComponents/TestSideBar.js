@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import './TestSideBar.css';
 import UserPlaylist from '../UserPlaylist/UserPlaylist';
@@ -7,9 +7,16 @@ import UserAlbum from '../UserAlbum/UserAlbum';
 
 const TestSideBar = () => {
 
-    const [dropDownMenu, setDropDownMenu] = useState(false)
-    const [activeLink, setActiveLink] = useState('playlists')
+    const initialActiveLink = () => {
+        return localStorage.getItem('activeLink' || 'playlists')
+    }
 
+    const [dropDownMenu, setDropDownMenu] = useState(false)
+    const [activeLink, setActiveLink] = useState(initialActiveLink)
+
+    useEffect(() => {
+        localStorage.setItem('activeLink', activeLink);
+    }, [activeLink]);
 
     const handleDropDown = () => {
         setDropDownMenu(!dropDownMenu)

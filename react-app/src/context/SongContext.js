@@ -4,11 +4,16 @@ export const SongContext = createContext();
 
 export const SongProvider = ({ children }) => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [currentSong, setCurrentSong] = useState(null);
+    const [currentSong, _setCurrentSong] = useState(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [songTitle, setSongTitle] = useState(null);
     const [artistName, setArtistName] = useState(null);
     const [albumCover, setAlbumCover] = useState(null);
+    
+    const setCurrentSong = (song) => {
+        setCurrentTime(0); // Reset the time
+        _setCurrentSong(song); // Set the new song
+    };
 
     const play = () => setIsPlaying(true);
     const pause = () => setIsPlaying(false);
