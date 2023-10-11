@@ -39,12 +39,19 @@ function AlbumDetails() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
+    // useEffect(() => {
+    //     getAlbumSongs(albumId)
+    //     dispatch(GetSongsForAlbum(albumId))
+    //     dispatch(GetSingleAlbum(albumId))
+    //     dispatch(getAllSongs())
+    // }, [albumInfo, AddSongToAlbum, dispatch, userId])
+
     useEffect(() => {
         getAlbumSongs(albumId)
         dispatch(GetSongsForAlbum(albumId))
         dispatch(GetSingleAlbum(albumId))
         dispatch(getAllSongs())
-    }, [albumInfo, AddSongToAlbum, dispatch, userId])
+    }, [dispatch, albumId])
 
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string

@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { authenticate } from "./store/session";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { SongProvider } from "./context/SongContext";
+
+import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
+import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
+import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
-import { authenticate } from "./store/session";
-import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist"
-import UserPlaylist from "./components/UserPlaylist/UserPlaylist";
-import PlaylistDetails from "./components/PlaylistDetails/PlaylistDetails";
-import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
-import Song from "./components/Songs/Song"
-import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
-import UserAlbum from "./components/UserAlbum/UserAlbum";
-import SplashPage from "./components/SplashPage/SplashPage";
 import LandingPagePlaylists from "./components/LandingPagePlaylists/LandingePagePlaylists";
 import MainPageTest from "./components/MainPageTest/MainPageTest";
+import Player from "./components/AudioBar/audiobar";
+import PlaylistDetails from "./components/PlaylistDetails/PlaylistDetails";
+import Song from "./components/Songs/Song"
+import SongDetails from "./components/SongDetails/SongDetails";
+import SplashPage from "./components/SplashPage/SplashPage";
 import TestNav from "./components/TestComponents/TestNav";
 import TestSideBar from "./components/TestComponents/TestSideBar";
-import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
+import UserAlbum from "./components/UserAlbum/UserAlbum";
 import UserAlbumTile from "./components/UserAlbumTile/UserAlbumTile";
-import { SongProvider } from "./context/SongContext";
-import Player from "./components/AudioBar/audiobar";
-import SongDetails from "./components/SongDetails/SongDetails";
-// import Footer from "./components/Footer/Footer";
+import UserPlaylist from "./components/UserPlaylist/UserPlaylist";
+import UserPlaylistTile from "./components/UserPlaylistTile/UserPlaylistTile";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +33,6 @@ function App() {
   return (
     <>
       <SongProvider>
-        {/* <Navigation isLoaded={isLoaded} /> */}
         {isLoaded && (
           <>
             <Switch>

@@ -22,7 +22,6 @@
 .album-image {
     width: 150px;
     height: 150px;
-    /* Fit the size of the container */
     object-fit: cover;
     border-radius: 15px 15px 0 0;
     margin: 0;

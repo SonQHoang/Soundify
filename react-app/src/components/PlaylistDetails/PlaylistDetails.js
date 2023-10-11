@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { getAllSongs } from "../../store/songs";
 import { AddSongToPlaylist } from "../../store/playlists";
 import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
@@ -16,7 +16,6 @@ import "./PlaylistDetails.css"
 function PlaylistDetails() {
     const { playlistId } = useParams()
     const dispatch = useDispatch();
-    const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
@@ -42,12 +41,19 @@ function PlaylistDetails() {
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
+    // useEffect(() => {
+    //     getPlaylistSongs(playlistId)
+    //     dispatch(GetSongsForPlaylist(playlistId))
+    //     dispatch(GetSinglePlaylist(playlistId))
+    //     dispatch(getAllSongs())
+    // }, [playlistInfo, AddSongToPlaylist, dispatch, userId])
+
     useEffect(() => {
         getPlaylistSongs(playlistId)
-        dispatch(GetSongsForPlaylist(playlistId))
-        dispatch(GetSinglePlaylist(playlistId))
         dispatch(getAllSongs())
-    }, [playlistInfo, AddSongToPlaylist, dispatch, userId])
+        dispatch(GetSongsForPlaylist(playlistId));
+        dispatch(GetSinglePlaylist(playlistId));
+    }, [dispatch, playlistId]);
 
     //=========================================== Searchbar Start============================================== 
     const [query, setQuery] = useState(""); // Initialize query with an empty string

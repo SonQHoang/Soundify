@@ -41,11 +41,11 @@ const TestSideBar = () => {
                             <button onClick={handleFeatureClick}>Search</button>
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div className="playlist-albums-container">
                     <div className="library-create-playlist-container">
                         <div className="library-create-upper">
-                            <h2>Your Library</h2> 
+                            <h2>Your Library</h2>
                             <button className="create-playlist-button" onClick={handleDropDown}>
                                 <img src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1694920890/icons8-plus-16_2_w7ebvj.png" alt="Create Playlist" />
                             </button>
