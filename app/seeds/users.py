@@ -331,7 +331,7 @@ def seed_users():
     
     song_1 = Songs (
         user_id = 1,
-        audio_url = "https://d47mwstkaud3p.cloudfront.net/05 - John Mayer - Perfectly Lonely.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/JohnMayerPerfectlyLonely.mp3",
         title = "Perfectly Lonely",
         artist = "John Mayer",
         duration = "4:28",
