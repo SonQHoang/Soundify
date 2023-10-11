@@ -11,6 +11,7 @@ const Player = () => {
         play,
         pause,
         currentSong,
+        // currentTime,
         setCurrentTime,
         songTitle,
         artistName,
@@ -28,27 +29,35 @@ const Player = () => {
         pause();
     };
 
+    // useEffect(() => {
+    //     if (playerRef.current && playerRef.current.audio.current) {
+    //         playerRef.current.audio.current.currentTime = currentTime;
+    //     }
+    // }, [currentTime, currentSong]);
+
     return (
-        <div className="audio-bar-container">
-            <div className="audio-bar-song-info">
-                <div className="audio-bar-album-cover=">
-                {albumCover ? <img className="album-cover-image" src={albumCover} alt="Album Cover" /> : null}
-                </div>                
-                <div>
-                    <div>{songTitle}</div>
-                    <div>{artistName}</div>
+        currentSong ? ( // Added this line to conditionally render the player based on currentSong
+            <div className="audio-bar-container">
+                <div className="audio-bar-song-info">
+                    <div className="audio-bar-album-cover">
+                    {albumCover ? <img className="album-cover-image" src={albumCover} alt="Album Cover" /> : null}
+                    </div>                
+                    <div>
+                        <div>{songTitle}</div>
+                        <div>{artistName}</div>
+                    </div>
                 </div>
+                <AudioPlayer
+                    ref={playerRef}
+                    autoPlayAfterSrcChange={false}
+                    src={currentSong}
+                    onPlay={handlePlay}
+                    onPause={handlePause}
+                    onListen={handleListen}
+                    autoPlay={isPlaying}
+                />
             </div>
-            <AudioPlayer
-                ref={playerRef}
-                autoPlayAfterSrcChange={false}
-                src={currentSong}
-                onPlay={handlePlay}
-                onPause={handlePause}
-                onListen={handleListen}
-                autoPlay={isPlaying}
-            />
-        </div>
+        ) : null
     );
 };
 
