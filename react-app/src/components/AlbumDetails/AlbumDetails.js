@@ -39,15 +39,8 @@ function AlbumDetails() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-    // useEffect(() => {
-    //     getAlbumSongs(albumId)
-    //     dispatch(GetSongsForAlbum(albumId))
-    //     dispatch(GetSingleAlbum(albumId))
-    //     dispatch(getAllSongs())
-    // }, [albumInfo, AddSongToAlbum, dispatch, userId])
-
     useEffect(() => {
-        getAlbumSongs(albumId)
+        // getAlbumSongs(albumId)
         dispatch(GetSongsForAlbum(albumId))
         dispatch(GetSingleAlbum(albumId))
         dispatch(getAllSongs())
@@ -103,9 +96,9 @@ function AlbumDetails() {
         })
     }
 
-    const getAlbumSongs = async () => {
-        await dispatch(GetSongsForAlbum(albumId))
-    }
+    // const getAlbumSongs = async () => {
+    //     await dispatch(GetSongsForAlbum(albumId))
+    // }
 
     //======================================================SearchBar End========================================
 
@@ -271,7 +264,7 @@ function AlbumDetails() {
                             </ul>
                             <button onClick={() => {
                                 addToAlbum();
-                                getAlbumSongs()
+                                // getAlbumSongs()
                             }}>Add to Album</button>
                         </div>
                     </div>

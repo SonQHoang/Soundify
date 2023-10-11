@@ -11,15 +11,10 @@ const Player = () => {
         play,
         pause,
         currentSong,
-        // setCurrentSong,
-        currentTime,
         setCurrentTime,
         songTitle,
-        // setSongTitle,
         artistName,
-        // setArtistName,
         albumCover,
-        // setAlbumCover
     } = useContext(SongContext);
 
     const handleListen = (e) => {
@@ -32,12 +27,6 @@ const Player = () => {
     const handlePause = (e) => {
         pause();
     };
-
-    useEffect(() => {
-        if (playerRef.current && playerRef.current.audio.current) {
-            playerRef.current.audio.current.currentTime = currentTime;
-        }
-    }, [currentTime, currentSong]);
 
     return (
         <div className="audio-bar-container">
