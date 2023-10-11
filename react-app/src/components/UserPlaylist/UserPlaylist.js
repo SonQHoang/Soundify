@@ -18,7 +18,6 @@ const UserPlaylist = () => {
         dispatch(getUserPlaylist())
     }, [dispatch, userId])
 
-
     return (
         <div className="playlist-container">
             {userPlaylist && userPlaylist.map(playlist => (

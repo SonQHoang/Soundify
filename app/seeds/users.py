@@ -293,7 +293,7 @@ def seed_users():
     playlist_1 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+John+Mayer.jpeg",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/John+Mayer+Portrait.jpeg",
         title = "This is John Mayer",
         date_created = datetime(2023, 9, 6)
     )
@@ -308,7 +308,7 @@ def seed_users():
     playlist_3 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+Ed+Sheeran.jpeg",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Ed+Sheeran+Portrait.webp",
         title = "This is Ed Sheeran",
         date_created = datetime(2023, 9, 6)
     )
@@ -316,7 +316,7 @@ def seed_users():
     playlist_4 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+Taylor+Swift.jpeg",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Taylor+Swift+Portrait.webp",
         title = "This is Taylor Swift",
         date_created = datetime(2023, 9, 6)
     )
@@ -324,7 +324,7 @@ def seed_users():
     playlist_5 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/This+is+Michael+Buble.jpeg",
+        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Michael+Buble+Portrait.webp",
         title = "This is Michael Bublé",
         date_created = datetime(2023, 9, 6)
     )
