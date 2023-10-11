@@ -32,7 +32,7 @@ def seed_users():
     album_1 = Albums (
         user_id = 1,
         title = "Continuum",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Continuum+Album+Art+John+Mayer.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Continuum+Album+Art+John+Mayer.png",
         owner = "John Mayer",
         year = 2006,
         date_created = datetime(2023, 9, 6)
@@ -41,7 +41,7 @@ def seed_users():
     album_2 = Albums (
         user_id = 1,
         title = "+",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Plus+Album+Art+Ed+Sheeran.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Plus+Album+Art+Ed+Sheeran.png",
         owner = "Ed Sheeran",
         year = 2011,
         date_created = datetime(2023, 9, 6)
@@ -50,7 +50,7 @@ def seed_users():
     album_3 = Albums (
         user_id = 1,
         title = "x",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Multiply+Album+Art+Ed+Sheeran.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Multiply+Album+Art+Ed+Sheeran.jpeg",
         owner = "Ed Sheeran",
         year = 2014,
         date_created = datetime(2023, 9, 6)
@@ -59,7 +59,7 @@ def seed_users():
     album_4 = Albums (
         user_id = 1,
         title = "=",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Equals+Album+Art.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Equals+Album+Art.png",
         owner = "Ed Sheeran",
         year = 2013,
         date_created = datetime(2023, 9, 6)
@@ -68,7 +68,7 @@ def seed_users():
     album_5 = Albums (
         user_id = 1,
         title = "÷",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Divide+Album+Art+Ed+Sheeran.jpg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Divide+Album+Art+Ed+Sheeran.jpg",
         owner = "Ed Sheeran",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -77,7 +77,7 @@ def seed_users():
     album_6 = Albums (
         user_id = 1,
         title = "It's Time",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Its+Time+Album+Art+Michael+Buble.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Its+Time+Album+Art+Michael+Buble.jpeg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -86,7 +86,7 @@ def seed_users():
     album_7 = Albums (
         user_id = 1,
         title = "Red",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Red+Album+Art+Taylor+Swift.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Red+Album+Art+Taylor+Swift.jpeg",
         owner = "Taylor Swift",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -95,7 +95,7 @@ def seed_users():
     album_8 = Albums (
         user_id = 1,
         title = "Battle Studies",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Battle+Studies+John+Mayer.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Battle+Studies+John+Mayer.jpeg",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -104,7 +104,7 @@ def seed_users():
     album_9 = Albums (
         user_id = 1,
         title = "Born and Raised",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Born+and+Raised+John+Mayer.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Born+and+Raised+John+Mayer.jpeg",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -113,7 +113,7 @@ def seed_users():
     album_10 = Albums (
         user_id = 1,
         title = "Paradise Valley",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Paradise+Valley+John+Mayer.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Paradise+Valley+John+Mayer.jpeg",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -122,7 +122,7 @@ def seed_users():
     album_11 = Albums (
         user_id = 1,
         title = "Room For Squares",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Room+For+Squares+John+Mayer.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Room+For+Squares+John+Mayer.jpeg",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -131,7 +131,7 @@ def seed_users():
     album_12 = Albums (
         user_id = 1,
         title = "Say",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Say+John+Mayer.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Say+John+Mayer.png",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -140,7 +140,7 @@ def seed_users():
     album_13 = Albums (
         user_id = 1,
         title = "Sob Rock",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Sob+Rock+John+Mayer.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Sob+Rock+John+Mayer.png",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -149,7 +149,7 @@ def seed_users():
     album_14 = Albums (
         user_id = 1,
         title = "The Search for Everything",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/The+Search+for+Everything+John+Mayer.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/The+Search+for+Everything+John+Mayer.jpeg",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -158,7 +158,7 @@ def seed_users():
     album_15 = Albums (
         user_id = 1,
         title = "XO",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/XO+John+Mayer.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/XO+John+Mayer.jpeg",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -167,7 +167,7 @@ def seed_users():
     album_16 = Albums (
         user_id = 1,
         title = "1989",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/1989+Taylor+Swift.webp",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/1989+Taylor+Swift.webp",
         owner = "Taylor Swift",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -176,7 +176,7 @@ def seed_users():
     album_17 = Albums (
         user_id = 1,
         title = "Fearless",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Fearless+Orig+Taylor+Swift.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Fearless+Orig+Taylor+Swift.png",
         owner = "Taylor Swift",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -185,7 +185,7 @@ def seed_users():
     album_18 = Albums (
         user_id = 1,
         title = "Fearless (Taylor's Version)",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Fearless+Taylor+Swift.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Fearless+Taylor+Swift.png",
         owner = "Taylor Swift",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -194,7 +194,7 @@ def seed_users():
     album_19 = Albums (
         user_id = 1,
         title = "Love Story (Taylor's Version)",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Love+Story+Taylor+Swift.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Love+Story+Taylor+Swift.jpeg",
         owner = "Taylor Swift",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -203,7 +203,7 @@ def seed_users():
     album_20 = Albums (
         user_id = 1,
         title = "Lover",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Lover+Taylor+Swift.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Lover+Taylor+Swift.jpeg",
         owner = "Taylor Swift",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -212,7 +212,7 @@ def seed_users():
     album_21 = Albums (
         user_id = 1,
         title = "Speak Now (Taylor's Version)",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Speak+Now+Taylor+Swift.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Speak+Now+Taylor+Swift.png",
         owner = "Taylor Swift",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -221,7 +221,7 @@ def seed_users():
     album_22 = Albums (
         user_id = 1,
         title = "Call Me Irresponsible",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -230,7 +230,7 @@ def seed_users():
     album_23 = Albums (
         user_id = 1,
         title = "Call Me Irresponsible (Deluxe)",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -239,7 +239,7 @@ def seed_users():
     album_24 = Albums (
         user_id = 1,
         title = "Crazy Love",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Crazy+Love+Michael+Buble.png",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Crazy+Love+Michael+Buble.png",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -248,7 +248,7 @@ def seed_users():
     album_25 = Albums (
         user_id = 1,
         title = "Love (Deluxe Edition)",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Love+Michael+Buble.jpg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Love+Michael+Buble.jpg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -257,7 +257,7 @@ def seed_users():
     album_26 = Albums (
         user_id = 1,
         title = "Michael Bublé",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Michael+Buble.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Michael+Buble.jpeg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -266,7 +266,7 @@ def seed_users():
     album_27 = Albums (
         user_id = 1,
         title = "Special Delivery",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Special+Delivery+Michael+Buble.jpg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Special+Delivery+Michael+Buble.jpg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -275,7 +275,7 @@ def seed_users():
     album_28 = Albums (
         user_id = 1,
         title = "To Be Loved",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/To+Be+Loved+Michael+Buble.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/To+Be+Loved+Michael+Buble.jpeg",
         owner = "Michael Bublé",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -284,7 +284,7 @@ def seed_users():
     album_29 = Albums (
         user_id = 1,
         title = "Duets II (Feat. John Mayer)",
-        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Duets+II+John+Mayer.jpeg",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Duets+II+John+Mayer.jpeg",
         owner = "Tony Bennett",
         year = 2021,
         date_created = datetime(2023, 9, 6)
@@ -293,7 +293,7 @@ def seed_users():
     playlist_1 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/John+Mayer+Portrait.jpeg",
+        image = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/John+Mayer+Portrait.jpeg",
         title = "This is John Mayer",
         date_created = datetime(2023, 9, 6)
     )
@@ -308,7 +308,7 @@ def seed_users():
     playlist_3 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Ed+Sheeran+Portrait.webp",
+        image = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Ed+Sheeran+Portrait.webp",
         title = "This is Ed Sheeran",
         date_created = datetime(2023, 9, 6)
     )
@@ -316,7 +316,7 @@ def seed_users():
     playlist_4 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Taylor+Swift+Portrait.webp",
+        image = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Taylor+Swift+Portrait.webp",
         title = "This is Taylor Swift",
         date_created = datetime(2023, 9, 6)
     )
@@ -324,7 +324,7 @@ def seed_users():
     playlist_5 = Playlists (
         user_id = 1,
         owner = "Demo",
-        image = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/Michael+Buble+Portrait.webp",
+        image = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Michael+Buble+Portrait.webp",
         title = "This is Michael Bublé",
         date_created = datetime(2023, 9, 6)
     )
@@ -1356,7 +1356,7 @@ def seed_users():
 
     song_21 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/02+-+Ed+Sheeran+-+Castle+on+the+Hill.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/02+-+Ed+Sheeran+-+Castle+on+the+Hill.mp3",
         title = "Castle on the Hill",
         artist = "Ed Sheeran",
         duration = "4:21",
@@ -1408,7 +1408,7 @@ def seed_users():
     
     song_22 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/04+-+Ed+Sheeran+-+Shape+of+You.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/04+-+Ed+Sheeran+-+Shape+of+You.mp3",
         title = "Shape of You",
         artist = "Ed Sheeran",
         duration = "3:53",
@@ -1507,7 +1507,7 @@ def seed_users():
 
     song_23 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/05+-+Ed+Sheeran+-+Perfect.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/05+-+Ed+Sheeran+-+Perfect.mp3",
         title = "Perfect",
         artist = "Ed Sheeran",
         duration = "4:23",
@@ -1562,7 +1562,7 @@ def seed_users():
 
     song_24 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/06+-+Ed+Sheeran+-+Galway+Girl.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/06+-+Ed+Sheeran+-+Galway+Girl.mp3",
         title = "Galway Girl",
         artist = "Ed Sheeran",
         duration = "2:51",
@@ -1623,7 +1623,7 @@ def seed_users():
 
     song_25 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/07+-+Ed+Sheeran+-+Happier.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/07+-+Ed+Sheeran+-+Happier.mp3",
         title = "Happier",
         artist = "Ed Sheeran",
         duration = "3:28",
@@ -1671,7 +1671,7 @@ def seed_users():
 
     song_26 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/10+-+Ed+Sheeran+-+What+Do+I+Know.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/10+-+Ed+Sheeran+-+What+Do+I+Know.mp3",
         title = "What Do I Know",
         artist = "Ed Sheeran",
         duration = "3:57",
@@ -1738,7 +1738,7 @@ def seed_users():
 
     song_27 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/11+-+Ed+Sheeran+-+How+Would+You+Feel+(Paean).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%C3%B7+(Deluxe)/11+-+Ed+Sheeran+-+How+Would+You+Feel+(Paean).mp3",
         title = "How Would You Feel (Paean)",
         artist = "Ed Sheeran",
         duration = "4:41",
@@ -1782,7 +1782,7 @@ def seed_users():
 
     song_28 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/02+-+Ed+Sheeran+-+Shivers.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%3D/02+-+Ed+Sheeran+-+Shivers.mp3",
         title = "Shivers",
         artist = "Ed Sheeran",
         duration = "3:28",
@@ -1852,7 +1852,7 @@ def seed_users():
 
     song_29 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/03+-+Ed+Sheeran+-+First+Times.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%3D/03+-+Ed+Sheeran+-+First+Times.mp3",
         title = "First Times",
         artist = "Ed Sheeran",
         duration = "3:06",
@@ -1896,7 +1896,7 @@ def seed_users():
 
     song_30 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%3D/12+-+Ed+Sheeran+-+Visiting+Hours.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%3D/12+-+Ed+Sheeran+-+Visiting+Hours.mp3",
         title = "Visiting Hours",
         artist = "Ed Sheeran",
         duration = "3:36",
@@ -1931,7 +1931,7 @@ def seed_users():
 
     song_31 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/03+-+Ed+Sheeran+-+Sing.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/03+-+Ed+Sheeran+-+Sing.mp3",
         title = "Sing",
         artist = "Ed Sheeran",
         duration = "3:55",
@@ -2035,7 +2035,7 @@ def seed_users():
 
     song_32 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/04+-+Ed+Sheeran+-+Don't.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/04+-+Ed+Sheeran+-+Don't.mp3",
         title = "Don't",
         artist = "Ed Sheeran",
         duration = "3:40",
@@ -2102,7 +2102,7 @@ def seed_users():
 
     song_33 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/06+-+Ed+Sheeran+-+Photograph.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/06+-+Ed+Sheeran+-+Photograph.mp3",
         title = "Photograph",
         artist = "Ed Sheeran",
         duration = "4:19",
@@ -2160,7 +2160,7 @@ def seed_users():
 
     song_34 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/11+-+Ed+Sheeran+-+Thinking+out+Loud.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+x+(Deluxe+Edition)/11+-+Ed+Sheeran+-+Thinking+out+Loud.mp3",
         title = "Thinking Out Loud",
         artist = "Ed Sheeran", 
         duration = "4:18",
@@ -2211,7 +2211,7 @@ def seed_users():
 
     song_35 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%2B/01+-+Ed+Sheeran+-+The+A+Team.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%2B/01+-+Ed+Sheeran+-+The+A+Team.mp3",
         title = "The A Team",
         artist = "Ed Sheeran",
         duration = "4:42",
@@ -2297,7 +2297,7 @@ def seed_users():
 
     song_36 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/EdSheeranMp3/Ed+Sheeran+-+%2B/09+-+Ed+Sheeran+-+Lego+House.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/EdSheeranMp3/Ed+Sheeran+-+%2B/09+-+Ed+Sheeran+-+Lego+House.mp3",
         title = "Lego House",
         artist = "Ed Sheeran",
         duration = "3:05",
@@ -2359,7 +2359,7 @@ def seed_users():
 
     song_37 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+1989/02+-+Taylor+Swift+-+Blank+Space.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+1989/02+-+Taylor+Swift+-+Blank+Space.mp3",
         title = "Blank Space",
         artist = "Taylor Swift",
         duration = "3:51",
@@ -2452,7 +2452,7 @@ def seed_users():
 
     song_38 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+1989/06+-+Taylor+Swift+-+Shake+It+Off.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+1989/06+-+Taylor+Swift+-+Shake+It+Off.mp3",
         title = "Shake It Off",
         artist = "Taylor Swift",
         duration = "3:39",
@@ -2552,7 +2552,7 @@ def seed_users():
 
     song_39 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Fearless+(Taylor%E2%80%99s+Version)+The+I+Remember+What+You+Said+Last+Night+Chapter/01+-+Taylor+Swift+-+You+Belong+With+Me+(Taylor%E2%80%99s+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Fearless+(Taylor%E2%80%99s+Version)+The+I+Remember+What+You+Said+Last+Night+Chapter/01+-+Taylor+Swift+-+You+Belong+With+Me+(Taylor%E2%80%99s+Version).mp3",
         title = "You Belong With Me (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "3:51",
@@ -2625,7 +2625,7 @@ def seed_users():
 
     song_40 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Fearless/02+-+Taylor+Swift+-+Fifteen.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Fearless/02+-+Taylor+Swift+-+Fifteen.mp3",
         title = "Fifteen",
         artist = "Taylor Swift",
         duration = "4:54",
@@ -2697,7 +2697,7 @@ def seed_users():
 
     song_41 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version)/01+-+Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version)/01+-+Taylor+Swift+-+Love+Story+(Taylor%E2%80%99s+Version).mp3",
         title = "Love Story (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "3:55",
@@ -2757,7 +2757,7 @@ def seed_users():
 
     song_42 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Lover/16+-+Taylor+Swift%2C+Brendon+Urie%2C+Panic!+At+The+Disco+-+ME!+(feat.+Brendon+Urie+of+Panic!+At+The+Disco).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Lover/16+-+Taylor+Swift%2C+Brendon+Urie%2C+Panic!+At+The+Disco+-+ME!+(feat.+Brendon+Urie+of+Panic!+At+The+Disco).mp3",
         title = "ME! (feat. Brendon Urie of Panic! At The Disco)",
         artist = "Taylor Swift",
         duration = "3:13",
@@ -2834,7 +2834,7 @@ def seed_users():
 
     song_43 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/04+-+Taylor+Swift+-+I+Knew+You+Were+Trouble+(Taylor's+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/04+-+Taylor+Swift+-+I+Knew+You+Were+Trouble+(Taylor's+Version).mp3",
         title = "I Knew You Were Trouble (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "3:39",
@@ -2928,7 +2928,7 @@ def seed_users():
 
     song_44 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/06+-+Taylor+Swift+-+22+(Taylor's+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/06+-+Taylor+Swift+-+22+(Taylor's+Version).mp3",
         title = "22 (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "3:51",
@@ -2998,7 +2998,7 @@ def seed_users():
 
     song_45 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/08+-+Taylor+Swift+-+We+Are+Never+Ever+Getting+Back+Together+(Taylor's+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/08+-+Taylor+Swift+-+We+Are+Never+Ever+Getting+Back+Together+(Taylor's+Version).mp3",
         title = "We Are Never Ever Getting Back Together (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "3:13",
@@ -3062,7 +3062,7 @@ def seed_users():
 
     song_46 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/22+-+Taylor+Swift+-+Better+Man+(Taylor's+Version)+(From+The+Vault).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/22+-+Taylor+Swift+-+Better+Man+(Taylor's+Version)+(From+The+Vault).mp3",
         title = "Better Man (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "4:57",
@@ -3133,7 +3133,7 @@ def seed_users():
 
     song_47 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/26+-+Taylor+Swift%2C+Chris+Stapleton+-+I+Bet+You+Think+About+Me+(feat.+Chris+Stapleton)+(Taylor%E2%80%99s+Version)+(From+The+Vault).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Red+(Taylor's+Version)/26+-+Taylor+Swift%2C+Chris+Stapleton+-+I+Bet+You+Think+About+Me+(feat.+Chris+Stapleton)+(Taylor%E2%80%99s+Version)+(From+The+Vault).mp3",
         title = "I Bet You Think About Me (feat. Chris Stapleton) (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "4:45",
@@ -3192,7 +3192,7 @@ def seed_users():
 
     song_48 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/03+-+Taylor+Swift+-+Back+To+December+(Taylor's+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/03+-+Taylor+Swift+-+Back+To+December+(Taylor's+Version).mp3",
         title = "Back To Decemeber (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "4:54",
@@ -3253,7 +3253,7 @@ def seed_users():
 
     song_49 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/05+-+Taylor+Swift+-+Dear+John+(Taylor's+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/05+-+Taylor+Swift+-+Dear+John+(Taylor's+Version).mp3",
         title = "Dear John (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "6:45",
@@ -3313,7 +3313,7 @@ def seed_users():
 
     song_50 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/09+-+Taylor+Swift+-+Enchanted+(Taylor's+Version).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/TaylorSwiftMp3/Taylor+Swift+-+Speak+Now+(Taylor's+Version)/09+-+Taylor+Swift+-+Enchanted+(Taylor's+Version).mp3",
         title = "Enchanted (Taylor's Version)",
         artist = "Taylor Swift",
         duration = "5:53",
@@ -3376,7 +3376,7 @@ def seed_users():
 
     song_51 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/03+-+John+Mayer+-+New+Light.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/03+-+John+Mayer+-+New+Light.mp3",
         title = "New Light",
         artist = "John Mayer",
         duration = "3:37",
@@ -3430,7 +3430,7 @@ def seed_users():
 
     song_52 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible+(Deluxe)/14+-+Michael+Bubl%C3%A9+-+L+O+V+E.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible+(Deluxe)/14+-+Michael+Bubl%C3%A9+-+L+O+V+E.mp3",
         title = "L O V E",
         artist = "Michael Bublé",
         duration = "2:50",
@@ -3461,7 +3461,7 @@ def seed_users():
 
     song_53 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible/09+-+Michael+Bubl%C3%A9+-+Everything.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Call+Me+Irresponsible/09+-+Michael+Bubl%C3%A9+-+Everything.mp3",
         title = "Everything",
         artist = "Michael Bublé",
         duration = "3:32",
@@ -3504,7 +3504,7 @@ def seed_users():
 
     song_54 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Crazy+Love/05+-+Michael+Bubl%C3%A9+-+Haven't+Met+You+Yet.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Crazy+Love/05+-+Michael+Bubl%C3%A9+-+Haven't+Met+You+Yet.mp3",
         title = "Haven't Met You Yet",
         artist = "Michael Bublé",
         duration = "4:03",
@@ -3567,7 +3567,7 @@ def seed_users():
 
     song_55 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/01+-+Michael+Bubl%C3%A9+-+Feeling+Good.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/01+-+Michael+Bubl%C3%A9+-+Feeling+Good.mp3",
         title = "Feeling Good",
         artist = "Michael Bublé",
         duration = "3:56",
@@ -3629,7 +3629,7 @@ def seed_users():
 
     song_56 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/05+-+Michael+Bubl%C3%A9+-+Home.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/05+-+Michael+Bubl%C3%A9+-+Home.mp3",
         title = "Home",
         artist = "Michael Bublé",
         duration = "3:45",
@@ -3692,7 +3692,7 @@ def seed_users():
 
     song_57 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/08+-+Michael+Bubl%C3%A9+-+Save+the+Last+Dance+for+Me.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+It's+Time/08+-+Michael+Bubl%C3%A9+-+Save+the+Last+Dance+for+Me.mp3",
         title = "Save The Last Dance For Me",
         artist = "Michael Bublé",
         duration = "3:37",
@@ -3745,7 +3745,7 @@ def seed_users():
 
     song_58 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+love+(Deluxe+Edition)/03+-+Michael+Bubl%C3%A9+-+Love+You+Anymore.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+love+(Deluxe+Edition)/03+-+Michael+Bubl%C3%A9+-+Love+You+Anymore.mp3",
         title = "Love You Anymore",
         artist = "Michael Bublé",
         duration = "3:02",
@@ -3787,7 +3787,7 @@ def seed_users():
 
     song_59 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/04+-+Michael+Bubl%C3%A9+-+For+Once+in+My+Life.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/04+-+Michael+Bubl%C3%A9+-+For+Once+in+My+Life.mp3",
         title = "For Once in My Life",
         artist = "Michael Bublé",
         duration = "2:33",
@@ -3817,7 +3817,7 @@ def seed_users():
 
     song_37 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/10+-+Michael+Bubl%C3%A9+-+Sway.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/10+-+Michael+Bubl%C3%A9+-+Sway.mp3",
         title = "Sway",
         artist = "Michael Bublé",
         duration = "3:08",
@@ -3868,7 +3868,7 @@ def seed_users():
 
     song_60 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/11+-+Michael+Bubl%C3%A9+-+The+Way+You+Look+Tonight.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/11+-+Michael+Bubl%C3%A9+-+The+Way+You+Look+Tonight.mp3",
         title = "The Way You Look Tonight",
         artist = "Michael Bublé",
         duration = "4:39",
@@ -3904,7 +3904,7 @@ def seed_users():
 
     song_61 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/12+-+Michael+Bubl%C3%A9+-+Come+Fly+with+Me.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Michael+Bubl%C3%A9/12+-+Michael+Bubl%C3%A9+-+Come+Fly+with+Me.mp3",
         title = "Come Fly with Me",
         artist = "Michael Bublé",
         duration = "3:18",
@@ -3954,7 +3954,7 @@ def seed_users():
 
     song_62 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Special+Delivery/03+-+Michael+Bubl%C3%A9+-+Dream+a+Little+Dream+of+Me.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+Special+Delivery/03+-+Michael+Bubl%C3%A9+-+Dream+a+Little+Dream+of+Me.mp3",
         title = "Dream a Little Dream of Me",
         artist = "Michael Bublé",
         duration = "3:07",
@@ -3993,7 +3993,7 @@ def seed_users():
 
     song_63 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/02+-+Michael+Bubl%C3%A9+-+It's+a+Beautiful+Day.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/02+-+Michael+Bubl%C3%A9+-+It's+a+Beautiful+Day.mp3",
         title = "It's a Beautiful Day",
         artist = "Michael Bublé",
         duration = "3:18",
@@ -4047,7 +4047,7 @@ def seed_users():
 
     song_64 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/09+-+Michael+Bubl%C3%A9%2C+Naturally+7+-+Have+I+Told+You+Lately+That+I+Love+You+(with+Naturally+7).mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/MichaelBubleMp3/Michael+Bubl%C3%A9+-+To+Be+Loved/09+-+Michael+Bubl%C3%A9%2C+Naturally+7+-+Have+I+Told+You+Lately+That+I+Love+You+(with+Naturally+7).mp3",
         title = "Have I Told You Lately That I Love You (with Naturally 7)",
         artist = "Michael Bublé",
         duration = "3:25",
@@ -4079,7 +4079,7 @@ def seed_users():
 
     song_65 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/04+-+John+Mayer+-+Gravity.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/04+-+John+Mayer+-+Gravity.mp3",
         title = "Gravity",
         artist = "John Mayer",
         duration = "4:05",
@@ -4115,7 +4115,7 @@ def seed_users():
 
     song_66 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/05+-+John+Mayer+-+The+Heart+of+Life.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/05+-+John+Mayer+-+The+Heart+of+Life.mp3",
         title = "The Heart of Life",
         artist = "John Mayer",
         duration = "3:18",
@@ -4147,7 +4147,7 @@ def seed_users():
 
     song_67 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/07+-+John+Mayer+-+Stop+This+Train.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/07+-+John+Mayer+-+Stop+This+Train.mp3",
         title = "Stop This Train",
         artist = "John Mayer",
         duration = "4:45",
@@ -4207,7 +4207,7 @@ def seed_users():
 
     song_68 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/08+-+John+Mayer+-+Slow+Dancing+in+a+Burning+Room.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/08+-+John+Mayer+-+Slow+Dancing+in+a+Burning+Room.mp3",
         title = "Slow Dancing in a Burning Room",
         artist = "John Mayer",
         duration = "4:02",
@@ -4259,7 +4259,7 @@ def seed_users():
 
     song_69 = Songs (
         user_id = 1,
-        audio_url = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/This+Is+John+Mayer/10+-+John+Mayer+-+Dreaming+with+a+Broken+Heart.mp3",
+        audio_url = "https://d47mwstkaud3p.cloudfront.net/This+Is+John+Mayer/10+-+John+Mayer+-+Dreaming+with+a+Broken+Heart.mp3",
         title = "Dreaming with a Broken Heart",
         artist = "John Mayer",
         duration = "4:05",
