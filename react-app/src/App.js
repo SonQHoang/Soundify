@@ -3,6 +3,7 @@ import { authenticate } from "./store/session";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { SongProvider } from "./context/SongContext";
+import { AuthProvider } from "./context/AuthContext";
 
 import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
 import CreateAlbum from "./components/CreateAlbum/CreateAlbum";
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <>
+    <AuthProvider>
       <SongProvider>
         {isLoaded && (
           <>
@@ -92,6 +94,7 @@ function App() {
           </>
         )}
       </SongProvider>
+      </AuthProvider>
     </>
   );
 }

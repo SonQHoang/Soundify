@@ -86,10 +86,24 @@ body {
 .upcoming-features {
     border: none;
     background-color: transparent;
-    color: #9E9E9E;
+    color: red;
     border-radius: 40px;
     font-weight: bold;
     height: 50px;
     margin-right: 20px;
     border: none;
+}
+
+.nav-component-nav-container-splash {
+    /* border: 5px solid maroon; */
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    /* padding: 10px; */
+    height: 60px;
+    z-index: 1000000000;
+    position: relative;
+    margin-top: 9px;
+    border-radius: 5px 5px 0 0;
 }

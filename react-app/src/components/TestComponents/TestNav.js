@@ -1,6 +1,9 @@
 import React from 'react'
+import { SongContext } from '../../context/SongContext';
+import { AuthContext } from '../../context/AuthContext';
 import { useState } from 'react'
-import { logout } from "../../store/session";
+import { logout as logoutAction} from "../../store/session";
+import { useContext } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import LoginFormModal from '../LoginFormModal';
@@ -9,6 +12,9 @@ import './TestNav.css'
 
 
 const TestNav = () => {
+  const { logout } = useContext(AuthContext)
+  const { pause } = useContext(SongContext);
+
   const dispatch = useDispatch();
   const history = useHistory()
   const [dropDownMenu, setDropDownMenu] = useState(false)
@@ -20,8 +26,10 @@ const TestNav = () => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(logout());
-    history.push('/')
+    dispatch(logoutAction());
+    pause();
+    logout()
+    history.push('/');
   };
 
   const handleDropDown = () => {

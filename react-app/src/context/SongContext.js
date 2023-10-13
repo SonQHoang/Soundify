@@ -11,8 +11,8 @@ export const SongProvider = ({ children }) => {
     const [albumCover, setAlbumCover] = useState(null);
     
     const setCurrentSong = (song) => {
-        setCurrentTime(0); // Reset the time
-        _setCurrentSong(song); // Set the new song
+        setCurrentTime(0);
+        _setCurrentSong(song);
     };
 
     const play = () => setIsPlaying(true);

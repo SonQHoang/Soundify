@@ -90,19 +90,19 @@
     color: white;
 }
 
-.about-me-github {
+.about-me-github-splash-page{
     background-image: url(https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695684166/icons8-github-64_c5vnyf.png);
     background-size: contain;
     width: 60px;
     height: 60px;
-    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
+    background-color: transparent;
 }
 
-.about-me-linkedin {
+.about-me-linkedin-splash-page {
     background-image: url(https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695683842/icons8-linkedin-a-business-and-employment-oriented-service-mobile-app-96_qyf7qt.png);
     background-size: contain;
     width: 30px;
@@ -110,4 +110,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
 }
