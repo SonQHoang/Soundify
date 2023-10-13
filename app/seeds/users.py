@@ -155,14 +155,14 @@ def seed_users():
         date_created = datetime(2023, 9, 6)
     )
 
-    # album_15 = Albums (
-    #     user_id = 1,
-    #     title = "Fugue State",
-    #     album_photo = "",
-    #     owner = "Vulfpeck",
-    #     year = 2021,
-    #     date_created = datetime(2023, 9, 6)
-    # )
+    album_15 = Albums (
+        user_id = 1,
+        title = "Vulpeck Live",
+        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/VulpeckLive.jpeg",
+        owner = "Vulfpeck",
+        year = 2021,
+        date_created = datetime(2023, 9, 6)
+    )
 
     album_16 = Albums (
         user_id = 1,
@@ -1269,7 +1269,7 @@ def seed_users():
     # db.session.add_all([marnie])
     # 30 more if I want to access all of them, should probably split them up based on different playlists
     db.session.add_all([album_1, album_2, album_3, album_4, album_5, album_6, album_7, album_8, album_9, album_10, album_11, album_12, album_13, album_14, 
-                        # album_15, 
+                        album_15, 
                         album_16, album_17, album_18,
                         # album_19, album_20, album_21, album_22, album_23, album_24, album_25, album_26, album_27, album_28
                         ])
@@ -1299,7 +1299,7 @@ def seed_users():
     album_12.album_songs.extend([song_10, song_24])
     album_13.album_songs.extend([song_2, song_3])
     album_14.album_songs.extend([song_11, song_12, song_14])
-    # album_15.album_songs.extend([song_55])
+    album_15.album_songs.extend([song_41, song_42, song_43, song_44, song_45, song_46, song_47, song_48, song_49, song_50, song_51, song_52, song_53, song_54, song_55, song_56, song_57, song_58, song_59])
     album_16.album_songs.extend([song_60, song_70, song_73, song_75, song_77, song_79 ])
     album_17.album_songs.extend([song_64, song_68, song_74])
     album_18.album_songs.extend([song_61, song_62, song_63, song_66, song_69, song_78, song_80])
@@ -1316,7 +1316,7 @@ def seed_users():
 
     playlist_1.playlist_songs.extend([song_1, song_2, song_3, song_4, song_5, song_6, song_7, song_8, song_9, song_10, song_11, song_12, song_13, song_14, song_15, song_16, song_17, song_18, song_19, song_20, song_21, song_22, song_23, song_24])
     playlist_3.playlist_songs.extend([song_25, song_26, song_27, song_28, song_29, song_30, song_31, song_32, song_33, song_34, song_35, song_36, song_37, song_38, song_39, song_40])
-    playlist_4.playlist_songs.extend([song_41, song_42, song_43, song_44, song_45, song_46, song_47, song_48, song_49, song_50, song_37, song_52, song_53, song_54, song_55, song_56, song_57, song_58, song_59])
+    playlist_4.playlist_songs.extend([song_41, song_42, song_43, song_44, song_45, song_46, song_47, song_48, song_49, song_50, song_51, song_52, song_53, song_54, song_55, song_56, song_57, song_58, song_59])
     playlist_5.playlist_songs.extend([song_60, song_61, song_62, song_63, song_64, song_65, song_66, song_67, song_68, song_69, song_70,song_71, song_72, song_73, song_74, song_75, song_76, song_77, song_78, song_79, song_80])
 
 
