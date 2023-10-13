@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useEffect } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import './audiobar.css';
@@ -6,6 +7,14 @@ import { SongContext } from '../../context/SongContext';
 
 const Player = () => {
     const playerRef = useRef();
+    const { isAuthenticated } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (!isAuthenticated && playerRef.current && playerRef.current.audio.current) {
+            playerRef.current.audio.current.pause();
+        }
+    }, [isAuthenticated]);
+
     const {
         isPlaying,
         play,
@@ -29,14 +38,8 @@ const Player = () => {
         pause();
     };
 
-    // useEffect(() => {
-    //     if (playerRef.current && playerRef.current.audio.current) {
-    //         playerRef.current.audio.current.currentTime = currentTime;
-    //     }
-    // }, [currentTime, currentSong]);
-
     return (
-        currentSong ? ( // Added this line to conditionally render the player based on currentSong
+        isAuthenticated && currentSong ? (
             <div className="audio-bar-container">
                 <div className="audio-bar-song-info">
                     <div className="audio-bar-album-cover">

@@ -18,7 +18,7 @@ function SignupFormModal() {
 	const { closeModal } = useModal();
 
 	if (sessionUser) return <Redirect to="/landing-page" />;
-
+	
 	const isValidEmail = (email) => {
 		return email.includes("@")
 	}
