@@ -8,7 +8,7 @@ Live Link: https://soundify-render-actual.onrender.com
 
 - Features List: https://github.com/SonQHoang/Soundify/wiki/Features-List
 - Database Schema: https://github.com/SonQHoang/Soundify/wiki/Schema
-- Frontend and Backend Routes:
+- Frontend and Backend Routes: https://github.com/SonQHoang/Soundify/wiki/Routes
 - What's Coming Up Next: https://github.com/SonQHoang/Soundify/wiki/What's-Coming-Up-Next
   
 <img width="1407" alt="Screenshot 2023-10-16 at 8 39 45 AM" src="https://github.com/SonQHoang/Soundify/assets/116997524/fc2f926b-7165-4b4b-90ab-5eebe42e14e0">
