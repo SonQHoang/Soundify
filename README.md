@@ -1,8 +1,9 @@
 # Soundify
 
-Welcome to Soundify, a pixel perfect clone of the music platform Spotify!
+Step into Soundify, a meticulous recreation of Spotify, where users and artists connect in a familiar yet personalized space. Discover, create, enjoy – this is music made personal.
 
-Live Link: TBD
+Live Link: https://soundify-render-actual.onrender.com
+
 ## Index
 
 - Features List: https://github.com/SonQHoang/Soundify/wiki/Features-List
