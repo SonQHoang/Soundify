@@ -33,21 +33,18 @@ def create_albums():
     if form.validate_on_submit():
 
         album_photo = form.data['album_photo']
-        # print('image backend album routes=============>', image)
         album_photo.filename = get_unique_filename(album_photo.filename)
-        # print('image fileback album routes==========>', image.filename)
         upload = upload_file_to_s3(album_photo)
         
         url = upload['url']
 
         new_album = Albums(
-            user_id=user.id, 
+            user_id=user.id,
             title=form.title.data,
             owner = current_user.first_name,
             album_description=form.album_description.data,
-            # album_photo = form.album_photo.data,
-            year = form.year.data,
             album_photo = url,
+            year = form.year.data,
             date_created=datetime.utcnow(),
         )
 

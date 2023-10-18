@@ -41,6 +41,7 @@ const acAddSongToAlbum = (data) => {
     }
 }
 const acCreateAlbum = (data) => {
+    console.log('Looking at the data inside of acCreateAlbum=====>', data)
     return {
         type: CREATE_NEW_ALBUM,
         payload: data
@@ -148,9 +149,10 @@ export const GetSingleAlbum = (albumId) => async (dispatch) => {
 
 export const createAlbum = (data) => async (dispatch) => {
     const response = await fetch('/api/album/new', {
-        method: "POST",
+        method: "POST", 
         body: data
     })
+    console.log('What is my response coming back from the backend=====>', response)
     if (response.ok) {
         const new_album = await response.json()
         dispatch(acCreateAlbum(new_album))

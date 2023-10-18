@@ -64,6 +64,11 @@ const CreateAlbum = () => {
             formData.append('album_description', description)
             formData.append('year', year)
             formData.append('date_created', date_created)
+
+            // for (let pair of formData.entries()) {
+            //     console.log('formData on the frontEnd===========>', pair[0] + ': ' + pair[1]); 
+            // }
+
             try {
                 await dispatch(createAlbum(formData));
                 setErrors({});

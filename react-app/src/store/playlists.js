@@ -145,7 +145,7 @@ export const GetSinglePlaylist = (playlistId) => async (dispatch) => {
 export const createPlaylist = (data) => async (dispatch) => {
 
     const response = await fetch('/api/playlist/new', {
-        method: "POST",
+        method: "POST", 
         body: data
     })
     if (response.ok) {
