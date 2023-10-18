@@ -24,13 +24,10 @@ export const SongProvider = ({ children }) => {
     };
 
     const play = () => {
-        console.log("Play function called");
         setIsPlaying(true);
     };
     
     const pause = () => {
-        console.log("Pause function called");
-        console.trace(); // This will print the call stack and help understand where 'pause' is being called from
         setIsPlaying(false);
     };
 
@@ -53,7 +50,6 @@ export const SongProvider = ({ children }) => {
 
     return (
         <SongContext.Provider value={{
-            isPlaying,
             play,
             pause,
             currentSong,
@@ -62,6 +58,8 @@ export const SongProvider = ({ children }) => {
             setCurrentTime,
             songTitle,
             setSongTitle,
+            isPlaying,
+            setIsPlaying,
             artistName,
             setArtistName,
             albumCover,

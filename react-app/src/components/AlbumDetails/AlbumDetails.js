@@ -210,7 +210,7 @@ function AlbumDetails() {
                                     onMouseEnter={() => setHoveredSongIndex(index)}
                                     onMouseLeave={() => setHoveredSongIndex(null)}
                                     onClick={() => {
-                                        selectSong(song);
+                                        selectSong(song, index);
                                         // togglePlay();
                                     }} 
                                 >
@@ -223,7 +223,7 @@ function AlbumDetails() {
                                     </div>
                                     <div className="grid-row grid-row-width">
                                         {song?.title ? (
-                                            <p onClick={() => { selectSong(song); setQuery("") }}>{song.title}</p>
+                                            <p onClick={() => { selectSong(song, index); setQuery("") }}>{song.title}</p>
                                         ) : null}
                                     </div>
                                     <div className="grid-row grid-row-width">
