@@ -200,86 +200,86 @@ def seed_users():
         date_created = datetime(2023, 9, 6)
     )
 
-    album_20 = Albums (
-        user_id = 1,
-        title = "Lover",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Lover+Taylor+Swift.jpeg",
-        owner = "Taylor Swift",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_20 = Albums (
+    #     user_id = 1,
+    #     title = "Lover",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Lover+Taylor+Swift.jpeg",
+    #     owner = "Taylor Swift",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_21 = Albums (
-        user_id = 1,
-        title = "Speak Now (Taylor's Version)",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Speak+Now+Taylor+Swift.png",
-        owner = "Taylor Swift",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_21 = Albums (
+    #     user_id = 1,
+    #     title = "Speak Now (Taylor's Version)",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Speak+Now+Taylor+Swift.png",
+    #     owner = "Taylor Swift",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_22 = Albums (
-        user_id = 1,
-        title = "Call Me Irresponsible",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
-        owner = "Vulfpeck",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_22 = Albums (
+    #     user_id = 1,
+    #     title = "Call Me Irresponsible",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
+    #     owner = "Vulfpeck",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_23 = Albums (
-        user_id = 1,
-        title = "Call Me Irresponsible (Deluxe)",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
-        owner = "Michael Bublé",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_23 = Albums (
+    #     user_id = 1,
+    #     title = "Call Me Irresponsible (Deluxe)",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Call+Me+Irresponsible+Michael+Buble.jpeg",
+    #     owner = "Michael Bublé",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_24 = Albums (
-        user_id = 1,
-        title = "Crazy Love",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Crazy+Love+Michael+Buble.png",
-        owner = "Michael Bublé",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_24 = Albums (
+    #     user_id = 1,
+    #     title = "Crazy Love",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Crazy+Love+Michael+Buble.png",
+    #     owner = "Michael Bublé",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_25 = Albums (
-        user_id = 1,
-        title = "Love (Deluxe Edition)",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Love+Michael+Buble.jpg",
-        owner = "Michael Bublé",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_25 = Albums (
+    #     user_id = 1,
+    #     title = "Love (Deluxe Edition)",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Love+Michael+Buble.jpg",
+    #     owner = "Michael Bublé",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_26 = Albums (
-        user_id = 1,
-        title = "Michael Bublé",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Michael+Buble.jpeg",
-        owner = "Michael Bublé",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_26 = Albums (
+    #     user_id = 1,
+    #     title = "Michael Bublé",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Michael+Buble.jpeg",
+    #     owner = "Michael Bublé",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_27 = Albums (
-        user_id = 1,
-        title = "Special Delivery",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Special+Delivery+Michael+Buble.jpg",
-        owner = "Michael Bublé",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_27 = Albums (
+    #     user_id = 1,
+    #     title = "Special Delivery",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Special+Delivery+Michael+Buble.jpg",
+    #     owner = "Michael Bublé",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
-    album_28 = Albums (
-        user_id = 1,
-        title = "To Be Loved",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/To+Be+Loved+Michael+Buble.jpeg",
-        owner = "Michael Bublé",
-        year = 2021,
-        date_created = datetime(2023, 9, 6)
-    )
+    # album_28 = Albums (
+    #     user_id = 1,
+    #     title = "To Be Loved",
+    #     album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/To+Be+Loved+Michael+Buble.jpeg",
+    #     owner = "Michael Bublé",
+    #     year = 2021,
+    #     date_created = datetime(2023, 9, 6)
+    # )
 
     playlist_1 = Playlists (
         user_id = 1,
@@ -1287,7 +1287,7 @@ def seed_users():
     album_1.album_songs.extend([song_1, song_9, song_15, song_23])
     
     album_2.album_songs.extend([song_25])
-    album_3.album_songs.extend([song_26, song_27, song_28, song_30, song_31, song_32, song_33, song_34, song_35, song_36, song_37,   ])
+    album_3.album_songs.extend([song_26, song_27, song_28, song_30, song_31, song_32, song_33, song_34, song_35, song_36, song_37])
     album_4.album_songs.extend([song_29])
     album_5.album_songs.extend([song_39])
     album_6.album_songs.extend([song_40])
