@@ -194,7 +194,7 @@ def seed_users():
     album_19 = Albums (
         user_id = 1,
         title = "On and On",
-        album_photo = "",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/JackJohnson+OnAndOn+Cover.jpeg",
         owner = "Jack Jackson",
         year = 2021,
         date_created = datetime(2023, 9, 6)
