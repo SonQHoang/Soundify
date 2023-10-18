@@ -20,7 +20,6 @@ const acGetSongs = (data) => {
 }
 
 const acGetSingleSong = (data) => {
-    // console.log('What does acSingleSong data look like======>', data)
     return {
         type: GET_SINGLE_SONG,
         payload: data
@@ -64,10 +63,8 @@ export const getSingleSong = (songId) => async (dispatch) => {
     const songIdInt = parseInt(songId, 10)
         try {
         const response = await fetch(`/api/song/${songIdInt}`)
-        // console.log("What does my response look like for my song route====>", response)
         if (response.ok) {
             const data = await response.json()
-            // console.log("what does this data look like=======>", data)
             dispatch(acGetSingleSong(data))
         } else {
             const errors = await response.json();

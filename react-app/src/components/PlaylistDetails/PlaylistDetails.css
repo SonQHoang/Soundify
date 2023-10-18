@@ -98,23 +98,23 @@
 }
 
 .playlist-headers .hashtag-header {
-    margin-left: 10px;
+    margin-left: 50px;
 }
 
 .playlist-headers .title-header {
-    margin-left: 200px;
+    margin-left: 280px;
 }
 
 .playlist-headers .album-header {
-    margin-left: 200px;
+    margin-left: 260px;
 }
 
 .playlist-headers .date-header {
-    margin-left: 160px;
+    margin-left: 230px;
 }
 
 .playlist-headers .time-header {
-    margin-left: 165px;
+    margin-left: 240px;
 }
 .individual-playlist-songs {
     /* border: 2px solid red; */
@@ -161,20 +161,24 @@
     /* border: 2px solid red; */
 }
 
-.play-button-playlist {
-    background-color: #121212;
-    border: none;
-    height: auto;
-    width: 100px
-}
 
 .play-playlist-button {
     background-color: transparent;
     border: none;
-    border-radius: 50%;
-    padding: 0;
-    cursor: pointer;
-    width: 200px;
+}
+
+.play-button {
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+    margin-top: 7px;
+}
+
+.pause-button {
+    height: 45px;
+    width: 45px;
+    margin-top: 5px;
+    margin-left: 2px;
 }
 
 .search-bar-container {
@@ -247,4 +251,10 @@
 
 .album-title p {
     color: white;
+}
+
+.song-play-icon-playlist {
+    /* border: 2px solid red; */
+    width: 20px;
+    height: 20px;
 }

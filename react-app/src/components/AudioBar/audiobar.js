@@ -19,8 +19,8 @@ const Player = () => {
         isPlaying,
         play,
         pause,
+        togglePlay,
         currentSong,
-        // currentTime,
         setCurrentTime,
         songTitle,
         artistName,
@@ -29,14 +29,24 @@ const Player = () => {
 
     const handleListen = (e) => {
         setCurrentTime(e.target.currentTime);
-    };
-    const handlePlay = (e) => {
-        play();
+        // Synchronize the isPlaying state with the actual play state of the audio element
+        if (e.target.paused && isPlaying) {
+            pause();
+        } else if (!e.target.paused && !isPlaying) {
+            play();
+        }
     };
 
-    const handlePause = (e) => {
-        pause();
-    };
+    useEffect(() => {
+        const audioElement = playerRef.current?.audio.current;
+        if (audioElement) {
+            if (isPlaying) {
+                audioElement.play();
+            } else {
+                audioElement.pause();
+            }
+        }
+    }, [isPlaying]);
 
     return (
         isAuthenticated && currentSong ? (
@@ -54,9 +64,10 @@ const Player = () => {
                     ref={playerRef}
                     autoPlayAfterSrcChange={false}
                     src={currentSong}
-                    onPlay={handlePlay}
-                    onPause={handlePause}
+                    onPlay={play} 
+                    onPause={pause} 
                     onListen={handleListen}
+                    listenInterval={100}
                     autoPlay={isPlaying}
                 />
             </div>

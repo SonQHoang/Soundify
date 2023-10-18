@@ -85,14 +85,14 @@ def add_song_to_album(albumId):
 def get_songs_for_album(albumId):
 
     album = Albums.query.get(albumId)
-    print('album backend========>', album)
+    # print('album backend========>', album)
     album_songs = album.album_songs
-    print('album_songs backend==========>', album_songs)
+    # print('album_songs backend==========>', album_songs)
 
     song_container = []
 
     for album_song in album_songs:
-        print('album_song backend=========>', album_song)
+        # print('album_song backend=========>', album_song)
         song_to_dict = album_song.to_dict()
         song_container.append(song_to_dict)
     return song_container
@@ -159,7 +159,7 @@ def get_single_album_by_id(albumId):
 def update_album(albumId):
     form = UpdateAlbumForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print('form.data=======>', form.data)
+    # print('form.data=======>', form.data)
 
     if form.validate_on_submit():
         current_album = Albums.query.get(albumId)

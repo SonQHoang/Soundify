@@ -41,7 +41,6 @@ const acAddSongToAlbum = (data) => {
     }
 }
 const acCreateAlbum = (data) => {
-    console.log('Looking at the data inside of acCreateAlbum=====>', data)
     return {
         type: CREATE_NEW_ALBUM,
         payload: data

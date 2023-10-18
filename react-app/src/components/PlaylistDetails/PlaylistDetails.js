@@ -13,48 +13,49 @@ import "./PlaylistDetails.css"
 
 function PlaylistDetails() {
 
-        // Retrieving data from Redux store
-        const sessionUser = useSelector(state => state.session.user);
-        const new_songs = useSelector(state => state.playlist.singlePlaylist.songs);
-        const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
-        const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist);
-    
-        // URL params
-        const { playlistId } = useParams();
-    
-        // Local component state
-        const [isLoading, setIsLoading] = useState(true);
-        const [query, setQuery] = useState("");
-        const [selectedSongs, setSelectedSongs] = useState([]);
-        const [showModal, setShowModal] = useState(false);
-        const [playlistToDelete, setPlaylistToDelete] = useState(null);
-        const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
-        const [modalType, setModalType] = useState(null);
-        const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-        const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+    // Retrieving data from Redux store
+    const sessionUser = useSelector(state => state.session.user);
+    const new_songs = useSelector(state => state.playlist.singlePlaylist.songs);
+    const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
+    const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist);
 
-        // Context
-        const { play, setCurrentSong, setSongTitle, setArtistName, setAlbumCover } = useContext(SongContext);
-    
-        // Dispatch
-        const dispatch = useDispatch();
+    // URL params
+    const { playlistId } = useParams();
 
-        const getPlaylistSongs = async () => {
-            await dispatch(GetSongsForPlaylist(playlistId))
-        }
+    // Local component state
+    const [isLoading, setIsLoading] = useState(true);
+    const [query, setQuery] = useState("");
+    const [selectedSongs, setSelectedSongs] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [playlistToDelete, setPlaylistToDelete] = useState(null);
+    const [playlistToUpdate, setPlaylistToUpdate] = useState(null);
+    const [modalType, setModalType] = useState(null);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [hoveredSongIndex, setHoveredSongIndex] = useState(null);
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-        useEffect(() => {
-            setIsLoading(true);
-            getPlaylistSongs(playlistId)
-            dispatch(getAllSongs());
-            dispatch(GetSongsForPlaylist(playlistId));
-            dispatch(GetSinglePlaylist(playlistId))
-                .finally(() => setIsLoading(false));
-        }, [dispatch, playlistId]);
+    // Context
+    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart } = useContext(SongContext);
 
-        if (isLoading) {
-            return <LoadingSpinner />
-        }
+    // Dispatch
+    const dispatch = useDispatch();
+
+    const getPlaylistSongs = async () => {
+        await dispatch(GetSongsForPlaylist(playlistId))
+    }
+
+    useEffect(() => {
+        setIsLoading(true);
+        getPlaylistSongs(playlistId)
+        dispatch(getAllSongs());
+        dispatch(GetSongsForPlaylist(playlistId));
+        dispatch(GetSinglePlaylist(playlistId))
+            .finally(() => setIsLoading(false));
+    }, [dispatch, playlistId]);
+
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
 
     //=========================================== Searchbar Start============================================== 
     const titleKVPairs = songLibrary.map(song => ({
@@ -84,13 +85,15 @@ function PlaylistDetails() {
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
-        setCurrentSong(song.audio_url)
-        setSongTitle(song.title)
-        setArtistName(song.artist)
-        setAlbumCover(song.album_arts)
-        play()
-        setQuery("")
-    }
+        setCurrentSong(song.audio_url);
+        setSongTitle(song.title);
+        setArtistName(song.artist);
+        setAlbumCover(song.album_arts);
+        // play()
+        // pause()
+        setQuery("");
+    };
+
 
     const addToPlaylist = () => {
         Object.values(filteredSongs).map((song) => {
@@ -156,37 +159,43 @@ function PlaylistDetails() {
                                 </div>
                             </div>
                         </div>
-                        {isOwner && (
-                            <div className="playlist-options-dropdown">
-                                <button className="playlist-dropdown-button" onClick={toggleDropdown}>. . .</button>
-                                {isDropdownOpen && (
-                                    <div className="dropdown-content">
-                                        <button className="playlist-update-button" onClick={() => {
-                                            setIsDropdownOpen(false);
-                                            return handleUpdateClick(playlistId);
-                                        }}>Edit Details</button>
-
-                                        <button className="playlist-delete-button" onClick={() => {
-                                            setIsDropdownOpen(false);
-                                            return handleDeleteClick(playlistId);
-                                        }}>Delete Playlist</button>
-                                    </div>
-                                )}
-                            </div>
-                        )}
+                        <div className='search-bar'>
+                            <input
+                                type="text"
+                                placeholder="Search for a song"
+                                onChange={(e) => setQuery(e.target.value)}
+                            />
+                        </div>
                         <div className='search-bar-container'>
                             <div className="play-button-playlist-container">
-                                <button className='play-playlist-button'>
-                                    <img className="play-button-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695962350/Untitled_design_4_olkf9a.png" alt="play button" />
+                                <button className='play-playlist-button' onClick={playFromStart}>
+                                    <img
+                                        className={isPlaying ? "pause-button" : "play-button"}
+                                        src={isPlaying
+                                            ? "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697655841/icons8-pause-64_uryer0.png"
+                                            : "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697656383/icons8-play-50_fok8tu.png"}
+                                        alt="play button"
+                                    />
                                 </button>
                             </div>
-                            <div className='search-bar'>
-                                <input
-                                    type="text"
-                                    placeholder="Search for a song"
-                                    onChange={(e) => setQuery(e.target.value)}
-                                />
-                            </div>
+                            {isOwner && (
+                                <div className="playlist-options-dropdown">
+                                    <button className="playlist-dropdown-button" onClick={toggleDropdown}>. . .</button>
+                                    {isDropdownOpen && (
+                                        <div className="dropdown-content">
+                                            <button className="playlist-update-button" onClick={() => {
+                                                setIsDropdownOpen(false);
+                                                return handleUpdateClick(playlistId);
+                                            }}>Edit Details</button>
+
+                                            <button className="playlist-delete-button" onClick={() => {
+                                                setIsDropdownOpen(false);
+                                                return handleDeleteClick(playlistId);
+                                            }}>Delete Playlist</button>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                         <div className="playlist-songs-container">
                             <div className="playlist-headers">
@@ -207,9 +216,21 @@ function PlaylistDetails() {
                                 </div>
                             </div>
                             {(new_songs)?.map((song, index) => (
-                                <div key={index} className="individual-playlist-songs">
+                                <div key={index}
+                                    className="individual-playlist-songs"
+                                    onMouseEnter={() => setHoveredSongIndex(index)}
+                                    onMouseLeave={() => setHoveredSongIndex(null)}
+                                    onClick={() => {
+                                        selectSong(song);
+                                        togglePlay();
+                                    }}
+                                >
                                     <div className="grid-row">
-                                        <div className="playlist-song-count">{index + 1}</div>
+                                        <div className="playlist-song-count">
+                                            {hoveredSongIndex === index
+                                                ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
+                                                : index + 1}
+                                        </div>                            
                                     </div>
                                     <div className="grid-row">
                                         {song?.title ? (
