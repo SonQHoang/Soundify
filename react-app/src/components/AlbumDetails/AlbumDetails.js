@@ -39,15 +39,23 @@ function AlbumDetails() {
     const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart } = useContext(SongContext);
 
     useEffect(() => {
-        // getAlbumSongs(albumId)
-        dispatch(GetSongsForAlbum(albumId))
-        dispatch(GetSingleAlbum(albumId))
-        dispatch(getAllSongs())
-    }, [dispatch, albumId])
+        const fetchData = async () => {
+            await Promise.all([
+                dispatch(GetSongsForAlbum(albumId)),
+                dispatch(GetSingleAlbum(albumId)),
+                dispatch(getAllSongs())
+            ]);
+    
+            setIsLoading(false);
+        };
+    
+        fetchData();
+    }, [dispatch, albumId]);
+    
 
-    // if (isLoading) {
-    //     return <LoadingSpinner />
-    // }
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
 
     //=========================================== Searchbar Start============================================== 
 
