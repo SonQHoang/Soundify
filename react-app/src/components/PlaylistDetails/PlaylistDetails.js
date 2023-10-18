@@ -37,7 +37,7 @@ function PlaylistDetails() {
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     // Context
-    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, currentView, setCurrentView } = useContext(SongContext);
+    const { play, pause, togglePlay, isPlaying, setIsPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, currentView, setCurrentView } = useContext(SongContext);
 
     // Dispatch
     const dispatch = useDispatch();
@@ -81,28 +81,7 @@ function PlaylistDetails() {
 
     const filteredSongs = queryFilter(query, titleKVPairs);
 
-    // const selectSong = (song, index) => {
-    //     if (selectedSongs.includes(song)) {
-    //         setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
-    //     } else {
-    //         setSelectedSongs([...selectedSongs, song])
-    //     }
-    //     setCurrentSong(song.audio_url);
-    //     setSongTitle(song.title);
-    //     setArtistName(song.artist);
-    //     setAlbumCover(song.album_arts);
-    //     setCurrentlyPlayingSongIndex(index);
-    //     setQuery("");
-
-    //     if (currentSongUrl !== song.audio_url) {
-    //         setCurrentSongUrl(song.audio_url);
-    //         play();
-    //     } else {
-    //         togglePlay();
-    //     }
-    // };
-
-    const selectSong = (song, index) => {    
+    const selectSong = (song, index) => {
         if (currentSongUrl !== song.audio_url) {
             setCurrentSong(song.audio_url);
             setSongTitle(song.title);
@@ -111,11 +90,15 @@ function PlaylistDetails() {
             setCurrentlyPlayingSongIndex(index);
             setQuery("");
             play();
+            setIsPlaying(true);
+            console.log('After play', {isPlaying: true, currentlyPlayingSongIndex: index}); // Log the state after play
         } else {
             togglePlay();
+            setIsPlaying(!isPlaying);
+            console.log('After toggle', {isPlaying: !isPlaying, currentlyPlayingSongIndex}); // Log the state after toggle
         }
     };
-    
+
 
     const addToPlaylist = () => {
         Object.values(filteredSongs).map((song) => {
@@ -243,7 +226,8 @@ function PlaylistDetails() {
                                     onMouseEnter={() => setHoveredSongIndex(index)}
                                     onMouseLeave={() => setHoveredSongIndex(null)}
                                     onClick={() => {
-                                        selectSong(song, index );
+                                        console.log('Song clicked', {index, isPlaying, currentlyPlayingSongIndex}); // Log the state when the song is clicked
+                                        selectSong(song, index);
                                     }}
                                 >
                                     <div className="grid-row">
@@ -257,7 +241,7 @@ function PlaylistDetails() {
                                     </div>
                                     <div className="grid-row">
                                         {song?.title ? (
-                                            <div className="song-item" onClick={(e) => { e.stopPropagation(); selectSong(song); setQuery("") }}>
+                                            <div className="song-item" onClick={(e) => { e.stopPropagation(); selectSong(song, index); setQuery("") }}>
                                                 <div className="song-image-container">
                                                     <img src={song.album_arts[0]} alt="Album Art" />
                                                 </div>
