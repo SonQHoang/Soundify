@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { getAllSongs } from "../../store/songs";
 import { GetSongsForAlbum } from "../../store/albums";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
 import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
 import { AddSongToAlbum, GetSingleAlbum, getUserAlbum } from "../../store/albums";
@@ -10,34 +11,32 @@ import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
 import { SongContext } from "../../context/SongContext";
 import "./AlbumDetails.css"
- 
+
 function AlbumDetails() {
     const { albumId } = useParams()
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
+    const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
+    const currentAlbum = useSelector((state) => state.album.singleAlbum)
+    const [albumToUpdate, setAlbumToUpdate] = useState(null);
 
     const new_songs = (useSelector(state => state.album.singleAlbum.songs))
 
-
+    const [isLoading, setIsLoading] = useState(true);
+    const [query, setQuery] = useState("");
     const [albumInfo, setAlbumInfo] = useState()
     const [selectedSongs, setSelectedSongs] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [albumToDelete, setAlbumToDelete] = useState(null);
     const [modalType, setModalType] = useState(null);
-    const { play,
-        // currentSong,
-        setCurrentSong,
-        // songTitle,
-        setSongTitle,
-        // artistName,
-        setArtistName,
-        // albumCover,
-        setAlbumCover
-    } = useContext(SongContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const [hoveredSongIndex, setHoveredSongIndex] = useState(null);
+    const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart } = useContext(SongContext);
 
     useEffect(() => {
         // getAlbumSongs(albumId)
@@ -46,19 +45,19 @@ function AlbumDetails() {
         dispatch(getAllSongs())
     }, [dispatch, albumId])
 
+    // if (isLoading) {
+    //     return <LoadingSpinner />
+    // }
+
     //=========================================== Searchbar Start============================================== 
-    const [query, setQuery] = useState(""); // Initialize query with an empty string
 
-
-
-    const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const titleKVPairs = songLibrary.map(song => ({
         id: song.id,
         user_id: song.user_id,
         album_id: song.album_id,
         title: song.title,
         duration: song.duration,
-        audio_url: song.audio_url, 
+        audio_url: song.audio_url,
         lyrics: song.lyrics,
         date_created: song.date_created
     }));
@@ -72,18 +71,20 @@ function AlbumDetails() {
 
     const filteredSongs = queryFilter(query, titleKVPairs);
 
-    const selectSong = (song) => {
+    const selectSong = (song, index) => {
         if (selectedSongs.includes(song)) {
             setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
         } else {
             setSelectedSongs([...selectedSongs, song])
         }
-        setCurrentSong(song.audio_url)
-        setSongTitle(song.title)
-        setArtistName(song.artist)
-        setAlbumCover(song.album_arts)
-        play()
+        setCurrentSong(song.audio_url);
+        setSongTitle(song.title);
+        setArtistName(song.artist);
+        setAlbumCover(song.album_arts);
+        setCurrentlyPlayingSongIndex(index);
+        // pause()
         setQuery("")
+        play()
     }
 
     const addToAlbum = () => {
@@ -95,17 +96,11 @@ function AlbumDetails() {
             dispatch(AddSongToAlbum(song_with_album_id))
         })
     }
-
-    // const getAlbumSongs = async () => {
-    //     await dispatch(GetSongsForAlbum(albumId))
-    // }
-
     //======================================================SearchBar End========================================
 
     //======================================================DeleteAlbum Start========================================
 
 
-    const currentAlbum = useSelector((state) => state.album.singleAlbum)
     const isOwner = currentAlbum.owner === sessionUser.first_name
 
     const handleDeleteClick = async () => {
@@ -118,8 +113,6 @@ function AlbumDetails() {
     //======================================================DeleteAlbum End========================================
 
     //======================================================UpdateAlbum Start========================================
-
-    const [albumToUpdate, setAlbumToUpdate] = useState(null);
 
     const handleUpdateClick = async () => {
         setAlbumToUpdate(currentAlbum)
@@ -164,7 +157,7 @@ function AlbumDetails() {
                                 {isDropdownOpen && (
                                     <div className="dropdown-content">
                                         <button className="album-update-button" onClick={() => {
-                                            setIsDropdownOpen(false);  
+                                            setIsDropdownOpen(false);
                                             return handleUpdateClick(albumId);
                                         }}>Edit Details</button>
 
@@ -176,18 +169,24 @@ function AlbumDetails() {
                                 )}
                             </div>
                         )}
-                        <div className='search-bar-container'>
-                            <div className="play-button-albums-container">
-                                <button className='play-albums-button'>
-                                    <img className="play-button-albums" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695962350/Untitled_design_4_olkf9a.png" alt="play button" />
-                                </button>
-                            </div>
-                            <div className='search-bar'>
+                        <div className='search-bar'>
                                 <input
                                     type="text"
                                     placeholder="Search for a song"
                                     onChange={(e) => setQuery(e.target.value)}
                                 />
+                        </div>
+                        <div className='search-bar-container'>
+                            <div className="play-button-albums-container">
+                                <button className='play-albums-button' onClick={playFromStart}>
+                                    <img
+                                        className={isPlaying ? "pause-button" : "play-button"}
+                                        src={isPlaying
+                                            ? "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697655841/icons8-pause-64_uryer0.png"
+                                            : "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697656383/icons8-play-50_fok8tu.png"}
+                                        alt="play button"
+                                    />
+                                </button>
                             </div>
                         </div>
                         <div className="album-songs-container">
@@ -206,9 +205,21 @@ function AlbumDetails() {
                                 </div>
                             </div>
                             {(new_songs)?.map((song, index) => (
-                                <div key={index} className="individual-album-songs">
+                                <div key={index}
+                                    className="individual-album-songs"
+                                    onMouseEnter={() => setHoveredSongIndex(index)}
+                                    onMouseLeave={() => setHoveredSongIndex(null)}
+                                    onClick={() => {
+                                        selectSong(song);
+                                        // togglePlay();
+                                    }} 
+                                >
                                     <div className="grid-row grid-row-width">
-                                        <div>{index + 1}</div>
+                                    {isPlaying && currentlyPlayingSongIndex === index
+                                                ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
+                                                : (hoveredSongIndex === index
+                                                    ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
+                                                    : index + 1)}                                 
                                     </div>
                                     <div className="grid-row grid-row-width">
                                         {song?.title ? (

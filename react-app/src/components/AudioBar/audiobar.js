@@ -19,24 +19,25 @@ const Player = () => {
         isPlaying,
         play,
         pause,
+        togglePlay,
         currentSong,
-        // currentTime,
         setCurrentTime,
         songTitle,
         artistName,
         albumCover,
     } = useContext(SongContext);
+    
 
-    const handleListen = (e) => {
-        setCurrentTime(e.target.currentTime);
-    };
-    const handlePlay = (e) => {
-        play();
-    };
-
-    const handlePause = (e) => {
-        pause();
-    };
+    useEffect(() => {
+        const audioElement = playerRef.current?.audio.current;
+        if (audioElement) {
+            if (isPlaying) {
+                audioElement.play();
+            } else {
+                audioElement.pause();
+            }
+        }
+    }, [isPlaying]);
 
     return (
         isAuthenticated && currentSong ? (
@@ -54,9 +55,9 @@ const Player = () => {
                     ref={playerRef}
                     autoPlayAfterSrcChange={false}
                     src={currentSong}
-                    onPlay={handlePlay}
-                    onPause={handlePause}
-                    onListen={handleListen}
+                    onPlay={play} 
+                    onPause={pause} 
+                    listenInterval={100}
                     autoPlay={isPlaying}
                 />
             </div>
