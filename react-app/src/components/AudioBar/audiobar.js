@@ -26,16 +26,7 @@ const Player = () => {
         artistName,
         albumCover,
     } = useContext(SongContext);
-
-    const handleListen = (e) => {
-        setCurrentTime(e.target.currentTime);
-        // Synchronize the isPlaying state with the actual play state of the audio element
-        if (e.target.paused && isPlaying) {
-            pause();
-        } else if (!e.target.paused && !isPlaying) {
-            play();
-        }
-    };
+    
 
     useEffect(() => {
         const audioElement = playerRef.current?.audio.current;
@@ -66,7 +57,6 @@ const Player = () => {
                     src={currentSong}
                     onPlay={play} 
                     onPause={pause} 
-                    onListen={handleListen}
                     listenInterval={100}
                     autoPlay={isPlaying}
                 />

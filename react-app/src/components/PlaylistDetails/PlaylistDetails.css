@@ -253,8 +253,13 @@
     color: white;
 }
 
+.song-audio-gif {
+    width: 40px;
+    height: 40px;
+    background-color: #121212;
+}
+
 .song-play-icon-playlist {
-    /* border: 2px solid red; */
     width: 20px;
     height: 20px;
 }

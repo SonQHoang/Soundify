@@ -32,10 +32,12 @@ function PlaylistDetails() {
     const [modalType, setModalType] = useState(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [hoveredSongIndex, setHoveredSongIndex] = useState(null);
+    const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
+    const [currentSongUrl, setCurrentSongUrl] = useState('');
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     // Context
-    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart } = useContext(SongContext);
+    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, currentView, setCurrentView } = useContext(SongContext);
 
     // Dispatch
     const dispatch = useDispatch();
@@ -79,21 +81,41 @@ function PlaylistDetails() {
 
     const filteredSongs = queryFilter(query, titleKVPairs);
 
-    const selectSong = (song) => {
-        if (selectedSongs.includes(song)) {
-            setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
-        } else {
-            setSelectedSongs([...selectedSongs, song])
-        }
-        setCurrentSong(song.audio_url);
-        setSongTitle(song.title);
-        setArtistName(song.artist);
-        setAlbumCover(song.album_arts);
-        // play()
-        // pause()
-        setQuery("");
-    };
+    // const selectSong = (song, index) => {
+    //     if (selectedSongs.includes(song)) {
+    //         setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
+    //     } else {
+    //         setSelectedSongs([...selectedSongs, song])
+    //     }
+    //     setCurrentSong(song.audio_url);
+    //     setSongTitle(song.title);
+    //     setArtistName(song.artist);
+    //     setAlbumCover(song.album_arts);
+    //     setCurrentlyPlayingSongIndex(index);
+    //     setQuery("");
 
+    //     if (currentSongUrl !== song.audio_url) {
+    //         setCurrentSongUrl(song.audio_url);
+    //         play();
+    //     } else {
+    //         togglePlay();
+    //     }
+    // };
+
+    const selectSong = (song, index) => {    
+        if (currentSongUrl !== song.audio_url) {
+            setCurrentSong(song.audio_url);
+            setSongTitle(song.title);
+            setArtistName(song.artist);
+            setAlbumCover(song.album_arts[0]);
+            setCurrentlyPlayingSongIndex(index);
+            setQuery("");
+            play();
+        } else {
+            togglePlay();
+        }
+    };
+    
 
     const addToPlaylist = () => {
         Object.values(filteredSongs).map((song) => {
@@ -221,20 +243,21 @@ function PlaylistDetails() {
                                     onMouseEnter={() => setHoveredSongIndex(index)}
                                     onMouseLeave={() => setHoveredSongIndex(null)}
                                     onClick={() => {
-                                        selectSong(song);
-                                        togglePlay();
+                                        selectSong(song, index );
                                     }}
                                 >
                                     <div className="grid-row">
                                         <div className="playlist-song-count">
-                                            {hoveredSongIndex === index
-                                                ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
-                                                : index + 1}
-                                        </div>                            
+                                            {isPlaying && currentlyPlayingSongIndex === index
+                                                ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
+                                                : (hoveredSongIndex === index
+                                                    ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
+                                                    : index + 1)}
+                                        </div>
                                     </div>
                                     <div className="grid-row">
                                         {song?.title ? (
-                                            <div className="song-item" onClick={() => { selectSong(song); setQuery("") }}>
+                                            <div className="song-item" onClick={(e) => { e.stopPropagation(); selectSong(song); setQuery("") }}>
                                                 <div className="song-image-container">
                                                     <img src={song.album_arts[0]} alt="Album Art" />
                                                 </div>
