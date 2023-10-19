@@ -178,13 +178,6 @@ function AlbumDetails() {
                                 </div>
                             </div>
                         </div>
-                        <div className='search-bar'>
-                            <input
-                                type="text"
-                                placeholder="Search for a song"
-                                onChange={(e) => setQuery(e.target.value)}
-                            />
-                        </div>
                         <div className="play-button-albums-container">
                             <button className='play-albums-button' onClick={playFromStartModified}>
                                 <img
@@ -293,6 +286,13 @@ function AlbumDetails() {
                         </div>
                         <div className="selected-songs">
                             <h3>Album Songs</h3>
+                            <div className='search-bar'>
+                            <input
+                                type="text"
+                                placeholder="Search for a song"
+                                onChange={(e) => setQuery(e.target.value)}
+                            />
+                        </div>
                             <ul>
                                 {Object.values(filteredSongs).map((song, index) => (
                                     <li key={index}>{song.title}</li>

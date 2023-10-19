@@ -187,13 +187,6 @@ function PlaylistDetails() {
                                 </div>
                             </div>
                         </div>
-                        <div className='search-bar'>
-                            <input
-                                type="text"
-                                placeholder="Search for a song"
-                                onChange={(e) => setQuery(e.target.value)}
-                            />
-                        </div>
                         <div className='search-bar-container'>
                             <div className="play-button-playlist-container">
                                 <button className='play-playlist-button' onClick={playFromStartModified}>
@@ -316,8 +309,15 @@ function PlaylistDetails() {
                                 />
                             )}
                         </div>
+                        <h3>Playlist Songs</h3>
                         <div className="selected-songs">
-                            <h3>Playlist Songs</h3>
+                            <div className='search-bar'>
+                                <input
+                                    type="text"
+                                    placeholder="Search for a song"
+                                    onChange={(e) => setQuery(e.target.value)}
+                                />
+                            </div>
                             <ul>
                                 {Object.values(filteredSongs).map((song, index) => (
                                     <li key={index}>{song.title}</li>
