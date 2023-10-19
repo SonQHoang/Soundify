@@ -71,12 +71,12 @@ function PlaylistDetails() {
     }, [dispatch, playlistId])
 
 
-    useEffect(() => {
-        updateCurrentView('playlist');
-        return () => {
-            updateCurrentView('album');
-        }
-    }, []);
+    // useEffect(() => {
+    //     updateCurrentView('playlist');
+    //     return () => {
+    //         updateCurrentView('album');
+    //     }
+    // }, []);
 
     if (isLoading) {
         return <LoadingSpinner />
