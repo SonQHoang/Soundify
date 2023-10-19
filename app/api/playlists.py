@@ -112,13 +112,14 @@ def get_single_playlist_by_id(playlistId):
         "title": playlist.title,
         "image": playlist.image,
         "owner": playlist.owner,
-        # "songs": playlist.songs,
+        "songs": [song.to_dict() for song in playlist.playlist_songs],  # Fixed the error here
         "playlist_description": playlist.playlist_description,
         "date_created": datetime.utcnow(),
     }
 
-    # if hasattr(playlist, "songs"):
-    #     playlist_data["songs"] = [song.to_dict() for song in playlist.songs]
+    if hasattr(playlist, "playlist_songs"):
+        playlist_data["songs"] = [song.to_dict() for song in playlist.playlist_songs]
+
     return jsonify(playlist_data)
 
 @playlist_routes.route("/update/<int:playlistId>", methods=["PUT"])
