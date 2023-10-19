@@ -48,12 +48,12 @@ function PlaylistDetails() {
         await dispatch(GetSongsForPlaylist(playlistId))
     }
 
-    // const playFromStartModified = () => {
-    //     if (!isPlaylistPlayed || playingPlaylistId !== playlistId) {
-    //         setIsPlaylistPlayed(true);
-    //     }
-    //     playFromStart();
-    // };
+    const playFromStartModified = () => {
+        if (!isPlaylistPlayed || playingPlaylistId !== playlistId) {
+            setIsPlaylistPlayed(true);
+        }
+        playFromStart();
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -188,7 +188,7 @@ function PlaylistDetails() {
                         </div>
                         <div className='search-bar-container'>
                             <div className="play-button-playlist-container">
-                                {/* <button className='play-playlist-button' onClick={playFromStartModified}> */}
+                                <button className='play-playlist-button' onClick={playFromStartModified}>
                                     <img
                                         className={
                                             isPlaying && playingPlaylistId === playlistId ? "pause-button" : "play-button"
@@ -197,7 +197,7 @@ function PlaylistDetails() {
                                             : "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697656383/icons8-play-50_fok8tu.png"}
                                         alt="play button"
                                     />
-                                {/* </button> */}
+                                </button>
                             </div>
                             {isOwner && (
                                 <div className="playlist-options-dropdown">
