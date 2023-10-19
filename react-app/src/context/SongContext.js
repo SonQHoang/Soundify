@@ -12,9 +12,15 @@ export const SongProvider = ({ children }) => {
     const [albumCover, setAlbumCover] = useState(null);
     const [firstPlay, setFirstPlay] = useState(true);
     const [currentView, setCurrentView] = useState('playlist');
+    const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
     
     const playlistSongs = useSelector(state => state.playlist.singlePlaylist.songs);
     const albumSongs = useSelector(state => state.album.singleAlbum.songs)
+
+    const updateCurrentView = (view) => {
+        setCurrentView(view);
+    };
+    
 
     const songs = currentView === 'playlist' ? playlistSongs : albumSongs;
 
@@ -42,7 +48,8 @@ export const SongProvider = ({ children }) => {
             setArtistName(songs[0].artist);
             setAlbumCover(songs[0].album_arts);
             setFirstPlay(false);
-            play();
+            setCurrentlyPlayingSongIndex(0);
+            setIsPlaying(true)
         } else {
             togglePlay();
         }
@@ -57,6 +64,7 @@ export const SongProvider = ({ children }) => {
             currentTime,
             setCurrentTime,
             songTitle,
+            updateCurrentView,
             setSongTitle,
             isPlaying,
             setIsPlaying,
@@ -68,7 +76,9 @@ export const SongProvider = ({ children }) => {
             playFromStart,
             setFirstPlay,
             currentView,
-            setCurrentView
+            setCurrentView,
+            currentlyPlayingSongIndex, 
+            setCurrentlyPlayingSongIndex
         }}>
             {children}
         </SongContext.Provider>

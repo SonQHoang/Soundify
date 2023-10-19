@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
+import { AddSongToPlaylist, GetSinglePlaylist, getUserPlaylist, GetSongsForPlaylist } from "../../store/playlists";
+import { getAllSongs } from "../../store/songs";
+import { SongContext } from "../../context/SongContext";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom"
-import { getAllSongs } from "../../store/songs";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import { SongContext } from "../../context/SongContext";
 import DeletePlaylistModal from "../DeletePlaylistModal/DeletePlaylistModal";
-import { AddSongToPlaylist, GetSinglePlaylist, getUserPlaylist, GetSongsForPlaylist } from "../../store/playlists";
-import TestNav from "../TestComponents/TestNav";
-import TestSideBar from "../TestComponents/TestSideBar";
 import UpdatePlaylistModal from "../UpdatePlaylistModal/UpdatePlaylistModal";
+import TestSideBar from "../TestComponents/TestSideBar";
+import TestNav from "../TestComponents/TestNav";
 import "./PlaylistDetails.css"
 
 function PlaylistDetails() {
@@ -34,10 +34,12 @@ function PlaylistDetails() {
     const [hoveredSongIndex, setHoveredSongIndex] = useState(null);
     const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
     const [currentSongUrl, setCurrentSongUrl] = useState('');
+    const [playingPlaylistId, setPlayingPlaylistId] = useState(null);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+    const [isPlaylistPlayed, setIsPlaylistPlayed] = useState(false);
 
     // Context
-    const { play, pause, togglePlay, isPlaying, setIsPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, currentView, setCurrentView } = useContext(SongContext);
+    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, setFirstPlay, updateCurrentView } = useContext(SongContext);
 
     // Dispatch
     const dispatch = useDispatch();
@@ -46,18 +48,42 @@ function PlaylistDetails() {
         await dispatch(GetSongsForPlaylist(playlistId))
     }
 
+    const playFromStartModified = () => {
+        if (!isPlaylistPlayed || playingPlaylistId !== playlistId) {
+            setIsPlaylistPlayed(true);
+        }
+        playFromStart();
+    };
+
     useEffect(() => {
-        setIsLoading(true);
-        getPlaylistSongs(playlistId)
-        dispatch(getAllSongs());
-        dispatch(GetSongsForPlaylist(playlistId));
-        dispatch(GetSinglePlaylist(playlistId))
-            .finally(() => setIsLoading(false));
-    }, [dispatch, playlistId]);
+        const fetchData = async () => {
+            await Promise.all([
+                dispatch(GetSongsForPlaylist(playlistId)),
+                dispatch(GetSinglePlaylist(playlistId)),
+                dispatch(getAllSongs())
+            ])
+
+            setIsLoading(false)
+            setFirstPlay(true)
+            setIsPlaylistPlayed(false)
+        }
+        fetchData()
+    }, [dispatch, playlistId])
+
+
+    useEffect(() => {
+        updateCurrentView('playlist');
+
+        return () => {
+            updateCurrentView('album');
+        }
+    }, []);
 
     if (isLoading) {
         return <LoadingSpinner />
     }
+
+
 
     //=========================================== Searchbar Start============================================== 
     const titleKVPairs = songLibrary.map(song => ({
@@ -82,22 +108,19 @@ function PlaylistDetails() {
     const filteredSongs = queryFilter(query, titleKVPairs);
 
     const selectSong = (song, index) => {
-        if (currentSongUrl !== song.audio_url) {
-            setCurrentSong(song.audio_url);
-            setSongTitle(song.title);
-            setArtistName(song.artist);
-            setAlbumCover(song.album_arts[0]);
-            setCurrentlyPlayingSongIndex(index);
-            setQuery("");
-            play();
-            setIsPlaying(true);
-            console.log('After play', {isPlaying: true, currentlyPlayingSongIndex: index}); // Log the state after play
+        if (selectedSongs.includes(song)) {
+            setSelectedSongs(selectedSongs.filter((selected) => selected !== song));
         } else {
-            togglePlay();
-            setIsPlaying(!isPlaying);
-            console.log('After toggle', {isPlaying: !isPlaying, currentlyPlayingSongIndex}); // Log the state after toggle
+            setSelectedSongs([...selectedSongs, song])
         }
-    };
+        setCurrentSong(song.audio_url);
+        setSongTitle(song.title);
+        setArtistName(song.artist);
+        setAlbumCover(song.album_arts);
+        setCurrentlyPlayingSongIndex(index);
+        setQuery("")
+        play()
+    }
 
 
     const addToPlaylist = () => {
@@ -173,10 +196,11 @@ function PlaylistDetails() {
                         </div>
                         <div className='search-bar-container'>
                             <div className="play-button-playlist-container">
-                                <button className='play-playlist-button' onClick={playFromStart}>
+                                <button className='play-playlist-button' onClick={playFromStartModified}>
                                     <img
-                                        className={isPlaying ? "pause-button" : "play-button"}
-                                        src={isPlaying
+                                        className={
+                                            isPlaying && playingPlaylistId === playlistId ? "pause-button" : "play-button"
+                                        } src={isPlaying && playingPlaylistId === playlistId
                                             ? "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697655841/icons8-pause-64_uryer0.png"
                                             : "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697656383/icons8-play-50_fok8tu.png"}
                                         alt="play button"
@@ -226,7 +250,6 @@ function PlaylistDetails() {
                                     onMouseEnter={() => setHoveredSongIndex(index)}
                                     onMouseLeave={() => setHoveredSongIndex(null)}
                                     onClick={() => {
-                                        console.log('Song clicked', {index, isPlaying, currentlyPlayingSongIndex}); // Log the state when the song is clicked
                                         selectSong(song, index);
                                     }}
                                 >
