@@ -78,9 +78,9 @@ function PlaylistDetails() {
         }
     }, []);
 
-    if (isLoading) {
-        return <LoadingSpinner />
-    }
+    // if (isLoading) {
+    //     return <LoadingSpinner />
+    // }
 
 
 
