@@ -7,7 +7,7 @@ songs_album_association = db.Table('album_songs',
 )
 
 class Albums(db.Model):
-    __tablename__ = "albums"
+    __tablename__ = "albums" 
 
     if environment == "production":
         songs_album_association.schema = SCHEMA
