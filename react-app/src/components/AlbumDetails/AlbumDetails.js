@@ -66,7 +66,6 @@ function AlbumDetails() {
 
     useEffect(() => {
         updateCurrentView('album');
-
         return () => {
             updateCurrentView('playlist');
         }

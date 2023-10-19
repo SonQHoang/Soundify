@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
-import { SongContext } from "../../context/SongContext";
+// import { SongContext } from "../../context/SongContext";
 import { getSingleSong } from "../../store/songs";
 import "./SongDetails.css"
 
@@ -12,7 +12,7 @@ function SongDetails() {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
-    const userId = sessionUser.id
+    // const userId = sessionUser.id
 
     const currentSong = Object.values(useSelector(state => state.songs.singleSong))
 
