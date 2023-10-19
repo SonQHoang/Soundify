@@ -56,6 +56,7 @@ const acGetPlaylist = (data) => {
 }
 
 const acGetSinglePlaylist = (data) => {
+    console.log('Data inside of acGetSinglePlaylist==========>', data)
     return {
         type: GET_SINGLE_PLAYLIST,
         payload: data
@@ -207,6 +208,15 @@ const playlistReducer = (state = initialState, action) => {
         }
 
         case GET_SINGLE_PLAYLIST:
+            // console.log('state in get_single_playlist======>', state)
+            // let songs = state.songs
+        //     const newState = {...state, 
+        //     singlePlaylist: action.payload
+        // }
+        // newState.singlePlaylist["songs"] = songs
+
+        // console.log('newState reducer for get_single_playlist=========>', newState)
+        // return newState
             return {
                 ...state,
                 singlePlaylist: action.payload
@@ -236,6 +246,7 @@ const playlistReducer = (state = initialState, action) => {
                 }
             }
         }
+
         default:
             return state
     }
