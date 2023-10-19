@@ -135,8 +135,10 @@ export const AddSongToPlaylist = (data) => async (dispatch) => {
 
 export const GetSinglePlaylist = (playlistId) => async (dispatch) => {
     const response = await fetch(`/api/playlist/${playlistId}`)
+    console.log('response======>', response)
     if (response.ok) {
         const playlist = await response.json()
+        console.log('What does the playlist look like after coming from the backend=====>', playlist)
         dispatch(acGetSinglePlaylist(playlist))
     } else {
         console.log("Could not retrieve the specified playlist")
