@@ -86,7 +86,7 @@ def seed_users():
     album_7 = Albums (
         user_id = 1,
         title = "Any Given Thursday",
-        album_photo = "https://d47mwstkaud3p.cloudfront.net/AlbumCoverArt/Red+Album+Art+Taylor+Swift.jpeg",
+        album_photo = "https://soundify-audio-files.s3.us-west-1.amazonaws.com/AlbumCoverArt/AnyGivenThursdayAlbum.jpeg",
         owner = "John Mayer",
         year = 2021,
         date_created = datetime(2023, 9, 6)
