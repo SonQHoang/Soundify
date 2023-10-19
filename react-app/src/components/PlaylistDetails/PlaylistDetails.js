@@ -33,13 +33,13 @@ function PlaylistDetails() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [hoveredSongIndex, setHoveredSongIndex] = useState(null);
     const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
-    const [currentSongUrl, setCurrentSongUrl] = useState('');
+    // const [currentSongUrl, setCurrentSongUrl] = useState('');
     const [playingPlaylistId, setPlayingPlaylistId] = useState(null);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     const [isPlaylistPlayed, setIsPlaylistPlayed] = useState(false);
 
     // Context
-    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, setFirstPlay, updateCurrentView } = useContext(SongContext);
+    const { play, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, playFromStart, setFirstPlay, updateCurrentView } = useContext(SongContext);
 
     // Dispatch
     const dispatch = useDispatch();
@@ -73,15 +73,14 @@ function PlaylistDetails() {
 
     useEffect(() => {
         updateCurrentView('playlist');
-
         return () => {
             updateCurrentView('album');
         }
     }, []);
 
-    if (isLoading) {
-        return <LoadingSpinner />
-    }
+    // if (isLoading) {
+    //     return <LoadingSpinner />
+    // }
 
 
 
