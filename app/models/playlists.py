@@ -32,7 +32,7 @@ class Playlists(db.Model):
     # Playlist has a MANY to one relationship with user
     playlist_user = db.relationship('User', back_populates='playlist')
 
-    def to_dict(self):
+    def to_dict(self): 
         return {
             "id": self.id,
             "user_id": self.user_id,

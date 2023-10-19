@@ -8,7 +8,7 @@ from ..forms.update_album_form import UpdateAlbumForm
 from ..routes.AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 album_routes = Blueprint('album', __name__)
-session = db.session
+session = db.session 
 
 @album_routes.route('/user_album', methods=["GET"])
 def get_user_album():
