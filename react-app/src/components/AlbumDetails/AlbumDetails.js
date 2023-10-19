@@ -20,7 +20,7 @@ function AlbumDetails() {
     const new_songs = (useSelector(state => state.album.singleAlbum.songs))
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
-    
+    console.log('What is in my currentAlbum====>', currentAlbum)
     const { albumId } = useParams()
     
     const [isLoading, setIsLoading] = useState(true);

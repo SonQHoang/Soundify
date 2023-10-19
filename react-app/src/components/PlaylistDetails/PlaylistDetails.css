@@ -12,6 +12,7 @@
     "playlist-sidebar main-content"
     "testfooter testfooter";
     overflow-y: scroll;
+    padding-bottom: 90px;
 }
 
 .main-content-container {
@@ -98,23 +99,24 @@
 }
 
 .playlist-headers .hashtag-header {
-    margin-left: 50px;
+    margin-left: 13px;
 }
 
 .playlist-headers .title-header {
-    margin-left: 280px;
+    margin-left: 220px;
 }
 
 .playlist-headers .album-header {
-    margin-left: 260px;
+    margin-left: 180px;
+    /* border: 2px solid red; */
 }
 
 .playlist-headers .date-header {
-    margin-left: 230px;
+    margin-left: 155px;
 }
 
 .playlist-headers .time-header {
-    margin-left: 240px;
+    margin-left: 168px;
 }
 .individual-playlist-songs {
     /* border: 2px solid red; */

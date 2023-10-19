@@ -20,6 +20,8 @@ function PlaylistDetails() {
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist);
+    
+    console.log('What are the attributes in my currentPlaylist; PlaylistDetails=========>', currentPlaylist)
 
     // URL params
     const { playlistId } = useParams();
@@ -172,7 +174,7 @@ function PlaylistDetails() {
                     <div className="main-content">
                         <div className="playlist-image-and-title-container">
                             <div className="playlist-image-container">
-                                <img className='playlist-image' src={currentPlaylist.image}></img>
+                                <img className='playlist-image' src={currentPlaylist.image} alt="Playlist"></img>
                             </div>
                             <div className="playlist-information-container">
                                 <div className="playlist-playlist-title-container">
