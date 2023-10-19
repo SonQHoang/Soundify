@@ -63,9 +63,9 @@ function PlaylistDetails() {
                 dispatch(getAllSongs())
             ])
 
-            // setIsLoading(false)
-            // setFirstPlay(true)
-            // setIsPlaylistPlayed(false)
+            setIsLoading(false)
+            setFirstPlay(true)
+            setIsPlaylistPlayed(false)
         }
         fetchData()
     }, [dispatch, playlistId])
@@ -78,9 +78,9 @@ function PlaylistDetails() {
         }
     }, []);
 
-    // if (isLoading) {
-    //     return <LoadingSpinner />
-    // }
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
 
 
 
