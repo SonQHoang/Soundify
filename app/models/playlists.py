@@ -8,7 +8,7 @@ songs_playlist_association = db.Table('playlist_songs',
 
 
 
-class Playlists(db.Model): 
+class Playlists(db.Model):  
     __tablename__ = "playlists"
 
     if environment == "production":
@@ -42,4 +42,5 @@ class Playlists(db.Model):
             "image": self.image,
             "title": self.title,
             "date_created": self.date_created,
+            "songs": [playlist_song.to_dict() for playlist_song in self.playlist_songs]
         }

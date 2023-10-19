@@ -16,7 +16,7 @@ function PlaylistDetails() {
     // Retrieving data from Redux store
     const sessionUser = useSelector(state => state.session.user);
     const playlist_songs = useSelector(state => state.playlist.singlePlaylist.songs);
-    console.log('new-songs in playlist detail==========>', playlist_songs)
+    // console.log('new-songs in playlist detail==========>', playlist_songs)
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist);
