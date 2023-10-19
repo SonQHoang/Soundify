@@ -25,6 +25,8 @@ const Player = () => {
         songTitle,
         artistName,
         albumCover,
+        handleNextTrack,
+        handlePreviousTrack
     } = useContext(SongContext);
     
 
@@ -61,6 +63,10 @@ const Player = () => {
                     onPause={pause} 
                     listenInterval={100}
                     autoPlay={isPlaying}
+                    showSkipControls={true}
+                    showJumpControls={true}
+                    onClickNext={handleNextTrack}
+                    onClickPrevious={handlePreviousTrack}
                 />
             </div>
         ) : null
