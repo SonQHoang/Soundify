@@ -13,14 +13,33 @@ export const SongProvider = ({ children }) => {
     const [firstPlay, setFirstPlay] = useState(true);
     const [currentView, setCurrentView] = useState('playlist');
     const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
-    
+    const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+
+    const handleNextTrack = () => {
+        const nextTrackIndex = (currentTrackIndex + 1) % songs.length;
+        setCurrentTrackIndex(nextTrackIndex);
+        setCurrentSong(songs[nextTrackIndex].audio_url);
+        setSongTitle(songs[nextTrackIndex].title);
+        setArtistName(songs[nextTrackIndex].artist);
+        setAlbumCover(songs[nextTrackIndex].album_arts[0]);
+    };
+
+    const handlePreviousTrack = () => {
+        const prevTrackIndex = (currentTrackIndex - 1 + songs.length) % songs.length;
+        setCurrentTrackIndex(prevTrackIndex);
+        setCurrentSong(songs[prevTrackIndex].audio_url);
+        setSongTitle(songs[prevTrackIndex].title);
+        setArtistName(songs[prevTrackIndex].artist);
+        setAlbumCover(songs[prevTrackIndex].album_arts[0]);
+    };
+
     const playlistSongs = useSelector(state => state.playlist.singlePlaylist.songs);
     const albumSongs = useSelector(state => state.album.singleAlbum.songs)
 
     const updateCurrentView = (view) => {
         setCurrentView(view);
     };
-    
+
 
     const songs = currentView === 'playlist' ? playlistSongs : albumSongs;
 
@@ -32,7 +51,7 @@ export const SongProvider = ({ children }) => {
     const play = () => {
         setIsPlaying(true);
     };
-    
+
     const pause = () => {
         setIsPlaying(false);
     };
@@ -40,7 +59,7 @@ export const SongProvider = ({ children }) => {
     const togglePlay = () => {
         setIsPlaying((prev) => !prev);
     };
-    
+
     const playFromStart = () => {
         if (firstPlay && songs && songs.length > 0) {
             setCurrentSong(songs[0].audio_url);
@@ -77,8 +96,12 @@ export const SongProvider = ({ children }) => {
             setFirstPlay,
             currentView,
             setCurrentView,
-            currentlyPlayingSongIndex, 
-            setCurrentlyPlayingSongIndex
+            currentlyPlayingSongIndex,
+            setCurrentlyPlayingSongIndex,
+            handleNextTrack,
+            handlePreviousTrack,
+            currentTrackIndex,
+            setCurrentTrackIndex
         }}>
             {children}
         </SongContext.Provider>
