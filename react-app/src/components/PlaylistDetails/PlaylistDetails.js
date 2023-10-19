@@ -15,7 +15,7 @@ function PlaylistDetails() {
 
     // Retrieving data from Redux store
     const sessionUser = useSelector(state => state.session.user);
-    const playlist_songs = useSelector(state => state.playlist.singlePlaylist.songs);
+    const new_songs = useSelector(state => state.playlist.singlePlaylist.songs);
     // console.log('new-songs in playlist detail==========>', playlist_songs)
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
@@ -25,7 +25,6 @@ function PlaylistDetails() {
     const { playlistId } = useParams();
 
     // Local component state
-    const [new_songs, setNewSong] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const [query, setQuery] = useState("");
     const [selectedSongs, setSelectedSongs] = useState([]);
@@ -57,10 +56,6 @@ function PlaylistDetails() {
         }
         playFromStart();
     };
-
-    useEffect(() => {
-        setNewSong(playlist_songs)
-    },[playlist_songs])
 
     useEffect(() => {
         const fetchData = async () => {
