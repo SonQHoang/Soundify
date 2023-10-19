@@ -112,6 +112,7 @@ def get_single_playlist_by_id(playlistId):
         "title": playlist.title,
         "image": playlist.image,
         "owner": playlist.owner,
+        "songs": playlist.songs,
         "playlist_description": playlist.playlist_description,
         "date_created": datetime.utcnow(),
     }
