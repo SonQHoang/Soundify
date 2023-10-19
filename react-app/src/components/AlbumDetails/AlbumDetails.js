@@ -1,43 +1,52 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom";
+import { AddSongToAlbum, GetSingleAlbum, getUserAlbum } from "../../store/albums";
 import { getAllSongs } from "../../store/songs";
 import { GetSongsForAlbum } from "../../store/albums";
+import { SongContext } from "../../context/SongContext";
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import DeleteAlbumModal from "../DeleteAlbumModal/DeleteAlbumModal";
 import UpdateAlbumModal from "../UpdateAlbumModal/UpdateAlbumModal";
-import { AddSongToAlbum, GetSingleAlbum, getUserAlbum } from "../../store/albums";
 import TestSideBar from "../TestComponents/TestSideBar";
 import TestNav from "../TestComponents/TestNav";
-import { SongContext } from "../../context/SongContext";
 import "./AlbumDetails.css"
 
 function AlbumDetails() {
-    const { albumId } = useParams()
     const dispatch = useDispatch();
-
+    
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
+    const new_songs = (useSelector(state => state.album.singleAlbum.songs))
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
-    const [albumToUpdate, setAlbumToUpdate] = useState(null);
-
-    const new_songs = (useSelector(state => state.album.singleAlbum.songs))
-
+    
+    const { albumId } = useParams()
+    
     const [isLoading, setIsLoading] = useState(true);
     const [query, setQuery] = useState("");
-    const [albumInfo, setAlbumInfo] = useState()
     const [selectedSongs, setSelectedSongs] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [albumToDelete, setAlbumToDelete] = useState(null);
+    const [albumToUpdate, setAlbumToUpdate] = useState(null);
     const [modalType, setModalType] = useState(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [hoveredSongIndex, setHoveredSongIndex] = useState(null);
     const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
+    const [playingAlbumId, setPlayingAlbumId] = useState(null);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+    const [isAlbumPlayed, setIsAlbumPlayed] = useState(false);
+    const [albumInfo, setAlbumInfo] = useState()
 
-    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart } = useContext(SongContext);
+    const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, setFirstPlay, updateCurrentView } = useContext(SongContext);
 
+    const playFromStartModified = () => {
+        if (!isAlbumPlayed || playingAlbumId !== albumId) {
+            setIsAlbumPlayed(true);
+            setPlayingAlbumId(albumId);
+        }
+        playFromStart();
+    };
     useEffect(() => {
         const fetchData = async () => {
             await Promise.all([
@@ -45,13 +54,24 @@ function AlbumDetails() {
                 dispatch(GetSingleAlbum(albumId)),
                 dispatch(getAllSongs())
             ]);
-    
+
             setIsLoading(false);
+            setFirstPlay(true);
+            setIsAlbumPlayed(false);
         };
-    
+
         fetchData();
     }, [dispatch, albumId]);
-    
+
+
+    useEffect(() => {
+        updateCurrentView('album');
+
+        return () => {
+            updateCurrentView('playlist');
+        }
+    }, []);
+
 
     if (isLoading) {
         return <LoadingSpinner />
@@ -90,7 +110,6 @@ function AlbumDetails() {
         setArtistName(song.artist);
         setAlbumCover(song.album_arts);
         setCurrentlyPlayingSongIndex(index);
-        // pause()
         setQuery("")
         play()
     }
@@ -159,6 +178,25 @@ function AlbumDetails() {
                                 </div>
                             </div>
                         </div>
+                        <div className='search-bar'>
+                            <input
+                                type="text"
+                                placeholder="Search for a song"
+                                onChange={(e) => setQuery(e.target.value)}
+                            />
+                        </div>
+                        <div className="play-button-albums-container">
+                            <button className='play-albums-button' onClick={playFromStartModified}>
+                                <img
+                                     className={
+                                        isPlaying && playingAlbumId === albumId ? "pause-button" : "play-button"
+                                    } src={isPlaying && playingAlbumId === albumId
+                                        ? "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697655841/icons8-pause-64_uryer0.png"
+                                        : "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697656383/icons8-play-50_fok8tu.png"}
+                                    alt="play button"
+                                />
+                            </button>
+                        </div>
                         {isOwner && (
                             <div className="album-options-dropdown">
                                 <button className="album-dropdown-button" onClick={toggleDropdown}>. . .</button>
@@ -177,26 +215,6 @@ function AlbumDetails() {
                                 )}
                             </div>
                         )}
-                        <div className='search-bar'>
-                                <input
-                                    type="text"
-                                    placeholder="Search for a song"
-                                    onChange={(e) => setQuery(e.target.value)}
-                                />
-                        </div>
-                        <div className='search-bar-container'>
-                            <div className="play-button-albums-container">
-                                <button className='play-albums-button' onClick={playFromStart}>
-                                    <img
-                                        className={isPlaying ? "pause-button" : "play-button"}
-                                        src={isPlaying
-                                            ? "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697655841/icons8-pause-64_uryer0.png"
-                                            : "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697656383/icons8-play-50_fok8tu.png"}
-                                        alt="play button"
-                                    />
-                                </button>
-                            </div>
-                        </div>
                         <div className="album-songs-container">
                             <div className="album-headers">
                                 <div className="grid-row grid-row-width">
@@ -219,19 +237,18 @@ function AlbumDetails() {
                                     onMouseLeave={() => setHoveredSongIndex(null)}
                                     onClick={() => {
                                         selectSong(song, index);
-                                        // togglePlay();
-                                    }} 
+                                    }}
                                 >
                                     <div className="grid-row grid-row-width">
-                                    {isPlaying && currentlyPlayingSongIndex === index
-                                                ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
-                                                : (hoveredSongIndex === index
-                                                    ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
-                                                    : index + 1)}                                 
+                                        {isPlaying && currentlyPlayingSongIndex === index
+                                            ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
+                                            : (hoveredSongIndex === index
+                                                ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
+                                                : index + 1)}
                                     </div>
                                     <div className="grid-row grid-row-width">
                                         {song?.title ? (
-                                            <p onClick={() => { selectSong(song, index); setQuery("") }}>{song.title}</p>
+                                            <p onClick={(e) => { e.stopPropagation(); selectSong(song, index); setQuery("") }}>{song.title}</p>
                                         ) : null}
                                     </div>
                                     <div className="grid-row grid-row-width">
