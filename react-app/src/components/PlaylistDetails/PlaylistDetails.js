@@ -261,7 +261,7 @@ function PlaylistDetails() {
                                         selectSong(song, index);
                                     }}
                                 >
-                                    <div className="grid-row">
+                                    {/* <div className="grid-row">
                                         <div className="playlist-song-count">
                                             {isPlaying && currentlyPlayingSongIndex === index
                                                 ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
@@ -270,7 +270,7 @@ function PlaylistDetails() {
                                                     ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
                                                     : index + 1)}
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="grid-row">
                                         <div className="playlist-song-count">
                                             {hoveredSongIndex === index
