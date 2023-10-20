@@ -23,7 +23,7 @@ function PlaylistDetails() {
     // URL params
     const { playlistId } = useParams();
 
-    // Local component state
+    // Local component state 
     const [isLoading, setIsLoading] = useState(true);
     const [query, setQuery] = useState("");
     const [selectedSongs, setSelectedSongs] = useState([]);

@@ -2,11 +2,11 @@
     /* border: 2px solid green; */
 }
 
+
 .individual-playlist-container {
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -15,9 +15,10 @@
 .playlist-icon-container {
     /* border: 2px solid red; */
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 20px;
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
 }
 
 .individual-playlist-container:hover {
@@ -44,9 +45,4 @@
 .link-no-underline {
     text-decoration: none;
     color: white
-}
-
-.playlist_image {
-    width: 75px;
-    height: auto;
 }
