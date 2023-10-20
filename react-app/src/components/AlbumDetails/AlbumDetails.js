@@ -39,12 +39,18 @@ function AlbumDetails() {
     const { play, pause, togglePlay, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, firstPlay, playFromStart, setFirstPlay, updateCurrentView } = useContext(SongContext);
 
     const playFromStartModified = () => {
-        if (!isAlbumPlayed || playingAlbumId !== albumId) {
+        if (currentlyPlayingSongIndex === null || playingAlbumId !== albumId) {
+            // If no song is selected, or we're in a new playlist, play the first song
             setIsAlbumPlayed(true);
+            setCurrentlyPlayingSongIndex(0);
             setPlayingAlbumId(albumId);
+            playFromStart();
+        } else {
+            // If a song is already selected from this playlist, toggle its playback
+            togglePlay();
         }
-        playFromStart();
     };
+
     useEffect(() => {
         const fetchData = async () => {
             await Promise.all([
@@ -64,10 +70,14 @@ function AlbumDetails() {
 
     useEffect(() => {
         updateCurrentView('album');
+
+        setCurrentlyPlayingSongIndex(null);
+        setIsAlbumPlayed(false);
+
         return () => {
             updateCurrentView('playlist');
         }
-    }, []);
+    }, [albumId]);
 
 
     if (isLoading) {
@@ -229,13 +239,24 @@ function AlbumDetails() {
                                         selectSong(song, index);
                                     }}
                                 >
-                                    <div className="grid-row grid-row-width">
-                                        {isPlaying && currentlyPlayingSongIndex === index
-                                            ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
-                                            : (hoveredSongIndex === index
+                                    {/* <div className="grid-row grid-row-width">
+                                        <div className="playlist-song-count">
+                                            {isPlaying && currentlyPlayingSongIndex === index
+                                                ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
+                                                :
+                                                (hoveredSongIndex === index
+                                                    ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
+                                                    : index + 1)}
+                                        </div>
+                                    </div> */}
+                                    <div className="grid-row">
+                                        <div className="album-song-count">
+                                            {hoveredSongIndex === index
                                                 ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
-                                                : index + 1)}
+                                                : index + 1}
+                                        </div>
                                     </div>
+
                                     <div className="grid-row grid-row-width">
                                         {song?.title ? (
                                             <p onClick={(e) => { e.stopPropagation(); selectSong(song, index); setQuery("") }}>{song.title}</p>
@@ -249,7 +270,7 @@ function AlbumDetails() {
                                         <div className="song-duration">{song.duration}</div>
                                     </div>
                                 </div>
-                            ))} 
+                            ))}
                             {showModal && modalType === "update" && (
                                 <UpdateAlbumModal
                                     albumId={albumToUpdate.id}

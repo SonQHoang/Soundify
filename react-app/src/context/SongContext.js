@@ -15,22 +15,22 @@ export const SongProvider = ({ children }) => {
     const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
-    const handleNextTrack = () => {
-        const nextTrackIndex = (currentTrackIndex + 1) % songs.length;
-        setCurrentTrackIndex(nextTrackIndex);
-        setCurrentSong(songs[nextTrackIndex].audio_url);
-        setSongTitle(songs[nextTrackIndex].title);
-        setArtistName(songs[nextTrackIndex].artist);
-        setAlbumCover(songs[nextTrackIndex].album_arts[0]);
+    const handleNextTrack = (songList) => {
+        const nextTrackIndex = (currentlyPlayingSongIndex + 1) % songList.length;
+        setCurrentlyPlayingSongIndex(nextTrackIndex);
+        setCurrentSong(songList[nextTrackIndex].audio_url);
+        setSongTitle(songList[nextTrackIndex].title);
+        setArtistName(songList[nextTrackIndex].artist);
+        setAlbumCover(songList[nextTrackIndex].album_arts[0]);
     };
-
-    const handlePreviousTrack = () => {
-        const prevTrackIndex = (currentTrackIndex - 1 + songs.length) % songs.length;
-        setCurrentTrackIndex(prevTrackIndex);
-        setCurrentSong(songs[prevTrackIndex].audio_url);
-        setSongTitle(songs[prevTrackIndex].title);
-        setArtistName(songs[prevTrackIndex].artist);
-        setAlbumCover(songs[prevTrackIndex].album_arts[0]);
+    
+    const handlePreviousTrack = (songList) => {
+        const prevTrackIndex = (currentlyPlayingSongIndex - 1 + songList.length) % songList.length;
+        setCurrentlyPlayingSongIndex(prevTrackIndex);
+        setCurrentSong(songList[prevTrackIndex].audio_url);
+        setSongTitle(songList[prevTrackIndex].title);
+        setArtistName(songList[prevTrackIndex].artist);
+        setAlbumCover(songList[prevTrackIndex].album_arts[0]);
     };
 
     const playlistSongs = useSelector(state => state.playlist.singlePlaylist.songs);
@@ -82,6 +82,7 @@ export const SongProvider = ({ children }) => {
             setCurrentSong,
             currentTime,
             setCurrentTime,
+            songs,
             songTitle,
             updateCurrentView,
             setSongTitle,

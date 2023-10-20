@@ -12,16 +12,13 @@ session = db.session
 
 @album_routes.route('/user_album', methods=["GET"])
 def get_user_album():
-    # albums = Albums.query.filter_by(user_id = current_user.id).all()
     albums = Albums.query.all()
 
-    # print('albums=====>', albums)
     return [album.to_dict() for album in albums]
 
 @album_routes.route("/all", methods=["GET"])
 def get_all_albums():
     all_albums = Albums.query.all()
-    # print('all_albums=======>', all_albums)
     return [album.to_dict() for album in all_albums]
 
 @album_routes.route("/new", methods=["POST"])
@@ -48,12 +45,9 @@ def create_albums():
             date_created=datetime.utcnow(),
         )
 
-        # print('new_album========>', new_album)
         db.session.add(new_album)
         db.session.commit()
-        # print('respost =======>', {new_album.to_dict()})
         return {"resPost": new_album.to_dict()}
-        # return jsonify({"message": "Album created!"})
     else:
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
@@ -85,26 +79,14 @@ def add_song_to_album(albumId):
 def get_songs_for_album(albumId):
 
     album = Albums.query.get(albumId)
-    # print('album backend========>', album)
     album_songs = album.album_songs
-    # print('album_songs backend==========>', album_songs)
 
     song_container = []
 
     for album_song in album_songs:
-        # print('album_song backend=========>', album_song)
         song_to_dict = album_song.to_dict()
         song_container.append(song_to_dict)
     return song_container
-
-    #     album_to_dict = album_song.to_dict()
-    #     # print(album_song)
-    #     song_to_dict = album_songs.to_dict()
-    #     print('song-to-dict backend======>', song_to_dict)
-    #     song_container.append(song_to_dict)
-    #     print('song-container backend=======>', song_container)
-    # return song_container
-
 
 @album_routes.route("/<int:albumId>")
 def get_single_album_by_id(albumId):
@@ -112,7 +94,6 @@ def get_single_album_by_id(albumId):
 
     if album is None:
         return jsonify({"error": "Album not found"}), 404
-
     
     # album_data = {
     #     "id": album.id,
@@ -129,38 +110,11 @@ def get_single_album_by_id(albumId):
     #     album_data["songs"] = [song.to_dict() for song in album.songs]
     # return jsonify(album_data)
     return jsonify(album.to_dict())
-#1
-# @album_routes.route("/update/<int:albumId>", methods=["PUT"])
-# def update_albums(albumId):
-#     current_album = Albums.query.get(albumId)
-#     print('current_album===========>', current_album)
 
-#     form = UpdateAlbumForm()
-#     print('form==============>', form)
-#     form['csrf_token'].data = request.cookies['csrf_token']
-
-#     if form.validate_on_submit():
-#         if current_user.id != current_album.user_id:
-#             error = {"message": "You shouldn't be trying to adjust someone else's album..."}
-#             return jsonify(error), 403
-        
-#         current_album.title = request.json['title']
-#         print('current_album.title==============>', current_album)
-#         current_album.album_photo = request.json['album_photo']
-#         current_album.album_description = request.json['album_description']
-        
-#         updated_album = current_album
-#         updated_album_dict = updated_album.to_dict()
-#         db.session.commit()
-#         return updated_album_dict
-#     return jsonify(current_album.to_dict())
-
-2
 @album_routes.route('/update/<int:albumId>', methods=['PUT'])
 def update_album(albumId):
     form = UpdateAlbumForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    # print('form.data=======>', form.data)
 
     if form.validate_on_submit():
         current_album = Albums.query.get(albumId)

@@ -16,12 +16,9 @@ function PlaylistDetails() {
     // Retrieving data from Redux store
     const sessionUser = useSelector(state => state.session.user);
     const new_songs = useSelector(state => state.playlist.singlePlaylist.songs);
-    // console.log('new-songs in playlist detail==========>', playlist_songs)
 
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const currentPlaylist = useSelector((state) => state.playlist.singlePlaylist);
-    
-    console.log('What are the attributes in my currentPlaylist; PlaylistDetails=========>', currentPlaylist)
 
     // URL params
     const { playlistId } = useParams();
@@ -37,13 +34,12 @@ function PlaylistDetails() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [hoveredSongIndex, setHoveredSongIndex] = useState(null);
     const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
-    // const [currentSongUrl, setCurrentSongUrl] = useState('');
     const [playingPlaylistId, setPlayingPlaylistId] = useState(null);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     const [isPlaylistPlayed, setIsPlaylistPlayed] = useState(false);
 
     // Context
-    const { play, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, playFromStart, setFirstPlay, updateCurrentView } = useContext(SongContext);
+    const { play, isPlaying, setCurrentSong, setSongTitle, setArtistName, setAlbumCover, playFromStart, togglePlay, setFirstPlay, updateCurrentView } = useContext(SongContext);
 
     // Dispatch
     const dispatch = useDispatch();
@@ -53,11 +49,20 @@ function PlaylistDetails() {
     }
 
     const playFromStartModified = () => {
-        if (!isPlaylistPlayed || playingPlaylistId !== playlistId) {
+        if (currentlyPlayingSongIndex === null || playingPlaylistId !== playlistId) {
+            // If no song is selected, or we're in a new playlist, play the first song
             setIsPlaylistPlayed(true);
+            setCurrentlyPlayingSongIndex(0);
+            setPlayingPlaylistId(playlistId);
+            playFromStart();
+        } else {
+            // If a song is already selected from this playlist, toggle its playback
+            togglePlay();
         }
-        playFromStart();
     };
+
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -76,11 +81,18 @@ function PlaylistDetails() {
 
 
     useEffect(() => {
+        // Update the view to playlist
         updateCurrentView('playlist');
+
+        // Reset when transitioning to a new playlist
+        setCurrentlyPlayingSongIndex(null);
+        setIsPlaylistPlayed(false);
+
         return () => {
+            // Clean-up effect to revert to album view
             updateCurrentView('album');
-        }
-    }, []);
+        };
+    }, [playlistId]);
 
     if (isLoading) {
         return <LoadingSpinner />
@@ -253,9 +265,17 @@ function PlaylistDetails() {
                                         <div className="playlist-song-count">
                                             {isPlaying && currentlyPlayingSongIndex === index
                                                 ? <img className="song-audio-gif" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697659865/Nt6v_qjkqxz.gif" alt="Playing" />
-                                                : (hoveredSongIndex === index
+                                                : 
+                                                (hoveredSongIndex === index
                                                     ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
                                                     : index + 1)}
+                                        </div>
+                                    </div>
+                                    <div className="grid-row">
+                                        <div className="playlist-song-count">
+                                            {hoveredSongIndex === index
+                                                ? <img className="song-play-icon-playlist" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697657626/icons8-play-48_1_ieduyg.png" alt="Play" />
+                                                : index + 1}
                                         </div>
                                     </div>
                                     <div className="grid-row">
