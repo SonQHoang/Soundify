@@ -21,6 +21,7 @@ const Player = () => {
         pause,
         togglePlay,
         currentSong,
+        songs,
         setCurrentTime,
         songTitle,
         artistName,
@@ -65,8 +66,8 @@ const Player = () => {
                     autoPlay={isPlaying}
                     showSkipControls={true}
                     showJumpControls={true}
-                    onClickNext={handleNextTrack}
-                    onClickPrevious={handlePreviousTrack}
+                    onClickNext={() => handleNextTrack(songs)}
+                    onClickPrevious={() => handlePreviousTrack(songs)}
                 />
             </div>
         ) : null

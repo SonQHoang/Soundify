@@ -12,15 +12,12 @@ session = db.session
 
 @playlist_routes.route('/user_playlist', methods=["GET"])
 def get_user_playlist():
-    # playlists = Playlists.query.filter_by(user_id = current_user.id).all()
     playlists = Playlists.query.all()
-    # print('playlists=====>', playlists)
     return [playlist.to_dict() for playlist in playlists]
 
 @playlist_routes.route("/all", methods=["GET"])
 def get_all_playlists():
     all_playlists = Playlists.query.all()
-    # print('all_playlists=======>', all_playlists)
     return [playlist.to_dict() for playlist in all_playlists]
 
 @playlist_routes.route("/new", methods=["POST"])
@@ -54,14 +51,6 @@ def create_playlists():
         print('Validation Errors:', form.errors)
         return jsonify({"error": "File upload failed."}), 400
     
-    
-#1
-# @playlist_routes.route("/add", methods=["POST"])
-# def add_song_to_playlist():
-#     data = request.get_json()
-#     return jsonify(data)
-
-#2
 @playlist_routes.route("/<int:playlistId>/add", methods=["POST"])
 def add_song_to_playlist(playlistId):
 
@@ -85,7 +74,6 @@ def add_song_to_playlist(playlistId):
 
     return jsonify(new_songs.to_dict())
 
-# #3 
 @playlist_routes.route("/<int:playlistId>/songs", methods=["GET"])
 def get_songs_for_playlist(playlistId):
     playlist = Playlists.query.get(playlistId)
