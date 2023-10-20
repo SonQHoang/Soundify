@@ -84,9 +84,26 @@
     /* border: 2px solid mintcream; */
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: space-evenly; */
     background-color: #121212;
     color: #9E9E9E
+}
+
+.album-headers .hashtag-header {
+    margin-left: 55px;
+}
+
+.album-headers .title-header {
+    margin-left: 180px;
+}
+
+
+.album-headers .date-header {
+    margin-left: 260px;
+}
+
+.album-headers .time-header {
+    margin-left: 260px;
 }
 
 .individual-album-songs {
@@ -177,3 +194,5 @@
     width: 20px;
     height: 20px;
 }
+
+

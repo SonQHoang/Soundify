@@ -217,16 +217,16 @@ function AlbumDetails() {
                         )}
                         <div className="album-songs-container">
                             <div className="album-headers">
-                                <div className="grid-row grid-row-width">
+                                <div className="hashtag-header">
                                     <div>#</div>
                                 </div>
-                                <div className="grid-row grid-row-width">
+                                <div className="title-header">
                                     <div>Title</div>
                                 </div>
-                                <div className="grid-row grid-row-width">
+                                <div className="date-header">
                                     <div>Date Added</div>
                                 </div>
-                                <div className="grid-row grid-row-width">
+                                <div className="time-header">
                                     <img className='clock-icon' src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1695032037/icons8-clock-32_bel47j.png" alt="clock-icon"></img>
                                 </div>
                             </div>
