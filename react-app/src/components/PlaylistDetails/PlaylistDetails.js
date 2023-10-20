@@ -138,14 +138,13 @@ function PlaylistDetails() {
     }
 
 
-    const addToPlaylist = () => {
-        Object.values(filteredSongs).map((song) => {
-            const song_with_playlist_id = {
-                ...song,
-                playlistId
-            }
-            dispatch(AddSongToPlaylist(song_with_playlist_id))
-        })
+    const addToPlaylist = (song) => {
+        const song_with_playlist_id = {
+            ...song,
+            playlistId
+        };
+        dispatch(AddSongToPlaylist(song_with_playlist_id));
+        getPlaylistSongs();
     }
 
 
@@ -341,15 +340,16 @@ function PlaylistDetails() {
                                     onChange={(e) => setQuery(e.target.value)}
                                 />
                             </div>
-                            <ul>
+                            <ul className="song-list">
                                 {Object.values(filteredSongs).map((song, index) => (
-                                    <li key={index}>{song.title}</li>
+                                    <li key={index}>
+                                        <div className="songItemContainer">
+                                            <span>{song.title}</span>
+                                            <button className="add-to-playlist-search-button" onClick={() => addToPlaylist(song)}>Add</button>
+                                        </div>
+                                    </li>
                                 ))}
                             </ul>
-                            <button onClick={() => {
-                                addToPlaylist();
-                                getPlaylistSongs()
-                            }}>Add to Playlist</button>
                         </div>
                     </div>
                 </div>

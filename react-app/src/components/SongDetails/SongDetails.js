@@ -18,7 +18,6 @@ function SongDetails() {
 
     useEffect(() => {
         dispatch(getSingleSong(songId))
-        // console.log('Dispatching getSingleSong from component')
     }, [songId])
 
     return (

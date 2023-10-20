@@ -56,7 +56,6 @@ const acGetPlaylist = (data) => {
 }
 
 const acGetSinglePlaylist = (data) => {
-    console.log('Data inside of acGetSinglePlaylist==========>', data)
     return {
         type: GET_SINGLE_PLAYLIST,
         payload: data
@@ -89,9 +88,14 @@ export const UpdatePlaylistThunk = (playlistId, updatedData) => async (dispatch)
 
 export const DeletePlaylistThunk = (playlistId) => async (dispatch) => {
     try {
+        // const response = await fetch(`/api/playlist/delete/${playlistId}`, {
+        //     method: "DELETE",
+        //     // headers: { "Content-Type": 'application/json' }
+        // });
         const response = await fetch(`/api/playlist/delete/${playlistId}`, {
             method: "DELETE",
-            headers: { "Content-Type": 'application/json' }
+            headers: { "Content-Type": 'application/json' },
+            // body: JSON.stringify(updatedData)
         });
         if (response.ok) {
             dispatch(acDeletePlaylist(playlistId))
@@ -135,10 +139,8 @@ export const AddSongToPlaylist = (data) => async (dispatch) => {
 
 export const GetSinglePlaylist = (playlistId) => async (dispatch) => {
     const response = await fetch(`/api/playlist/${playlistId}`)
-    console.log('response======>', response)
     if (response.ok) {
         const playlist = await response.json()
-        console.log('What does the playlist look like after coming from the backend=====>', playlist)
         dispatch(acGetSinglePlaylist(playlist))
     } else {
         console.log("Could not retrieve the specified playlist")

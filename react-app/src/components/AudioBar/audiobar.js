@@ -35,10 +35,8 @@ const Player = () => {
         const audioElement = playerRef.current?.audio.current;
         if (audioElement) {
             if (isPlaying) {
-                console.log('Trying to play audio');
                 audioElement.play();
             } else {
-                console.log('Trying to pause audio');
                 audioElement.pause();
             }
         }

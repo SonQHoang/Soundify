@@ -26,7 +26,7 @@ const DeletePlaylistModal = ({ onSubmit, onClose, playlistId }) => {
 
     const handleConfirmDelete = async () => {
             dispatch(DeletePlaylistThunk(playlistId))
-            .then(() => dispatch(getUserPlaylist())) // Triggering the rerender
+            .then(() => dispatch(getUserPlaylist()))
             onSubmit();
             history.push('/landing-page')
     };

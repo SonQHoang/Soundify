@@ -151,7 +151,6 @@ export const createAlbum = (data) => async (dispatch) => {
         method: "POST", 
         body: data
     })
-    console.log('What is my response coming back from the backend=====>', response)
     if (response.ok) {
         const new_album = await response.json()
         dispatch(acCreateAlbum(new_album))
