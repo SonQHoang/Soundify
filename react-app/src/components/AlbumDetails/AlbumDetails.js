@@ -14,15 +14,13 @@ import "./AlbumDetails.css"
 
 function AlbumDetails() {
     const dispatch = useDispatch();
-    
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
     const new_songs = (useSelector(state => state.album.singleAlbum.songs))
     const songLibrary = Object.values(useSelector(state => state.songs.allSongs));
     const currentAlbum = useSelector((state) => state.album.singleAlbum)
-    console.log('What is in my currentAlbum====>', currentAlbum)
     const { albumId } = useParams()
-    
+
     const [isLoading, setIsLoading] = useState(true);
     const [query, setQuery] = useState("");
     const [selectedSongs, setSelectedSongs] = useState([]);
@@ -180,7 +178,7 @@ function AlbumDetails() {
                         <div className="play-button-albums-container">
                             <button className='play-albums-button' onClick={playFromStartModified}>
                                 <img
-                                     className={
+                                    className={
                                         isPlaying && playingAlbumId === albumId ? "pause-button" : "play-button"
                                     } src={isPlaying && playingAlbumId === albumId
                                         ? "https://res.cloudinary.com/dgxpqnbwn/image/upload/v1697655841/icons8-pause-64_uryer0.png"
@@ -251,7 +249,7 @@ function AlbumDetails() {
                                         <div className="song-duration">{song.duration}</div>
                                     </div>
                                 </div>
-                            ))}
+                            ))} 
                             {showModal && modalType === "update" && (
                                 <UpdateAlbumModal
                                     albumId={albumToUpdate.id}
@@ -286,12 +284,12 @@ function AlbumDetails() {
                         <div className="selected-songs">
                             <h3>Album Songs</h3>
                             <div className='search-bar'>
-                            <input
-                                type="text"
-                                placeholder="Search for a song"
-                                onChange={(e) => setQuery(e.target.value)}
-                            />
-                        </div>
+                                <input
+                                    type="text"
+                                    placeholder="Search for a song"
+                                    onChange={(e) => setQuery(e.target.value)}
+                                />
+                            </div>
                             <ul>
                                 {Object.values(filteredSongs).map((song, index) => (
                                     <li key={index}>{song.title}</li>

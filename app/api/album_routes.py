@@ -114,20 +114,21 @@ def get_single_album_by_id(albumId):
         return jsonify({"error": "Album not found"}), 404
 
     
-    album_data = {
-        "id": album.id,
-        "title": album.title,
-        "owner": album.owner,
-        "album_photo": album.album_photo,
-        "year": album.year,
-        "album_description": album.album_description,
-        "date_created": datetime.utcnow(),
-    }
+    # album_data = {
+    #     "id": album.id,
+    #     "title": album.title,
+    #     "owner": album.owner,
+    #     "album_photo": album.album_photo,
+    #     "songs": [song.to_dict() for song in album.album_songs],
+    #     "year": album.year,
+    #     "album_description": album.album_description,
+    #     "date_created": datetime.utcnow(),
+    # }
 
-    if hasattr(album, "songs"):
-        album_data["songs"] = [song.to_dict() for song in album.songs]
-    return jsonify(album_data)
-
+    # if hasattr(album, "songs"):
+    #     album_data["songs"] = [song.to_dict() for song in album.songs]
+    # return jsonify(album_data)
+    return jsonify(album.to_dict())
 #1
 # @album_routes.route("/update/<int:albumId>", methods=["PUT"])
 # def update_albums(albumId):
