@@ -199,7 +199,7 @@ const playlistReducer = (state = initialState, action) => {
                 singlePlaylist: action.payload.resPost
             };
         case ADD_SONG_TO_PLAYLIST: {
-            const updatedState = {
+            const updatedState = { 
                 ...state,
                 singlePlaylist: {
                     ...state.singlePlaylist,

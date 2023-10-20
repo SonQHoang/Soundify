@@ -197,7 +197,7 @@ const albumReducer = (state = initialState, action) => {
                     ...state.allAlbums,
                     [action.payload.id]: action.payload,
                 },
-                singleAlbum: action.payload.resPost
+                singleAlbum: action.payload.resPost 
             };
         case ADD_SONG_TO_ALBUM:
             const updatedState = {
@@ -208,7 +208,7 @@ const albumReducer = (state = initialState, action) => {
                 },
             };
 
-            return updatedState;
+            return updatedState; 
 
         case GET_SINGLE_ALBUM:
             return {

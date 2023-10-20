@@ -38,7 +38,7 @@ class Playlists(db.Model):
             "user_id": self.user_id,
             "song_id": self.song_id,
             "owner": self.owner,
-            "playlist_description": self.playlist_description,
+            "playlist_description": self.playlist_description, 
             "image": self.image,
             "title": self.title,
             "date_created": self.date_created,

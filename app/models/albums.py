@@ -45,5 +45,6 @@ class Albums(db.Model):
             # "image": self.image,
             "album_description": self.album_description,
             "date_created": self.date_created,
-            "album_users": self.album_users.to_dict()
-        }
+            "album_users": self.album_users.to_dict(),
+
+            "songs": [album_song.to_dict() for album_song in self.album_songs]        }
