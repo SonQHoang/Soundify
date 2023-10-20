@@ -39,6 +39,7 @@
     align-items: center;
     height: 200px;
     padding: 20px;
+    margin-bottom: 15px;
 }
 
 .playlist-user-details {
@@ -49,6 +50,7 @@
     align-items: center;
     height: 20px;
     font-size: 15px;
+    margin-top: 50px;
 }
 
 .playlist-image-container {
@@ -60,15 +62,15 @@
     max-height: 400px;
     overflow: hidden;
     margin-right: 15px;
-    height: 200px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
 }
 
 .playlist-information-container {
     /* border: 10px solid orange; */
     color: white;
     width: 500px;
-    font-size: 25px;
+    font-size: 18px;
 }
 
 .playlist-image {
@@ -161,12 +163,14 @@
 
 .play-button-playlist-container {
     /* border: 2px solid red; */
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 
 .play-playlist-button {
-    background-color: transparent;
-    border: none;
+    background-color: #121212;
+    border: #121212
 }
 
 .play-button {
@@ -199,7 +203,7 @@
 }
 
 .playlist-dropdown-button {
-    font-size: 24px;
+    font-size: 30px;
     background: none;
     border: none;
     cursor: pointer;
