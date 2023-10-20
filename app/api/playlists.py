@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, request
 from flask_login import login_required, current_user
 from app.models.db import db
+import traceback
 from app.models import Playlists, User, Songs, Albums
 from datetime import datetime
 from ..forms.create_playlist_form import CreatePlaylistForm
@@ -134,7 +135,19 @@ def update_playlists(playlistId):
 
 @playlist_routes.route("/delete/<int:playlistId>", methods=["DELETE"])
 def delete_playlists(playlistId):
+    # print('We have hit the backend route for delete playlist============+>')
     playlist_to_delete = Playlists.query.get(playlistId)
-    db.session.delete(playlist_to_delete)
-    db.session.commit()
-    return jsonify({"message": "Deletion successful"})
+    # print('playlist_to_delete======>', playlist_to_delete)
+
+    try:
+        # print("Deleting songs associated with playlist ID:", playlistId)
+        # playlist_to_delete.playlist_songs.delete()
+        # print('playlist_to_delete INSIDE TRY======>', playlist_to_delete)
+        db.session.delete(playlist_to_delete)
+        db.session.commit()
+        return jsonify({"message": "Playlist and associated songs deleted successfully"})
+    except Exception as e:
+        print("Error:", e)
+        print("Traceback:", traceback.format_exc())
+        db.session.rollback()
+        return jsonify({"error": "An error occurred while deleting the playlist"}), 500

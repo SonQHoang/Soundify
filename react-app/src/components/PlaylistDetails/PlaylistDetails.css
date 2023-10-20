@@ -269,3 +269,45 @@
     width: 20px;
     height: 20px;
 }
+
+.songItemContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.songItemContainer span, 
+.songItemContainer button {
+    margin-bottom: 10px;
+}
+
+.songItemContainer button {
+    color: #FFFFFF;
+    background-color: black;
+    border: 1px solid #727272;
+    border-radius: 18px; 
+    width: 60px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: none;
+}
+
+.songItemContainer button:hover {
+    border: 2px solid #ffffff;
+    color: #ffffff; 
+}
+
+.songItemContainer button:focus {
+    outline: none;
+}
+
+.song-list {
+    list-style-type: none;
+    padding-left: 0;
+}
