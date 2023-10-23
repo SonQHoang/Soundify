@@ -79,11 +79,12 @@
 
 
 .about-me-links {
-    /* border: 2px solid red; */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    z-index: 10001;
+    /* border: 2px solid red; */
 }
 
 .about-me-links a {

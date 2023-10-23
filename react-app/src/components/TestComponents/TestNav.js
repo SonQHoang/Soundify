@@ -2,7 +2,7 @@ import React from 'react'
 import { SongContext } from '../../context/SongContext';
 import { AuthContext } from '../../context/AuthContext';
 import { useState } from 'react'
-import { logout as logoutAction} from "../../store/session";
+import { logout as logoutAction } from "../../store/session";
 import { useContext } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
@@ -39,20 +39,20 @@ const TestNav = () => {
 
   const handleFeatureClick = () => {
     alert("This feature will be added in the future. Check back again soon!")
-}
+  }
 
   return (
     <>
       <div className="nav-component-nav-container">
         <div className="about-me-links">
-          <a rel="noopener noreferrer" href='https://github.com/SonQHoang' id="github-link">
-            <div className='about-me-github'>
-            </div>
-          </a>
-          <a rel="noopener noreferrer" href='https://linkedin.com/in/sean-hoang' id="linkedin-link">
-            <div className='about-me-linkedin'>
-            </div>
-          </a>
+        <a rel="noopener noreferrer" href='https://github.com/SonQHoang' id="github-link">
+                                <div className='about-me-github-splash-page'>
+                                </div>
+                            </a>
+                            <a rel="noopener noreferrer" href='https://linkedin.com/in/sean-hoang' id="linkedin-link">
+                                <div className='about-me-linkedin-splash-page'>
+                                </div>
+                            </a>
         </div>
         <div className="logout-container">
           {user ? (
@@ -75,8 +75,8 @@ const TestNav = () => {
           )}
           {dropDownMenu && (
             <div className="drop-down-profile-menu">
-              <button onClick={handleFeatureClick}className="account-button" >Account</button>
-              <button onClick={handleFeatureClick}className="settings-button" >Settings</button>
+              <button onClick={handleFeatureClick} className="account-button" >Account</button>
+              <button onClick={handleFeatureClick} className="settings-button" >Settings</button>
               <button className="log-out-button" onClick={handleLogout}>LogOut</button>
             </div>
 
