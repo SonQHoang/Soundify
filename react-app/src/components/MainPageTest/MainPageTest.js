@@ -31,13 +31,6 @@ const MainPage = () => {
                             </ul>
                         </div>
                         <div className="general-content">
-                            {/* <h4>General Content</h4>
-                            <ul className="generalized-list">
-                                <li>This is Love</li>
-                                <li>This is Pop</li>
-                                <li>This is Worship</li>
-                                <li>This is Instrumental</li>
-                            </ul> */}
                         </div>
                     </div>
                 </div>
