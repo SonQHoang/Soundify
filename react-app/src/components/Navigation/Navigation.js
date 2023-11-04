@@ -1,5 +1,3 @@
-// This will only appear on the sign-in page
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';

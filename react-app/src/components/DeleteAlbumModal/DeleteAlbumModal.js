@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-// import { GetSinglePlaylist } from '../../store/playlists';
 import { deleteAlbumThunk, getUserAlbum } from '../../store/albums';
 import "./DeleteAlbumModal.css"
 
@@ -26,7 +25,7 @@ const DeleteAlbumModal = ({ onSubmit, onClose, albumId }) => {
 
     const handleConfirmDelete = async () => {
             dispatch(deleteAlbumThunk(albumId))
-            .then(() => dispatch(getUserAlbum())) // Triggering the rerender
+            .then(() => dispatch(getUserAlbum()))
             onSubmit();
             history.push('/landing-page')
     };

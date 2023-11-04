@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-// import { GetSinglePlaylist } from '../../store/playlists';
 import { DeletePlaylistThunk, getUserPlaylist } from '../../store/playlists';
 import "./DeletePlaylistModal.css"
 
