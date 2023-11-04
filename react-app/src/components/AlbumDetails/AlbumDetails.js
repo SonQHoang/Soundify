@@ -318,7 +318,6 @@ function AlbumDetails() {
                             </ul>
                             <button onClick={() => {
                                 addToAlbum();
-                                // getAlbumSongs()
                             }}>Add to Album</button>
                         </div>
                     </div>

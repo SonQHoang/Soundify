@@ -141,14 +141,6 @@ const CreatePlaylist = () => {
                     <button className="playlist-create-submit-button">Submit</button>
                 </div>
             </form>
-            {/* Confirmation on the correct file being submitted submitted */}
-            {/* {audioFileUrl && (
-                <div className="audio-player">
-                    <audio controls>
-                        <source src={audioFileUrl} type="audio/mpeg" />
-                    </audio>
-                </div>
-            )} */}
         </div>
     );
 }
