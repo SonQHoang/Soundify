@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export const SongContext = createContext();
+export const SongContext = createContext(); // providing SongContext to be used by other components to access and manipulate music state w/o rneeidng to prop drill
 
-export const SongProvider = ({ children }) => {
+export const SongProvider = ({ children }) => { // Provider; Wraps children components allowing them to have access to all of the following
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentSong, _setCurrentSong] = useState(null);
     const [currentTime, setCurrentTime] = useState(0);
@@ -15,7 +15,7 @@ export const SongProvider = ({ children }) => {
     const [currentlyPlayingSongIndex, setCurrentlyPlayingSongIndex] = useState(null);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
-    const handleNextTrack = (songList) => {
+    const handleNextTrack = (songList) => { // Controls skip forward
         const nextTrackIndex = (currentlyPlayingSongIndex + 1) % songList.length;
         setCurrentlyPlayingSongIndex(nextTrackIndex);
         setCurrentSong(songList[nextTrackIndex].audio_url);
@@ -24,7 +24,7 @@ export const SongProvider = ({ children }) => {
         setAlbumCover(songList[nextTrackIndex].album_arts[0]);
     };
     
-    const handlePreviousTrack = (songList) => {
+    const handlePreviousTrack = (songList) => { // Controls skip back
         const prevTrackIndex = (currentlyPlayingSongIndex - 1 + songList.length) % songList.length;
         setCurrentlyPlayingSongIndex(prevTrackIndex);
         setCurrentSong(songList[prevTrackIndex].audio_url);
@@ -41,26 +41,26 @@ export const SongProvider = ({ children }) => {
     };
 
 
-    const songs = currentView === 'playlist' ? playlistSongs : albumSongs;
+    const songs = currentView === 'playlist' ? playlistSongs : albumSongs; // View swapper for playlists
 
-    const setCurrentSong = (song) => {
+    const setCurrentSong = (song) => { // Controls current song and resets time for each song as it changes
         setCurrentTime(0);
         _setCurrentSong(song);
     };
 
-    const play = () => {
+    const play = () => { // Playback control
         setIsPlaying(true);
     };
 
-    const pause = () => {
+    const pause = () => { // Playback control
         setIsPlaying(false);
     };
 
-    const togglePlay = () => {
+    const togglePlay = () => { // Playback control
         setIsPlaying((prev) => !prev);
     };
 
-    const playFromStart = () => {
+    const playFromStart = () => { // Handles initial play action
         if (firstPlay && songs && songs.length > 0) {
             setCurrentSong(songs[0].audio_url);
             setSongTitle(songs[0].title);
@@ -75,7 +75,7 @@ export const SongProvider = ({ children }) => {
     };
 
     return (
-        <SongContext.Provider value={{
+        <SongContext.Provider value={{ 
             play,
             pause,
             currentSong,
