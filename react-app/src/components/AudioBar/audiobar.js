@@ -6,7 +6,8 @@ import './audiobar.css';
 import { SongContext } from '../../context/SongContext';
 
 const Player = () => {
-    const playerRef = useRef();
+    const playerRef = useRef(); // useRef persistently stores a mutable value that doesn't cause a re-render. Think of a "box" holding a mutable (Can be modified) value
+                                // All ref objects have a property called .current. If you don't provide useRef with an arg, .current is undefined UNTIL the component its attached to mounts.
     const { isAuthenticated } = useContext(AuthContext); // Using context to gain access to isAuth from AuthContext to determine if audio player should be rendered
 
     useEffect(() => {
