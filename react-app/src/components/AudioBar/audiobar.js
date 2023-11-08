@@ -7,7 +7,7 @@ import { SongContext } from '../../context/SongContext';
 
 const Player = () => {
     const playerRef = useRef();
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext); // Using context to gain access to isAuth from AuthContext to determine if audio player should be rendered
 
     useEffect(() => {
         if (!isAuthenticated && playerRef.current && playerRef.current.audio.current) {
