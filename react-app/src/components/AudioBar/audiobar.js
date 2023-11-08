@@ -11,10 +11,11 @@ const Player = () => {
     const { isAuthenticated } = useContext(AuthContext); // Using context to gain access to isAuth from AuthContext to determine if audio player should be rendered
 
     useEffect(() => {
+        // if user is NOT authenicated && if playerRef has mounted && audio is there
         if (!isAuthenticated && playerRef.current && playerRef.current.audio.current) {
-            playerRef.current.audio.current.pause();
+            playerRef.current.audio.current.pause(); // If the above are all true, then the song can be paused.
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated]); // Dependency array is waiting to see if isAuth changes. If the user logs out, it will become false, the effect will run and pause the audio (If it's playing)
 
     const {
         isPlaying,
