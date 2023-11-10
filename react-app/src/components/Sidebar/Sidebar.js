@@ -10,7 +10,6 @@ const Sidebar = () => {
     return (
         <div className="side-bar-container">
             <div className="top-of-side-bar">
-                {/* <img className="soundify-logo" src="https://res.cloudinary.com/dgxpqnbwn/image/upload/v1694681368/SOUNDIFY_9_znffp4.png" /> */}
                 <div className='home-button-container'>
                     <div>
                         <NavLink exact to="/">
