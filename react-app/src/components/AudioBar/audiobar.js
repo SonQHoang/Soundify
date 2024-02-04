@@ -21,10 +21,10 @@ const Player = () => {
         isPlaying,
         play,
         pause,
-        togglePlay,
+        // togglePlay, unused
         currentSong,
         songs,
-        setCurrentTime,
+        // setCurrentTime, unused
         songTitle,
         artistName,
         albumCover,

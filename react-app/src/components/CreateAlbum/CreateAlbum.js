@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createAlbum } from '../../store/albums';
 import "./CreateAlbum.css" 
 
+// This component contains the form data needed to create a new album
 const CreateAlbum = () => {
     const dispatch = useDispatch()
     const history = useHistory();
