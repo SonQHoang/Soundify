@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPlaylist } from '../../store/playlists';
 import "./CreatePlaylist.css"
 
+// This component contains the form data to create a new customized playlist
 const CreatePlaylist = () => {
     const dispatch = useDispatch()
     const history = useHistory();
