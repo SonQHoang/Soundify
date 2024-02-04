@@ -15,16 +15,16 @@ const Player = () => {
         if (!isAuthenticated && playerRef.current && playerRef.current.audio.current) {
             playerRef.current.audio.current.pause(); // If the above are all true, then the song can be paused.
         }
-    }, [isAuthenticated]); // Dependency array is waiting to see if isAuth changes. If the user logs out, it will become false, the effect will run and pause the audio (If it's playing)
+    }, [isAuthenticated]); // Dependency array is waiting to see if isAuth changes. If the user logs out, it will become false, the effect will run and pause the audio (If it's playing). If it stays true nothing will change. (Audio is not playing)
 
     const {
         isPlaying,
         play,
         pause,
-        togglePlay,
+        // togglePlay, unused
         currentSong,
         songs,
-        setCurrentTime,
+        // setCurrentTime, unused
         songTitle,
         artistName,
         albumCover,
