@@ -53,27 +53,29 @@ def create_playlists():
         return jsonify({"error": "File upload failed."}), 400
     
 @playlist_routes.route("/<int:playlistId>/add", methods=["POST"])
-def add_song_to_playlist(playlistId):
+def add_song_to_playlist(playlistId): 
+    #Capturing playlistId
 
     data = request.json
     song_id = data['id']
 
     playlist = Playlists.query.get(playlistId)
 
-    if not playlist:
+    if not playlist: 
         return jsonify({"error": "Playlist not found"}), 404
 
-    new_songs = Songs.query.get(song_id)
+    new_songs = Songs.query.get(song_id) #searching for song being added based on song_id
 
     if not new_songs:
         return jsonify({"error": "Song not found"}), 404
     
-    playlist.playlist_songs.append(new_songs)
+    playlist.playlist_songs.append(new_songs) #Add to playlist
 
-    db.session.add(playlist)
-    db.session.commit()
+    db.session.add(playlist) #Stage
+    db.session.commit() #Commit
 
-    return jsonify(new_songs.to_dict())
+    return jsonify(new_songs.to_dict()) 
+        # returns songs in JSON format for JS to read
 
 @playlist_routes.route("/<int:playlistId>/songs", methods=["GET"])
 def get_songs_for_playlist(playlistId):
