@@ -307,8 +307,8 @@ function PlaylistDetails() {
                 <div
                   key={index}
                   className="individual-playlist-songs"
-                  onMouseEnter={() => setHoveredSongIndex(index)}
-                  onMouseLeave={() => setHoveredSongIndex(null)}
+                  onMouseEnter={() => setHoveredSongIndex(index)} // Shows the song#
+                  onMouseLeave={() => setHoveredSongIndex(null)} //
                   onClick={() => {
                     selectSong(song, index)
                   }}

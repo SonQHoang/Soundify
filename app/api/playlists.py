@@ -60,7 +60,7 @@ def add_song_to_playlist(playlistId):
 
     playlist = Playlists.query.get(playlistId)
 
-    if not playlist:
+    if not playlist: 
         return jsonify({"error": "Playlist not found"}), 404
 
     new_songs = Songs.query.get(song_id)
